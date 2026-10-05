@@ -9,11 +9,11 @@ import { cn } from '../../utils/cn';
 /**
  * Global Resort Navbar Component
  * 
- * Strict Contrast Rule:
- * - When hero section / background underneath is DARK: Navbar is LIGHT (warm ivory bg, dark text, light logo)
- * - When background / page content underneath is LIGHT: Navbar is DARK (deep forest bg, ivory text, dark logo)
- * - Transitions smoothly on scroll without flickering
- * - Preserves official Go Flamingo logo and 360px mobile touch safety
+ * Strict Refinements:
+ * - Reduced, compact, and fixed height: h-14 sm:h-16 (never shifts or resizes on scroll)
+ * - Glassmorphism: backdrop-blur-md with subtle translucent background
+ * - Mobile screens: NO CTA button (clean logo + hamburger only); Book CTA is reserved for desktop and mobile drawer
+ * - Contrast Rule: Light navbar over dark hero; Dark navbar over light page content
  */
 export default function Navbar() {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -29,7 +29,7 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   }
 
-  // Track window scroll for elevated backdrop
+  // Track window scroll for elevated backdrop (smooth color transition without size shift)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -39,9 +39,9 @@ export default function Navbar() {
   }, []);
 
   // Contrast Rule:
-  // - Top of pages with dark photography hero -> isDarkHeroUnderneath is TRUE -> Navbar is LIGHT (contrast against dark hero)
-  // - When scrolled down into light page content -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (contrast against light content)
-  // - On pages with light hero (/book, /contact) -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (contrast against light page)
+  // - Top of pages with dark photography hero -> isDarkHeroUnderneath is TRUE -> Navbar is LIGHT (ivory)
+  // - When scrolled down into light page content -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (forest)
+  // - On pages with light hero (/book, /contact) -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (forest)
   const isDarkHeroUnderneath = !isScrolled && !['/book', '/contact'].includes(location.pathname);
   const isNavbarDark = !isDarkHeroUnderneath;
 
@@ -50,29 +50,29 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full font-sans transition-[background-color,border-color,box-shadow,color] duration-300 ease-in-out',
+        'sticky top-0 z-40 w-full h-16 sm:h-20 flex items-center font-sans transition-[background-color,border-color,box-shadow,color] duration-300 ease-in-out',
         isNavbarDark
-          ? 'bg-forest-dark/98 text-ivory border-b border-sand/20 shadow-md py-2.5 sm:py-3.5'
-          : 'bg-ivory-pure/98 text-charcoal border-b border-sand/40 shadow-sm backdrop-blur-md py-2.5 sm:py-3.5'
+          ? 'bg-forest-dark/85 text-ivory border-b border-sand/15 shadow-sm backdrop-blur-md'
+          : 'bg-ivory-pure/85 text-charcoal border-b border-sand/30 shadow-sm backdrop-blur-md'
       )}
       onMouseLeave={() => setActiveMegaMenu(null)}
     >
-      <Container size="wide" className="flex items-center justify-between gap-2.5 sm:gap-4 px-3 sm:px-6">
+      <Container size="wide" className="flex items-center justify-between gap-3 sm:gap-4 px-3 sm:px-6 w-full">
         
-        {/* OFFICIAL BRAND LOGO (Prominent Left Placement) */}
-        <div className="flex items-center py-0.5 shrink-0">
+        {/* OFFICIAL BRAND LOGO (Left Placement) */}
+        <div className="flex items-center shrink-0">
           <Logo
             variant="header"
             theme={isNavbarDark ? 'dark' : 'light'}
           />
         </div>
 
-        {/* Desktop Primary Navigation (xl:flex) */}
-        <nav className="hidden xl:flex items-center gap-1 2xl:gap-2">
+        {/* Desktop & Laptop Primary Navigation (lg:flex) */}
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2">
           <Link
             to="/"
             className={cn(
-              'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors',
+              'px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.6875rem] xl:text-xs uppercase tracking-wider font-semibold transition-colors',
               isNavbarDark
                 ? location.pathname === '/'
                   ? 'text-gold font-bold border-b-2 border-gold'
@@ -95,7 +95,7 @@ export default function Navbar() {
                   key={item.id}
                   to={item.path}
                   className={cn(
-                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors',
+                    'px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.6875rem] xl:text-xs uppercase tracking-wider font-semibold transition-colors',
                     isNavbarDark
                       ? isActive
                         ? 'text-gold font-bold border-b-2 border-gold'
@@ -119,7 +119,7 @@ export default function Navbar() {
                 <Link
                   to={item.path}
                   className={cn(
-                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1',
+                    'px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.6875rem] xl:text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-0.5',
                     isNavbarDark
                       ? (isActive || isOpen)
                         ? 'text-gold font-bold border-b-2 border-gold'
@@ -139,26 +139,28 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Header Right Actions: [ Book Stay ] [ Menu ] */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Button
-            as={Link}
-            to="/book"
-            variant="gold"
-            size="sm"
-            className="shadow-sm font-bold tracking-wider shrink-0 text-center"
-          >
-            <span className="hidden sm:inline">Book Your Stay</span>
-            <span className="sm:hidden text-[0.72rem] tracking-wide">Book Stay</span>
-          </Button>
+        {/* Header Right Actions */}
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* Desktop & Laptop Only: Book Your Stay CTA (Strictly hidden on Mobile screens) */}
+          <div className="hidden lg:block shrink-0">
+            <Button
+              as={Link}
+              to="/book"
+              variant="gold"
+              size="sm"
+              className="shadow-sm font-bold tracking-wider text-center"
+            >
+              Book Your Stay
+            </Button>
+          </div>
 
-          {/* Mobile Hamburger Toggle (xl:hidden) */}
+          {/* Mobile Hamburger Toggle (lg:hidden - Only on Mobile/Tablet screens) */}
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open navigation menu"
             className={cn(
-              'xl:hidden p-2 rounded-[3px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold min-w-[40px] min-h-[40px] flex items-center justify-center shrink-0',
+              'lg:hidden p-2 rounded-[3px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold w-10 h-10 flex items-center justify-center shrink-0',
               isNavbarDark
                 ? 'text-ivory hover:text-gold hover:bg-forest-deep active:bg-forest-jungle'
                 : 'text-charcoal hover:text-forest-jungle hover:bg-sand/20 active:bg-sand/30'

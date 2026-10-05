@@ -25,7 +25,12 @@ export default function Button({
   children,
   ...props
 }) {
-  const baseStyles = 'inline-flex items-center justify-center font-sans tracking-[0.06em] sm:tracking-[0.08em] uppercase transition-all duration-200 select-none disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2';
+  const hasCustomDisplay = /(^|\s)(hidden|block|flex|inline-block|grid)(\s|$)/.test(className);
+  const displayStyle = hasCustomDisplay ? '' : 'inline-flex';
+  const baseStyles = cn(
+    displayStyle,
+    'items-center justify-center font-sans tracking-[0.06em] sm:tracking-[0.08em] uppercase transition-all duration-200 select-none disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2'
+  );
 
   const sizeStyles = {
     sm: 'text-[0.75rem] px-3.5 sm:px-4 py-2 min-h-[40px] rounded-[3px]',

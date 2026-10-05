@@ -23,36 +23,33 @@ export default function Logo({
   className = '',
   imgClassName = '',
 }) {
-  // Sizing matrix adhering to brand guidelines:
-  // Desktop: approx 170px–220px wide
-  // Mobile: approx 140px–160px wide
-  // Footer: approx 220px–260px wide (brand signature area)
-  const sizeClasses = {
-    header: 'w-[130px] min-[380px]:w-[150px] sm:w-[180px] lg:w-[205px]',
-    mobile: 'w-[140px] sm:w-[160px]',
-    footer: 'w-[210px] sm:w-[240px] lg:w-[260px]',
-    hero: 'w-[170px] sm:w-[210px]',
-    standalone: 'w-[190px]',
-  }[variant] || 'w-[180px]';
+  // Height-driven sizing for headers so the logo NEVER clips or pushes navbar height.
+  // Enlarged sizing for prominent brand visibility
+  const imageSizeClasses = {
+    header: 'h-[40px] min-[380px]:h-[45px] sm:h-[48px] lg:h-[54px] w-auto max-w-[170px] sm:max-w-[200px] lg:max-w-[235px]',
+    mobile: 'h-[40px] sm:h-[44px] w-auto max-w-[165px]',
+    footer: 'w-[220px] sm:w-[250px] lg:w-[275px] h-auto',
+    hero: 'w-[180px] sm:w-[220px] h-auto',
+    standalone: 'w-[200px] h-auto',
+  }[variant] || 'h-[45px] w-auto';
 
-  // For dark backgrounds (such as deep forest footer or nocturnal hero),
-  // wrap in an elegant warm ivory presentation container so the black lettering
-  // ('FLAM', 'NGO', 'RESORTS') and deep green 'GO' remain 100% visible and crisp
-  // without modifying the official logo artwork.
+  // Normalized container sizing so navbar height NEVER jumps between themes
+  // On dark backgrounds, an elegant warm ivory pill ensures black typography stays 100% visible
   const containerThemeClasses = theme === 'dark'
-    ? 'bg-ivory-pure/95 px-3.5 py-1.5 rounded-[4px] shadow-sm border border-sand/40 inline-flex items-center justify-center'
-    : 'inline-flex items-center';
+    ? 'bg-ivory-pure/95 px-2.5 py-0.5 rounded-[4px] shadow-xs border border-sand/30 inline-flex items-center justify-center transition-all duration-200'
+    : 'inline-flex items-center justify-center px-1.5 py-0.5 border border-transparent transition-all duration-200';
 
   const logoImage = (
-    <picture className={cn('block leading-none', sizeClasses, className)}>
+    <picture className={cn('inline-flex items-center justify-center leading-none', className)}>
       <source srcSet="/assets/logo/go-flamingo-logo-trimmed.webp" type="image/webp" />
       <img
         src="/assets/logo/go-flamingo-logo-trimmed.png"
         alt="Go Flamingo Resorts – Pench, Sillari Gate"
-        width={784}
-        height={275}
+        width={810}
+        height={302}
         className={cn(
-          'w-full h-auto object-contain block select-none',
+          'object-contain block select-none shrink-0',
+          imageSizeClasses,
           imgClassName
         )}
       />
@@ -65,7 +62,7 @@ export default function Logo({
         to="/"
         aria-label="Go Flamingo Resorts – Home"
         className={cn(
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-[4px] transition-transform duration-200 hover:opacity-95',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-[4px] transition-transform duration-200 hover:opacity-95 shrink-0',
           containerThemeClasses
         )}
       >
@@ -75,7 +72,7 @@ export default function Logo({
   }
 
   return (
-    <div className={containerThemeClasses}>
+    <div className={cn('shrink-0', containerThemeClasses)}>
       {logoImage}
     </div>
   );
