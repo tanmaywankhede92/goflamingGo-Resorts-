@@ -178,12 +178,14 @@ export const NAV_ITEMS = [
 ];
 
 export const QUICK_CONTACT = {
-  phone: "+91 93724 25968",
-  phoneRaw: "+919372425968",
+  phone: "+91 95619 57009",
+  phoneSecondary: "+91 93724 25968",
+  phoneRaw: "+919561957009",
   whatsapp: "+91 93724 25968",
   whatsappNumber: "919372425968",
   whatsappUrl: "https://wa.me/919372425968",
-  email: "stay@goflamingoresort.com",
-  address: "Near Sillari Gate, Pench Tiger Reserve, Madhya Pradesh, India",
+  email: "Info@Goflamingoresorts.Com",
+  hours: "07:00 AM – 22:00 PM (Monday – Sunday)",
+  address: "Sillari Gate Pench National Park, Sitapur, Maharashtra 441401, India",
   nagpurDistance: "~85 km (1.5 - 2 hrs drive via NH 44)",
 };

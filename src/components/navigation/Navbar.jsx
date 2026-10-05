@@ -9,9 +9,11 @@ import { cn } from '../../utils/cn';
 /**
  * Global Resort Navbar Component
  * 
- * Features the official Go Flamingo Resorts brand logo prominently on the left,
- * supported by a warm ivory surface for maximum logo fidelity, crisp typography,
- * desktop mega-menus, and a responsive mobile drawer.
+ * Strict Contrast Rule:
+ * - When hero section / background underneath is DARK: Navbar is LIGHT (warm ivory bg, dark text, light logo)
+ * - When background / page content underneath is LIGHT: Navbar is DARK (deep forest bg, ivory text, dark logo)
+ * - Transitions smoothly on scroll without flickering
+ * - Preserves official Go Flamingo logo and 360px mobile touch safety
  */
 export default function Navbar() {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -36,32 +38,48 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Contrast Rule:
+  // - Top of pages with dark photography hero -> isDarkHeroUnderneath is TRUE -> Navbar is LIGHT (contrast against dark hero)
+  // - When scrolled down into light page content -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (contrast against light content)
+  // - On pages with light hero (/book, /contact) -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (contrast against light page)
+  const isDarkHeroUnderneath = !isScrolled && !['/book', '/contact'].includes(location.pathname);
+  const isNavbarDark = !isDarkHeroUnderneath;
+
   const currentMegaMenuItem = NAV_ITEMS.find((item) => item.id === activeMegaMenu);
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full font-sans transition-[background-color,border-color,box-shadow] duration-200',
-        isScrolled
-          ? 'bg-ivory-pure text-charcoal shadow-md border-b border-sand/40 py-2.5 sm:py-3'
-          : 'bg-ivory-pure text-charcoal border-b border-sand/30 py-2.5 sm:py-3.5'
+        'sticky top-0 z-40 w-full font-sans transition-[background-color,border-color,box-shadow,color] duration-300 ease-in-out',
+        isNavbarDark
+          ? 'bg-forest-dark/98 text-ivory border-b border-sand/20 shadow-md py-2.5 sm:py-3.5'
+          : 'bg-ivory-pure/98 text-charcoal border-b border-sand/40 shadow-sm backdrop-blur-md py-2.5 sm:py-3.5'
       )}
       onMouseLeave={() => setActiveMegaMenu(null)}
     >
-      <Container size="wide" className="flex items-center justify-between gap-4">
+      <Container size="wide" className="flex items-center justify-between gap-2.5 sm:gap-4 px-3 sm:px-6">
         
         {/* OFFICIAL BRAND LOGO (Prominent Left Placement) */}
-        <div className="flex items-center py-0.5">
-          <Logo variant="header" theme="light" />
+        <div className="flex items-center py-0.5 shrink-0">
+          <Logo
+            variant="header"
+            theme={isNavbarDark ? 'dark' : 'light'}
+          />
         </div>
 
-        {/* Desktop Primary Navigation */}
+        {/* Desktop Primary Navigation (xl:flex) */}
         <nav className="hidden xl:flex items-center gap-1 2xl:gap-2">
           <Link
             to="/"
             className={cn(
-              'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors hover:text-forest-jungle',
-              location.pathname === '/' ? 'text-forest-deep font-bold border-b-2 border-gold' : 'text-charcoal-800'
+              'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors',
+              isNavbarDark
+                ? location.pathname === '/'
+                  ? 'text-gold font-bold border-b-2 border-gold'
+                  : 'text-ivory/90 hover:text-gold'
+                : location.pathname === '/'
+                ? 'text-forest-deep font-bold border-b-2 border-gold'
+                : 'text-charcoal-800 hover:text-forest-jungle'
             )}
           >
             Home
@@ -77,8 +95,14 @@ export default function Navbar() {
                   key={item.id}
                   to={item.path}
                   className={cn(
-                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors hover:text-forest-jungle',
-                    isActive ? 'text-forest-deep font-bold border-b-2 border-gold' : 'text-charcoal-800'
+                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors',
+                    isNavbarDark
+                      ? isActive
+                        ? 'text-gold font-bold border-b-2 border-gold'
+                        : 'text-ivory/90 hover:text-gold'
+                      : isActive
+                      ? 'text-forest-deep font-bold border-b-2 border-gold'
+                      : 'text-charcoal-800 hover:text-forest-jungle'
                   )}
                 >
                   {item.label}
@@ -95,39 +119,50 @@ export default function Navbar() {
                 <Link
                   to={item.path}
                   className={cn(
-                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors hover:text-forest-jungle flex items-center gap-1',
-                    (isActive || isOpen) ? 'text-forest-deep font-bold border-b-2 border-gold' : 'text-charcoal-800'
+                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1',
+                    isNavbarDark
+                      ? (isActive || isOpen)
+                        ? 'text-gold font-bold border-b-2 border-gold'
+                        : 'text-ivory/90 hover:text-gold'
+                      : (isActive || isOpen)
+                      ? 'text-forest-deep font-bold border-b-2 border-gold'
+                      : 'text-charcoal-800 hover:text-forest-jungle'
                   )}
                   aria-expanded={isOpen}
                   aria-haspopup="true"
                 >
                   <span>{item.label}</span>
-                  <span className="text-[0.6rem] text-charcoal-muted">▾</span>
+                  <span className={cn('text-[0.6rem]', isNavbarDark ? 'text-sand/70' : 'text-charcoal-muted')}>▾</span>
                 </Link>
               </div>
             );
           })}
         </nav>
 
-        {/* Header Right Actions */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        {/* Header Right Actions: [ Book Stay ] [ Menu ] */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <Button
             as={Link}
             to="/book"
             variant="gold"
             size="sm"
-            className="shadow-sm font-bold tracking-wider"
+            className="shadow-sm font-bold tracking-wider shrink-0 text-center"
           >
             <span className="hidden sm:inline">Book Your Stay</span>
-            <span className="sm:hidden text-xs">Book Stay</span>
+            <span className="sm:hidden text-[0.72rem] tracking-wide">Book Stay</span>
           </Button>
 
-          {/* Mobile Hamburger Toggle */}
+          {/* Mobile Hamburger Toggle (xl:hidden) */}
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open navigation menu"
-            className="xl:hidden p-2 rounded-[3px] text-charcoal hover:text-forest-jungle hover:bg-sand/20 active:bg-sand/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            className={cn(
+              'xl:hidden p-2 rounded-[3px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold min-w-[40px] min-h-[40px] flex items-center justify-center shrink-0',
+              isNavbarDark
+                ? 'text-ivory hover:text-gold hover:bg-forest-deep active:bg-forest-jungle'
+                : 'text-charcoal hover:text-forest-jungle hover:bg-sand/20 active:bg-sand/30'
+            )}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M4 6h16M4 12h16M4 18h16" />

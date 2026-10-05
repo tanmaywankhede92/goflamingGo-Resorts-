@@ -28,12 +28,12 @@ export default function Logo({
   // Mobile: approx 140px–160px wide
   // Footer: approx 220px–260px wide (brand signature area)
   const sizeClasses = {
-    header: 'w-[160px] sm:w-[185px] lg:w-[210px]',
+    header: 'w-[130px] min-[380px]:w-[150px] sm:w-[180px] lg:w-[205px]',
     mobile: 'w-[140px] sm:w-[160px]',
-    footer: 'w-[220px] sm:w-[250px] lg:w-[270px]',
-    hero: 'w-[180px] sm:w-[220px]',
-    standalone: 'w-[200px]',
-  }[variant] || 'w-[190px]';
+    footer: 'w-[210px] sm:w-[240px] lg:w-[260px]',
+    hero: 'w-[170px] sm:w-[210px]',
+    standalone: 'w-[190px]',
+  }[variant] || 'w-[180px]';
 
   // For dark backgrounds (such as deep forest footer or nocturnal hero),
   // wrap in an elegant warm ivory presentation container so the black lettering

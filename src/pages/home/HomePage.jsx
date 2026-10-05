@@ -44,7 +44,7 @@ export default function HomePage() {
         imageAlt="Golden morning sunlight streaming through teak trees in Pench Tiger Reserve with spotted deer in mist"
         actions={[
           { label: 'Book Your Stay', to: '/book', variant: 'gold' },
-          { label: 'Explore Pench', to: '/pench', variant: 'inverted' },
+          { label: 'Explore Pench', to: '/pench', variant: 'inverted', hideOnMobile: true },
         ]}
       />
 
@@ -359,11 +359,11 @@ export default function HomePage() {
               At dawn, golden light filters through tall teak foliage as your open 4x4 gypsy sets out from Sillari Gate. Guided by expert forest naturalists, track fresh pugmarks and listen for alarm calls signaling the presence of the tiger.
             </Text>
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button as={Link} to="/experiences/safari" variant="gold" size="md">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto">
+              <Button as={Link} to="/experiences/safari" variant="gold" size="md" className="w-full sm:w-auto justify-center font-bold tracking-wider">
                 Discover Safari Experience
               </Button>
-              <Button as={Link} to="/pench/safari-guide" variant="inverted" size="md">
+              <Button as={Link} to="/pench/safari-guide" variant="inverted" size="md" className="w-full sm:w-auto justify-center font-semibold">
                 Safari Timings & Permits Guide
               </Button>
             </div>

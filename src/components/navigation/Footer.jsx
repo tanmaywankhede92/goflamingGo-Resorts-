@@ -7,7 +7,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="bg-forest-dark text-ivory border-t border-sand/20 pt-16 md:pt-24 pb-20 md:pb-12 font-sans">
+    <footer className="bg-forest-dark text-ivory border-t border-sand/20 pt-16 md:pt-24 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:pb-12 font-sans">
       <Container size="xl">
         
         {/* BRAND SIGNATURE & TOP CALLOUT */}
@@ -19,10 +19,13 @@ export default function Footer() {
             </div>
             <div className="pt-2">
               <span className="text-[0.6875rem] uppercase tracking-editorial text-gold font-semibold block mb-1">
-                Pench Tiger Reserve · Sillari Gate
+                Pench National Park · Sillari Gate
               </span>
               <p className="text-xs text-sand/80 font-light">
-                Near Sillari Gate, Madhya Pradesh, India · {QUICK_CONTACT.nagpurDistance}
+                {QUICK_CONTACT.address} · {QUICK_CONTACT.nagpurDistance}
+              </p>
+              <p className="text-[0.7rem] text-sand/60 font-light mt-0.5">
+                Hours: {QUICK_CONTACT.hours}
               </p>
             </div>
           </div>
@@ -125,24 +128,28 @@ export default function Footer() {
             <div className="pt-2 text-xs text-sand/70 space-y-1.5">
               <p className="font-semibold text-ivory">Direct Contact:</p>
               <p>
-                <a href="tel:+919372425968" className="hover:text-gold transition-colors inline-flex items-center gap-1.5">
+                <a href={`tel:${QUICK_CONTACT.phoneRaw}`} className="hover:text-gold transition-colors inline-flex items-center gap-1.5">
                   <span>Call:</span>
-                  <span className="text-ivory font-medium">+91 93724 25968</span>
+                  <span className="text-ivory font-medium">{QUICK_CONTACT.phone}</span>
                 </a>
               </p>
               <p>
                 <a
-                  href="https://wa.me/919372425968"
+                  href={QUICK_CONTACT.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors inline-flex items-center gap-1.5"
                 >
                   <WhatsAppIcon size="sm" className="text-[#25D366]" />
                   <span>WhatsApp:</span>
-                  <span className="text-ivory font-medium">+91 93724 25968</span>
+                  <span className="text-ivory font-medium">{QUICK_CONTACT.whatsapp}</span>
                 </a>
               </p>
-              <p>{QUICK_CONTACT.email}</p>
+              <p>
+                <a href={`mailto:${QUICK_CONTACT.email}`} className="hover:text-gold transition-colors">
+                  {QUICK_CONTACT.email}
+                </a>
+              </p>
             </div>
           </div>
 
