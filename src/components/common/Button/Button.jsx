@@ -21,30 +21,30 @@ export default function Button({
   children,
   ...props
 }) {
-  const baseStyles = 'inline-flex items-center justify-center font-sans tracking-[0.08em] uppercase transition-all duration-300 ease-editorial select-none disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2';
+  const baseStyles = 'inline-flex items-center justify-center font-sans tracking-[0.08em] uppercase transition-all duration-200 select-none disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2';
 
   const sizeStyles = {
-    sm: 'text-[0.75rem] px-4 py-2 min-h-[38px] rounded-[2px]',
-    md: 'text-[0.8125rem] px-6 py-3 min-h-[46px] rounded-[2px]',
-    lg: 'text-[0.875rem] px-8 py-4 min-h-[52px] rounded-[2px]',
-  }[size];
+    sm: 'text-[0.75rem] px-4 py-2 min-h-[38px] rounded-[3px]',
+    md: 'text-[0.8125rem] px-6 py-3 min-h-[46px] rounded-[3px]',
+    lg: 'text-[0.875rem] px-8 py-3.5 min-h-[50px] rounded-[3px]',
+  }[size] || 'text-[0.8125rem] px-6 py-3 min-h-[46px] rounded-[3px]';
 
   const variantStyles = {
     // Deep forest solid button
-    primary: 'bg-forest-900 text-sand-50 hover:bg-forest-800 active:bg-forest-950 shadow-none border border-transparent',
+    primary: 'bg-forest-deep text-ivory font-semibold hover:bg-forest-jungle active:bg-forest-dark shadow-sm border border-transparent',
     
-    // Warm natural gold reservation button
-    gold: 'bg-gold-500 text-forest-950 font-semibold hover:bg-gold-400 active:bg-gold-600 shadow-none border border-transparent',
+    // Warm natural gold reservation button (Rich luxury CTA)
+    gold: 'bg-gold text-forest-dark font-bold hover:bg-gold-light active:bg-gold-dark shadow-sm border border-gold-dark/30',
     
     // Refined outline for light surfaces
-    secondary: 'bg-transparent text-forest-950 border border-forest-900/30 hover:border-forest-900 hover:bg-forest-900 hover:text-sand-50 active:bg-forest-950',
+    secondary: 'bg-transparent text-forest-deep border border-forest-deep/40 hover:border-forest-deep hover:bg-forest-deep hover:text-ivory active:bg-forest-dark font-semibold',
     
     // Inverted outline for dark forest / photography surfaces
-    inverted: 'bg-transparent text-sand-50 border border-sand-200/40 hover:border-sand-50 hover:bg-sand-50 hover:text-forest-950 active:bg-sand-100',
+    inverted: 'bg-transparent text-ivory border border-sand/40 hover:border-ivory hover:bg-ivory/15 hover:text-ivory active:bg-ivory/25 font-semibold',
     
     // Minimalist editorial text action
     editorial: 'bg-transparent text-current px-0 py-1 min-h-0 border-b border-current hover:opacity-75 tracking-[0.14em] rounded-none',
-  }[variant];
+  }[variant] || 'bg-gold text-forest-dark font-bold shadow-sm';
 
   return (
     <Component

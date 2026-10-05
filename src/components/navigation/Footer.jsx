@@ -38,7 +38,7 @@ export default function Footer() {
               Book Your Stay
             </Button>
             <a
-              href="https://wa.me/"
+              href="https://wa.me/919372425968"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 py-3 px-6 rounded-[2px] border border-sand/30 text-xs uppercase tracking-wider font-semibold text-sand hover:text-ivory hover:border-sand hover:bg-forest-deep/60 transition-all duration-200"
@@ -122,9 +122,26 @@ export default function Footer() {
               <li><Link to="/corporate" className="hover:text-gold transition-colors">Corporate Retreats</Link></li>
               <li><Link to="/contact" className="hover:text-gold transition-colors">Contact & Route Map</Link></li>
             </ul>
-            <div className="pt-2 text-xs text-sand/70 space-y-1">
+            <div className="pt-2 text-xs text-sand/70 space-y-1.5">
               <p className="font-semibold text-ivory">Direct Contact:</p>
-              <p>{QUICK_CONTACT.phone}</p>
+              <p>
+                <a href="tel:+919372425968" className="hover:text-gold transition-colors inline-flex items-center gap-1.5">
+                  <span>Call:</span>
+                  <span className="text-ivory font-medium">+91 93724 25968</span>
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://wa.me/919372425968"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gold transition-colors inline-flex items-center gap-1.5"
+                >
+                  <WhatsAppIcon size="sm" className="text-[#25D366]" />
+                  <span>WhatsApp:</span>
+                  <span className="text-ivory font-medium">+91 93724 25968</span>
+                </a>
+              </p>
               <p>{QUICK_CONTACT.email}</p>
             </div>
           </div>

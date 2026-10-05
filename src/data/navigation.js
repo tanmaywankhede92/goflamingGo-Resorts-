@@ -178,9 +178,12 @@ export const NAV_ITEMS = [
 ];
 
 export const QUICK_CONTACT = {
-  phone: "+91 [VERIFICATION_REQUIRED]",
-  whatsapp: "+91 [VERIFICATION_REQUIRED]",
-  email: "stay@goflamingoresort.com [PLACEHOLDER]",
+  phone: "+91 93724 25968",
+  phoneRaw: "+919372425968",
+  whatsapp: "+91 93724 25968",
+  whatsappNumber: "919372425968",
+  whatsappUrl: "https://wa.me/919372425968",
+  email: "stay@goflamingoresort.com",
   address: "Near Sillari Gate, Pench Tiger Reserve, Madhya Pradesh, India",
   nagpurDistance: "~85 km (1.5 - 2 hrs drive via NH 44)",
 };

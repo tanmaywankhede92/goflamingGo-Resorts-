@@ -9,12 +9,24 @@
  */
 
 export const IMAGES = {
+  // Homepage Specific Curated Assets (Phase 3 Visual Storytelling)
+  home: {
+    hero: "/assets/images/homepage/home-hero-pench.webp",
+    safari: "/assets/images/homepage/home-safari.webp",
+    stay: "/assets/images/homepage/home-stay.webp",
+    resort: "/assets/images/homepage/home-resort.webp",
+    dining: "/assets/images/homepage/home-dining.webp",
+    tiger: "/assets/images/homepage/home-tiger.webp",
+    couples: "/assets/images/homepage/home-couples.webp",
+    family: "/assets/images/homepage/home-family.webp",
+  },
+
   // Hero & Destination Storytelling
   hero: {
-    home: "https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=2000&q=85", // Cinematic wild forest & dawn light
+    home: "/assets/images/homepage/home-hero-pench.webp", // Cinematic Pench dawn teak forest
     pench: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=2000&q=85", // Pench savanna / teak forest landscape
-    safari: "https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=2000&q=85", // Open safari jeep in morning forest
-    resort: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85", // Natural stone luxury resort surrounded by trees
+    safari: "/assets/images/homepage/home-safari.webp", // Open safari jeep in morning forest
+    resort: "/assets/images/homepage/home-resort.webp", // Natural stone luxury resort surrounded by trees
   },
 
   // Wildlife & Nature
@@ -33,12 +45,13 @@ export const IMAGES = {
     evening: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1600&q=85", // Warm twilight at resort
   },
 
-  // Rooms & Cottages (Warm, earthy, authentic)
+  // Rooms & Cottages (Warm, earthy, authentic Pench wilderness living)
   rooms: {
-    cottage: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1600&q=85", // Warm wood luxury cottage interior
-    suite: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=85", // Forest view bedroom
-    verandah: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1600&q=85", // Private sit-out verandah facing greenery
-    bathroom: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=85", // Stone luxury bathroom
+    hero: "/assets/images/rooms/rooms-hero-cottages.webp", // Standalone sandstone cottages nestled in teak forest
+    cottage: "/assets/images/rooms/rooms-luxury-cottage.webp", // Luxury Forest Cottage with verandah view
+    suite: "/assets/images/rooms/rooms-family-suite.webp", // Spacious Family Suite with vaulted timber ceiling
+    verandah: "/assets/images/rooms/rooms-verandah-tea.webp", // Private sit-out with steaming chai
+    bathroom: "/assets/images/rooms/rooms-bathroom-detail.webp", // Stone en-suite bathroom with walk-in shower
   },
 
   // Dining & Indian Hospitality

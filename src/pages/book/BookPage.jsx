@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PageHero from '../../components/hero/PageHero';
-import { Container, Heading, Text, SectionEyebrow, Button } from '../../components/common';
+import { Container, Heading, Text, SectionEyebrow, Button, WhatsAppIcon } from '../../components/common';
 import { IMAGES } from '../../data/images';
 
 export default function BookPage() {
+  const [searchParams] = useSearchParams();
+  const roomParam = searchParams.get('room');
+
+  const initialRoom = roomParam === 'family-suite' 
+    ? 'Spacious Family Suite' 
+    : 'Luxury Forest Cottage';
+
   const [step, setStep] = useState(1); // 1: Dates & Guests, 2: Room & Safari, 3: Confirmation
   const [formData, setFormData] = useState({
     checkIn: '',
     checkOut: '',
     adults: '2',
     children: '0',
-    roomCategory: 'Luxury Forest Cottage',
+    roomCategory: initialRoom,
     includeSafari: 'Yes, Sillari Core Zone',
     guestName: '',
     guestPhone: '',
     guestEmail: '',
     specialNotes: '',
   });
+
+  useEffect(() => {
+    if (roomParam) {
+      setFormData(prev => ({
+        ...prev,
+        roomCategory: roomParam === 'family-suite' ? 'Spacious Family Suite' : 'Luxury Forest Cottage'
+      }));
+    }
+  }, [roomParam]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -153,7 +170,7 @@ export default function BookPage() {
                     Sillari Gate, Pench · Direct Inquiry
                   </span>
                   <Button type="submit" variant="gold" size="lg">
-                    Continue to Room Selection →
+                    Continue to Room Selection
                   </Button>
                 </div>
               </form>
@@ -272,11 +289,12 @@ export default function BookPage() {
 
                 <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                   <a
-                    href="https://wa.me/"
+                    href="https://wa.me/919372425968"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-[2px] bg-emerald-700 text-ivory text-xs uppercase tracking-wider font-semibold hover:bg-emerald-800 transition-colors"
+                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-[2px] bg-[#25D366] text-forest-dark text-xs uppercase tracking-wider font-bold hover:bg-emerald-400 transition-colors shadow-sm"
                   >
+                    <WhatsAppIcon size="sm" className="text-forest-dark" />
                     <span>Instant WhatsApp Follow-up</span>
                   </a>
                   <Button type="button" variant="secondary" size="md" onClick={() => setStep(1)}>

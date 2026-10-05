@@ -54,18 +54,27 @@ export default function ContactPage() {
                 </span>
                 
                 <div className="flex items-start gap-3">
-                  <span className="text-terracotta">☎</span>
+                  <span className="text-terracotta text-base mt-0.5">☎</span>
                   <div>
-                    <span className="text-xs text-charcoal-muted block">Phone (Pending Verification):</span>
-                    <span className="text-sm font-medium text-forest">{QUICK_CONTACT.phone}</span>
+                    <span className="text-xs text-charcoal-muted block">Direct Reservation Phone:</span>
+                    <a href="tel:+919372425968" className="text-sm font-semibold text-forest hover:text-gold transition-colors">
+                      {QUICK_CONTACT.phone}
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <WhatsAppIcon size="md" className="text-[#25D366] mt-0.5" />
                   <div>
-                    <span className="text-xs text-charcoal-muted block">WhatsApp Assistance:</span>
-                    <span className="text-sm font-medium text-forest">{QUICK_CONTACT.whatsapp}</span>
+                    <span className="text-xs text-charcoal-muted block">WhatsApp Inquiries & Booking:</span>
+                    <a
+                      href="https://wa.me/919372425968"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-forest hover:text-gold transition-colors"
+                    >
+                      {QUICK_CONTACT.whatsapp}
+                    </a>
                   </div>
                 </div>
 

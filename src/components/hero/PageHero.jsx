@@ -35,6 +35,8 @@ export default function PageHero({
           <img
             src={image}
             alt={imageAlt}
+            fetchPriority="high"
+            loading="eager"
             className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/40" />

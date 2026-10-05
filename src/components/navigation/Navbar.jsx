@@ -41,7 +41,7 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full font-sans transition-[background-color,border-color,box-shadow] duration-200 transform-gpu',
+        'sticky top-0 z-40 w-full font-sans transition-[background-color,border-color,box-shadow] duration-200',
         isScrolled
           ? 'bg-ivory-pure text-charcoal shadow-md border-b border-sand/40 py-2.5 sm:py-3'
           : 'bg-ivory-pure text-charcoal border-b border-sand/30 py-2.5 sm:py-3.5'
@@ -110,15 +110,16 @@ export default function Navbar() {
         </nav>
 
         {/* Header Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
           <Button
             as={Link}
             to="/book"
             variant="gold"
             size="sm"
-            className="hidden sm:inline-flex shadow-xs"
+            className="shadow-sm font-bold tracking-wider"
           >
-            Book Your Stay
+            <span className="hidden sm:inline">Book Your Stay</span>
+            <span className="sm:hidden text-xs">Book Stay</span>
           </Button>
 
           {/* Mobile Hamburger Toggle */}
@@ -126,10 +127,10 @@ export default function Navbar() {
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open navigation menu"
-            className="xl:hidden p-2 rounded-[3px] text-charcoal hover:text-forest-jungle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            className="xl:hidden p-2 rounded-[3px] text-charcoal hover:text-forest-jungle hover:bg-sand/20 active:bg-sand/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>

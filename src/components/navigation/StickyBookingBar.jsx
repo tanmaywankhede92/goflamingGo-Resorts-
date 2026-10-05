@@ -58,7 +58,7 @@ export default function StickyBookingBar() {
         {/* Action Buttons */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
           <a
-            href="https://wa.me/"
+            href="https://wa.me/919372425968"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[3px] border border-sand/30 text-xs text-sand hover:text-ivory hover:border-sand hover:bg-forest-deep/60 transition-colors font-sans uppercase tracking-wider font-semibold min-h-[44px]"
