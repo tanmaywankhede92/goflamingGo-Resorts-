@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button, Logo } from '../common';
+import { Button, Logo, WhatsAppIcon } from '../common';
 import { NAV_ITEMS } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 
@@ -148,8 +148,9 @@ export default function MobileMenu({ isOpen, onClose }) {
             href="https://wa.me/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-[3px] border border-sand/20 text-xs text-sand-light hover:text-ivory transition-colors uppercase tracking-wider font-sans font-medium"
+            className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-[3px] border border-sand/20 text-xs text-sand-light hover:text-ivory hover:border-sand/40 hover:bg-forest/50 transition-colors uppercase tracking-wider font-sans font-medium"
           >
+            <WhatsAppIcon size="sm" className="text-[#25D366]" />
             <span>WhatsApp</span>
           </a>
         </div>

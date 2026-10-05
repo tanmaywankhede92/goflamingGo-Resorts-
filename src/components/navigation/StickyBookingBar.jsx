@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Container, Button } from '../common';
+import { Container, Button, WhatsAppIcon } from '../common';
 import { cn } from '../../utils/cn';
 
 /**
@@ -61,9 +61,9 @@ export default function StickyBookingBar() {
             href="https://wa.me/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 md:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-[3px] border border-sand/30 text-xs text-sand hover:text-ivory hover:border-sand transition-colors font-sans uppercase tracking-wider font-semibold min-h-[44px]"
+            className="flex-1 md:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[3px] border border-sand/30 text-xs text-sand hover:text-ivory hover:border-sand hover:bg-forest-deep/60 transition-colors font-sans uppercase tracking-wider font-semibold min-h-[44px]"
           >
-            <span className="text-emerald-400">●</span>
+            <WhatsAppIcon size="sm" className="text-[#25D366]" />
             <span>WhatsApp</span>
           </a>
 

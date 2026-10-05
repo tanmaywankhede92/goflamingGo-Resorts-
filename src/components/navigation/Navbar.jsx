@@ -41,10 +41,10 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full transition-all duration-300 font-sans',
+        'sticky top-0 z-40 w-full font-sans transition-[background-color,border-color,box-shadow] duration-200 transform-gpu',
         isScrolled
-          ? 'bg-ivory-pure/98 text-charcoal shadow-md backdrop-blur-md border-b border-sand/50 py-2.5 sm:py-3'
-          : 'bg-ivory-pure/95 text-charcoal border-b border-sand/35 py-3 sm:py-3.5'
+          ? 'bg-ivory-pure text-charcoal shadow-md border-b border-sand/40 py-2.5 sm:py-3'
+          : 'bg-ivory-pure text-charcoal border-b border-sand/30 py-2.5 sm:py-3.5'
       )}
       onMouseLeave={() => setActiveMegaMenu(null)}
     >

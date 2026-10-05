@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PageHero from '../../components/hero/PageHero';
-import { Container, Heading, SectionEyebrow, Button, Badge } from '../../components/common';
+import { Container, Heading, SectionEyebrow, Button, Badge, WhatsAppIcon } from '../../components/common';
 import { QUICK_CONTACT } from '../../data/navigation';
 import { IMAGES } from '../../data/images';
 
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="text-emerald-600">●</span>
+                  <WhatsAppIcon size="md" className="text-[#25D366] mt-0.5" />
                   <div>
                     <span className="text-xs text-charcoal-muted block">WhatsApp Assistance:</span>
                     <span className="text-sm font-medium text-forest">{QUICK_CONTACT.whatsapp}</span>

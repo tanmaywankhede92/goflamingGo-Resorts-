@@ -50,6 +50,22 @@
     color-scheme: light;
   }
 
+  /* Globally hide scrollbars while preserving full scrolling capabilities */
+  html,
+  body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overscroll-behavior-y: none; /* Eliminates mobile elastic pull-down bounce */
+    overscroll-behavior: none;
+    background-color: #FBF8F3; /* Consistent luxury ivory surface */
+  }
+
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge, Opera */
+    width: 0;
+    height: 0;
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar';
 import Footer from '../components/navigation/Footer';
 import StickyBookingBar from '../components/navigation/StickyBookingBar';
+import { FloatingWhatsApp } from '../components/common';
 
 /**
  * MainLayout
@@ -25,6 +26,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <StickyBookingBar />
+      <FloatingWhatsApp />
       <Footer />
     </div>
   );

@@ -10,3 +10,5 @@ export { default as SectionHeader } from './SectionHeader';
 export { default as ImageBlock } from './ImageBlock';
 export { default as EditorialSplit } from './EditorialSplit';
 export { default as PlaceholderPage } from './PlaceholderPage';
+export { default as WhatsAppIcon } from './WhatsAppIcon';
+export { default as FloatingWhatsApp } from './FloatingWhatsApp';

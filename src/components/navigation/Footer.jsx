@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Button, Logo } from '../common';
+import { Container, Button, Logo, WhatsAppIcon } from '../common';
 import { QUICK_CONTACT } from '../../data/navigation';
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -41,9 +41,9 @@ export default function Footer() {
               href="https://wa.me/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-[2px] border border-sand/30 text-xs uppercase tracking-wider font-semibold text-sand hover:text-ivory hover:border-sand transition-colors"
+              className="inline-flex items-center justify-center gap-2.5 py-3 px-6 rounded-[2px] border border-sand/30 text-xs uppercase tracking-wider font-semibold text-sand hover:text-ivory hover:border-sand hover:bg-forest-deep/60 transition-all duration-200"
             >
-              <span className="text-emerald-400">●</span>
+              <WhatsAppIcon size="md" className="text-[#25D366]" />
               <span>WhatsApp Us</span>
             </a>
           </div>
@@ -132,10 +132,10 @@ export default function Footer() {
         </div>
 
         {/* Strict Accuracy Notice */}
-        <div className="py-6 px-5 rounded-[3px] bg-forest-deep border border-sand/15 text-xs text-sand/70 font-light leading-relaxed mb-10">
+        {/* <div className="py-6 px-5 rounded-[3px] bg-forest-deep border border-sand/15 text-xs text-sand/70 font-light leading-relaxed mb-10">
           <strong className="text-sand font-medium">Business Accuracy Notice: </strong>
           All safari excursions and park entry timings are strictly governed by Pench Tiger Reserve Forest Department rules. Room categories, inventory, and rack rates will be confirmed upon direct inquiry.
-        </div>
+        </div> */}
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-sand/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand/60">

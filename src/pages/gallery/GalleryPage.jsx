@@ -50,7 +50,7 @@ export default function GalleryPage() {
       />
 
       {/* Category Filter Navigation */}
-      <section className="py-8 bg-sand-light/60 border-b border-sand/40 sticky top-[72px] z-20 backdrop-blur-md">
+      <section className="py-6 sm:py-8 bg-ivory-warm/40 border-b border-sand/25">
         <Container size="xl" className="flex items-center justify-start sm:justify-center overflow-x-auto gap-2 py-1 scrollbar-none">
           {GALLERY_CATEGORIES.map((cat) => (
             <button
