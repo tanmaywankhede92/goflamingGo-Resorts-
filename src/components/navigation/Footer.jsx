@@ -1,0 +1,152 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Heading, Text, SectionEyebrow, Button } from '../common';
+import { QUICK_CONTACT } from '../../data/navigation';
+
+const CURRENT_YEAR = new Date().getFullYear();
+
+export default function Footer() {
+
+  return (
+    <footer className="bg-forest-dark text-ivory border-t border-sand/20 pt-16 md:pt-24 pb-20 md:pb-12 font-sans">
+      <Container size="xl">
+        
+        {/* Top Hospitality Callout */}
+        <div className="pb-16 border-b border-sand/15 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8">
+            <SectionEyebrow color="gold" withLine className="mb-3 text-gold-light">
+              Pench Tiger Reserve · Sillari Gate
+            </SectionEyebrow>
+            <Heading as="h2" variant="h2" font="serif" className="text-ivory mb-3">
+              Where the forest slows time.
+            </Heading>
+            <Text variant="lead" className="text-sand/80 max-w-2xl font-light">
+              Experience the tranquility of Pench's teak forest, thrilling wildlife safaris through Sillari Gate, and warm Indian hospitality.
+            </Text>
+          </div>
+          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
+            <Button
+              as={Link}
+              to="/book"
+              variant="gold"
+              size="lg"
+              className="w-full sm:w-auto text-center justify-center"
+            >
+              Book Your Stay
+            </Button>
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-[2px] border border-sand/30 text-xs uppercase tracking-wider font-semibold text-sand hover:text-ivory hover:border-sand transition-colors"
+            >
+              <span>Enquire on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Multi-Column Sitemap */}
+        <div className="py-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 text-sm">
+          
+          {/* Column 1: The Resort */}
+          <div className="space-y-4">
+            <span className="text-xs uppercase tracking-editorial text-gold font-semibold block">
+              The Resort
+            </span>
+            <ul className="space-y-2.5 text-sand/80 font-light text-xs sm:text-sm">
+              <li><Link to="/resort" className="hover:text-gold transition-colors">Resort Overview</Link></li>
+              <li><Link to="/resort/about" className="hover:text-gold transition-colors">About Go Flamingo</Link></li>
+              <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Facilities & Lawns</Link></li>
+              <li><Link to="/resort/pool" className="hover:text-gold transition-colors">Forest Pool</Link></li>
+              <li><Link to="/resort/dining" className="hover:text-gold transition-colors">Dining & Cuisine</Link></li>
+              <li><Link to="/gallery" className="hover:text-gold transition-colors">Photo Gallery</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 2: Stay */}
+          <div className="space-y-4">
+            <span className="text-xs uppercase tracking-editorial text-gold font-semibold block">
+              Stay & Packages
+            </span>
+            <ul className="space-y-2.5 text-sand/80 font-light text-xs sm:text-sm">
+              <li><Link to="/rooms" className="hover:text-gold transition-colors">All Accommodations</Link></li>
+              <li><Link to="/rooms/luxury-cottage" className="hover:text-gold transition-colors">Luxury Cottages</Link></li>
+              <li><Link to="/rooms/family-suite" className="hover:text-gold transition-colors">Family Suites</Link></li>
+              <li><Link to="/packages" className="hover:text-gold transition-colors">Curated Packages</Link></li>
+              <li><Link to="/packages/weekend-escape" className="hover:text-gold transition-colors">Weekend Escape</Link></li>
+              <li><Link to="/packages/wildlife-safari" className="hover:text-gold transition-colors">Wildlife Safari Tour</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Experiences */}
+          <div className="space-y-4">
+            <span className="text-xs uppercase tracking-editorial text-gold font-semibold block">
+              Experiences
+            </span>
+            <ul className="space-y-2.5 text-sand/80 font-light text-xs sm:text-sm">
+              <li><Link to="/experiences" className="hover:text-gold transition-colors">All Experiences</Link></li>
+              <li><Link to="/experiences/safari" className="hover:text-gold transition-colors">Sillari Jungle Safari</Link></li>
+              <li><Link to="/experiences/wildlife" className="hover:text-gold transition-colors">Wildlife & Birding</Link></li>
+              <li><Link to="/experiences/nature" className="hover:text-gold transition-colors">Nature Trails</Link></li>
+              <li><Link to="/experiences/family" className="hover:text-gold transition-colors">Family Adventures</Link></li>
+              <li><Link to="/experiences/couples" className="hover:text-gold transition-colors">Romantic Retreats</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Pench Guide */}
+          <div className="space-y-4">
+            <span className="text-xs uppercase tracking-editorial text-gold font-semibold block">
+              Pench Destination
+            </span>
+            <ul className="space-y-2.5 text-sand/80 font-light text-xs sm:text-sm">
+              <li><Link to="/pench" className="hover:text-gold transition-colors">About Pench Reserve</Link></li>
+              <li><Link to="/pench/sillari-gate" className="hover:text-gold transition-colors">Sillari Gate Advantage</Link></li>
+              <li><Link to="/pench/safari-guide" className="hover:text-gold transition-colors">Safari Permits & Guide</Link></li>
+              <li><Link to="/pench/how-to-reach" className="hover:text-gold transition-colors">How To Reach (Nagpur)</Link></li>
+              <li><Link to="/pench/best-time-to-visit" className="hover:text-gold transition-colors">Best Time To Visit</Link></li>
+              <li><Link to="/pench/things-to-do" className="hover:text-gold transition-colors">Things To Do</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 5: Group & Location */}
+          <div className="space-y-4 col-span-2 md:col-span-1">
+            <span className="text-xs uppercase tracking-editorial text-gold font-semibold block">
+              Events & Location
+            </span>
+            <ul className="space-y-2.5 text-sand/80 font-light text-xs sm:text-sm">
+              <li><Link to="/weddings" className="hover:text-gold transition-colors">Destination Weddings</Link></li>
+              <li><Link to="/corporate" className="hover:text-gold transition-colors">Corporate Retreats</Link></li>
+              <li><Link to="/contact" className="hover:text-gold transition-colors">Contact & Route Map</Link></li>
+            </ul>
+            <div className="pt-2 text-xs text-sand/70 space-y-1">
+              <p className="font-semibold text-ivory">Location:</p>
+              <p>{QUICK_CONTACT.address}</p>
+              <p className="text-[0.7rem] text-terracotta-light">{QUICK_CONTACT.nagpurDistance}</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Strict Accuracy Notice */}
+        <div className="py-6 px-5 rounded-[3px] bg-forest-deep border border-sand/15 text-xs text-sand/70 font-light leading-relaxed mb-10">
+          <strong className="text-sand font-medium">Business Accuracy Notice: </strong>
+          All safari excursions and park entry timings are strictly governed by Pench Tiger Reserve Forest Department rules. Room categories, inventory, and rack rates will be confirmed upon direct inquiry.
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-sand/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-sand/60">
+          <p>© {CURRENT_YEAR} Go Flamingo Resort · Pench – Sillari Gate, Madhya Pradesh, India.</p>
+          <div className="flex items-center gap-6 text-[0.75rem]">
+            <Link to="/contact" className="hover:text-ivory transition-colors">Contact</Link>
+            <Link to="/pench/safari-guide" className="hover:text-ivory transition-colors">Safari Guidelines</Link>
+            <span className="text-sand/30">|</span>
+            <span className="text-sand/50 tracking-wider uppercase text-[0.7rem]">
+              Premium Indian Wildlife Hospitality
+            </span>
+          </div>
+        </div>
+
+      </Container>
+    </footer>
+  );
+}
