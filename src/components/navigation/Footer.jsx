@@ -1,36 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Heading, Text, SectionEyebrow, Button } from '../common';
+import { Container, Button, Logo } from '../common';
 import { QUICK_CONTACT } from '../../data/navigation';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
-
   return (
     <footer className="bg-forest-dark text-ivory border-t border-sand/20 pt-16 md:pt-24 pb-20 md:pb-12 font-sans">
       <Container size="xl">
         
-        {/* Top Hospitality Callout */}
-        <div className="pb-16 border-b border-sand/15 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
-            <SectionEyebrow color="gold" withLine className="mb-3 text-gold-light">
-              Pench Tiger Reserve · Sillari Gate
-            </SectionEyebrow>
-            <Heading as="h2" variant="h2" font="serif" className="text-ivory mb-3">
-              Where the forest slows time.
-            </Heading>
-            <Text variant="lead" className="text-sand/80 max-w-2xl font-light">
-              Experience the tranquility of Pench's teak forest, thrilling wildlife safaris through Sillari Gate, and warm Indian hospitality.
-            </Text>
+        {/* BRAND SIGNATURE & TOP CALLOUT */}
+        <div className="pb-16 border-b border-sand/15 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="space-y-4 max-w-2xl">
+            {/* OFFICIAL GO FLAMINGO LOGO (Brand-Signature Area) */}
+            <div>
+              <Logo variant="footer" theme="dark" />
+            </div>
+            <div className="pt-2">
+              <span className="text-[0.6875rem] uppercase tracking-editorial text-gold font-semibold block mb-1">
+                Pench Tiger Reserve · Sillari Gate
+              </span>
+              <p className="text-xs text-sand/80 font-light">
+                Near Sillari Gate, Madhya Pradesh, India · {QUICK_CONTACT.nagpurDistance}
+              </p>
+            </div>
           </div>
-          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
+
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Button
               as={Link}
               to="/book"
               variant="gold"
               size="lg"
-              className="w-full sm:w-auto text-center justify-center"
+              className="w-full sm:w-auto text-center justify-center shadow-xs"
             >
               Book Your Stay
             </Button>
@@ -40,7 +43,8 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-[2px] border border-sand/30 text-xs uppercase tracking-wider font-semibold text-sand hover:text-ivory hover:border-sand transition-colors"
             >
-              <span>Enquire on WhatsApp</span>
+              <span className="text-emerald-400">●</span>
+              <span>WhatsApp Us</span>
             </a>
           </div>
         </div>
@@ -108,10 +112,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 5: Group & Location */}
+          {/* Column 5: Events & Direct Contact */}
           <div className="space-y-4 col-span-2 md:col-span-1">
             <span className="text-xs uppercase tracking-editorial text-gold font-semibold block">
-              Events & Location
+              Events & Logistics
             </span>
             <ul className="space-y-2.5 text-sand/80 font-light text-xs sm:text-sm">
               <li><Link to="/weddings" className="hover:text-gold transition-colors">Destination Weddings</Link></li>
@@ -119,9 +123,9 @@ export default function Footer() {
               <li><Link to="/contact" className="hover:text-gold transition-colors">Contact & Route Map</Link></li>
             </ul>
             <div className="pt-2 text-xs text-sand/70 space-y-1">
-              <p className="font-semibold text-ivory">Location:</p>
-              <p>{QUICK_CONTACT.address}</p>
-              <p className="text-[0.7rem] text-terracotta-light">{QUICK_CONTACT.nagpurDistance}</p>
+              <p className="font-semibold text-ivory">Direct Contact:</p>
+              <p>{QUICK_CONTACT.phone}</p>
+              <p>{QUICK_CONTACT.email}</p>
             </div>
           </div>
 
@@ -141,7 +145,7 @@ export default function Footer() {
             <Link to="/pench/safari-guide" className="hover:text-ivory transition-colors">Safari Guidelines</Link>
             <span className="text-sand/30">|</span>
             <span className="text-sand/50 tracking-wider uppercase text-[0.7rem]">
-              Premium Indian Wildlife Hospitality
+              Official Brand Identity
             </span>
           </div>
         </div>

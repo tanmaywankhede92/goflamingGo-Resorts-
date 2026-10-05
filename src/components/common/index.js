@@ -5,3 +5,8 @@ export { default as SectionEyebrow } from './Typography/SectionEyebrow';
 export { default as Button } from './Button/Button';
 export { default as Badge } from './Badge/Badge';
 export { default as Card } from './Card/Card';
+export { default as Logo } from './Logo';
+export { default as SectionHeader } from './SectionHeader';
+export { default as ImageBlock } from './ImageBlock';
+export { default as EditorialSplit } from './EditorialSplit';
+export { default as PlaceholderPage } from './PlaceholderPage';

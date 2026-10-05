@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '../common';
+import { Button, Logo } from '../common';
 import { NAV_ITEMS } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 
@@ -28,14 +28,9 @@ export default function MobileMenu({ isOpen, onClose }) {
       className="fixed inset-0 z-50 bg-forest-dark/95 text-ivory backdrop-blur-xl flex flex-col overflow-y-auto animate-in fade-in-0 duration-300"
     >
       {/* Drawer Header */}
-      <div className="flex items-center justify-between px-6 py-5 border-b border-sand/15">
-        <div>
-          <span className="font-serif text-lg tracking-[0.06em] text-ivory uppercase block font-medium">
-            Go Flamingo Resort
-          </span>
-          <span className="text-[0.6875rem] uppercase tracking-editorial text-gold font-sans font-medium block">
-            Pench · Sillari Gate
-          </span>
+      <div className="flex items-center justify-between px-5 py-4 border-b border-sand/15 bg-forest-dark">
+        <div className="flex items-center" onClick={onClose}>
+          <Logo variant="mobile" theme="dark" />
         </div>
         <button
           type="button"

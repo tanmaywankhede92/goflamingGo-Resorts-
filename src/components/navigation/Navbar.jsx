@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Container, Button } from '../common';
+import { Container, Button, Logo } from '../common';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
 import { NAV_ITEMS } from '../../data/navigation';
@@ -9,7 +9,9 @@ import { cn } from '../../utils/cn';
 /**
  * Global Resort Navbar Component
  * 
- * Manages desktop navigation, mega-menu triggers, and mobile drawer toggling.
+ * Features the official Go Flamingo Resorts brand logo prominently on the left,
+ * supported by a warm ivory surface for maximum logo fidelity, crisp typography,
+ * desktop mega-menus, and a responsive mobile drawer.
  */
 export default function Navbar() {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -41,35 +43,25 @@ export default function Navbar() {
       className={cn(
         'sticky top-0 z-40 w-full transition-all duration-300 font-sans',
         isScrolled
-          ? 'bg-forest-dark/95 text-ivory shadow-lg backdrop-blur-md border-b border-sand/15 py-3'
-          : 'bg-forest-dark text-ivory border-b border-sand/10 py-4'
+          ? 'bg-ivory-pure/98 text-charcoal shadow-md backdrop-blur-md border-b border-sand/50 py-2.5 sm:py-3'
+          : 'bg-ivory-pure/95 text-charcoal border-b border-sand/35 py-3 sm:py-3.5'
       )}
       onMouseLeave={() => setActiveMegaMenu(null)}
     >
-      <Container size="wide" className="flex items-center justify-between">
+      <Container size="wide" className="flex items-center justify-between gap-4">
         
-        {/* Brand Identity */}
-        <Link to="/" className="group flex flex-col focus-visible:outline-none">
-          <div className="flex items-center gap-2">
-            <span className="font-serif text-lg md:text-xl font-medium tracking-[0.06em] text-ivory group-hover:text-gold transition-colors uppercase">
-              Go Flamingo
-            </span>
-            <span className="text-[0.65rem] text-terracotta-light uppercase tracking-wider font-semibold border border-terracotta/40 px-1.5 py-0.5 rounded-[2px] hidden sm:inline-block">
-              Resort
-            </span>
-          </div>
-          <span className="text-[0.6875rem] uppercase tracking-editorial text-sand/80 font-sans font-medium">
-            Pench · Sillari Gate
-          </span>
-        </Link>
+        {/* OFFICIAL BRAND LOGO (Prominent Left Placement) */}
+        <div className="flex items-center py-0.5">
+          <Logo variant="header" theme="light" />
+        </div>
 
-        {/* Desktop Primary Nav */}
+        {/* Desktop Primary Navigation */}
         <nav className="hidden xl:flex items-center gap-1 2xl:gap-2">
           <Link
             to="/"
             className={cn(
-              'px-3 py-2 text-xs uppercase tracking-wider font-medium transition-colors hover:text-gold',
-              location.pathname === '/' ? 'text-gold' : 'text-ivory'
+              'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors hover:text-forest-jungle',
+              location.pathname === '/' ? 'text-forest-deep font-bold border-b-2 border-gold' : 'text-charcoal-800'
             )}
           >
             Home
@@ -85,8 +77,8 @@ export default function Navbar() {
                   key={item.id}
                   to={item.path}
                   className={cn(
-                    'px-3 py-2 text-xs uppercase tracking-wider font-medium transition-colors hover:text-gold',
-                    isActive ? 'text-gold' : 'text-ivory'
+                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors hover:text-forest-jungle',
+                    isActive ? 'text-forest-deep font-bold border-b-2 border-gold' : 'text-charcoal-800'
                   )}
                 >
                   {item.label}
@@ -103,14 +95,14 @@ export default function Navbar() {
                 <Link
                   to={item.path}
                   className={cn(
-                    'px-3 py-2 text-xs uppercase tracking-wider font-medium transition-colors hover:text-gold flex items-center gap-1',
-                    (isActive || isOpen) ? 'text-gold' : 'text-ivory'
+                    'px-3 py-2 text-xs uppercase tracking-wider font-semibold transition-colors hover:text-forest-jungle flex items-center gap-1',
+                    (isActive || isOpen) ? 'text-forest-deep font-bold border-b-2 border-gold' : 'text-charcoal-800'
                   )}
                   aria-expanded={isOpen}
                   aria-haspopup="true"
                 >
                   <span>{item.label}</span>
-                  <span className="text-[0.6rem] opacity-70">▾</span>
+                  <span className="text-[0.6rem] text-charcoal-muted">▾</span>
                 </Link>
               </div>
             );
@@ -124,7 +116,7 @@ export default function Navbar() {
             to="/book"
             variant="gold"
             size="sm"
-            className="hidden sm:inline-flex"
+            className="hidden sm:inline-flex shadow-xs"
           >
             Book Your Stay
           </Button>
@@ -134,7 +126,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open navigation menu"
-            className="xl:hidden p-2 rounded-[2px] text-ivory hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            className="xl:hidden p-2 rounded-[3px] text-charcoal hover:text-forest-jungle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
