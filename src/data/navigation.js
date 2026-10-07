@@ -73,7 +73,7 @@ export const NAV_ITEMS = [
         title: 'Jungle & Safari',
         items: [
           { label: 'Jungle Safari', path: '/experiences/safari', desc: 'Open 4x4 gypsies led by certified forest guides' },
-          { label: 'Wildlife & Birding', path: '/experiences/wildlife', desc: 'Over 285 bird species and rich fauna' },
+          { label: 'Wildlife & Birding', path: '/experiences/wildlife', desc: 'Approximately 310 documented bird species & rich fauna' },
           { label: 'Forest Trails & Nature', path: '/experiences/nature', desc: 'Guided nature walks along the forest buffer' },
         ]
       },
