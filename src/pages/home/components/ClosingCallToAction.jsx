@@ -1,34 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, WhatsAppIcon } from '../../../components/common';
-import { IMAGES } from '../../../data/images';
+import { AUTHENTIC_RESORT } from '../../../data/images';
 import { QUICK_CONTACT } from '../../../data/navigation';
 import { cn } from '../../../utils/cn';
 
 /**
- * ClosingCallToAction Component
+ * ClosingCallToAction Component — High-Intent Final Conversion
  * 
- * High-impact, full-width closing chapter:
- * - Confident, editorial typography inspired by NOTH
- * - Ambient resort photography with deep cinematic scrims
- * - Clear, high-intent booking & WhatsApp enquiry actions
- * - Seamless visual transition into the global footer
+ * Monumental closing chapter:
+ * - Real twilight photography of the illuminated Go Flamingo Resort courtyard
+ * - High-contrast editorial typography
+ * - Direct availability booking and WhatsApp concierge actions
+ * - Verified location and connectivity reassurance
  */
 export default function ClosingCallToAction() {
   const whatsappUrl = `${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(
     'Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Sillari Gate.'
   )}`;
 
+  const twilightPhoto = AUTHENTIC_RESORT.photos.courtyardTwilight;
+
   return (
     <section className="relative py-28 sm:py-36 md:py-44 bg-forest-dark text-ivory overflow-hidden border-t border-sand/20">
       
-      {/* Background Image & Multi-Stage Scrim */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image & Multi-Stage Ambient Scrim */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src={IMAGES.home.resort}
-          alt="Go Flamingo Resort illuminated in forest twilight at Sillari, Pench"
+          src={twilightPhoto.src}
+          srcSet={twilightPhoto.srcSet}
+          sizes={twilightPhoto.sizes}
+          width={twilightPhoto.width}
+          height={twilightPhoto.height}
+          alt={twilightPhoto.alt}
           loading="lazy"
-          className="w-full h-full object-cover object-center transform scale-103"
+          className="w-full h-full object-cover object-center transform scale-103 opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/90 to-forest-dark/85" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(181,138,69,0.18),transparent_65%)] pointer-events-none" />
@@ -37,24 +43,18 @@ export default function ClosingCallToAction() {
       <Container size="lg" className="relative z-10 text-center">
         
         {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[3px] bg-forest-deep/80 border border-sand/30 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-gold-light mb-6 backdrop-blur-xs">
-          <span>✦</span>
-          <span>Begin Your Pench Story</span>
-          <span>✦</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-forest-dark/80 border border-sand/30 text-[11px] sm:text-xs uppercase tracking-[0.14em] text-sand-light mb-5 backdrop-blur-xs">
+          <span>Plan Your Visit · Sillari Gate</span>
         </div>
 
-        {/* Monumental Serif Statement */}
-        <h2 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-normal leading-[1.06] tracking-[-0.02em] text-ivory mb-6 max-w-4xl mx-auto text-balance">
-          The forest does not rush.{' '}
-          <br />
-          <span className="italic font-normal text-gold-light">
-            Neither should you.
-          </span>
+        {/* Natural Headline */}
+        <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-snug text-ivory mb-5 max-w-3xl mx-auto text-balance">
+          Plan Your Stay at Go Flamingo Resort
         </h2>
 
-        {/* Restrained Supporting Copy */}
-        <p className="font-sans text-xs sm:text-sm md:text-base text-sand/85 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-          Reserve your standalone cottage at Go Flamingo Resort, Pench — Sillari Gate. Direct safari access, natural stone pool, wholesome regional dining, and genuine warmth.
+        {/* Grounded Supporting Copy */}
+        <p className="font-sans text-xs sm:text-sm md:text-base text-sand-light/90 max-w-xl mx-auto mb-8 font-light leading-relaxed">
+          Direct access to Sillari Safari Gate, private balconies, swimming pool, and authentic regional dining. Inquire directly for seasonal availability and group bookings.
         </p>
 
         {/* High-Intent Dual Actions */}

@@ -1,78 +1,73 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Badge } from '../../../components/common';
-import { IMAGES } from '../../../data/images';
+import { AUTHENTIC_RESORT } from '../../../data/images';
 import { cn } from '../../../utils/cn';
 
 /**
- * AccommodationsShowcase Component
+ * AccommodationsShowcase Component — Authentic Rooms & Dormitory Showcase
  * 
- * Showcases the authentic accommodation inventory of Go Flamingo Resort:
- * 1. Deluxe Rooms
- * 2. Super Deluxe Rooms / Luxury Forest Cottages
- * 3. Group Dormitory (1 dedicated dormitory for groups)
- * 
- * Features an interactive visual lookbook with authentic imagery, verified specifications,
- * and direct links to the existing `/rooms` pages.
+ * Features real property photography of Go Flamingo Resort:
+ * 1. Deluxe Forest Rooms (real teak bed, split AC, TV, private balcony)
+ * 2. Super Deluxe Cottages (arched verandah, premium comfort)
+ * 3. Group Wilderness Dormitory (clean individual beds, air-conditioned, dedicated group facility)
  */
 export default function AccommodationsShowcase() {
-  const [activeTab, setActiveTab] = useState('super-deluxe');
+  const [activeTab, setActiveTab] = useState('deluxe');
+
+  const photos = AUTHENTIC_RESORT.photos;
 
   const categories = {
     'deluxe': {
       id: 'deluxe',
       label: 'Deluxe Rooms',
-      title: 'Deluxe Forest Rooms',
-      subtitle: 'Comfortable air-conditioned rooms nestled under the trees with private verandah sit-outs.',
-      image: IMAGES.rooms.cottage,
-      alt: 'Deluxe Room bedroom with king bed and verandah view at Go Flamingo Resort',
+      title: 'Deluxe Air-Conditioned Rooms',
+      subtitle: 'Spacious rooms with solid teak king bed, daybed, split AC, TV, and private balcony sit-out.',
+      photo: photos.deluxeBedroom,
       link: '/rooms',
       badge: 'Couples & Small Families',
       specs: [
-        { label: 'Bed Type', value: 'Plush King Bed' },
+        { label: 'Bed Type', value: 'Teak King Bed + Daybed Alcove' },
         { label: 'Climate', value: 'Individual Split Air-Conditioning' },
-        { label: 'Bathroom', value: 'En-suite Stone Bath with 24/7 Hot Water' },
-        { label: 'Outdoors', value: 'Private Verandah Sit-Out facing Greenery' },
+        { label: 'Entertainment', value: 'Flat Screen TV with Wooden Console' },
+        { label: 'Outdoor Living', value: 'Sliding Glass Door to Private Balcony' },
       ],
-      description: 'Our Deluxe Rooms offer unhurried comfort in the heart of nature. Thoughtfully furnished with natural wood and clean linens, each room opens out to an inviting verandah where morning birdsong provides a peaceful start to your day.',
-      features: ['Air Conditioning', 'En-suite Bathroom', 'Private Verandah', 'Safari Wake-up Tea', 'Pool Access'],
+      description: 'Our authentic Deluxe Rooms feature rich wood furnishings, clean linens, and warm ambient lighting. A full-height glass door opens onto your private balcony overlooking green trees and the courtyard, offering an unhurried perch for morning coffee before your safari.',
+      features: ['Split Air-Conditioning', 'Flat Screen TV', 'Private Balcony', 'En-suite Bath with 24/7 Hot Water', 'Pool Access'],
     },
     'super-deluxe': {
       id: 'super-deluxe',
       label: 'Super Deluxe Rooms',
-      title: 'Super Deluxe Cottages',
-      subtitle: 'Standalone forest sanctuaries featuring vaulted timber ceilings and expansive verandahs facing the teak canopy.',
-      image: IMAGES.rooms.hero,
-      secondaryImage: IMAGES.rooms.suite,
-      alt: 'Standalone Super Deluxe Cottages beneath the teak trees at Go Flamingo Resort',
+      title: 'Super Deluxe Garden Rooms',
+      subtitle: 'Expanded private rooms with enhanced spatial volume, haveli arched views and garden access.',
+      photo: photos.sunlitVerandah,
       link: '/rooms/luxury-cottage',
-      badge: 'Standalone Cottages',
+      badge: 'Premium Leisure',
       specs: [
-        { label: 'Bed Type', value: 'Handcrafted King Bed + Daybed Alcove' },
-        { label: 'Architecture', value: 'Standalone Sandstone & Timber Cottage' },
-        { label: 'Bathroom', value: 'Artisanal River-Stone En-suite with Rain Shower' },
-        { label: 'Verandah', value: 'Extended Teakwood Sit-out into Forest Canopy' },
+        { label: 'Bed Type', value: 'Handcrafted King Bed + Seating Area' },
+        { label: 'Architecture', value: 'Haveli-Style Arch Verandah Outlook' },
+        { label: 'Bathroom', value: 'Spacious Modern En-suite with Hot Water' },
+        { label: 'Verandah', value: 'Direct Corridor Access to Central Lawns' },
       ],
-      description: 'Designed to let the wild outdoors in, our Super Deluxe Cottages feature generous spatial volume, high rustic rafters, and full-length glass doors. Savor undisturbed privacy, pristine forest views, and restorative quietude.',
-      features: ['Standalone Privacy', 'Dual Climate Control', 'Rainfall Stone Shower', 'Extended Verandah', 'Garden Lawn Access'],
+      description: 'Designed for extra roominess and quietude, our Super Deluxe accommodations combine traditional arched verandah perspectives with modern amenities. Step directly out into the shaded walkway and central gardens.',
+      features: ['Dual Climate Control', 'Expansive Living Space', 'Garden Verandah Walkway', 'Safari Dawn Tea Service', 'Campfire Proximity'],
     },
     'dormitory': {
       id: 'dormitory',
       label: 'Group Dormitory',
-      title: 'The Group Wilderness Dormitory',
-      subtitle: 'A dedicated multi-bed air-conditioned dormitory built for wildlife groups, photographers & family conclaves.',
-      image: IMAGES.rooms.verandah,
-      alt: 'Peaceful garden grounds and group accommodation veranda at Go Flamingo Resort',
+      title: 'Group Wilderness Dormitory',
+      subtitle: 'A dedicated air-conditioned multi-bed dormitory built for wildlife groups, student camps & family gatherings.',
+      photo: photos.dormitoryRoom,
       link: '/rooms',
       badge: '1 Dedicated Group Facility',
       specs: [
-        { label: 'Arrangement', value: 'Multiple Comfortable Individual Beds' },
+        { label: 'Bed Setup', value: 'Multiple Comfortable Individual Beds' },
         { label: 'Climate', value: 'High-Capacity Split Air-Conditioning' },
-        { label: 'Facilities', value: 'Dedicated Multiple Bathrooms & Storage' },
-        { label: 'Setting', value: 'Direct Access to Main Lawns & Pool' },
+        { label: 'Facilities', value: 'Clean Linens, Folded Blankets & Power Outlets' },
+        { label: 'Campus Access', value: 'Direct Access to Lawns, Pool & Dining Hall' },
       ],
-      description: 'A dedicated sanctuary for group travelers, wildlife photographic tours, student nature clubs, and large family reunions. Offers comfortable shared camaraderie while maintaining resort quality, cleanliness, and security.',
-      features: ['Group Air-Conditioning', 'Multiple Washrooms', 'Secure Luggage Benches', 'Safari Liaison', 'Campfire Proximity'],
+      description: 'Our dedicated group dormitory is fully equipped with comfortable individual beds, crisp linens, and split air-conditioning. It provides an economical, clean, and sociable stay for birdwatching groups, photography clubs, school trips, and large family conclaves visiting Pench.',
+      features: ['Full Air-Conditioning', 'Multiple Washrooms', 'Personal Bedding & Storage', 'Group Safari Coordination', 'Budget Friendly'],
     },
   };
 
@@ -85,20 +80,19 @@ export default function AccommodationsShowcase() {
         {/* ========================================================
             SECTION HEADER & CATEGORY SWITCHER TABS
             ======================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 sm:mb-18">
-          <div className="max-w-2xl space-y-3">
-            <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-gold-dark font-semibold">
-              <span className="w-6 h-px bg-gold-dark/40" />
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
+          <div className="max-w-2xl space-y-2.5">
+            <div className="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.14em] text-gold-dark font-semibold">
+              <span className="w-5 h-px bg-gold-dark/40" />
               <span>Accommodations Portfolio</span>
             </div>
 
-            <h2 className="font-serif text-[clamp(2rem,4.5vw,3.75rem)] font-normal leading-[1.1] tracking-[-0.015em] text-forest-deep text-balance">
-              Rest deeply. <br />
-              <span className="italic font-normal text-gold-dark">Wake to the wild.</span>
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal leading-snug text-forest-deep text-balance">
+              Guest Rooms Designed for Rest Between Safaris
             </h2>
 
             <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal-muted font-light leading-relaxed">
-              Total property inventory: <strong>20 private guest rooms and 1 dedicated group dormitory</strong> crafted beneath the mature shade of Sillari’s teak forest.
+              With 20 private guest rooms and 1 dedicated group dormitory, our air-conditioned accommodations offer solid teak furnishings, clean linens, and quiet garden outlooks.
             </p>
           </div>
 
@@ -134,9 +128,13 @@ export default function AccommodationsShowcase() {
           <div className="lg:col-span-7 space-y-4">
             <div className="relative aspect-[16/11] sm:aspect-[16/10] overflow-hidden rounded-[3px] bg-forest-dark border border-sand/35 shadow-xl group">
               <img
-                key={current.image}
-                src={current.image}
-                alt={current.alt}
+                key={current.photo.src}
+                src={current.photo.src}
+                srcSet={current.photo.srcSet}
+                sizes={current.photo.sizes}
+                width={current.photo.width}
+                height={current.photo.height}
+                alt={current.photo.alt}
                 loading="lazy"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-104"
               />
@@ -164,21 +162,21 @@ export default function AccommodationsShowcase() {
             <div className="grid grid-cols-3 gap-3 text-xs text-charcoal-muted font-light">
               <div className="p-3 rounded-[2px] bg-ivory-warm/40 border border-sand/30">
                 <span className="block text-[10px] uppercase tracking-wider font-semibold text-forest-deep mb-0.5">
-                  Private Sit-out
+                  Climate Control
                 </span>
-                <span>Direct tree canopy views</span>
+                <span>Individual Split AC in every room</span>
               </div>
               <div className="p-3 rounded-[2px] bg-ivory-warm/40 border border-sand/30">
                 <span className="block text-[10px] uppercase tracking-wider font-semibold text-forest-deep mb-0.5">
                   Safari Dawn Tea
                 </span>
-                <span>Complimentary pre-safari service</span>
+                <span>Freshly brewed pre-safari service</span>
               </div>
               <div className="p-3 rounded-[2px] bg-ivory-warm/40 border border-sand/30">
                 <span className="block text-[10px] uppercase tracking-wider font-semibold text-forest-deep mb-0.5">
                   Pool & Grounds
                 </span>
-                <span>Full access included with stay</span>
+                <span>Full access included with every booking</span>
               </div>
             </div>
           </div>
@@ -188,7 +186,7 @@ export default function AccommodationsShowcase() {
             
             <div className="space-y-3">
               <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold block">
-                Category Overview
+                Real Property Inventory
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl text-forest-deep font-semibold">
                 {current.title}
@@ -241,7 +239,7 @@ export default function AccommodationsShowcase() {
                 size="md"
                 className="font-semibold tracking-wider"
               >
-                View Full Room Details →
+                View Room Gallery →
               </Button>
               <Button
                 as={Link}
@@ -250,7 +248,7 @@ export default function AccommodationsShowcase() {
                 size="md"
                 className="font-bold tracking-wider"
               >
-                Book This Room
+                Check Availability & Book
               </Button>
             </div>
 

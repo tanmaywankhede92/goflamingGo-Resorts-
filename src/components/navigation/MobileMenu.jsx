@@ -50,18 +50,18 @@ export default function MobileMenu({ isOpen, onClose }) {
       className="fixed inset-0 z-[999] w-full h-[100dvh] bg-forest-dark text-ivory flex flex-col overflow-y-auto overscroll-contain animate-in fade-in-0 duration-200"
     >
       {/* Drawer Header */}
-      <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-4 border-b border-sand/20 bg-forest-dark/98 backdrop-blur-md">
+      <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-4 border-b border-sand/35 bg-ivory-pure text-charcoal">
         <div className="flex items-center" onClick={onClose}>
-          <Logo variant="mobile" theme="dark" />
+          <Logo variant="mobile" theme="light" />
         </div>
         <button
           type="button"
           onClick={onClose}
           aria-label="Close navigation menu"
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-forest-deep text-sand hover:text-ivory hover:bg-forest-jungle border border-sand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold transition-colors"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-ivory-warm/80 text-charcoal hover:text-forest-deep hover:bg-ivory-warm border border-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest transition-colors cursor-pointer"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>

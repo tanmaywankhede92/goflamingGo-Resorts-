@@ -1,54 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Badge } from '../../../components/common';
-import { IMAGES } from '../../../data/images';
+import { AUTHENTIC_RESORT } from '../../../data/images';
 import { QUICK_CONTACT } from '../../../data/navigation';
 import { cn } from '../../../utils/cn';
 
 /**
- * EventsCelebrations Component
+ * EventsCelebrations Component — Real Venue & Conclave Showcase
  * 
  * Showcases gatherings, weddings, and corporate conclaves strictly grounded
  * in the resort's confirmed venues:
  * - Landscaped open-air event lawns under mature teak trees
  * - Dedicated air-conditioned Conference Room
  * - Full resort buyout options (20 rooms + 1 dormitory)
- * - Regional catering and fireside evening gatherings
+ * - Regional Vidarbha catering and fireside evening gatherings
  */
 export default function EventsCelebrations() {
+  const photos = AUTHENTIC_RESORT.photos;
+
   const eventPillars = [
     {
       id: 'weddings',
       title: 'Forest Destination Weddings',
       tag: 'Intimate Ceremonies',
-      desc: 'Exchange vows under open skies framed by ancient teak trees. Sprawling lawns for mehendi and reception, warm regional catering, and comfortable cottage stays for close friends and family.',
-      venue: 'Landscaped Forest Lawns',
+      desc: 'Exchange vows under open skies framed by ancient teak trees. Sprawling lawns for mehendi and reception, warm regional Vidarbha catering, and comfortable room stays for close family.',
+      venue: 'Landscaped Forest Lawns & Central Courtyard',
       link: '/weddings',
       linkLabel: 'Explore Wedding Options →',
-      image: IMAGES.events.wedding,
-      alt: 'Open air destination wedding setup on green lawn at resort',
+      photo: photos.courtyardTwilight,
+      alt: 'Go Flamingo Resort illuminated central courtyard at twilight for events and celebrations',
     },
     {
       id: 'corporate',
       title: 'Executive Offsites & Conclaves',
       tag: 'Conference Room & Strategy',
       desc: 'Break free from conventional urban hotels. Combine focused strategy sessions in our dedicated air-conditioned Conference Room with morning tiger safaris and fireside discussions.',
-      venue: 'Dedicated Conference Room + Lawns',
+      venue: 'Dedicated Conference Room + Dining Hall',
       link: '/corporate',
       linkLabel: 'Corporate Offsite Details →',
-      image: IMAGES.events.corporate,
-      alt: 'Corporate retreat and executive gathering in nature',
+      photo: photos.restaurantBarHall,
+      alt: 'Grand banquet and dining hall with chandeliers at Go Flamingo Resort for corporate gatherings',
     },
     {
       id: 'milestones',
       title: 'Celebrations & Family Reunions',
       tag: 'Milestones & Birthdays',
-      desc: 'Celebrate milestone anniversaries, birthdays, and multi-generation family gatherings with natural stone pool sessions, rain dance moments, and personalized lawn banquets.',
-      venue: 'Resort Lawns & Poolside Grounds',
+      desc: 'Celebrate milestone anniversaries, birthdays, and multi-generation family gatherings with swimming pool sessions, rain dance moments, and personalized lawn banquets.',
+      venue: 'Resort Lawns, Poolside Grounds & Verandahs',
       link: '/weddings/celebrations',
       linkLabel: 'Celebration Enquiries →',
-      image: IMAGES.dining.bonfireDinner,
-      alt: 'Evening celebration with warm campfire and lights under trees',
+      photo: photos.sunlitVerandah,
+      alt: 'Sunlit arched verandahs and garden grounds at Go Flamingo Resort for family gatherings',
     },
   ];
 
@@ -79,7 +81,7 @@ export default function EventsCelebrations() {
             </h2>
 
             <p className="font-sans text-xs sm:text-sm md:text-base text-sand/80 font-light leading-relaxed">
-              From intimate open-air forest weddings on our lawns to executive leadership offsites utilizing our dedicated conference hall.
+              From intimate open-air celebrations on our central lawns to executive leadership offsites utilizing our dedicated conference hall and dining banquet.
             </p>
           </div>
 
@@ -99,57 +101,85 @@ export default function EventsCelebrations() {
         </div>
 
         {/* ========================================================
-            THREE PILLAR EDITORIAL CARDS
+            EVENT TILES WITH AUTHENTIC VENUE PHOTOGRAPHY
             ======================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {eventPillars.map((pillar) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          {eventPillars.map((item) => (
             <div
-              key={pillar.id}
-              className="group rounded-[3px] bg-forest-dark border border-sand/20 hover:border-gold/50 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-lg"
+              key={item.id}
+              className="group bg-forest-dark/70 border border-sand/20 rounded-[3px] overflow-hidden flex flex-col justify-between hover:border-gold/50 transition-all duration-300 shadow-xl"
             >
-              {/* Image Banner */}
-              <div className="relative aspect-[16/11] overflow-hidden bg-forest-deep">
+              <div className="relative aspect-[16/10] overflow-hidden bg-forest-dark">
                 <img
-                  src={pillar.image}
-                  alt={pillar.alt}
+                  src={item.photo.src}
+                  srcSet={item.photo.srcSet}
+                  sizes={item.photo.sizes}
+                  width={item.photo.width}
+                  height={item.photo.height}
+                  alt={item.alt}
                   loading="lazy"
                   className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/50 to-transparent opacity-70 pointer-events-none" />
-
-                <div className="absolute top-3.5 left-3.5">
-                  <Badge variant="gold" size="sm" className="font-semibold text-[10px] tracking-wider uppercase">
-                    {pillar.tag}
-                  </Badge>
-                </div>
-
-                <div className="absolute bottom-3 left-3.5 right-3.5 text-xs text-sand-light font-medium">
-                  Venue: {pillar.venue}
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-transparent to-transparent opacity-60" />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-0.5 rounded-[2px] bg-forest-deep/80 text-[10px] uppercase tracking-wider text-gold-light border border-sand/30 font-semibold">
+                    {item.tag}
+                  </span>
                 </div>
               </div>
 
-              {/* Text Body */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2.5">
-                  <h3 className="font-serif text-xl sm:text-2xl text-ivory font-semibold group-hover:text-gold transition-colors">
-                    {pillar.title}
+                <div className="space-y-2">
+                  <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold block">
+                    Venue: {item.venue}
+                  </span>
+                  <h3 className="font-serif text-xl sm:text-2xl font-semibold text-ivory group-hover:text-gold-light transition-colors">
+                    {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-sand/80 font-light leading-relaxed">
-                    {pillar.desc}
+                  <p className="font-sans text-xs sm:text-sm text-sand/80 font-light leading-relaxed">
+                    {item.desc}
                   </p>
                 </div>
 
                 <div className="pt-3 border-t border-sand/15">
                   <Link
-                    to={pillar.link}
-                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-gold hover:text-gold-light font-semibold transition-colors"
+                    to={item.link}
+                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-gold-light hover:text-ivory transition-colors"
                   >
-                    {pillar.linkLabel}
+                    <span>{item.linkLabel}</span>
                   </Link>
                 </div>
               </div>
+
             </div>
           ))}
+        </div>
+
+        {/* ========================================================
+            FULL PROPERTY BUYOUT NOTICE
+            ======================================================== */}
+        <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-[4px] bg-forest-dark/90 border border-sand/30 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-2xl">
+          <div className="max-w-2xl space-y-1.5">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold block">
+              Exclusive Sanctuary Buyout
+            </span>
+            <div className="font-serif text-lg sm:text-xl text-ivory font-semibold">
+              Host Your Gathering in Complete Seclusion
+            </div>
+            <p className="text-xs text-sand/75 font-light leading-relaxed">
+              Reserve all 20 private rooms and the group dormitory exclusively for your wedding guests or corporate delegation. Includes dedicated restaurant catering, private lawn access, and synchronized safari jeep coordination.
+            </p>
+          </div>
+
+          <Button
+            as={Link}
+            to="/contact"
+            variant="inverted"
+            size="md"
+            className="shrink-0 font-semibold uppercase tracking-wider text-xs"
+          >
+            Enquire for Full Buyout
+          </Button>
         </div>
 
       </Container>

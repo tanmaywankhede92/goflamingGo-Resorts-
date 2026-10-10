@@ -1,290 +1,174 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Container, Button, Badge } from '../../../components/common';
-import { IMAGES } from '../../../data/images';
+import { Container, Button } from '../../../components/common';
+import { AUTHENTIC_RESORT } from '../../../data/images';
 import { cn } from '../../../utils/cn';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 /**
- * HeroSection Component
+ * HeroSection Component — Cinematic Contemporary Indian Heritage Opening
  * 
- * Cinematic, monumental opening chapter inspired by NOTH's design confidence:
- * - High-contrast editorial typography as visual structure
- * - Verified coordinates and location anchors (Sillari Gate, Maharashtra)
- * - Restrained, poetic storytelling with prominent enquiry CTAs
- * - Lifecycle-safe GSAP choreography with reduced-motion awareness
+ * Features genuine resort property footage:
+ * - Real two-story Rajasthani haveli-inspired architecture, scalloped arches,
+ *   central courtyard lawn, and stone pitcher fountain.
+ * - Human, art-directed typography without oversized headings or forced italics.
+ * - Restrained, natural hospitality copy.
+ * - Two clear primary actions: "Enquire / Book Your Stay" & "Explore the Resort ↓".
+ * - High-performance WebP poster fallback with fetchPriority="high".
+ * - Strict reduced-motion accessibility and inline muted playback.
  */
 export default function HeroSection() {
   const containerRef = useRef(null);
-  const imageRef = useRef(null);
+  const videoRef = useRef(null);
   const contentRef = useRef(null);
-  const metaRef = useRef(null);
-  const barRef = useRef(null);
+
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    // Respect reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(motionQuery.matches);
+
+    const handleMotionChange = (e) => {
+      setPrefersReducedMotion(e.matches);
+      if (e.matches && videoRef.current) {
+        videoRef.current.pause();
+      }
+    };
+
+    motionQuery.addEventListener('change', handleMotionChange);
+
+    if (motionQuery.matches) return () => motionQuery.removeEventListener('change', handleMotionChange);
 
     const ctx = gsap.context(() => {
-      // Entrance timeline
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      // Image gentle settle
-      if (imageRef.current) {
-        tl.fromTo(
-          imageRef.current,
-          { scale: 1.1, opacity: 0.8 },
-          { scale: 1.02, opacity: 1, duration: 1.8, ease: 'power2.out' },
-          0
-        );
-
-        // ScrollTrigger parallax
-        gsap.to(imageRef.current, {
-          yPercent: 18,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        });
-      }
-
-      // Metadata coordinates fade
-      if (metaRef.current) {
-        tl.fromTo(
-          metaRef.current,
-          { opacity: 0, y: -15 },
-          { opacity: 1, y: 0, duration: 0.9 },
-          0.3
-        );
-      }
-
-      // Headline line stagger
       if (contentRef.current) {
-        const elements = contentRef.current.querySelectorAll('.hero-anim-item');
-        tl.fromTo(
-          elements,
-          { opacity: 0, y: 35 },
-          { opacity: 1, y: 0, duration: 1, stagger: 0.15 },
-          0.5
-        );
-      }
-
-      // Quick discovery bar entrance
-      if (barRef.current) {
-        tl.fromTo(
-          barRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.9 },
-          0.9
+        gsap.fromTo(
+          contentRef.current.querySelectorAll('.hero-fade'),
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.9, stagger: 0.14, ease: 'power2.out', delay: 0.15 }
         );
       }
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      motionQuery.removeEventListener('change', handleMotionChange);
+    };
   }, []);
+
+  // Multi-shot sequence: Resort aerial descent (4.0s) + haveli courtyard arches (3.0s) + turquoise pool (2.0s)
+  const heroMedia = AUTHENTIC_RESORT.videos.heroCombined || AUTHENTIC_RESORT.videos.heroAerial;
+
+  const scrollToResort = () => {
+    const target = document.getElementById('meet-the-resort');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[92dvh] lg:min-h-[98dvh] flex flex-col justify-between overflow-hidden bg-forest-dark text-ivory selection:bg-gold/40 selection:text-forest-dark"
+      className="relative w-full h-[88dvh] sm:h-[92dvh] lg:h-[95dvh] min-h-[560px] max-h-[880px] flex items-center justify-center overflow-hidden bg-forest-dark text-ivory selection:bg-gold/40 selection:text-forest-dark"
       aria-label="Welcome to Go Flamingo Resort"
     >
       {/* ========================================================
-          BACKGROUND PHOTOGRAPHY & MULTI-LAYERED SCRIMS
+          FULL-WIDTH CINEMATIC BACKGROUND FOOTAGE & POSTER
           ======================================================== */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        
+        {/* Authentic Rajasthani Haveli Courtyard Footage */}
+        {!prefersReducedMotion && (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={heroMedia.poster}
+            onLoadedData={() => setVideoLoaded(true)}
+            aria-label={heroMedia.title}
+            className={cn(
+              "w-full h-full object-cover object-center transition-opacity duration-1000",
+              videoLoaded ? "opacity-100" : "opacity-0"
+            )}
+          >
+            <source src={heroMedia.webm} type="video/webm" />
+            <source src={heroMedia.mp4} type="video/mp4" />
+          </video>
+        )}
+
+        {/* Eager Fallback Poster */}
         <img
-          ref={imageRef}
-          src={IMAGES.home.hero}
-          alt="Golden morning sunlight illuminating misty teak forest in Pench Tiger Reserve near Sillari Gate"
+          src={heroMedia.poster}
+          alt="Go Flamingo Resort aerial architecture, entrance, canopy and turquoise swimming pool"
           fetchPriority="high"
           loading="eager"
-          className="w-full h-full object-cover object-center will-change-transform"
+          className={cn(
+            "absolute inset-0 w-full h-full object-cover object-center",
+            videoLoaded && !prefersReducedMotion ? "opacity-0 pointer-events-none" : "opacity-100"
+          )}
         />
 
-        {/* Ambient editorial scrims for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(181,138,69,0.12),transparent_70%)]" />
+        {/* Tailored architectural scrims — let property arches shine through while ensuring readable text */}
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/90 via-forest-deep/40 to-forest-dark/45" />
+        <div className="absolute inset-0 bg-radial-gradient from-transparent via-forest-dark/20 to-forest-dark/60" />
       </div>
 
       {/* ========================================================
-          TOP EDITORIAL METADATA & GEOGRAPHICAL COORDINATES
+          CENTERED HERO COMPOSITION — NATURAL & DIGNIFIED
           ======================================================== */}
-      <div
-        ref={metaRef}
-        className="relative z-10 pt-6 sm:pt-8 md:pt-10 w-full"
-      >
-        <Container size="xl">
-          <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.22em] text-sand-light/80 border-b border-sand/20 pb-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-              <span>Sillari Gateway · Pench, Maharashtra</span>
-            </div>
-            <div className="hidden md:flex items-center gap-4 text-sand/65">
-              <span>Lat 21°39'N · Long 79°19'E</span>
-              <span>·</span>
-              <span>20 Rooms · 1 Dormitory</span>
-              <span>·</span>
-              <span>~85 km from Nagpur</span>
-            </div>
-            <div className="text-gold-light font-medium">
-              Authentic Indian Wilderness
-            </div>
-          </div>
-        </Container>
-      </div>
-
-      {/* ========================================================
-          CENTRAL MONUMENTAL HEADLINE & NARRATIVE
-          ======================================================== */}
-      <div
-        ref={contentRef}
-        className="relative z-10 my-auto py-12 sm:py-16 md:py-20 w-full"
-      >
-        <Container size="xl">
-          <div className="max-w-4xl space-y-6 sm:space-y-8">
-            
-            {/* Pill Eyebrow */}
-            <div className="hero-anim-item inline-flex items-center gap-2 px-3 py-1 rounded-[3px] bg-forest-deep/80 border border-sand/30 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gold-light backdrop-blur-sm">
-              <span className="text-gold">✦</span>
-              <span>Pench Tiger Reserve · Threshold of Sillari Gate</span>
-            </div>
-
-            {/* Monumental Headline */}
-            <h1 className="hero-anim-item font-serif text-[clamp(2.75rem,7vw,6.25rem)] font-normal leading-[1.04] tracking-[-0.025em] text-ivory text-balance">
-              Your Escape.{' '}
-              <br className="hidden sm:inline" />
-              Your Kind of{' '}
-              <span className="italic font-normal text-gold-light underline decoration-gold/40 decoration-1 underline-offset-8">
-                Wild.
-              </span>
-            </h1>
-
-            {/* Restrained Editorial Narrative */}
-            <p className="hero-anim-item font-sans text-sm sm:text-base md:text-lg text-sand-light/90 max-w-2xl font-light leading-relaxed text-pretty">
-              Nestled beneath the ancient teak canopy at Sillari, Go Flamingo is an unhurried resort sanctuary where the quiet rhythm of the forest meets authentic hospitality. Wake to dawn mist, open Gypsy safaris, and starlit evenings.
-            </p>
-
-            {/* Intentional Primary Actions */}
-            <div className="hero-anim-item flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-              <Button
-                as={Link}
-                to="/book"
-                variant="gold"
-                size="lg"
-                className="justify-center font-bold tracking-[0.14em] text-xs uppercase px-8 py-4 shadow-xl"
-              >
-                Check Availability & Book
-              </Button>
-
-              <Button
-                as={Link}
-                to="/rooms"
-                variant="inverted"
-                size="lg"
-                className="justify-center font-semibold tracking-[0.14em] text-xs uppercase px-7 py-4"
-              >
-                Explore Rooms & Cottages
-              </Button>
-
-              <Link
-                to="/experiences/safari"
-                className="inline-flex items-center justify-center gap-2 text-xs uppercase tracking-[0.16em] text-sand-light hover:text-gold transition-colors py-2 px-3 self-center sm:self-auto font-medium"
-              >
-                <span>Safari Guide</span>
-                <span>→</span>
-              </Link>
-            </div>
-
-          </div>
-        </Container>
-      </div>
-
-      {/* ========================================================
-          BOTTOM QUICK DISCOVERY ANCHORS & SCROLL INDICATOR
-          ======================================================== */}
-      <div
-        ref={barRef}
-        className="relative z-10 pb-6 sm:pb-8 w-full"
-      >
-        <Container size="xl">
-          <div className="bg-forest-deep/85 border border-sand/30 rounded-[4px] p-4 sm:p-5 backdrop-blur-md shadow-2xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-sand/20">
-              
-              {/* Anchor 1 */}
-              <div className="pt-2 md:pt-0 md:px-3 first:pt-0">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold block mb-0.5">
-                  01 · Prime Gateway
-                </span>
-                <span className="font-serif text-sm sm:text-base text-ivory font-medium block">
-                  Sillari Gate (MH)
-                </span>
-                <span className="text-[11px] text-sand/70 font-light block mt-0.5">
-                  Minutes from Core Safari entry
-                </span>
-              </div>
-
-              {/* Anchor 2 */}
-              <div className="pt-2 md:pt-0 md:px-3">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold block mb-0.5">
-                  02 · Easy Highway Access
-                </span>
-                <span className="font-serif text-sm sm:text-base text-ivory font-medium block">
-                  ~85 km from Nagpur
-                </span>
-                <span className="text-[11px] text-sand/70 font-light block mt-0.5">
-                  1.5 - 2 hrs drive via NH 44
-                </span>
-              </div>
-
-              {/* Anchor 3 */}
-              <div className="pt-2 md:pt-0 md:px-3">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold block mb-0.5">
-                  03 · Accommodations
-                </span>
-                <span className="font-serif text-sm sm:text-base text-ivory font-medium block">
-                  Deluxe & Cottages
-                </span>
-                <span className="text-[11px] text-sand/70 font-light block mt-0.5">
-                  20 Private Rooms + 1 Dormitory
-                </span>
-              </div>
-
-              {/* Anchor 4 */}
-              <div className="pt-2 md:pt-0 md:px-3">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold block mb-0.5">
-                  04 · Leisure & Events
-                </span>
-                <span className="font-serif text-sm sm:text-base text-ivory font-medium block">
-                  Pool, Lawn & Conclaves
-                </span>
-                <span className="text-[11px] text-sand/70 font-light block mt-0.5">
-                  Rain Dance, Games & Conference
-                </span>
-              </div>
-
-            </div>
+      <Container size="lg" className="relative z-10 text-center py-10 sm:py-14">
+        <div ref={contentRef} className="max-w-2xl mx-auto space-y-5 sm:space-y-6">
+          
+          {/* Eyebrow */}
+          <div className="hero-fade inline-flex items-center gap-2 px-3.5 py-1 rounded-[2px] bg-forest-dark/70 border border-sand/25 text-[11px] sm:text-xs uppercase tracking-[0.14em] text-sand-light backdrop-blur-xs">
+            <span>Sillari Gate · Pench, Maharashtra</span>
           </div>
 
-          {/* Micro Scroll Indicator */}
-          <div className="hidden sm:flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-sand/60 pt-3">
-            <span>Go Flamingo Resort · Sitapur, Pench</span>
-            <div className="flex items-center gap-2">
-              <span>Scroll to Explore</span>
-              <span className="w-6 h-px bg-sand/40" />
-            </div>
+          {/* Natural, Art-Directed Headline */}
+          <h1 className="hero-fade font-serif text-[clamp(2.2rem,5vw,4.25rem)] font-normal leading-[1.12] tracking-[-0.015em] text-ivory text-balance">
+            Your Stay, Beyond the Ordinary.
+          </h1>
+
+          {/* Conversational Hospitality Copy */}
+          <p className="hero-fade font-sans text-sm sm:text-base md:text-lg text-sand-light/90 max-w-xl mx-auto font-light leading-relaxed text-pretty">
+            Arched haveli verandahs, a quiet garden courtyard, and warm hospitality — welcoming you home after every tiger safari.
+          </p>
+
+          {/* ONLY TWO PRIMARY ACTIONS */}
+          <div className="hero-fade flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2">
+            <Button
+              as={Link}
+              to="/book"
+              variant="gold"
+              size="md"
+              className="w-full sm:w-auto font-bold tracking-[0.12em] text-xs uppercase px-8 py-3.5 shadow-lg"
+            >
+              Enquire / Book Your Stay
+            </Button>
+
+            <Button
+              as="button"
+              onClick={scrollToResort}
+              variant="inverted"
+              size="md"
+              className="w-full sm:w-auto font-semibold tracking-[0.12em] text-xs uppercase px-7 py-3.5 cursor-pointer"
+            >
+              Explore the Resort ↓
+            </Button>
           </div>
-        </Container>
+
+        </div>
+      </Container>
+
+      {/* Subtle Scroll Cue */}
+      <div className="absolute bottom-5 left-0 right-0 z-10 flex flex-col items-center justify-center pointer-events-none text-[9px] uppercase tracking-[0.2em] text-sand/60">
+        <span className="mb-1">Discover</span>
+        <div className="w-3.5 h-5 rounded-full border border-sand/40 flex items-start justify-center p-0.5">
+          <div className="w-1 h-1 rounded-full bg-gold animate-bounce" />
+        </div>
       </div>
 
     </section>

@@ -7,13 +7,17 @@ import { NAV_ITEMS } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 
 /**
- * Global Resort Navbar Component
+ * Global Resort Navbar Component — Contemporary Indian Heritage Experience
  * 
- * Strict Refinements:
- * - Reduced, compact, and fixed height: h-14 sm:h-16 (never shifts or resizes on scroll)
- * - Glassmorphism: backdrop-blur-md with subtle translucent background
- * - Mobile screens: NO CTA button (clean logo + hamburger only); Book CTA is reserved for desktop and mobile drawer
- * - Contrast Rule: Light navbar over dark hero; Dark navbar over light page content
+ * Reconsidered Composition:
+ * - Refined translucent warm ivory header over the cinematic hero
+ * - Smooth transition to elevated ivory bar on scroll
+ * - Official resort logo sits on its natural ivory ground with 100% contrast & zero awkward boxes
+ * - Natural typography, restrained spacing, and clear active states
+ * - Elegant, dignified "Book Your Stay" CTA button
+ * - Mobile: Clean logo + hamburger composition with accessible drawer
+ * - High readability over both dark video frames and bright daylight frames
+ * - Cohesive and compatible across all routes
  */
 export default function Navbar() {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -29,60 +33,54 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   }
 
-  // Track window scroll for elevated backdrop (smooth color transition without size shift)
+  // Track window scroll for elevated backdrop
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Contrast Rule:
-  // - Top of pages with dark photography hero -> isDarkHeroUnderneath is TRUE -> Navbar is LIGHT (ivory)
-  // - When scrolled down into light page content -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (forest)
-  // - On pages with light hero (/book, /contact) -> isDarkHeroUnderneath is FALSE -> Navbar is DARK (forest)
-  const isDarkHeroUnderneath = !isScrolled && !['/book', '/contact'].includes(location.pathname);
-  const isNavbarDark = !isDarkHeroUnderneath;
 
   const currentMegaMenuItem = NAV_ITEMS.find((item) => item.id === activeMegaMenu);
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full h-16 sm:h-20 flex items-center font-sans transition-[background-color,border-color,box-shadow,color] duration-300 ease-in-out',
-        isNavbarDark
-          ? 'bg-forest-dark/85 text-ivory border-b border-sand/15 shadow-sm backdrop-blur-md'
-          : 'bg-ivory-pure/85 text-charcoal border-b border-sand/30 shadow-sm backdrop-blur-md'
+        'sticky top-0 z-40 w-full h-[68px] sm:h-[76px] lg:h-[82px] flex items-center font-sans transition-[background-color,border-color,box-shadow] duration-300 ease-in-out',
+        isScrolled
+          ? 'bg-ivory-pure/98 text-charcoal border-b border-sand/50 shadow-xs backdrop-blur-lg'
+          : 'bg-ivory-pure/92 text-charcoal border-b border-sand/35 backdrop-blur-md'
       )}
       onMouseLeave={() => setActiveMegaMenu(null)}
     >
-      <Container size="wide" className="flex items-center justify-between gap-3 sm:gap-4 px-3 sm:px-6 w-full">
+      <Container size="wide" className="flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 w-full">
         
-        {/* OFFICIAL BRAND LOGO (Left Placement) */}
+        {/* OFFICIAL BRAND LOGO */}
         <div className="flex items-center shrink-0">
           <Logo
             variant="header"
-            theme={isNavbarDark ? 'dark' : 'light'}
+            theme="light"
+            className="transition-transform duration-200 hover:opacity-95"
           />
         </div>
 
-        {/* Desktop & Laptop Primary Navigation (lg:flex) */}
-        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2">
+        {/* Desktop Primary Navigation (lg:flex) */}
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
           <Link
             to="/"
             className={cn(
-              'px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.6875rem] xl:text-xs uppercase tracking-wider font-semibold transition-colors',
-              isNavbarDark
-                ? location.pathname === '/'
-                  ? 'text-gold font-bold border-b-2 border-gold'
-                  : 'text-ivory/90 hover:text-gold'
-                : location.pathname === '/'
-                ? 'text-forest-deep font-bold border-b-2 border-gold'
-                : 'text-charcoal-800 hover:text-forest-jungle'
+              'px-3 py-2 text-xs uppercase tracking-[0.12em] font-medium transition-colors relative',
+              location.pathname === '/'
+                ? 'text-forest-deep font-semibold'
+                : 'text-charcoal/80 hover:text-forest-deep'
             )}
           >
-            Home
+            <span>Home</span>
+            {location.pathname === '/' && (
+              <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-forest-deep rounded-full" />
+            )}
           </Link>
 
           {NAV_ITEMS.map((item) => {
@@ -95,17 +93,16 @@ export default function Navbar() {
                   key={item.id}
                   to={item.path}
                   className={cn(
-                    'px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.6875rem] xl:text-xs uppercase tracking-wider font-semibold transition-colors',
-                    isNavbarDark
-                      ? isActive
-                        ? 'text-gold font-bold border-b-2 border-gold'
-                        : 'text-ivory/90 hover:text-gold'
-                      : isActive
-                      ? 'text-forest-deep font-bold border-b-2 border-gold'
-                      : 'text-charcoal-800 hover:text-forest-jungle'
+                    'px-3 py-2 text-xs uppercase tracking-[0.12em] font-medium transition-colors relative',
+                    isActive
+                      ? 'text-forest-deep font-semibold'
+                      : 'text-charcoal/80 hover:text-forest-deep'
                   )}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-forest-deep rounded-full" />
+                  )}
                 </Link>
               );
             }
@@ -119,20 +116,29 @@ export default function Navbar() {
                 <Link
                   to={item.path}
                   className={cn(
-                    'px-2 xl:px-2.5 2xl:px-3 py-1.5 text-[0.6875rem] xl:text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-0.5',
-                    isNavbarDark
-                      ? (isActive || isOpen)
-                        ? 'text-gold font-bold border-b-2 border-gold'
-                        : 'text-ivory/90 hover:text-gold'
-                      : (isActive || isOpen)
-                      ? 'text-forest-deep font-bold border-b-2 border-gold'
-                      : 'text-charcoal-800 hover:text-forest-jungle'
+                    'px-3 py-2 text-xs uppercase tracking-[0.12em] font-medium transition-colors flex items-center gap-1.5 relative',
+                    isActive || isOpen
+                      ? 'text-forest-deep font-semibold'
+                      : 'text-charcoal/80 hover:text-forest-deep'
                   )}
                   aria-expanded={isOpen}
                   aria-haspopup="true"
                 >
                   <span>{item.label}</span>
-                  <span className={cn('text-[0.6rem]', isNavbarDark ? 'text-sand/70' : 'text-charcoal-muted')}>▾</span>
+                  <svg
+                    className={cn(
+                      'w-2.5 h-2.5 text-charcoal-muted transition-transform duration-200',
+                      isOpen ? 'rotate-180 text-forest-deep' : ''
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-forest-deep rounded-full" />
+                  )}
                 </Link>
               </div>
             );
@@ -140,31 +146,26 @@ export default function Navbar() {
         </nav>
 
         {/* Header Right Actions */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          {/* Desktop & Laptop Only: Book Your Stay CTA (Strictly hidden on Mobile screens) */}
+        <div className="flex items-center gap-3">
+          {/* Desktop Only: Book Your Stay CTA */}
           <div className="hidden lg:block shrink-0">
             <Button
               as={Link}
               to="/book"
-              variant="gold"
+              variant="primary"
               size="sm"
-              className="shadow-sm font-bold tracking-wider text-center"
+              className="px-5 py-2.5 rounded-[2px] text-xs font-semibold uppercase tracking-[0.12em] shadow-xs"
             >
               Book Your Stay
             </Button>
           </div>
 
-          {/* Mobile Hamburger Toggle (lg:hidden - Only on Mobile/Tablet screens) */}
+          {/* Mobile Hamburger Toggle */}
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open navigation menu"
-            className={cn(
-              'lg:hidden p-2 rounded-[3px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold w-10 h-10 flex items-center justify-center shrink-0',
-              isNavbarDark
-                ? 'text-ivory hover:text-gold hover:bg-forest-deep active:bg-forest-jungle'
-                : 'text-charcoal hover:text-forest-jungle hover:bg-sand/20 active:bg-sand/30'
-            )}
+            className="lg:hidden p-2 rounded-[3px] text-charcoal hover:text-forest-deep hover:bg-sand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest transition-colors w-10 h-10 flex items-center justify-center shrink-0 cursor-pointer"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M4 6h16M4 12h16M4 18h16" />
