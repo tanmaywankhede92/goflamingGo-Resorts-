@@ -1,16 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, WhatsAppIcon } from '../../../components/common';
+import {
+  Container,
+  PinIcon,
+  HighwayCarIcon,
+  HaveliArchIcon,
+  SafariBinocularsIcon,
+} from '../../../components/common';
 import { AUTHENTIC_RESORT } from '../../../data/images';
-import { QUICK_CONTACT } from '../../../data/navigation';
 
 /**
  * WelcomeManifesto Component (Section 2 — The Haveli & Courtyard Experience)
  * 
- * Screen-Fitted, High-Aesthetic Architecture Spread:
- * - Concise, punchy copy without text bloat or information overload
- * - Balanced 1-screen viewport framing on desktop and mobile
- * - Clean side-by-side presentation: Authentic photo on left, 3 sleek highlights on right
+ * Screen-Fitted Architecture Spread:
+ * - Left: Authentic Haveli photo with floating 65 km location pill
+ * - Right: Rich secondary forest-green luxury card (#163824) with ivory/gold text
+ * - 100% Vector monoline SVG icons — zero cartoon emojis
  */
 export default function WelcomeManifesto() {
   const corridorPhoto = AUTHENTIC_RESORT.photos.archedCorridorFountain;
@@ -40,12 +45,12 @@ export default function WelcomeManifesto() {
         </div>
 
         {/* ========================================================
-            SCREEN-BALANCED GRID (PHOTO LEFT, 3 CLEAN HIGHLIGHTS RIGHT)
+            SCREEN-BALANCED GRID (PHOTO LEFT, GREEN LUXURY CARD RIGHT)
             ======================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left: Authentic Haveli Architecture Photo */}
-          <div className="lg:col-span-7 relative">
+          <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-stone-900 border border-stone-200/90 shadow-lg group">
               <img
                 src={corridorPhoto.src}
@@ -59,11 +64,11 @@ export default function WelcomeManifesto() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-              {/* Floating Pill: 65 KM Nagpur */}
+              {/* Floating Pill: 65 KM Nagpur with Vector Pin */}
               <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
                 <div className="px-3 py-1.5 rounded-full bg-white/95 text-[#163824] border border-stone-200/80 shadow-sm backdrop-blur-md flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-wide">
-                  <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
-                  <span>📍 65 km from Nagpur · NH 44 Drive</span>
+                  <PinIcon className="w-3.5 h-3.5 text-[#163824]" />
+                  <span>65 km from Nagpur · NH 44 Drive</span>
                 </div>
               </div>
 
@@ -79,65 +84,78 @@ export default function WelcomeManifesto() {
             </div>
           </div>
 
-          {/* Right: 3 Concise Highlights + Action */}
-          <div className="lg:col-span-5 space-y-3.5">
+          {/* Right: Secondary Deep Forest Green Luxury Card Container */}
+          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-[#163824] border border-[#C5A880]/30 shadow-xl text-ivory space-y-4">
             
-            {/* Feature 1 */}
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-stone-200/70 shadow-xs hover:border-[#163824]/20 transition-colors">
-              <div className="flex items-start gap-3">
-                <span className="text-xl shrink-0 pt-0.5">🚗</span>
+            {/* Card Header */}
+            <div>
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold block mb-1">
+                Sanctuary Highlights
+              </span>
+              <h3 className="font-serif text-lg sm:text-xl text-white font-medium">
+                Why Guests Choose Go Flamingo
+              </h3>
+            </div>
+
+            {/* 3 Concise Feature Rows */}
+            <div className="space-y-3">
+              
+              {/* Feature 1: Highway Drive */}
+              <div className="p-3 sm:p-3.5 rounded-xl bg-white/8 border border-white/10 hover:border-[#C5A880]/40 transition-colors flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center shrink-0">
+                  <HighwayCarIcon className="w-4.5 h-4.5" />
+                </div>
                 <div>
-                  <h3 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
+                  <h4 className="font-serif text-sm sm:text-base text-white font-semibold">
                     Smooth 1-Hour Drive from Nagpur
-                  </h3>
-                  <p className="font-sans text-xs text-charcoal/70 font-light mt-0.5 leading-relaxed">
-                    Direct access via smooth 4-lane NH 44 with zero rough interior roads.
+                  </h4>
+                  <p className="font-sans text-xs text-sand-light/80 font-light mt-0.5 leading-relaxed">
+                    Direct access via 4-lane NH 44 with zero rough interior roads.
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Feature 2 */}
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-stone-200/70 shadow-xs hover:border-[#163824]/20 transition-colors">
-              <div className="flex items-start gap-3">
-                <span className="text-xl shrink-0 pt-0.5">🏛️</span>
+              {/* Feature 2: Haveli Courtyard */}
+              <div className="p-3 sm:p-3.5 rounded-xl bg-white/8 border border-white/10 hover:border-[#C5A880]/40 transition-colors flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center shrink-0">
+                  <HaveliArchIcon className="w-4.5 h-4.5" />
+                </div>
                 <div>
-                  <h3 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
+                  <h4 className="font-serif text-sm sm:text-base text-white font-semibold">
                     Open-Air Haveli Courtyard
-                  </h3>
-                  <p className="font-sans text-xs text-charcoal/70 font-light mt-0.5 leading-relaxed">
+                  </h4>
+                  <p className="font-sans text-xs text-sand-light/80 font-light mt-0.5 leading-relaxed">
                     Sculpted stone corridors, pitcher water fountain, and open lawns.
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Feature 3 */}
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-stone-200/70 shadow-xs hover:border-[#163824]/20 transition-colors">
-              <div className="flex items-start gap-3">
-                <span className="text-xl shrink-0 pt-0.5">🐅</span>
+              {/* Feature 3: Sillari Gate */}
+              <div className="p-3 sm:p-3.5 rounded-xl bg-white/8 border border-white/10 hover:border-[#C5A880]/40 transition-colors flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center shrink-0">
+                  <SafariBinocularsIcon className="w-4.5 h-4.5" />
+                </div>
                 <div>
-                  <h3 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
+                  <h4 className="font-serif text-sm sm:text-base text-white font-semibold">
                     Minutes to Sillari Safari Gate
-                  </h3>
-                  <p className="font-sans text-xs text-charcoal/70 font-light mt-0.5 leading-relaxed">
-                    Board your Gypsy on time with direct proximity to Pench’s core gate.
+                  </h4>
+                  <p className="font-sans text-xs text-sand-light/80 font-light mt-0.5 leading-relaxed">
+                    Direct core gate proximity for peaceful morning Gypsy departures.
                   </p>
                 </div>
               </div>
+
             </div>
 
-            {/* Direct Action Link */}
+            {/* Direct Action Link in Royal Gold */}
             <div className="pt-2">
               <Link
                 to="/resort"
-                className="group inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-[#163824] text-white text-[11px] uppercase tracking-[0.12em] font-semibold hover:bg-[#0E2A1B] transition-colors shadow-xs"
+                className="group inline-flex items-center gap-3 pl-6 pr-3 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs sm:text-[13px] uppercase tracking-[0.14em] font-bold transition-all duration-300 shadow-[0_4px_18px_rgba(197,168,128,0.35)] hover:shadow-[0_6px_25px_rgba(197,168,128,0.5)] border border-[#F3DFC1] cursor-pointer"
               >
                 <span>Explore Facilities & Lawns</span>
-                <span className="w-6 h-6 rounded-full bg-[#C5A880] text-[#0E2A1B] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                <span className="w-7 h-7 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-sm font-bold shadow-inner">
+                  →
                 </span>
               </Link>
             </div>

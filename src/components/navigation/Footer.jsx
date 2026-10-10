@@ -1,39 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Button, Logo, WhatsAppIcon } from '../common';
+import { Container, Logo, WhatsAppIcon } from '../common';
 import { QUICK_CONTACT } from '../../data/navigation';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 /**
- * Footer Component — Warm Light Heritage Resort Aesthetic
+ * Footer Component — Deep Forest Sanctuary Theme
  * 
- * Harmonized with the overall site theme:
- * - Warm sand/ivory canvas (bg-[#F4EFE6]) matching the resort's natural palette
- * - Rich forest-green typography (#163824) with gold highlights
- * - Clean, well-spaced editorial columns
- * - Official original brand logo rendered cleanly for light backgrounds
+ * Deep, grounding luxury forest aesthetic:
+ * - Rich sanctuary dark background (bg-[#08130B])
+ * - Official white logo variant for dark backgrounds
+ * - Muted ivory/sand typography with gold accents
+ * - Clean multi-column sitemap and direct reservation contact
  */
 export default function Footer() {
   return (
-    <footer className="bg-[#F4EFE6] text-charcoal border-t border-[#163824]/12 pt-14 md:pt-20 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:pb-12 font-sans">
+    <footer className="bg-[#08130B] text-ivory border-t border-white/10 pt-14 md:pt-20 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:pb-12 font-sans">
       <Container size="xl">
         
         {/* BRAND SIGNATURE & TOP CALLOUT */}
-        <div className="pb-12 border-b border-[#163824]/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="pb-12 border-b border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div className="space-y-3 max-w-xl">
-            {/* OFFICIAL GO FLAMINGO LOGO (Original Variant for Light Background) */}
+            {/* OFFICIAL GO FLAMINGO LOGO (White Variant for Dark Background) */}
             <div>
-              <Logo variant="footer" theme="light" />
+              <Logo variant="footer" theme="dark" />
             </div>
             <div className="pt-1">
-              <span className="text-[11px] uppercase tracking-[0.2em] text-[#163824] font-semibold block mb-0.5">
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold block mb-0.5">
                 Pench National Park · Sillari Gate
               </span>
-              <p className="text-xs text-charcoal/70 font-light">
+              <p className="text-xs text-sand-light/80 font-light">
                 {QUICK_CONTACT.address} · {QUICK_CONTACT.nagpurDistance}
               </p>
-              <p className="text-[11px] text-charcoal/50 font-light mt-0.5">
+              <p className="text-[11px] text-sand/60 font-light mt-0.5">
                 Safari Desk Hours: {QUICK_CONTACT.hours}
               </p>
             </div>
@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Link
               to="/book"
-              className="inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#163824] text-white text-xs uppercase tracking-[0.14em] font-semibold hover:bg-[#0E2A1B] transition-colors shadow-xs text-center"
+              className="inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.14em] font-bold hover:bg-[#d8be98] transition-colors shadow-sm text-center"
             >
               Book Your Stay
             </Link>
@@ -50,7 +50,7 @@ export default function Footer() {
               href="https://wa.me/919372425968"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white hover:bg-stone-50 border border-stone-300 text-xs uppercase tracking-[0.14em] font-semibold text-[#163824] transition-colors shadow-xs"
+              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-xs uppercase tracking-[0.14em] font-semibold text-ivory transition-colors shadow-xs"
             >
               <WhatsAppIcon size="sm" className="text-[#25D366]" />
               <span>WhatsApp Us</span>
@@ -63,73 +63,73 @@ export default function Footer() {
           
           {/* Column 1: The Resort */}
           <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#163824] font-semibold block">
+            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
               The Resort
             </span>
-            <ul className="space-y-2 text-charcoal/75 font-light text-xs sm:text-sm">
-              <li><Link to="/resort" className="hover:text-[#163824] transition-colors">Resort Overview</Link></li>
-              <li><Link to="/resort/about" className="hover:text-[#163824] transition-colors">About Go Flamingo</Link></li>
-              <li><Link to="/resort/facilities" className="hover:text-[#163824] transition-colors">Facilities & Lawns</Link></li>
-              <li><Link to="/resort/pool" className="hover:text-[#163824] transition-colors">Forest Pool</Link></li>
-              <li><Link to="/resort/dining" className="hover:text-[#163824] transition-colors">Dining & Cuisine</Link></li>
-              <li><Link to="/gallery" className="hover:text-[#163824] transition-colors">Photo Gallery</Link></li>
+            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
+              <li><Link to="/resort" className="hover:text-gold transition-colors">Resort Overview</Link></li>
+              <li><Link to="/resort/about" className="hover:text-gold transition-colors">About Go Flamingo</Link></li>
+              <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Facilities & Lawns</Link></li>
+              <li><Link to="/resort/pool" className="hover:text-gold transition-colors">Forest Pool</Link></li>
+              <li><Link to="/resort/dining" className="hover:text-gold transition-colors">Dining & Cuisine</Link></li>
+              <li><Link to="/gallery" className="hover:text-gold transition-colors">Photo Gallery</Link></li>
             </ul>
           </div>
 
           {/* Column 2: Stay */}
           <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#163824] font-semibold block">
+            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
               Stay & Packages
             </span>
-            <ul className="space-y-2 text-charcoal/75 font-light text-xs sm:text-sm">
-              <li><Link to="/rooms" className="hover:text-[#163824] transition-colors">All Accommodations</Link></li>
-              <li><Link to="/rooms/luxury-cottage" className="hover:text-[#163824] transition-colors">Luxury Cottages</Link></li>
-              <li><Link to="/rooms/family-suite" className="hover:text-[#163824] transition-colors">Family Suites</Link></li>
-              <li><Link to="/packages" className="hover:text-[#163824] transition-colors">Curated Packages</Link></li>
-              <li><Link to="/packages/weekend-escape" className="hover:text-[#163824] transition-colors">Weekend Escape</Link></li>
-              <li><Link to="/packages/wildlife-safari" className="hover:text-[#163824] transition-colors">Wildlife Safari Tour</Link></li>
+            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
+              <li><Link to="/rooms" className="hover:text-gold transition-colors">All Accommodations</Link></li>
+              <li><Link to="/rooms/luxury-cottage" className="hover:text-gold transition-colors">Luxury Cottages</Link></li>
+              <li><Link to="/rooms/family-suite" className="hover:text-gold transition-colors">Family Suites</Link></li>
+              <li><Link to="/packages" className="hover:text-gold transition-colors">Curated Packages</Link></li>
+              <li><Link to="/packages/weekend-escape" className="hover:text-gold transition-colors">Weekend Escape</Link></li>
+              <li><Link to="/packages/wildlife-safari" className="hover:text-gold transition-colors">Wildlife Safari Tour</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Experiences */}
           <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#163824] font-semibold block">
+            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
               Experiences
             </span>
-            <ul className="space-y-2 text-charcoal/75 font-light text-xs sm:text-sm">
-              <li><Link to="/experiences" className="hover:text-[#163824] transition-colors">All Experiences</Link></li>
-              <li><Link to="/experiences/safari" className="hover:text-[#163824] transition-colors">Sillari Jungle Safari</Link></li>
-              <li><Link to="/experiences/wildlife" className="hover:text-[#163824] transition-colors">Wildlife & Birding</Link></li>
-              <li><Link to="/experiences/nature" className="hover:text-[#163824] transition-colors">Nature Trails</Link></li>
-              <li><Link to="/experiences/family" className="hover:text-[#163824] transition-colors">Family Adventures</Link></li>
-              <li><Link to="/experiences/couples" className="hover:text-[#163824] transition-colors">Romantic Retreats</Link></li>
+            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
+              <li><Link to="/experiences" className="hover:text-gold transition-colors">All Experiences</Link></li>
+              <li><Link to="/experiences/safari" className="hover:text-gold transition-colors">Sillari Jungle Safari</Link></li>
+              <li><Link to="/experiences/wildlife" className="hover:text-gold transition-colors">Wildlife & Birding</Link></li>
+              <li><Link to="/experiences/nature" className="hover:text-gold transition-colors">Nature Trails</Link></li>
+              <li><Link to="/experiences/family" className="hover:text-gold transition-colors">Family Adventures</Link></li>
+              <li><Link to="/experiences/couples" className="hover:text-gold transition-colors">Romantic Retreats</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Pench Guide */}
           <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#163824] font-semibold block">
+            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
               Pench Destination
             </span>
-            <ul className="space-y-2 text-charcoal/75 font-light text-xs sm:text-sm">
-              <li><Link to="/pench" className="hover:text-[#163824] transition-colors">About Pench Reserve</Link></li>
-              <li><Link to="/pench/sillari-gate" className="hover:text-[#163824] transition-colors">Sillari Gate Advantage</Link></li>
-              <li><Link to="/pench/safari-guide" className="hover:text-[#163824] transition-colors">Safari Permits & Guide</Link></li>
-              <li><Link to="/pench/how-to-reach" className="hover:text-[#163824] transition-colors">How To Reach (Nagpur)</Link></li>
-              <li><Link to="/pench/best-time-to-visit" className="hover:text-[#163824] transition-colors">Best Time To Visit</Link></li>
-              <li><Link to="/pench/things-to-do" className="hover:text-[#163824] transition-colors">Things To Do</Link></li>
+            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
+              <li><Link to="/pench" className="hover:text-gold transition-colors">About Pench Reserve</Link></li>
+              <li><Link to="/pench/sillari-gate" className="hover:text-gold transition-colors">Sillari Gate Advantage</Link></li>
+              <li><Link to="/pench/safari-guide" className="hover:text-gold transition-colors">Safari Permits & Guide</Link></li>
+              <li><Link to="/pench/how-to-reach" className="hover:text-gold transition-colors">How To Reach (Nagpur)</Link></li>
+              <li><Link to="/pench/best-time-to-visit" className="hover:text-gold transition-colors">Best Time To Visit</Link></li>
+              <li><Link to="/pench/things-to-do" className="hover:text-gold transition-colors">Things To Do</Link></li>
             </ul>
           </div>
 
           {/* Column 5: Direct Contact */}
           <div className="space-y-3 col-span-2 md:col-span-1">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#163824] font-semibold block">
+            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
               Direct Contact
             </span>
-            <div className="text-xs text-charcoal/70 space-y-2 font-light">
+            <div className="text-xs text-sand-light/80 space-y-2 font-light">
               <p>
-                <a href={`tel:${QUICK_CONTACT.phoneRaw}`} className="hover:text-[#163824] transition-colors inline-flex items-center gap-1.5">
-                  <span className="font-medium text-[#163824]">Call:</span>
+                <a href={`tel:${QUICK_CONTACT.phoneRaw}`} className="hover:text-gold transition-colors inline-flex items-center gap-1.5">
+                  <span className="font-semibold text-ivory">Call:</span>
                   <span>{QUICK_CONTACT.phone}</span>
                 </a>
               </p>
@@ -138,15 +138,15 @@ export default function Footer() {
                   href={QUICK_CONTACT.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#163824] transition-colors inline-flex items-center gap-1.5"
+                  className="hover:text-gold transition-colors inline-flex items-center gap-1.5"
                 >
                   <WhatsAppIcon size="sm" className="text-[#25D366]" />
-                  <span className="font-medium text-[#163824]">WhatsApp:</span>
+                  <span className="font-semibold text-ivory">WhatsApp:</span>
                   <span>{QUICK_CONTACT.whatsapp}</span>
                 </a>
               </p>
               <p>
-                <a href={`mailto:${QUICK_CONTACT.email}`} className="hover:text-[#163824] transition-colors">
+                <a href={`mailto:${QUICK_CONTACT.email}`} className="hover:text-gold transition-colors">
                   {QUICK_CONTACT.email}
                 </a>
               </p>
@@ -156,13 +156,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-[#163824]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-charcoal/60">
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-sand/60">
           <p>© {CURRENT_YEAR} Go Flamingo Resort · Pench – Sillari Gate, Maharashtra, India.</p>
           <div className="flex items-center gap-5 text-[11px]">
-            <Link to="/contact" className="hover:text-[#163824] transition-colors">Contact</Link>
-            <Link to="/pench/safari-guide" className="hover:text-[#163824] transition-colors">Safari Guidelines</Link>
-            <span className="text-stone-300">|</span>
-            <span className="text-[#163824]/60 tracking-wider uppercase">
+            <Link to="/contact" className="hover:text-ivory transition-colors">Contact</Link>
+            <Link to="/pench/safari-guide" className="hover:text-ivory transition-colors">Safari Guidelines</Link>
+            <span className="text-white/20">|</span>
+            <span className="text-sand/50 tracking-wider uppercase">
               Official Brand Website
             </span>
           </div>
