@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Container, Logo } from '../common';
 import MegaMenu from './MegaMenu';
@@ -14,19 +14,24 @@ import { cn } from '../../utils/cn';
  * - Center: Floating white/ivory rounded-full pill capsule for desktop navigation.
  * - Right: Distinctive rounded-full pill CTA ("Book Your Stay") with accent circle arrow icon.
  * - MegaMenu seamlessly overlays for deep exploratory browsing.
+ * - Supports click-to-pin on dropdown arrows so users can explore and click sub-items without menu vanishing.
  * - Mobile: Clean logo + pill booking button + hamburger toggle.
  */
 export default function Navbar() {
+  const headerRef = useRef(null);
+  const leaveTimerRef = useRef(null);
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
+  const [isPinned, setIsPinned] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Reset menu state during render on route changes
+  // Reset menu state on route changes
   const [prevPath, setPrevPath] = useState(location.pathname);
   if (location.pathname !== prevPath) {
     setPrevPath(location.pathname);
     setActiveMegaMenu(null);
+    setIsPinned(false);
     setIsMobileMenuOpen(false);
   }
 
@@ -40,17 +45,95 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close pinned dropdown on clicking outside or pressing Escape
+  useEffect(() => {
+    if (!activeMegaMenu) return;
+
+    const handleClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setActiveMegaMenu(null);
+        setIsPinned(false);
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveMegaMenu(null);
+        setIsPinned(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeMegaMenu]);
+
+  // Click handler on dropdown arrow: toggles pinned state ON/OFF
+  const toggleDropdown = (e, itemId) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (activeMegaMenu === itemId && isPinned) {
+      // Toggle OFF
+      setActiveMegaMenu(null);
+      setIsPinned(false);
+    } else {
+      // Toggle ON and PIN
+      setActiveMegaMenu(itemId);
+      setIsPinned(true);
+    }
+  };
+
+  const handleItemMouseEnter = (itemId) => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+    // Only switch on hover if not pinned by explicit user click
+    if (!isPinned) {
+      setActiveMegaMenu(itemId);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    // If pinned by user click, DO NOT close on mouse leave!
+    if (isPinned) return;
+
+    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
+    leaveTimerRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 200);
+  };
+
+  const handleMouseEnter = () => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
+    }
+  };
+
+  const handleCloseMenu = () => {
+    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
+    setActiveMegaMenu(null);
+    setIsPinned(false);
+  };
+
   const currentMegaMenuItem = NAV_ITEMS.find((item) => item.id === activeMegaMenu);
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         'fixed top-0 left-0 w-full z-40 font-sans transition-all duration-300 ease-in-out pointer-events-none',
         isScrolled
           ? 'py-2 sm:py-2.5'
           : 'py-3 sm:py-4.5'
       )}
-      onMouseLeave={() => setActiveMegaMenu(null)}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
     >
       <Container size="wide" className="px-3 sm:px-6 lg:px-8 w-full pointer-events-auto">
         
@@ -68,6 +151,7 @@ export default function Navbar() {
           <div className="flex items-center shrink-0 max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 z-10">
             <Link
               to="/"
+              onClick={handleCloseMenu}
               aria-label="Go Flamingo Resorts – Home"
               className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest rounded-full transition-transform duration-200 hover:scale-102"
             >
@@ -89,6 +173,7 @@ export default function Navbar() {
           >
             <Link
               to="/"
+              onClick={handleCloseMenu}
               className={cn(
                 'px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200',
                 location.pathname === '/'
@@ -108,6 +193,7 @@ export default function Navbar() {
                   <Link
                     key={item.id}
                     to={item.path}
+                    onClick={handleCloseMenu}
                     className={cn(
                       'px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200',
                       isActive
@@ -123,34 +209,50 @@ export default function Navbar() {
               return (
                 <div
                   key={item.id}
-                  className="relative"
-                  onMouseEnter={() => setActiveMegaMenu(item.id)}
+                  className="relative flex items-center"
+                  onMouseEnter={() => handleItemMouseEnter(item.id)}
                 >
-                  <Link
-                    to={item.path}
+                  <div
                     className={cn(
-                      'px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 flex items-center gap-1.5',
+                      'px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 flex items-center gap-1.5 select-none',
                       isActive || isOpen
                         ? 'bg-forest-deep text-white shadow-xs font-semibold'
                         : 'text-stone-700 hover:text-forest-deep hover:bg-stone-100/70'
                     )}
-                    aria-expanded={isOpen}
-                    aria-haspopup="true"
                   >
-                    <span>{item.label}</span>
-                    <svg
-                      className={cn(
-                        'w-2.5 h-2.5 transition-transform duration-200',
-                        isActive || isOpen ? 'text-white/80' : 'text-stone-400',
-                        isOpen ? 'rotate-180' : ''
-                      )}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    <Link
+                      to={item.path}
+                      onClick={handleCloseMenu}
+                      className="hover:opacity-90 focus-visible:outline-none"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </Link>
+                      {item.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={(e) => toggleDropdown(e, item.id)}
+                      aria-expanded={isOpen}
+                      aria-label={`Toggle ${item.label} dropdown`}
+                      title={`${isOpen && isPinned ? 'Click to close' : 'Click arrow to keep open'} ${item.label} menu`}
+                      className={cn(
+                        'p-0.5 -mr-0.5 rounded-full transition-all duration-200 flex items-center justify-center cursor-pointer',
+                        isActive || isOpen
+                          ? 'hover:bg-white/20 text-white'
+                          : 'hover:bg-stone-200/70 text-stone-500 hover:text-stone-800'
+                      )}
+                    >
+                      <svg
+                        className={cn(
+                          'w-2.5 h-2.5 transition-transform duration-200',
+                          isOpen ? 'rotate-180' : ''
+                        )}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               );
             })}
@@ -196,7 +298,10 @@ export default function Navbar() {
         <MegaMenu
           item={currentMegaMenuItem}
           isOpen={Boolean(activeMegaMenu && currentMegaMenuItem?.hasMegaMenu)}
-          onClose={() => setActiveMegaMenu(null)}
+          onClose={handleCloseMenu}
+          isPinned={isPinned}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
       </div>
 
