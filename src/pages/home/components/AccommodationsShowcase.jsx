@@ -1,118 +1,119 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Button, Badge } from '../../../components/common';
+import { Container, WhatsAppIcon } from '../../../components/common';
 import { AUTHENTIC_RESORT } from '../../../data/images';
+import { QUICK_CONTACT } from '../../../data/navigation';
 import { cn } from '../../../utils/cn';
 
 /**
- * AccommodationsShowcase Component — Authentic Rooms & Dormitory Showcase
+ * AccommodationsShowcase Component (Section 3 — Luxury Suites & Stay)
  * 
- * Features real property photography of Go Flamingo Resort:
- * 1. Deluxe Forest Rooms (real teak bed, split AC, TV, private balcony)
- * 2. Super Deluxe Cottages (arched verandah, premium comfort)
- * 3. Group Wilderness Dormitory (clean individual beds, air-conditioned, dedicated group facility)
+ * Creative, High-Aesthetic Room Spread:
+ * - Replaces dry tabular specification sheets with rich, photography-first luxury suite spreads.
+ * - Interactive pill selector for Deluxe Haveli Rooms, Super Deluxe Cottages & Group Dormitory.
+ * - Glassmorphic floating highlight badges on real room photography.
+ * - Direct 1-click booking and WhatsApp inquiry actions.
  */
 export default function AccommodationsShowcase() {
   const [activeTab, setActiveTab] = useState('deluxe');
 
   const photos = AUTHENTIC_RESORT.photos;
 
-  const categories = {
+  const rooms = {
     'deluxe': {
       id: 'deluxe',
-      label: 'Deluxe Rooms',
-      title: 'Deluxe Air-Conditioned Rooms',
-      subtitle: 'Spacious rooms with solid teak king bed, daybed, split AC, TV, and private balcony sit-out.',
+      tabLabel: 'Deluxe Haveli Rooms',
+      category: 'Couples & Small Families · 20 Keys',
+      title: 'Deluxe Air-Conditioned Haveli Rooms',
+      lead: 'Handcrafted teak wood furnishings, crisp clean linens, and full-height glass doors opening to your private balcony sit-out.',
       photo: photos.deluxeBedroom,
+      badge: 'Private Balcony & Garden View',
       link: '/rooms',
-      badge: 'Couples & Small Families',
-      specs: [
-        { label: 'Bed Type', value: 'Teak King Bed + Daybed Alcove' },
-        { label: 'Climate', value: 'Individual Split Air-Conditioning' },
-        { label: 'Entertainment', value: 'Flat Screen TV with Wooden Console' },
-        { label: 'Outdoor Living', value: 'Sliding Glass Door to Private Balcony' },
+      highlights: [
+        { icon: '🛏️', label: 'Solid Teak King Bed', desc: 'With extra daybed alcove' },
+        { icon: '🌿', label: 'Private Balcony', desc: 'Overlooking tree canopies' },
+        { icon: '❄️', label: 'Split Air-Conditioning', desc: 'Individual digital climate control' },
+        { icon: '🚿', label: '24/7 Hot Water En-suite', desc: 'Modern sanitary fittings' },
       ],
-      description: 'Our authentic Deluxe Rooms feature rich wood furnishings, clean linens, and warm ambient lighting. A full-height glass door opens onto your private balcony overlooking green trees and the courtyard, offering an unhurried perch for morning coffee before your safari.',
-      features: ['Split Air-Conditioning', 'Flat Screen TV', 'Private Balcony', 'En-suite Bath with 24/7 Hot Water', 'Pool Access'],
+      inclusions: ['Pre-Dawn Safari Tea', 'Swimming Pool Access', 'Complimentary Wi-Fi', 'Free Private Parking'],
     },
     'super-deluxe': {
       id: 'super-deluxe',
-      label: 'Super Deluxe Rooms',
-      title: 'Super Deluxe Garden Rooms',
-      subtitle: 'Expanded private rooms with enhanced spatial volume, haveli arched views and garden access.',
+      tabLabel: 'Super Deluxe Cottages',
+      category: 'Premium Leisure & Extra Space',
+      title: 'Super Deluxe Garden Verandah Suites',
+      lead: 'Expanded living volume framed by traditional haveli arch views, with direct corridor access to the central manicured lawn.',
       photo: photos.sunlitVerandah,
+      badge: 'Direct Courtyard Walkway',
       link: '/rooms/luxury-cottage',
-      badge: 'Premium Leisure',
-      specs: [
-        { label: 'Bed Type', value: 'Handcrafted King Bed + Seating Area' },
-        { label: 'Architecture', value: 'Haveli-Style Arch Verandah Outlook' },
-        { label: 'Bathroom', value: 'Spacious Modern En-suite with Hot Water' },
-        { label: 'Verandah', value: 'Direct Corridor Access to Central Lawns' },
+      highlights: [
+        { icon: '🏰', label: 'Haveli Arch Architecture', desc: 'Traditional sculpted perspectives' },
+        { icon: '🛋️', label: 'Expansive Living Area', desc: 'Additional sofa & seating space' },
+        { icon: '🍃', label: 'Garden Verandah', desc: 'Step out directly to the lawn' },
+        { icon: '☕', label: 'In-Room Tea/Coffee', desc: 'Electric kettle with condiments' },
       ],
-      description: 'Designed for extra roominess and quietude, our Super Deluxe accommodations combine traditional arched verandah perspectives with modern amenities. Step directly out into the shaded walkway and central gardens.',
-      features: ['Dual Climate Control', 'Expansive Living Space', 'Garden Verandah Walkway', 'Safari Dawn Tea Service', 'Campfire Proximity'],
+      inclusions: ['Buffet Breakfast Options', 'Pool Access Included', 'Safari Booking Desk', 'Lawn Stroll Access'],
     },
     'dormitory': {
       id: 'dormitory',
-      label: 'Group Dormitory',
-      title: 'Group Wilderness Dormitory',
-      subtitle: 'A dedicated air-conditioned multi-bed dormitory built for wildlife groups, student camps & family gatherings.',
+      tabLabel: 'Group Wilderness Dormitory',
+      category: 'Wildlife Groups, Students & Family Conclaves',
+      title: 'Air-Conditioned Group Wilderness Dormitory',
+      lead: 'A dedicated high-capacity sanctuary with comfortable individual beds, crisp sheets, split AC, and dedicated multi-stall washrooms.',
       photo: photos.dormitoryRoom,
-      link: '/rooms',
       badge: '1 Dedicated Group Facility',
-      specs: [
-        { label: 'Bed Setup', value: 'Multiple Comfortable Individual Beds' },
-        { label: 'Climate', value: 'High-Capacity Split Air-Conditioning' },
-        { label: 'Facilities', value: 'Clean Linens, Folded Blankets & Power Outlets' },
-        { label: 'Campus Access', value: 'Direct Access to Lawns, Pool & Dining Hall' },
+      link: '/rooms',
+      highlights: [
+        { icon: '🛌', label: 'Individual Comfortable Beds', desc: 'Neat linens & personal charging points' },
+        { icon: '❄️', label: 'High-Capacity Split AC', desc: 'Cool comfort throughout the day' },
+        { icon: '🚿', label: 'Multiple Dedicated Washrooms', desc: 'Continuous hot & cold water' },
+        { icon: '👥', label: 'Economical Group Rate', desc: 'Best value for Pench expeditions' },
       ],
-      description: 'Our dedicated group dormitory is fully equipped with comfortable individual beds, crisp linens, and split air-conditioning. It provides an economical, clean, and sociable stay for birdwatching groups, photography clubs, school trips, and large family conclaves visiting Pench.',
-      features: ['Full Air-Conditioning', 'Multiple Washrooms', 'Personal Bedding & Storage', 'Group Safari Coordination', 'Budget Friendly'],
+      inclusions: ['Group Safari Coordination', 'Campfire Proximity', 'Dining Hall Access', 'Secure Gated Campus'],
     },
   };
 
-  const current = categories[activeTab];
+  const current = rooms[activeTab];
 
   return (
-    <section className="py-24 sm:py-32 lg:py-40 bg-ivory text-charcoal border-b border-sand/30 overflow-hidden">
+    <section className="relative py-20 sm:py-28 lg:py-36 bg-[#F8F5EE] text-charcoal border-b border-sand/30 overflow-hidden">
       <Container size="xl">
         
         {/* ========================================================
-            SECTION HEADER & CATEGORY SWITCHER TABS
+            SECTION HEADER & PILL SELECTOR TABS
             ======================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 sm:mb-16">
-          <div className="max-w-2xl space-y-2.5">
-            <div className="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.14em] text-gold-dark font-semibold">
-              <span className="w-5 h-px bg-gold-dark/40" />
-              <span>Accommodations Portfolio</span>
+          <div className="max-w-2xl space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest-deep text-ivory text-[11px] uppercase tracking-[0.16em] font-semibold">
+              <span>Authentic Accommodations</span>
             </div>
 
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal leading-snug text-forest-deep text-balance">
-              Guest Rooms Designed for Rest Between Safaris
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.18] text-forest-deep text-balance">
+              Rest Crafted Between Tiger Safaris.
             </h2>
 
-            <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal-muted font-light leading-relaxed">
-              With 20 private guest rooms and 1 dedicated group dormitory, our air-conditioned accommodations offer solid teak furnishings, clean linens, and quiet garden outlooks.
+            <p className="font-sans text-sm sm:text-base text-charcoal-muted font-light leading-relaxed">
+              With 20 private air-conditioned rooms and 1 dedicated group dormitory, every space features solid wood, clean linens, and quiet garden outlooks.
             </p>
           </div>
 
-          {/* Interactive Room Tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-[4px] bg-ivory-warm/60 border border-sand/40 self-start lg:self-auto overflow-x-auto max-w-full">
-            {Object.values(categories).map((cat) => {
-              const isActive = activeTab === cat.id;
+          {/* Interactive Room Tabs in Floating Pill Style */}
+          <div className="flex items-center gap-2 p-1.5 rounded-full bg-white border border-stone-200/80 shadow-xs self-start lg:self-auto overflow-x-auto max-w-full">
+            {Object.values(rooms).map((r) => {
+              const isActive = activeTab === r.id;
               return (
                 <button
-                  key={cat.id}
+                  key={r.id}
                   type="button"
-                  onClick={() => setActiveTab(cat.id)}
+                  onClick={() => setActiveTab(r.id)}
                   className={cn(
-                    'px-4 sm:px-6 py-2.5 rounded-[3px] text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold',
+                    'px-4 sm:px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap',
                     isActive
-                      ? 'bg-forest-deep text-ivory shadow-md ring-1 ring-gold/40'
-                      : 'text-charcoal-muted hover:text-forest-deep hover:bg-ivory'
+                      ? 'bg-forest-deep text-white shadow-sm'
+                      : 'text-stone-600 hover:text-forest-deep hover:bg-stone-100/70'
                   )}
                 >
-                  {cat.label}
+                  {r.tabLabel}
                 </button>
               );
             })}
@@ -120,13 +121,13 @@ export default function AccommodationsShowcase() {
         </div>
 
         {/* ========================================================
-            ACTIVE CATEGORY SHOWCASE (LARGE EDITORIAL SPREAD)
+            HERO SUITE SPREAD (7 COLS PHOTO, 5 COLS EDITORIAL)
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Visual Showcase (7 Cols) */}
+          {/* Visual Room Showcase (7 Cols) */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="relative aspect-[16/11] sm:aspect-[16/10] overflow-hidden rounded-[3px] bg-forest-dark border border-sand/35 shadow-xl group">
+            <div className="relative aspect-[16/10] sm:aspect-[16/10] rounded-2xl overflow-hidden bg-forest-dark border border-stone-200 shadow-xl group">
               <img
                 key={current.photo.src}
                 src={current.photo.src}
@@ -136,120 +137,106 @@ export default function AccommodationsShowcase() {
                 height={current.photo.height}
                 alt={current.photo.alt}
                 loading="lazy"
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-104"
+                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-103"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-transparent to-transparent opacity-65 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-forest-deep/15 to-transparent pointer-events-none" />
 
-              {/* In-Image Category Badge */}
-              <div className="absolute top-4 left-4 sm:top-5 sm:left-5">
-                <Badge variant="gold" size="sm" className="tracking-wider uppercase font-semibold">
-                  {current.badge}
-                </Badge>
+              {/* Floating Badge (Top Left) */}
+              <div className="absolute top-4 left-4 sm:top-5 sm:left-5 z-10">
+                <span className="px-3.5 py-1.5 rounded-full bg-white/95 text-forest-deep border border-stone-200/80 text-xs font-bold tracking-wide shadow-md backdrop-blur-md">
+                  ✨ {current.badge}
+                </span>
               </div>
 
-              {/* Bottom In-Image Title */}
+              {/* In-Image Caption (Bottom Left) */}
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 text-ivory">
-                <h3 className="font-serif text-xl sm:text-2xl font-semibold mb-1">
+                <span className="text-[10px] uppercase tracking-[0.18em] text-gold-light font-semibold block mb-0.5">
+                  {current.category}
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-normal leading-snug">
                   {current.title}
                 </h3>
-                <p className="text-xs text-sand-light font-light max-w-lg leading-relaxed">
-                  {current.subtitle}
-                </p>
               </div>
             </div>
 
-            {/* Thumbnail pair strip */}
-            <div className="grid grid-cols-3 gap-3 text-xs text-charcoal-muted font-light">
-              <div className="p-3 rounded-[2px] bg-ivory-warm/40 border border-sand/30">
-                <span className="block text-[10px] uppercase tracking-wider font-semibold text-forest-deep mb-0.5">
-                  Climate Control
-                </span>
-                <span>Individual Split AC in every room</span>
-              </div>
-              <div className="p-3 rounded-[2px] bg-ivory-warm/40 border border-sand/30">
-                <span className="block text-[10px] uppercase tracking-wider font-semibold text-forest-deep mb-0.5">
-                  Safari Dawn Tea
-                </span>
-                <span>Freshly brewed pre-safari service</span>
-              </div>
-              <div className="p-3 rounded-[2px] bg-ivory-warm/40 border border-sand/30">
-                <span className="block text-[10px] uppercase tracking-wider font-semibold text-forest-deep mb-0.5">
-                  Pool & Grounds
-                </span>
-                <span>Full access included with every booking</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Narrative & Specifications (5 Cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            <div className="space-y-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold block">
-                Real Property Inventory
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-forest-deep font-semibold">
-                {current.title}
-              </h3>
-              <p className="font-sans text-xs sm:text-sm text-charcoal/85 font-light leading-relaxed">
-                {current.description}
-              </p>
-            </div>
-
-            {/* Verified Specifications Table */}
-            <div className="space-y-3 pt-3 border-t border-sand/30">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-charcoal-muted font-semibold block mb-2">
-                Room Highlights & Furnishings
-              </span>
-              <div className="grid grid-cols-1 gap-2.5">
-                {current.specs.map((spec, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-[2px] bg-ivory-warm/50 border border-sand/30 flex items-start justify-between gap-3 text-xs"
-                  >
-                    <span className="text-charcoal-muted font-medium shrink-0 uppercase tracking-wider text-[10px]">
-                      {spec.label}
-                    </span>
-                    <span className="font-serif font-semibold text-forest-deep text-right">
-                      {spec.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Feature Pills */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              {current.features.map((feat, idx) => (
+            {/* Quick Inclusions Bar */}
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-charcoal-muted">
+              <span className="font-semibold text-forest-deep text-[11px] uppercase tracking-wider">Includes:</span>
+              {current.inclusions.map((inc, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-[2px] bg-sand/20 border border-sand/35 text-[11px] text-forest-deep font-medium"
+                  className="px-3 py-1 rounded-full bg-white border border-stone-200/80 text-stone-700 text-[11px] font-medium"
                 >
-                  ✓ {feat}
+                  ✓ {inc}
                 </span>
               ))}
             </div>
+          </div>
 
-            {/* Actions */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <Button
-                as={Link}
-                to={current.link}
-                variant="primary"
-                size="md"
-                className="font-semibold tracking-wider"
-              >
-                View Room Gallery →
-              </Button>
-              <Button
-                as={Link}
-                to="/book"
-                variant="gold"
-                size="md"
-                className="font-bold tracking-wider"
-              >
-                Check Availability & Book
-              </Button>
+          {/* Luxury Room Highlights & Booking Actions (5 Cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            <div className="space-y-2">
+              <span className="text-xs uppercase tracking-[0.16em] text-terracotta font-bold block">
+                {current.category}
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl text-forest-deep font-semibold leading-snug">
+                {current.title}
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-charcoal-muted font-light leading-relaxed">
+                {current.lead}
+              </p>
+            </div>
+
+            {/* 4 Feature Highlights Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {current.highlights.map((h, idx) => (
+                <div
+                  key={idx}
+                  className="p-3.5 rounded-xl bg-white border border-stone-200/80 shadow-xs space-y-1 hover:border-forest/40 transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">{h.icon}</span>
+                    <span className="font-serif text-xs sm:text-sm font-semibold text-forest-deep">
+                      {h.label}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-charcoal-muted font-light leading-snug">
+                    {h.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Booking & WhatsApp Dual Actions (Studio Modular Style) */}
+            <div className="pt-3 space-y-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  to={`/book?room=${current.id}`}
+                  className="group inline-flex items-center gap-2.5 pl-5 pr-2 py-2 rounded-full bg-forest-deep text-ivory text-xs uppercase tracking-[0.12em] font-semibold hover:bg-forest-dark transition-all duration-300 shadow-sm"
+                >
+                  <span>Book This Room</span>
+                  <span className="w-7 h-7 rounded-full bg-[#BCE0FD] text-forest-deep flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-xs shrink-0">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </Link>
+
+                <a
+                  href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about availability and rates for ${current.title}.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200 text-xs font-semibold text-stone-700 hover:text-forest-deep hover:border-forest shadow-xs transition-colors"
+                >
+                  <WhatsAppIcon size="sm" className="text-[#25D366]" />
+                  <span>Check Availability</span>
+                </a>
+              </div>
+
+              <p className="text-[11px] text-charcoal-muted font-light">
+                ⚡ Only 65 km from Nagpur · Easy same-day reservation confirmation via WhatsApp.
+              </p>
             </div>
 
           </div>

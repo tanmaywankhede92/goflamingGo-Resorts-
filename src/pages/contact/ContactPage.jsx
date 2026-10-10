@@ -42,8 +42,8 @@ export default function ContactPage() {
                 </p>
                 <div className="p-4 rounded-[3px] bg-sand-light/60 border border-sand/40 text-xs text-charcoal-muted space-y-1.5">
                   <p><strong>Operating Hours:</strong> {QUICK_CONTACT.hours}</p>
-                  <p><strong>Proximity:</strong> Just 85 km from Nagpur via 4-lane NH 44.</p>
-                  <p><strong>Nearest Airport:</strong> Dr. Babasaheb Ambedkar International Airport, Nagpur (~1.5 - 2 hrs).</p>
+                  <p><strong>Proximity:</strong> Just 65 km from Nagpur via 4-lane NH 44.</p>
+                  <p><strong>Nearest Airport:</strong> Dr. Babasaheb Ambedkar International Airport, Nagpur (~1 hr drive).</p>
                   <p><strong>Nearest Railhead:</strong> Nagpur Junction (NGP) & Jabalpur.</p>
                 </div>
               </div>

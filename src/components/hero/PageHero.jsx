@@ -98,7 +98,7 @@ export default function PageHero({
   // 2. LARGE IMAGE HERO (Major Section Landings: Rooms, Dining, Weddings)
   if (variant === 'large') {
     return (
-      <section className={cn('relative w-full min-h-[460px] sm:min-h-[500px] md:min-h-[560px] flex items-center py-16 sm:py-20 overflow-hidden bg-forest-deep text-ivory', className)}>
+      <section className={cn('relative w-full min-h-[460px] sm:min-h-[500px] md:min-h-[560px] flex items-center pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 overflow-hidden bg-forest-deep text-ivory', className)}>
         <div className="absolute inset-0 z-0">
           <img
             src={image}
@@ -176,7 +176,7 @@ export default function PageHero({
   // 3. SPLIT EDITORIAL HERO (Asymmetric: Narrative on Left, Visual on Right)
   if (variant === 'split') {
     return (
-      <section className={cn('w-full py-10 sm:py-14 md:py-20 bg-ivory text-charcoal', className)}>
+      <section className={cn('w-full pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-14 md:pb-20 bg-ivory text-charcoal', className)}>
         <Container size="xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
             {/* Left Narrative */}
@@ -259,7 +259,7 @@ export default function PageHero({
   // 4. DARK IMMERSIVE HERO (Deep Forest / Safari / Wildlife Mood)
   if (variant === 'dark') {
     return (
-      <section className={cn('relative w-full py-16 sm:py-20 md:py-28 bg-forest-deep text-ivory overflow-hidden', className)}>
+      <section className={cn('relative w-full pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-28 bg-forest-deep text-ivory overflow-hidden', className)}>
         {image && (
           <div className="absolute inset-0 z-0 opacity-25">
             <img
@@ -319,7 +319,7 @@ export default function PageHero({
 
   // 5. MINIMAL PAGE HERO (Clean & Functional: Booking, Contact, Policies)
   return (
-    <section className={cn('w-full py-12 sm:py-16 md:py-20 bg-ivory-warm/60 border-b border-sand/40 text-charcoal', className)}>
+    <section className={cn('w-full pt-24 sm:pt-28 md:pt-32 pb-12 sm:py-16 md:py-20 bg-ivory-warm/60 border-b border-sand/40 text-charcoal', className)}>
       <Container size="xl">
         <div className="max-w-2xl">
           {breadcrumbs.length > 0 && (

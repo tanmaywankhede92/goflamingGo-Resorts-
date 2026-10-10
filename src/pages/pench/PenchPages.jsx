@@ -43,7 +43,7 @@ export function SillariGatePage() {
       breadcrumbs={[{ label: 'Pench', to: '/pench' }, { label: 'Sillari Gate' }]}
       badge="Nearest to Nagpur"
       highlights={[
-        { title: 'Unmatched Proximity to Nagpur', desc: 'Located approximately 85 km from Nagpur Airport and Railway Station—an easy 1.5 to 2 hour drive along smooth national highway.' },
+        { title: 'Unmatched Proximity to Nagpur', desc: 'Located approximately 65 km from Nagpur Airport and Railway Station—an easy 1 hour drive along smooth 4-lane national highway.' },
         { title: 'Core Zone Access', desc: 'Direct entry into prime tiger territories, water bodies, and scenic teak forest tracks.' },
         { title: 'Resort Location Advantage', desc: 'Staying at Go Flamingo means you avoid pre-dawn 30 km transfers and arrive refreshed at the gate line.' },
         { title: 'Full Safari Facilities', desc: 'Ticket verification desk, forest interpretation center, and certified naturalist guides station.' },
@@ -104,14 +104,14 @@ export function HowToReachPage() {
     <PlaceholderPage
       title="How To Reach Pench (Sillari Gate)"
       eyebrow="Travel Logistics"
-      subtitle="Pench is one of India’s most accessible tiger reserves. Reaching Sillari Gate from Nagpur takes under two hours via the 4-lane NH 44."
+      subtitle="Pench is one of India’s most accessible tiger reserves. Reaching Sillari Gate from Nagpur takes just about one hour via the 4-lane NH 44 (65 km)."
       heroVariant="minimal"
       breadcrumbs={[{ label: 'Pench', to: '/pench' }, { label: 'How To Reach' }]}
       badge="Smooth Highway Access"
       highlights={[
-        { title: 'By Air (Dr. Babasaheb Ambedkar Airport, Nagpur)', desc: 'Nagpur is the nearest major airport (~85 km). Well-connected with daily direct flights from Mumbai, Delhi, Bengaluru, Hyderabad, and Pune.' },
-        { title: 'By Train (Nagpur Junction / Jabalpur)', desc: 'Nagpur Junction (~80 km) is a major national railway hub connecting all parts of India with daily express trains.' },
-        { title: 'By Road (NH 44 Express)', desc: 'An excellent 4-lane highway drive north from Nagpur toward Jabalpur. Exit at Paoni / Sillari Gate turnoff.' },
+        { title: 'By Air (Dr. Babasaheb Ambedkar Airport, Nagpur)', desc: 'Nagpur is the nearest major airport (~65 km). Well-connected with daily direct flights from Mumbai, Delhi, Bengaluru, Hyderabad, and Pune.' },
+        { title: 'By Train (Nagpur Junction / Jabalpur)', desc: 'Nagpur Junction (~65 km) is a major national railway hub connecting all parts of India with daily express trains.' },
+        { title: 'By Road (NH 44 Express)', desc: 'An excellent 4-lane highway drive north from Nagpur toward Jabalpur. Just 65 km, exit at Paoni / Sillari Gate turnoff.' },
         { title: 'Resort Pick-Up & Transfers', desc: 'Pre-arranged chauffeured taxi transfers can be coordinated directly to the resort upon request.' },
       ]}
       relatedRoutes={PENCH_ROUTES}

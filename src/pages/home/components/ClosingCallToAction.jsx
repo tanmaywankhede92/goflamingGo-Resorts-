@@ -57,34 +57,33 @@ export default function ClosingCallToAction() {
           Direct access to Sillari Safari Gate, private balconies, swimming pool, and authentic regional dining. Inquire directly for seasonal availability and group bookings.
         </p>
 
-        {/* High-Intent Dual Actions */}
+        {/* High-Intent Dual Actions in Studio Modular Pill Style */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-          <Button
-            as={Link}
+          <Link
             to="/book"
-            variant="gold"
-            size="lg"
-            className="w-full sm:w-auto font-bold tracking-[0.14em] text-xs uppercase px-9 py-4 shadow-xl"
+            className="group inline-flex items-center justify-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-gold text-forest-dark text-xs uppercase tracking-[0.14em] font-bold shadow-xl hover:bg-gold-light transition-all duration-300 w-full sm:w-auto"
           >
-            Check Availability & Book
-          </Button>
+            <span>Check Availability & Book</span>
+            <span className="w-8 h-8 rounded-full bg-forest-deep text-gold flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-xs shrink-0">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </Link>
 
-          <Button
-            as="a"
+          <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            variant="inverted"
-            size="lg"
-            className="w-full sm:w-auto font-semibold tracking-[0.14em] text-xs uppercase px-8 py-4 flex items-center justify-center gap-2.5"
+            className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-sand/30 text-ivory text-xs uppercase tracking-[0.14em] font-semibold backdrop-blur-xs transition-colors w-full sm:w-auto"
           >
             <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
             <span>Chat on WhatsApp</span>
-          </Button>
+          </a>
         </div>
 
-        {/* Reassurance Footer Strip */}
-        <div className="mt-12 pt-8 border-t border-sand/15 flex flex-wrap items-center justify-center gap-6 text-xs text-sand/70 font-light">
+        {/* Reassurance Footer Strip with Correct 65 km Distance */}
+        <div className="mt-12 pt-8 border-t border-sand/15 flex flex-wrap items-center justify-center gap-6 text-xs text-sand/80 font-light">
           <span>
             Direct Assistance:{' '}
             <a href="tel:+919561957009" className="text-ivory font-medium hover:text-gold transition-colors">
@@ -94,7 +93,7 @@ export default function ClosingCallToAction() {
           <span className="hidden sm:inline">·</span>
           <span>Location: Sillari Gate, Sitapur, Maharashtra</span>
           <span className="hidden sm:inline">·</span>
-          <span>~85 km from Nagpur via NH 44</span>
+          <span className="text-gold-light font-medium">📍 Just 65 km from Nagpur via NH 44 (1 Hr Drive)</span>
         </div>
 
       </Container>
