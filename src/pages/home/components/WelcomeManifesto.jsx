@@ -84,15 +84,15 @@ export default function WelcomeManifesto() {
             </div>
           </div>
 
-          {/* Right: Secondary Deep Forest Green Luxury Card Container */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-[#163824] border border-[#C5A880]/30 shadow-xl text-ivory space-y-4">
+          {/* Right: Architectural Warm Light Sanctuary Highlights Card */}
+          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white/95 border border-stone-200/90 shadow-xl text-charcoal space-y-4">
             
             {/* Card Header */}
             <div>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold block mb-1">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#163824] font-bold block mb-1">
                 Sanctuary Highlights
               </span>
-              <h3 className="font-serif text-lg sm:text-xl text-white font-medium">
+              <h3 className="font-serif text-lg sm:text-xl text-[#163824] font-medium">
                 Why Guests Choose Go Flamingo
               </h3>
             </div>
@@ -101,45 +101,45 @@ export default function WelcomeManifesto() {
             <div className="space-y-3">
               
               {/* Feature 1: Highway Drive */}
-              <div className="p-3 sm:p-3.5 rounded-xl bg-white/8 border border-white/10 hover:border-[#C5A880]/40 transition-colors flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center shrink-0">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50/90 border border-stone-200/80 hover:border-[#C5A880]/50 transition-colors flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center shrink-0">
                   <HighwayCarIcon className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-sm sm:text-base text-white font-semibold">
+                  <h4 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
                     Smooth 1-Hour Drive from Nagpur
                   </h4>
-                  <p className="font-sans text-xs text-sand-light/80 font-light mt-0.5 leading-relaxed">
+                  <p className="font-sans text-xs text-charcoal/75 font-light mt-0.5 leading-relaxed">
                     Direct access via 4-lane NH 44 with zero rough interior roads.
                   </p>
                 </div>
               </div>
 
               {/* Feature 2: Haveli Courtyard */}
-              <div className="p-3 sm:p-3.5 rounded-xl bg-white/8 border border-white/10 hover:border-[#C5A880]/40 transition-colors flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center shrink-0">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50/90 border border-stone-200/80 hover:border-[#C5A880]/50 transition-colors flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center shrink-0">
                   <HaveliArchIcon className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-sm sm:text-base text-white font-semibold">
+                  <h4 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
                     Open-Air Haveli Courtyard
                   </h4>
-                  <p className="font-sans text-xs text-sand-light/80 font-light mt-0.5 leading-relaxed">
+                  <p className="font-sans text-xs text-charcoal/75 font-light mt-0.5 leading-relaxed">
                     Sculpted stone corridors, pitcher water fountain, and open lawns.
                   </p>
                 </div>
               </div>
 
               {/* Feature 3: Sillari Gate */}
-              <div className="p-3 sm:p-3.5 rounded-xl bg-white/8 border border-white/10 hover:border-[#C5A880]/40 transition-colors flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#C5A880]/20 text-[#C5A880] flex items-center justify-center shrink-0">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50/90 border border-stone-200/80 hover:border-[#C5A880]/50 transition-colors flex items-start gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center shrink-0">
                   <SafariBinocularsIcon className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-sm sm:text-base text-white font-semibold">
+                  <h4 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
                     Minutes to Sillari Safari Gate
                   </h4>
-                  <p className="font-sans text-xs text-sand-light/80 font-light mt-0.5 leading-relaxed">
+                  <p className="font-sans text-xs text-charcoal/75 font-light mt-0.5 leading-relaxed">
                     Direct core gate proximity for peaceful morning Gypsy departures.
                   </p>
                 </div>
@@ -151,10 +151,10 @@ export default function WelcomeManifesto() {
             <div className="pt-2">
               <Link
                 to="/resort"
-                className="group inline-flex items-center gap-3 pl-6 pr-3 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs sm:text-[13px] uppercase tracking-[0.14em] font-bold transition-all duration-300 shadow-[0_4px_18px_rgba(197,168,128,0.35)] hover:shadow-[0_6px_25px_rgba(197,168,128,0.5)] border border-[#F3DFC1] cursor-pointer"
+                className="group inline-flex items-center gap-3 pl-6 pr-3 py-3 rounded-full bg-[#163824] hover:bg-[#0E2A1B] text-white text-xs sm:text-[13px] uppercase tracking-[0.14em] font-bold transition-all duration-300 shadow-md hover:shadow-lg border border-[#163824] cursor-pointer"
               >
                 <span>Explore Facilities & Lawns</span>
-                <span className="w-7 h-7 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-sm font-bold shadow-inner">
+                <span className="w-7 h-7 rounded-full bg-[#C5A880] text-[#0E2A1B] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-sm font-bold shadow-inner">
                   →
                 </span>
               </Link>

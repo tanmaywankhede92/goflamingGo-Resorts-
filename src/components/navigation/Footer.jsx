@@ -22,9 +22,19 @@ export default function Footer() {
         {/* BRAND SIGNATURE & TOP CALLOUT */}
         <div className="pb-12 border-b border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div className="space-y-3 max-w-xl">
-            {/* OFFICIAL GO FLAMINGO LOGO (White Variant for Dark Background) */}
+            {/* OFFICIAL GO FLAMINGO BRAND LOGO (Proper Authentic Identity) */}
             <div>
-              <Logo variant="footer" theme="dark" />
+              <Link
+                to="/"
+                aria-label="Go Flamingo Resorts – Home"
+                className="inline-flex items-center px-4 py-2.5 rounded-2xl bg-white/95 border border-white/20 shadow-md hover:bg-white transition-all duration-200"
+              >
+                <img
+                  src="/assets/logo/go-flamingo-logo-trimmed.png"
+                  alt="Go Flamingo Resorts – Sillari Gate, Pench"
+                  className="h-9 sm:h-11 w-auto object-contain select-none"
+                />
+              </Link>
             </div>
             <div className="pt-1">
               <span className="text-[11px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold block mb-0.5">
@@ -61,16 +71,16 @@ export default function Footer() {
         {/* Multi-Column Sitemap */}
         <div className="py-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-sm">
           
-          {/* Column 1: The Resort */}
+          {/* Column 1: About */}
           <div className="space-y-3">
             <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              The Resort
+              About Resort
             </span>
             <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/resort" className="hover:text-gold transition-colors">Resort Overview</Link></li>
               <li><Link to="/resort/about" className="hover:text-gold transition-colors">About Go Flamingo</Link></li>
+              <li><Link to="/resort" className="hover:text-gold transition-colors">Resort Overview</Link></li>
               <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Facilities & Lawns</Link></li>
-              <li><Link to="/resort/pool" className="hover:text-gold transition-colors">Forest Pool</Link></li>
+              <li><Link to="/resort/pool" className="hover:text-gold transition-colors">Forest Stone Pool</Link></li>
               <li><Link to="/resort/dining" className="hover:text-gold transition-colors">Dining & Cuisine</Link></li>
               <li><Link to="/gallery" className="hover:text-gold transition-colors">Photo Gallery</Link></li>
             </ul>
@@ -91,33 +101,33 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Experiences */}
+          {/* Column 3: Pench & Safari Experiences */}
           <div className="space-y-3">
             <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Experiences
+              Pench & Safaris
             </span>
             <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/experiences" className="hover:text-gold transition-colors">All Experiences</Link></li>
-              <li><Link to="/experiences/safari" className="hover:text-gold transition-colors">Sillari Jungle Safari</Link></li>
+              <li><Link to="/pench" className="hover:text-gold transition-colors">Discover Pench Reserve</Link></li>
+              <li><Link to="/pench/sillari-gate" className="hover:text-gold transition-colors">Sillari Gate Advantage</Link></li>
+              <li><Link to="/experiences/safari" className="hover:text-gold transition-colors">Jungle Safaris</Link></li>
               <li><Link to="/experiences/wildlife" className="hover:text-gold transition-colors">Wildlife & Birding</Link></li>
               <li><Link to="/experiences/nature" className="hover:text-gold transition-colors">Nature Trails</Link></li>
-              <li><Link to="/experiences/family" className="hover:text-gold transition-colors">Family Adventures</Link></li>
-              <li><Link to="/experiences/couples" className="hover:text-gold transition-colors">Romantic Retreats</Link></li>
+              <li><Link to="/pench/safari-guide" className="hover:text-gold transition-colors">Safari Permits & Guide</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Pench Guide */}
+          {/* Column 4: Events & Celebrations */}
           <div className="space-y-3">
             <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Pench Destination
+              Events & Offsites
             </span>
             <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/pench" className="hover:text-gold transition-colors">About Pench Reserve</Link></li>
-              <li><Link to="/pench/sillari-gate" className="hover:text-gold transition-colors">Sillari Gate Advantage</Link></li>
-              <li><Link to="/pench/safari-guide" className="hover:text-gold transition-colors">Safari Permits & Guide</Link></li>
-              <li><Link to="/pench/how-to-reach" className="hover:text-gold transition-colors">How To Reach (Nagpur)</Link></li>
-              <li><Link to="/pench/best-time-to-visit" className="hover:text-gold transition-colors">Best Time To Visit</Link></li>
-              <li><Link to="/pench/things-to-do" className="hover:text-gold transition-colors">Things To Do</Link></li>
+              <li><Link to="/weddings" className="hover:text-gold transition-colors">Weddings at Pench</Link></li>
+              <li><Link to="/weddings/celebrations" className="hover:text-gold transition-colors">Milestones & Reunions</Link></li>
+              <li><Link to="/weddings/events" className="hover:text-gold transition-colors">Event Lawns & Dining</Link></li>
+              <li><Link to="/corporate/retreats" className="hover:text-gold transition-colors">Corporate Retreats</Link></li>
+              <li><Link to="/corporate/meetings" className="hover:text-gold transition-colors">Meetings & Conclaves</Link></li>
+              <li><Link to="/corporate" className="hover:text-gold transition-colors">Team Offsites & Safaris</Link></li>
             </ul>
           </div>
 

@@ -14,9 +14,13 @@ import { FloatingWhatsApp, LuxuryPreloader } from '../components/common';
 export default function MainLayout() {
   const { pathname } = useLocation();
 
-  // Reset scroll to top on page transitions
+  // Reset scroll to top on all page transitions, redirects, and reloads
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 50);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return (

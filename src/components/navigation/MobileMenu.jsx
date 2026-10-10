@@ -83,7 +83,7 @@ export default function MobileMenu({ isOpen, onClose }) {
         {/* Dynamic Nav Items */}
         {NAV_ITEMS.map((item) => {
           const isExpanded = expandedItem === item.id;
-          const isActive = location.pathname.startsWith(item.path);
+          const isActive = (item.matchPaths || [item.path]).some((p) => location.pathname.startsWith(p));
 
           if (!item.hasMegaMenu) {
             return (

@@ -59,13 +59,13 @@ export default function Navbar() {
             ======================================================== */}
         <div
           className={cn(
-            'w-full rounded-full transition-all duration-300 flex items-center justify-between gap-2 lg:gap-3 px-3.5 sm:px-5 py-2 sm:py-2.5',
+            'relative w-full rounded-full transition-all duration-300 flex items-center justify-between gap-2 lg:gap-3 px-3.5 sm:px-5 py-2 sm:py-2.5 min-h-[46px] sm:min-h-[50px]',
             'bg-white/95 backdrop-blur-xl border border-stone-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
           )}
         >
           
-          {/* 1. BRAND LOGO (Integrated on Left) */}
-          <div className="flex items-center shrink-0">
+          {/* 1. BRAND LOGO (Centered on mobile view, integrated on Left for desktop) */}
+          <div className="flex items-center shrink-0 max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 z-10">
             <Link
               to="/"
               aria-label="Go Flamingo Resorts – Home"
@@ -100,7 +100,7 @@ export default function Navbar() {
             </Link>
 
             {NAV_ITEMS.map((item) => {
-              const isActive = location.pathname.startsWith(item.path);
+              const isActive = (item.matchPaths || [item.path]).some((p) => location.pathname.startsWith(p));
               const isOpen = activeMegaMenu === item.id;
 
               if (!item.hasMegaMenu) {
@@ -157,7 +157,7 @@ export default function Navbar() {
           </nav>
 
           {/* 3. RIGHT ACTIONS: PILL CTA + MOBILE HAMBURGER */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 max-lg:ml-auto">
 
             {/* Desktop Pill CTA: Book Your Stay with Accent Arrow Circle */}
             <div className="hidden sm:block shrink-0">

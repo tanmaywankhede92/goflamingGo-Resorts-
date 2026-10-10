@@ -111,6 +111,10 @@ export default function App() {
           {/* Booking */}
           <Route path="book" element={<BookPage />} />
 
+          {/* Aliases & Direct Redirects */}
+          <Route path="about" element={<Navigate to="/resort" replace />} />
+          <Route path="events" element={<Navigate to="/weddings" replace />} />
+
           {/* Catch-all fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
