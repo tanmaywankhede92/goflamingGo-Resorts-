@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, WhatsAppIcon, CheckIcon } from '../../../components/common';
+import { ArrowRight } from 'lucide-react';
 import { AUTHENTIC_RESORT } from '../../../data/images';
 import { QUICK_CONTACT } from '../../../data/navigation';
 import { cn } from '../../../utils/cn';
@@ -98,9 +99,8 @@ export default function AccommodationsShowcase() {
 
       {/* In-Image Floating Badge */}
       <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
-        <span className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-black/75 text-[#DFBF8E] border border-[#C5A880]/50 text-[11px] sm:text-xs font-bold tracking-wide shadow-md backdrop-blur-md flex items-center gap-1.5 sm:gap-2">
-          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#C5A880] animate-pulse" />
-          <span>{current.badge}</span>
+        <span className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-black/75 text-[#DFBF8E] border border-[#C5A880]/50 text-[11px] sm:text-xs font-medium uppercase tracking-[0.16em] shadow-md backdrop-blur-md">
+          {current.badge}
         </span>
       </div>
 
@@ -141,8 +141,7 @@ export default function AccommodationsShowcase() {
             
             {/* 1. SECTION HEADING */}
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#DFBF8E] text-[11px] sm:text-xs uppercase tracking-[0.18em] font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
+              <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#DFBF8E] text-[11px] sm:text-xs uppercase tracking-[0.18em] font-semibold">
                 <span>Authentic Accommodations</span>
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-white">
@@ -209,15 +208,15 @@ export default function AccommodationsShowcase() {
               ))}
             </div>
 
-            {/* 6. DIRECT CONVERSION ACTIONS (Single row on mobile, dual actions on desktop) */}
-            <div className="pt-2 sm:pt-3 flex flex-row items-center gap-2.5 sm:gap-4 w-full">
+            {/* 6. DIRECT CONVERSION ACTIONS (Sleek unified size matching all site CTAs) */}
+            <div className="pt-2 flex flex-row items-center gap-2.5 sm:gap-3.5 w-full">
               <Link
-                to={`/book?room=${current.id}`}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-7 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-[13px] uppercase tracking-[0.08em] sm:tracking-[0.14em] font-bold transition-all duration-300 shadow-[0_4px_20px_rgba(197,168,128,0.35)] hover:shadow-[0_6px_28px_rgba(197,168,128,0.55)] border border-[#F3DFC1] cursor-pointer whitespace-nowrap"
+                to={`/contact?room=${current.id}`}
+                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] cursor-pointer whitespace-nowrap"
               >
                 <span>Book This Room</span>
-                <span className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-xs sm:text-sm font-bold shadow-inner">
-                  →
+                <span className="w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
+                  <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
                 </span>
               </Link>
 
@@ -225,9 +224,9 @@ export default function AccommodationsShowcase() {
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about availability for ${current.title}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-7 py-3 sm:py-4 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-[13px] uppercase tracking-[0.06em] sm:tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_6px_25px_rgba(37,211,102,0.25)] cursor-pointer whitespace-nowrap"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] cursor-pointer whitespace-nowrap"
               >
-                <WhatsAppIcon size="md" className="text-[#25D366] shrink-0" />
+                <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>WhatsApp Inquiry</span>
               </a>
             </div>

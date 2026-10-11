@@ -16,22 +16,16 @@ import { cn } from '../../utils/cn';
 export default function FloatingWhatsApp() {
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
-  const isBookingPage = location.pathname === '/book';
-
   // Pre-filled WhatsApp inquiry message
   const message = encodeURIComponent(
     'Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Pench – Sillari Gate.'
   );
   const whatsappUrl = `https://wa.me/919372425968?text=${message}`;
 
+  // Hide on mobile (always desktop-only via hidden lg:flex)
   return (
     <div
-      className={cn(
-        'fixed right-4 z-40 flex items-center gap-3 transition-all duration-300',
-        isBookingPage
-          ? 'bottom-4 sm:bottom-6 lg:right-6'
-          : 'bottom-[calc(5rem+env(safe-area-inset-bottom,0px))] lg:bottom-6 lg:right-6'
-      )}
+      className="hidden lg:flex fixed right-6 bottom-6 z-40 items-center gap-3 transition-all duration-300"
     >
       {/* Tooltip Pill (Desktop only) */}
       <div

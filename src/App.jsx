@@ -1,10 +1,19 @@
 
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
+
+/**
+ * Redirect /book route to /contact while preserving URL search parameters (e.g. ?room=...)
+ */
+function BookToContactRedirect() {
+  const location = useLocation();
+  return <Navigate to={`/contact${location.search}`} replace />;
+}
 
 // Page components
 import HomePage from './pages/home/HomePage';
+import AboutPage from './pages/about/AboutPage';
 import {
   ResortOverview,
   ResortAbout,
@@ -26,6 +35,7 @@ import {
   CelebrationsPage,
   EventsPage,
 } from './pages/weddings/WeddingsPages';
+import MasterEventsPage from './pages/events/EventsPage';
 import {
   CorporateOverview,
   RetreatsPage,
@@ -59,9 +69,10 @@ export default function App() {
           {/* Home */}
           <Route index element={<HomePage />} />
 
-          {/* Resort Group */}
-          <Route path="resort" element={<ResortOverview />} />
-          <Route path="resort/about" element={<ResortAbout />} />
+          {/* About & Resort */}
+          <Route path="about" element={<AboutPage />} />
+          <Route path="resort" element={<AboutPage />} />
+          <Route path="resort/about" element={<Navigate to="/about" replace />} />
           <Route path="resort/facilities" element={<ResortFacilities />} />
           <Route path="resort/pool" element={<ResortPool />} />
           <Route path="resort/dining" element={<ResortDining />} />
@@ -69,6 +80,8 @@ export default function App() {
           {/* Stay / Rooms Group */}
           <Route path="rooms" element={<RoomsOverview />} />
           <Route path="rooms/:slug" element={<RoomDetails />} />
+          <Route path="stay" element={<RoomsOverview />} />
+          <Route path="stay/:slug" element={<RoomDetails />} />
 
           {/* Experiences Group */}
           <Route path="experiences" element={<ExperiencesOverview />} />
@@ -78,15 +91,14 @@ export default function App() {
           <Route path="experiences/family" element={<FamilyPage />} />
           <Route path="experiences/couples" element={<CouplesPage />} />
 
-          {/* Weddings & Celebrations Group */}
-          <Route path="weddings" element={<WeddingsOverview />} />
-          <Route path="weddings/celebrations" element={<CelebrationsPage />} />
-          <Route path="weddings/events" element={<EventsPage />} />
-
-          {/* Corporate Group */}
-          <Route path="corporate" element={<CorporateOverview />} />
-          <Route path="corporate/retreats" element={<RetreatsPage />} />
-          <Route path="corporate/meetings" element={<MeetingsPage />} />
+          {/* Events & Celebrations (5.1 Weddings, 5.2 Corporate, 5.3 Conferences, 5.4 Social Celebrations) */}
+          <Route path="events" element={<MasterEventsPage />} />
+          <Route path="weddings" element={<MasterEventsPage />} />
+          <Route path="weddings/celebrations" element={<MasterEventsPage />} />
+          <Route path="weddings/events" element={<MasterEventsPage />} />
+          <Route path="corporate" element={<MasterEventsPage />} />
+          <Route path="corporate/retreats" element={<MasterEventsPage />} />
+          <Route path="corporate/meetings" element={<MasterEventsPage />} />
 
           {/* Dedicated Dining Page */}
           <Route path="dining" element={<DiningPage />} />
@@ -106,15 +118,11 @@ export default function App() {
           {/* Gallery */}
           <Route path="gallery" element={<GalleryPage />} />
 
-          {/* Contact */}
+          {/* Contact & Unified Direct Reservations */}
           <Route path="contact" element={<ContactPage />} />
 
-          {/* Booking */}
-          <Route path="book" element={<BookPage />} />
-
-          {/* Aliases & Direct Redirects */}
-          <Route path="about" element={<Navigate to="/resort" replace />} />
-          <Route path="events" element={<Navigate to="/weddings" replace />} />
+          {/* Booking redirects directly to Unified Contact Page */}
+          <Route path="book" element={<BookToContactRedirect />} />
 
           {/* Catch-all fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowDown } from 'lucide-react';
 import gsap from 'gsap';
 import { Container, Button } from '../../../components/common';
 import { AUTHENTIC_RESORT } from '../../../data/images';
@@ -139,7 +140,7 @@ export default function HeroSection() {
           <div className="hero-fade flex flex-row items-center justify-start sm:justify-center gap-3 sm:gap-4 pt-1 sm:pt-2">
             <Button
               as={Link}
-              to="/book"
+              to="/contact"
               variant="gold"
               size="md"
               className="hidden sm:inline-flex w-full sm:w-auto font-bold tracking-[0.12em] text-xs uppercase px-8 py-3.5 shadow-lg"
@@ -154,7 +155,8 @@ export default function HeroSection() {
               size="md"
               className="w-auto font-semibold tracking-[0.12em] text-xs uppercase px-5 sm:px-7 py-2.5 sm:py-3.5 cursor-pointer shadow-md inline-flex items-center gap-2"
             >
-              <span>Explore the Resort ↓</span>
+              <span>Explore the Resort</span>
+              <ArrowDown className="w-3.5 h-3.5" />
             </Button>
           </div>
 

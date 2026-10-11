@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { Container } from '../../../components/common';
 import { AUTHENTIC_RESORT } from '../../../data/images';
 import { cn } from '../../../utils/cn';
@@ -73,11 +74,11 @@ export default function CuratedGalleryJournal() {
 
           <Link
             to="/gallery"
-            className="group inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-white border border-stone-200 text-[#163824] text-[11px] uppercase tracking-[0.12em] font-semibold hover:border-[#163824] transition-colors shadow-2xs self-start sm:self-auto"
+            className="group inline-flex items-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-[#163824] hover:bg-[#0E2A1B] text-white text-[11px] sm:text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-sm hover:shadow-md self-start sm:self-auto shrink-0 cursor-pointer"
           >
             <span>View Full Gallery</span>
-            <span className="w-6 h-6 rounded-full bg-[#163824] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 text-xs">
-              →
+            <span className="w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-[#C5A880] text-[#0E2A1B] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
+              <ArrowRight className="w-3 h-3 text-[#0E2A1B]" />
             </span>
           </Link>
         </div>
@@ -168,7 +169,7 @@ export default function CuratedGalleryJournal() {
                   </p>
                 </div>
                 <Link
-                  to="/book"
+                  to="/contact"
                   onClick={() => setSelectedPhoto(null)}
                   className="px-4 py-2 rounded-full bg-[#163824] text-white text-xs font-semibold hover:bg-[#0E2A1B] transition-colors shrink-0 ml-3"
                 >

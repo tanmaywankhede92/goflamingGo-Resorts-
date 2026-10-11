@@ -1,4 +1,4 @@
-import { IMAGES } from './images';
+import { IMAGES, AUTHENTIC_RESORT, RESORT_DRIVE_PHOTOS } from './images';
 
 /**
  * GO FLAMINGO RESORT — NAVIGATION & MEGA-MENU ARCHITECTURE
@@ -11,50 +11,37 @@ export const NAV_ITEMS = [
   {
     id: 'about',
     label: 'About',
-    path: '/resort',
-    matchPaths: ['/resort', '/about'],
-    hasMegaMenu: true,
-    preview: {
-      image: IMAGES.resort.exterior,
-      title: 'Tranquil Forest Sanctuary',
-      description: 'Nestled on the threshold of Sillari Gate amidst teak groves, birdsong, and serene nature.',
-      cta: 'About Go Flamingo',
-      path: '/resort/about',
-    },
-    sections: [
-      {
-        title: 'Our Story & Sanctuary',
-        items: [
-          { label: 'About Go Flamingo', path: '/resort/about', desc: 'Our vision of warm Pench hospitality & philosophy' },
-          { label: 'Resort Overview', path: '/resort', desc: 'Expansive campus, teak groves & nature ambience' },
-          { label: 'Resort Facilities', path: '/resort/facilities', desc: 'Lush lawns, open lounge, bonfire & guest amenities' },
-          { label: 'Forest Stone Pool', path: '/resort/pool', desc: 'Natural stone swimming pool framed by native trees' },
-          { label: 'Regional Dining', path: '/resort/dining', desc: 'Authentic Central Indian flavors & classic culinary comfort' },
-        ]
-      }
-    ]
+    path: '/about',
+    matchPaths: ['/about', '/resort'],
+    hasMegaMenu: false,
   },
   {
     id: 'stay',
     label: 'Stay',
-    path: '/rooms',
-    matchPaths: ['/rooms', '/packages'],
+    path: '/stay',
+    matchPaths: ['/stay', '/rooms'],
     hasMegaMenu: true,
     preview: {
-      image: IMAGES.rooms.cottage,
-      title: 'Comfort in the Forest',
-      description: 'Thoughtfully appointed cottages with private sit-outs and quiet verandahs.',
-      cta: 'View All Rooms',
-      path: '/rooms',
+      image: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
+      title: 'Deluxe & Super Deluxe Stays',
+      description: '20 comfortable haveli rooms and 1 group dormitory with swimming pool, dining, and Sillari Gate proximity.',
+      cta: 'Explore Accommodations & Facilities',
+      path: '/stay',
     },
     sections: [
       {
-        title: 'Accommodations',
+        title: 'Accommodations (20 Rooms & 1 Dormitory)',
         items: [
-          { label: 'All Rooms & Cottages', path: '/rooms', desc: 'Spacious wilderness stays for families & couples' },
-          { label: 'Featured Cottage', path: '/rooms/luxury-cottage', desc: 'Private verandah facing the forest greenery' },
-          { label: 'Family Suite', path: '/rooms/family-suite', desc: 'Generous multi-bed layout for family travel' },
-          { label: 'Packages & Offers', path: '/packages', desc: 'Curated stay & safari itineraries' },
+          { label: '2.1 Deluxe Rooms', path: '/stay/deluxe-rooms', desc: 'Teak king bed, split AC & private balcony garden views' },
+          { label: '2.2 Super Deluxe Rooms', path: '/stay/super-deluxe-rooms', desc: 'Arched haveli verandah suites with direct lawn access' },
+          { label: '2.3 Group Dormitory', path: '/stay/dormitory', desc: 'Spacious air-conditioned communal hall for large groups' },
+        ]
+      },
+      {
+        title: 'Resort Facilities & Amenities',
+        items: [
+          { label: 'Resort Amenities & Activities', path: '/stay#amenities', desc: 'Swimming pool, rain dance, dining hall, kids park & game zone' },
+          { label: 'Conference & Meeting Hall', path: '/stay#conference-room', desc: 'Air-conditioned conference space for corporate gatherings & offsites' },
         ]
       }
     ]
@@ -99,34 +86,9 @@ export const NAV_ITEMS = [
   {
     id: 'events',
     label: 'Events',
-    path: '/weddings',
-    matchPaths: ['/weddings', '/corporate', '/events'],
-    hasMegaMenu: true,
-    preview: {
-      image: IMAGES.events.wedding,
-      title: 'Forest Weddings & Corporate Offsites',
-      description: 'Host unforgettable destination weddings, milestone galas, and executive retreats amidst nature.',
-      cta: 'Plan Your Event',
-      path: '/weddings',
-    },
-    sections: [
-      {
-        title: 'Weddings & Celebrations',
-        items: [
-          { label: 'Destination Weddings', path: '/weddings', desc: 'Unforgettable forest ceremonies amidst teak groves' },
-          { label: 'Milestones & Celebrations', path: '/weddings/celebrations', desc: 'Anniversaries, birthdays & family reunions' },
-          { label: 'Sprawling Event Lawns', path: '/weddings/events', desc: 'Open-air gatherings under canopy lights & stars' },
-        ]
-      },
-      {
-        title: 'Corporate & Offsites',
-        items: [
-          { label: 'Corporate Retreats', path: '/corporate/retreats', desc: 'Leadership retreats and strategic thinking in wilderness' },
-          { label: 'Meetings & Conclaves', path: '/corporate/meetings', desc: 'Facilities for focused presentations & workshops' },
-          { label: 'Team Safari Offsites', path: '/corporate', desc: 'Team bonding with wildlife safaris & bonfire evenings' },
-        ]
-      }
-    ]
+    path: '/events',
+    matchPaths: ['/events', '/weddings', '/corporate'],
+    hasMegaMenu: false,
   },
   {
     id: 'gallery',

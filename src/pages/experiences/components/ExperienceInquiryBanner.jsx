@@ -49,7 +49,7 @@ export default function ExperienceInquiryBanner({
           {/* Primary High-Intent Room Booking */}
           <Button
             as={Link}
-            to="/book"
+            to="/contact"
             variant="gold"
             size="lg"
             className="w-full sm:w-auto font-bold tracking-wider shadow-md text-center"

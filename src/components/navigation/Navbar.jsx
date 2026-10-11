@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Container, Logo } from '../common';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
@@ -240,17 +241,12 @@ export default function Navbar() {
                           : 'hover:bg-stone-200/70 text-stone-500 hover:text-stone-800'
                       )}
                     >
-                      <svg
+                      <ChevronDown
                         className={cn(
-                          'w-2.5 h-2.5 transition-transform duration-200',
+                          'w-3 h-3 transition-transform duration-200',
                           isOpen ? 'rotate-180' : ''
                         )}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                      </svg>
+                      />
                     </button>
                   </div>
                 </div>
@@ -264,14 +260,12 @@ export default function Navbar() {
             {/* Desktop Pill CTA: Book Your Stay with Accent Arrow Circle */}
             <div className="hidden sm:block shrink-0">
               <Link
-                to="/book"
+                to="/contact"
                 className="group inline-flex items-center gap-2 pl-4 sm:pl-4.5 pr-1.5 py-1.5 rounded-full bg-forest-deep text-ivory text-xs uppercase tracking-[0.12em] font-semibold hover:bg-forest-dark transition-all duration-300 shadow-md"
               >
                 <span>Book Your Stay</span>
                 <span className="w-6 sm:w-6.5 h-6 sm:h-6.5 rounded-full bg-[#BCE0FD] text-forest-deep flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:scale-105 shadow-xs shrink-0">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                  <ArrowRight className="w-3.5 h-3.5 text-forest-deep" />
                 </span>
               </Link>
             </div>

@@ -111,21 +111,7 @@ export default function PageHero({
 
         <Container size="xl" className="relative z-10 w-full">
           <div className="max-w-2xl">
-            {breadcrumbs.length > 0 && (
-              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6 flex items-center gap-2 text-xs text-sand/80 font-sans tracking-wide">
-                <Link to="/" className="hover:text-gold transition-colors">Home</Link>
-                {breadcrumbs.map((crumb, idx) => (
-                  <React.Fragment key={idx}>
-                    <span>/</span>
-                    {crumb.to ? (
-                      <Link to={crumb.to} className="hover:text-gold transition-colors">{crumb.label}</Link>
-                    ) : (
-                      <span className="text-ivory font-medium">{crumb.label}</span>
-                    )}
-                  </React.Fragment>
-                ))}
-              </nav>
-            )}
+
 
             {badge && (
               <div className="mb-3">
@@ -181,21 +167,7 @@ export default function PageHero({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-6 lg:pr-6">
-              {breadcrumbs.length > 0 && (
-                <nav aria-label="Breadcrumb" className="mb-4 sm:mb-5 flex items-center gap-2 text-xs text-charcoal-muted font-sans tracking-wide">
-                  <Link to="/" className="hover:text-terracotta transition-colors">Home</Link>
-                  {breadcrumbs.map((crumb, idx) => (
-                    <React.Fragment key={idx}>
-                      <span>/</span>
-                      {crumb.to ? (
-                        <Link to={crumb.to} className="hover:text-terracotta transition-colors">{crumb.label}</Link>
-                      ) : (
-                        <span className="text-charcoal font-medium">{crumb.label}</span>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </nav>
-              )}
+
 
               {badge && (
                 <div className="mb-3">
@@ -322,21 +294,7 @@ export default function PageHero({
     <section className={cn('w-full pt-24 sm:pt-28 md:pt-32 pb-12 sm:py-16 md:py-20 bg-ivory-warm/60 border-b border-sand/40 text-charcoal', className)}>
       <Container size="xl">
         <div className="max-w-2xl">
-          {breadcrumbs.length > 0 && (
-            <nav aria-label="Breadcrumb" className="mb-3 sm:mb-4 flex items-center gap-2 text-xs text-charcoal-muted font-sans tracking-wide">
-              <Link to="/" className="hover:text-terracotta transition-colors">Home</Link>
-              {breadcrumbs.map((crumb, idx) => (
-                <React.Fragment key={idx}>
-                  <span>/</span>
-                  {crumb.to ? (
-                    <Link to={crumb.to} className="hover:text-terracotta transition-colors">{crumb.label}</Link>
-                  ) : (
-                    <span className="text-charcoal font-medium">{crumb.label}</span>
-                  )}
-                </React.Fragment>
-              ))}
-            </nav>
-          )}
+
 
           {eyebrow && (
             <SectionEyebrow color="terracotta" withLine className="mb-2 sm:mb-3">

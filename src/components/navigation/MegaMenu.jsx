@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { Container, Badge } from '../common';
 import { cn } from '../../utils/cn';
 
@@ -69,7 +70,7 @@ export default function MegaMenu({
                       >
                         <div className="text-xs sm:text-sm font-medium text-charcoal group-hover:text-forest-deep transition-colors flex items-center justify-between">
                           <span>{sub.label}</span>
-                          <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-forest">→</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-forest-deep opacity-0 group-hover:opacity-100 transition-all duration-200 group-hover:translate-x-0.5 shrink-0" />
                         </div>
                         {sub.desc && (
                           <p className="text-xs text-charcoal-muted font-light mt-0.5 leading-relaxed">
@@ -110,8 +111,9 @@ export default function MegaMenu({
                   <p className="text-xs text-charcoal-muted font-light mt-1 line-clamp-2 leading-relaxed">
                     {item.preview.description}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-[11px] text-forest-deep uppercase tracking-wider font-bold mt-3 group-hover:text-gold transition-colors">
-                    {item.preview.cta} →
+                  <span className="inline-flex items-center gap-1.5 text-[11px] text-forest-deep uppercase tracking-wider font-bold mt-3 group-hover:text-gold transition-colors">
+                    <span>{item.preview.cta}</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </Link>

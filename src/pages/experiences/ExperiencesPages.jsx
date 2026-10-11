@@ -579,7 +579,7 @@ export function ExperiencesOverview() {
                 <Button as={Link} to="/rooms" variant="primary" size="md">
                   Explore Accommodations →
                 </Button>
-                <Button as={Link} to="/book" variant="gold" size="md">
+                <Button as={Link} to="/contact" variant="gold" size="md">
                   Check Stay Availability
                 </Button>
               </div>
@@ -703,7 +703,7 @@ export function SafariPage() {
           },
           {
             label: 'Check Stay Availability',
-            to: '/book',
+            to: '/contact',
             variant: 'inverted',
           },
         ]}
@@ -1053,7 +1053,7 @@ export function WildlifePage() {
           },
           {
             label: 'Check Stay Availability',
-            to: '/book',
+            to: '/contact',
             variant: 'inverted',
           },
         ]}

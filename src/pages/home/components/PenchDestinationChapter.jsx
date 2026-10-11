@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { Container, Button, Badge } from '../../../components/common';
 import { IMAGES } from '../../../data/images';
 import { cn } from '../../../utils/cn';
@@ -159,8 +160,9 @@ export default function PenchDestinationChapter() {
 
             {/* Action Links to Existing Pages */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <Button as={Link} to="/experiences/safari" variant="primary" size="md">
-                Jungle Safari Guide →
+              <Button as={Link} to="/experiences/safari" variant="primary" size="md" className="inline-flex items-center gap-2">
+                <span>Jungle Safari Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Button>
               <Link
                 to="/pench/sillari-gate"

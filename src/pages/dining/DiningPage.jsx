@@ -21,7 +21,7 @@ export default function DiningPage() {
       relatedRoutes={[
         { label: 'Forest Pool Refreshments', path: '/resort/pool' },
         { label: 'Bonfires & Celebrations', path: '/weddings/celebrations' },
-        { label: 'Book Stay with Meals', path: '/book' },
+        { label: 'Book Stay with Meals', path: '/contact' },
       ]}
       actionLabel="Reserve a Dining Table"
       actionTo="/contact"

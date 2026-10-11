@@ -50,7 +50,7 @@ export function SillariGatePage() {
       ]}
       relatedRoutes={PENCH_ROUTES}
       actionLabel="Book Stay Near Sillari Gate"
-      actionTo="/book"
+      actionTo="/contact"
     />
   );
 }

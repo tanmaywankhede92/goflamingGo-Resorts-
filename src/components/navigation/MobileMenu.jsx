@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 import { Button, Logo, WhatsAppIcon } from '../common';
 import { NAV_ITEMS } from '../../data/navigation';
 import { cn } from '../../utils/cn';
@@ -109,8 +110,8 @@ export default function MobileMenu({ isOpen, onClose }) {
                 className="w-full flex items-center justify-between py-3.5 min-h-[48px] text-base font-serif tracking-wide text-ivory hover:text-gold transition-colors text-left"
               >
                 <span className={cn(isActive && 'text-gold font-bold')}>{item.label}</span>
-                <span className="text-sand/70 text-xs px-2 py-1 rounded-[2px] bg-forest-deep border border-sand/20">
-                  {isExpanded ? '▲' : '▼'}
+                <span className="text-sand/70 text-xs p-1 rounded-[2px] bg-forest-deep border border-sand/20 flex items-center justify-center">
+                  {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                 </span>
               </button>
 
@@ -137,7 +138,7 @@ export default function MobileMenu({ isOpen, onClose }) {
                       className="text-xs text-gold uppercase tracking-wider font-semibold inline-flex items-center gap-1.5 py-1"
                     >
                       <span>Explore {item.label} Overview</span>
-                      <span>→</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>
@@ -151,7 +152,7 @@ export default function MobileMenu({ isOpen, onClose }) {
       <div className="sticky bottom-0 px-6 py-5 bg-forest-dark border-t border-sand/20 shadow-2xl space-y-3">
         <Button
           as={Link}
-          to="/book"
+          to="/contact"
           onClick={onClose}
           variant="gold"
           size="lg"

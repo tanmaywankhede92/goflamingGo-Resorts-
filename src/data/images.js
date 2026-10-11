@@ -201,3 +201,105 @@ export const IMAGES = {
   },
 };
 
+/**
+ * Authentic Go Flamingo Resort Google Drive Media Assets
+ * Verified property photos matching exact on-site facilities:
+ * - Swimming pool & Kids splash pool
+ * - Rain dance stage & mist showers
+ * - Restaurant & Bar chandelier hall
+ * - Landscaped haveli gardens & evening lawns
+ * - Kids play park in bamboo grove
+ * - Indoor Game zone (billiards & table tennis)
+ * - Forest destination weddings, mandap, and corporate conference room
+ */
+export const RESORT_DRIVE_PHOTOS = {
+  pool: {
+    src: '/assets/resort_drive/swimming_pool_enhanced.jpg',
+    alt: 'Outdoor turquoise swimming pool and sun deck with teak loungers at Go Flamingo Resort Pench',
+    tag: 'Outdoor Pool',
+    title: 'Swimming Pool',
+    feature: 'Adult Pool & Kids Splash Zone',
+  },
+  rainDance: {
+    src: '/assets/resort_drive/rain_dance_enhanced.jpg',
+    alt: 'Outdoor rain dance arena with overhead mist showers at Go Flamingo Resort Pench',
+    tag: 'Rain Dance Arena',
+    title: 'Rain Dance Arena',
+    feature: 'Overhead Showers & Music Setup',
+  },
+  restaurantBar: {
+    src: '/assets/images/resort-authentic/restaurant-bar-hall.webp',
+    alt: 'Grand dining restaurant and bar with crystal chandeliers, booth seating and full service bar',
+    tag: 'Restaurant & Bar',
+    title: 'Restaurant & Bar',
+    feature: 'Regional Vidarbha & Multi-Cuisine',
+  },
+  landscapedGarden: {
+    src: '/assets/images/resort-authentic/arched-corridor-fountain.webp',
+    alt: 'Arched haveli corridor overlooking landscaped garden courtyard with sculpted pitcher fountain',
+    tag: 'Courtyard & Lawns',
+    title: 'Landscaped Garden',
+    feature: 'Manicured Lawns & Starlit Bonfires',
+  },
+  kidsPlayArea: {
+    src: '/assets/resort_drive/kids_play_area_enhanced.jpg',
+    alt: "Children's playground with slides, swings, see-saws in shaded bamboo grove and lush lawn",
+    tag: "Kids' Play Area",
+    title: "Kids' Play Area",
+    feature: 'Swings, Slides, See-Saws & Play Zones',
+  },
+  gameZone: {
+    src: '/assets/resort_drive/IMG-20261003-WA0013.jpg',
+    alt: 'Indoor recreation hall featuring tournament table tennis and billiards under jharokha arches',
+    tag: 'Indoor Recreation',
+    title: 'Game Zone & Club Lounge',
+    feature: 'Billiards, Table Tennis & Lounges',
+  },
+  gameZoneLounge: {
+    src: '/assets/resort_drive/IMG-20261003-WA0014.jpg',
+    alt: 'Club lounge with sofa seating, pool table, and Rajasthani jharokha windows',
+    tag: 'Executive Lounge',
+    title: 'Conference & Club Lounge',
+  },
+  weddingLawnBuffet: {
+    src: '/assets/resort_drive/IMG-20261010-WA0017.jpg',
+    alt: 'Outdoor lawn banquet with colorful canopy and buffet counters for destination weddings',
+  },
+  weddingMandap: {
+    src: '/assets/resort_drive/IMG-20261010-WA0021.jpg',
+    alt: 'Grand wedding mandap with floral canopy and pillars in banquet hall',
+  },
+  weddingMehendiStage: {
+    src: '/assets/resort_drive/IMG-20261010-WA0028.jpg',
+    alt: 'Rajasthani themed mehendi stage with embroidered umbrellas and marigold florals',
+  },
+  weddingReceptionStage: {
+    src: '/assets/resort_drive/IMG-20261010-WA0019.jpg',
+    alt: 'Grand wedding reception stage in air-conditioned banquet hall',
+  },
+  socialEventLawnNight: {
+    src: '/assets/resort_drive/social_celebrations_enhanced.jpg',
+    alt: 'Magical evening lawn celebration with ambient fairy lights, acoustic music and bonfire baithak at Go Flamingo Resort',
+  },
+  vipLawnBaithak: {
+    src: '/assets/resort_drive/IMG-20261010-WA0022.jpg',
+    alt: 'Royal baithak VIP lawn seating with red cushions and floral decor for celebrations',
+  },
+  resortEntranceSign: {
+    src: '/assets/resort_drive/IMG-20261010-WA0025.jpg',
+    alt: 'Go Flamingo Resort grand entrance with multi-tiered stone fountain',
+  },
+  executiveBedroomBalcony: {
+    src: '/assets/resort_drive/IMG-20261003-WA0007.jpg',
+    alt: 'Executive luxury bedroom with balcony glass doors overlooking garden canopy',
+  },
+  executiveBedroomDorm: {
+    src: '/assets/resort_drive/IMG-20261003-WA0020.jpg',
+    alt: 'Spacious family room with multiple beds, TV and attached bath',
+  },
+  bedroomSuiteBathtub: {
+    src: '/assets/resort_drive/IMG-20261003-WA0016.jpg',
+    alt: 'Deluxe bedroom suite with sitting area and modern bathroom with bathtub',
+  },
+};
+

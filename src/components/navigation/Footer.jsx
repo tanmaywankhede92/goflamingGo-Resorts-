@@ -65,7 +65,7 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Link
-              to="/book"
+              to="/contact"
               className="inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.14em] font-bold hover:bg-[#d8be98] transition-colors shadow-sm text-center"
             >
               Book Your Stay
@@ -91,7 +91,7 @@ export default function Footer() {
               About Resort
             </span>
             <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/resort/about" className="hover:text-gold transition-colors">About Go Flamingo</Link></li>
+              <li><Link to="/about" className="hover:text-gold transition-colors">About Go Flamingo</Link></li>
               <li><Link to="/resort" className="hover:text-gold transition-colors">Resort Overview</Link></li>
               <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Facilities & Lawns</Link></li>
               <li><Link to="/resort/pool" className="hover:text-gold transition-colors">Forest Stone Pool</Link></li>
@@ -133,15 +133,14 @@ export default function Footer() {
           {/* Column 4: Events & Celebrations */}
           <div className="space-y-3">
             <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Events & Offsites
+              Events & Celebrations
             </span>
             <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/weddings" className="hover:text-gold transition-colors">Weddings at Pench</Link></li>
-              <li><Link to="/weddings/celebrations" className="hover:text-gold transition-colors">Milestones & Reunions</Link></li>
-              <li><Link to="/weddings/events" className="hover:text-gold transition-colors">Event Lawns & Dining</Link></li>
-              <li><Link to="/corporate/retreats" className="hover:text-gold transition-colors">Corporate Retreats</Link></li>
-              <li><Link to="/corporate/meetings" className="hover:text-gold transition-colors">Meetings & Conclaves</Link></li>
-              <li><Link to="/corporate" className="hover:text-gold transition-colors">Team Offsites & Safaris</Link></li>
+              <li><Link to="/events#weddings" className="hover:text-gold transition-colors">5.1 Weddings & Ceremonies</Link></li>
+              <li><Link to="/events#corporate" className="hover:text-gold transition-colors">5.2 Corporate Events</Link></li>
+              <li><Link to="/events#conferences" className="hover:text-gold transition-colors">5.3 Conference Facilities</Link></li>
+              <li><Link to="/events#social-celebrations" className="hover:text-gold transition-colors">5.4 Social Celebrations</Link></li>
+              <li><Link to="/events" className="hover:text-gold transition-colors">All Venues & Lawns</Link></li>
             </ul>
           </div>
 
