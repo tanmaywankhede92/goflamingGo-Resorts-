@@ -90,7 +90,7 @@ export const NAV_ITEMS = [
           { label: 'Sillari Gate Guide', path: '/pench/sillari-gate', desc: 'Location advantage & gate entrance details' },
           { label: 'Safari Timings & Permits', path: '/pench/safari-guide', desc: 'Booking guidance, zones, morning & evening shifts' },
           { label: 'Things To Do', path: '/pench/things-to-do', desc: 'Pottery villages, Totladoh dam & birdwatching' },
-          { label: 'How To Reach', path: '/pench/how-to-reach', desc: 'Just 85 km / 90 mins from Nagpur airport & station' },
+          { label: 'How To Reach', path: '/pench/how-to-reach', desc: 'Just 65 km / 1 hr from Nagpur airport & station' },
           { label: 'Best Time To Visit', path: '/pench/best-time-to-visit', desc: 'Seasonal weather & wildlife spotting calendar' },
         ]
       }
@@ -154,5 +154,6 @@ export const QUICK_CONTACT = {
   email: "Info@Goflamingoresorts.Com",
   hours: "07:00 AM – 22:00 PM (Monday – Sunday)",
   address: "Sillari Gate Pench National Park, Sitapur, Maharashtra 441401, India",
-  nagpurDistance: "~85 km (1.5 - 2 hrs drive via NH 44)",
+  nagpurDistance: "~65 km (1 hr drive via NH 44)",
+  mapUrl: "https://share.google/1tQOcUc44JyN7u8JJ",
 };

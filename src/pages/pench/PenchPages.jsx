@@ -115,8 +115,8 @@ export function HowToReachPage() {
         { title: 'Resort Pick-Up & Transfers', desc: 'Pre-arranged chauffeured taxi transfers can be coordinated directly to the resort upon request.' },
       ]}
       relatedRoutes={PENCH_ROUTES}
-      actionLabel="Inquire About Taxi Transfers"
-      actionTo="/contact"
+      actionLabel="Get Directions on Google Maps ↗"
+      actionTo="https://share.google/1tQOcUc44JyN7u8JJ"
     />
   );
 }

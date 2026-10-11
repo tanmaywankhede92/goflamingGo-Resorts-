@@ -88,9 +88,15 @@ export default function PlaceholderPage({
                     This dedicated destination page is fully routed and ready. Full editorial photography and verified resort details will be integrated in subsequent phases.
                   </p>
                 </div>
-                <Button as={Link} to={actionTo} variant="primary" size="sm" className="whitespace-nowrap">
-                  {actionLabel}
-                </Button>
+                {actionTo?.startsWith('http') ? (
+                  <Button as="a" href={actionTo} target="_blank" rel="noopener noreferrer" variant="primary" size="sm" className="whitespace-nowrap">
+                    {actionLabel}
+                  </Button>
+                ) : (
+                  <Button as={Link} to={actionTo} variant="primary" size="sm" className="whitespace-nowrap">
+                    {actionLabel}
+                  </Button>
+                )}
               </div>
             </div>
 
@@ -123,7 +129,7 @@ export default function PlaceholderPage({
                   Pench Trip Planning
                 </span>
                 <p className="text-xs text-charcoal-muted font-light leading-relaxed mb-4">
-                  Sillari Gate is the most convenient entry into Pench Tiger Reserve from Nagpur (~85 km). Inquire early for safari permits.
+                  Sillari Gate is the most convenient entry into Pench Tiger Reserve from Nagpur (~65 km). Inquire early for safari permits.
                 </p>
                 <div className="flex flex-col gap-2">
                   <Button as={Link} to="/book" variant="gold" size="sm" className="w-full justify-center">

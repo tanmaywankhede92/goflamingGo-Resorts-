@@ -43,7 +43,21 @@ export default function Footer() {
               <p className="text-xs text-sand-light/80 font-light">
                 {QUICK_CONTACT.address} · {QUICK_CONTACT.nagpurDistance}
               </p>
-              <p className="text-[11px] text-sand/60 font-light mt-0.5">
+              <div className="pt-1">
+                <a
+                  href={QUICK_CONTACT.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#C5A880] hover:text-white transition-colors font-medium group"
+                >
+                  <svg className="w-3.5 h-3.5 text-[#C5A880] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="underline underline-offset-2">Get Directions on Google Maps ↗</span>
+                </a>
+              </div>
+              <p className="text-[11px] text-sand/60 font-light mt-1">
                 Safari Desk Hours: {QUICK_CONTACT.hours}
               </p>
             </div>

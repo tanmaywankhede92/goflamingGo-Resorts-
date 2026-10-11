@@ -64,12 +64,18 @@ export default function WelcomeManifesto() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-              {/* Floating Pill: 65 KM Nagpur with Vector Pin */}
+              {/* Floating Pill: 65 KM Nagpur with Vector Pin (Direct Google Maps Link) */}
               <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
-                <div className="px-3 py-1.5 rounded-full bg-white/95 text-[#163824] border border-stone-200/80 shadow-sm backdrop-blur-md flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-wide">
-                  <PinIcon className="w-3.5 h-3.5 text-[#163824]" />
-                  <span>65 km from Nagpur · NH 44 Drive</span>
-                </div>
+                <a
+                  href="https://share.google/1tQOcUc44JyN7u8JJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="View Go Flamingo Resort on Google Maps"
+                  className="px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-[#163824] hover:text-[#C5A880] border border-stone-200/80 shadow-sm backdrop-blur-md flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-wide transition-all group cursor-pointer"
+                >
+                  <PinIcon className="w-3.5 h-3.5 text-[#163824] group-hover:text-[#C5A880] transition-colors" />
+                  <span>65 km from Nagpur · NH 44 Drive ↗</span>
+                </a>
               </div>
 
               {/* Bottom In-Image Caption */}
