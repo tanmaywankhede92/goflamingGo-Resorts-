@@ -72,6 +72,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
   }
 
   /* Accessible focus indicators */

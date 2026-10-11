@@ -23,7 +23,7 @@ export default function WelcomeManifesto() {
   return (
     <section
       id="meet-the-resort"
-      className="relative py-14 sm:py-18 lg:py-20 bg-ivory-pure text-charcoal border-b border-stone-200/70 overflow-hidden"
+      className="relative py-14 sm:py-18 lg:py-20 bg-ivory-pure text-charcoal border-b border-stone-200/70 overflow-hidden snap-start"
     >
       <Container size="xl" className="relative z-10">
         

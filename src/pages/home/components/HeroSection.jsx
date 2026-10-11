@@ -69,7 +69,8 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen h-[100dvh] min-h-[580px] flex items-end justify-center overflow-hidden bg-forest-dark text-ivory selection:bg-gold/40 selection:text-forest-dark"
+      id="hero"
+      className="relative w-full h-[100dvh] max-h-[100dvh] min-h-0 sm:min-h-[580px] flex items-end justify-center overflow-hidden bg-forest-dark text-ivory selection:bg-gold/40 selection:text-forest-dark snap-start"
       aria-label="Welcome to Go Flamingo Resort"
     >
       {/* ========================================================
@@ -121,17 +122,17 @@ export default function HeroSection() {
           HERO COMPOSITION — ANCHORED AT THE BOTTOM
           WITH SAFE CLEARANCE ABOVE MOBILE WHATSAPP & STICKY BAR
           ======================================================== */}
-      <Container size="lg" className="relative z-10 w-full text-left sm:text-center pb-52 sm:pb-16 lg:pb-20 pt-24 px-5 sm:px-6 pr-14 sm:pr-6">
-        <div ref={contentRef} className="max-w-2xl mx-0 sm:mx-auto space-y-3 sm:space-y-5">
+      <Container size="lg" className="relative z-10 w-full text-left sm:text-center pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:pb-14 lg:pb-18 pt-16 sm:pt-20 px-5 sm:px-6 pr-16 sm:pr-6">
+        <div ref={contentRef} className="max-w-2xl mx-0 sm:mx-auto space-y-2.5 sm:space-y-4">
 
-          {/* Natural, Art-Directed Headline */}
-          <h1 className="hero-fade font-serif text-[clamp(1.85rem,5.5vw,4.25rem)] font-normal leading-[1.15] tracking-[-0.015em] text-ivory text-balance">
+          {/* Natural, Art-Directed Headline (Bigger, Royal Rajasthani Haveli Typography) */}
+          <h1 className="hero-fade font-serif text-[clamp(2.15rem,6vw,4.5rem)] font-normal leading-[1.12] tracking-[-0.015em] text-ivory text-balance">
             Your Stay, Beyond the Ordinary.
           </h1>
 
-          {/* Conversational Hospitality Copy with 65 km naturally highlighted */}
-          <p className="hero-fade font-sans text-xs sm:text-base md:text-lg text-sand-light/95 max-w-xl mx-0 sm:mx-auto font-light leading-relaxed text-pretty border-l border-gold/50 pl-3 sm:border-l-0 sm:pl-0">
-            Just 65 km from Nagpur (1 hr via NH 44) — arched haveli verandahs, a quiet garden courtyard, and warm hospitality welcoming you home after every tiger safari.
+          {/* Conversational Hospitality Copy (Larger, Comfortable Legibility) */}
+          <p className="hero-fade font-sans text-[13.5px] sm:text-base md:text-lg text-sand-light/95 max-w-xl mx-0 sm:mx-auto font-light leading-relaxed text-pretty border-l border-gold/50 pl-3 sm:border-l-0 sm:pl-0">
+            Just 65 km from Nagpur (1 hr via NH 44) arched haveli verandahs, a quiet garden courtyard, and warm hospitality welcoming you home after every tiger safari.
           </p>
 
           {/* PRIMARY ACTIONS: On mobile, only 'Explore the Resort ↓' placed naturally */}
