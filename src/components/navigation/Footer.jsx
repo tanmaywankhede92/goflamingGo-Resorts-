@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Logo, WhatsAppIcon } from '../common';
 import { QUICK_CONTACT } from '../../data/navigation';
+import { getWhatsAppTarget, buildWhatsAppUrl } from '../../utils/whatsapp';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -65,14 +66,14 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Link
-              to="/contact"
+              to="/contact?book=true#reservation-form-card"
               className="inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.14em] font-bold hover:bg-[#d8be98] transition-colors shadow-sm text-center"
             >
               Book Your Stay
             </Link>
             <a
-              href="https://wa.me/919372425968"
-              target="_blank"
+              href={buildWhatsAppUrl('Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Pench – Sillari Gate.')}
+              target={getWhatsAppTarget()}
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-xs uppercase tracking-[0.14em] font-semibold text-ivory transition-colors shadow-xs"
             >

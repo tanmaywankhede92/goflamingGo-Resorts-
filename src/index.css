@@ -180,3 +180,51 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ========================================================
+   Mobile Form Inputs & Native Date Picker Normalization
+   Prevents iOS Safari date input overflow, text clipping,
+   and automatic zooming on focus.
+   ======================================================== */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure Safari renders date text nicely aligned with proper height */
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  line-height: normal;
+  min-height: 1.35em;
+  margin: 0;
+  padding: 0;
+}
+
+/* Maintain clean calendar indicator while preventing layout distortion */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+  padding: 0;
+  margin: 0;
+}
+
+/* CRITICAL: Enforce min 16px font-size on mobile inputs (< 768px)
+   This completely stops iOS Safari from zooming into the page on tap,
+   which is the root cause of the screen shifting right and cutting borders! */
+@media screen and (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+

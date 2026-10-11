@@ -154,7 +154,7 @@ export function PackageDetails() {
       ]}
       relatedRoutes={PACKAGES_ROUTES}
       actionLabel="Book This Package"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }

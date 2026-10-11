@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Container, WhatsAppIcon } from '../../../components/common';
 import { QUICK_CONTACT } from '../../../data/navigation';
+import { getWhatsAppTarget } from '../../../utils/whatsapp';
 
 /**
  * ClosingCallToAction Component — Luxury Resort Masterpiece CTA
@@ -54,7 +55,7 @@ export default function ClosingCallToAction() {
           {/* High-Intent Dual Actions (Sleek unified size matching all site CTAs) */}
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto mb-8">
             <Link
-              to="/contact"
+              to="/contact?book=true#reservation-form-card"
               className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
             >
               <span>Check Availability & Book</span>
@@ -65,7 +66,7 @@ export default function ClosingCallToAction() {
 
             <a
               href={whatsappUrl}
-              target="_blank"
+              target={getWhatsAppTarget()}
               rel="noopener noreferrer"
               className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
             >

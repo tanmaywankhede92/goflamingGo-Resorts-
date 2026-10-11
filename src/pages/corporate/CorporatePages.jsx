@@ -26,7 +26,7 @@ export function CorporateOverview() {
       ]}
       relatedRoutes={CORPORATE_ROUTES}
       actionLabel="Request Corporate Proposal"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }
@@ -48,7 +48,7 @@ export function RetreatsPage() {
       ]}
       relatedRoutes={CORPORATE_ROUTES}
       actionLabel="Inquire About Offsite"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }
@@ -70,7 +70,7 @@ export function MeetingsPage() {
       ]}
       relatedRoutes={CORPORATE_ROUTES}
       actionLabel="Check Facility Availability"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }

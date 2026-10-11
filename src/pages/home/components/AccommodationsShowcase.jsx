@@ -211,7 +211,7 @@ export default function AccommodationsShowcase() {
             {/* 6. DIRECT CONVERSION ACTIONS (Sleek unified size matching all site CTAs) */}
             <div className="pt-2 flex flex-row items-center gap-2.5 sm:gap-3.5 w-full">
               <Link
-                to={`/contact?room=${current.id}`}
+                to={`/contact?room=${current.id}&book=true#reservation-form-card`}
                 className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] cursor-pointer whitespace-nowrap"
               >
                 <span>Book This Room</span>
@@ -222,7 +222,7 @@ export default function AccommodationsShowcase() {
 
               <a
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about availability for ${current.title}.`)}`}
-                target="_blank"
+                target={typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] cursor-pointer whitespace-nowrap"
               >

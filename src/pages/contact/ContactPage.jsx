@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import {
   MapPin,
   Phone,
@@ -63,6 +63,9 @@ export default function ContactPage() {
 
   // Phase State: 1 = Stay & Safari, 2 = Guest Details & Confirmation
   const [phase, setPhase] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [dateError, setDateError] = useState('');
 
   // Form State
   const [formData, setFormData] = useState({
@@ -81,14 +84,34 @@ export default function ContactPage() {
     specialNotes: '',
   });
 
-  const [dateError, setDateError] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const location = useLocation();
+  const bookParam = searchParams.get('book');
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.title = 'Direct Reservations & Contact | GoFlamingo Resort, Pench';
-  }, []);
+
+    // If navigated with ?book=true or hash #reservation-hub or roomParam, scroll directly to reservation form
+    const shouldScrollToForm = 
+      bookParam !== null || 
+      location.hash === '#reservation-hub' || 
+      location.hash === '#reservation-form-card' || 
+      roomParam !== null;
+
+    if (shouldScrollToForm) {
+      const scrollToTarget = () => {
+        const formCard = document.getElementById('reservation-form-card') || document.getElementById('reservation-hub');
+        formCard?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      const timer1 = setTimeout(scrollToTarget, 80);
+      const timer2 = setTimeout(scrollToTarget, 300);
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [bookParam, location.hash, roomParam]);
 
   // Update room category if URL query changes
   useEffect(() => {
@@ -203,7 +226,7 @@ Website: goflamingoresorts.com`;
         </div>
 
         {/* Foreground Content */}
-        <Container size="xl" className="relative z-10 w-full pt-24 sm:pt-36 md:pt-40 pb-6 sm:pb-12 px-4 sm:px-6">
+        <Container size="xl" noPadding className="relative z-10 w-full pt-24 sm:pt-36 md:pt-40 pb-6 sm:pb-12 px-4 sm:px-6">
           <div className="max-w-3xl">
 
             {/* Eyebrow Pill — Responsive & Clean on Mobile */}
@@ -226,7 +249,7 @@ Website: goflamingoresorts.com`;
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 pt-1">
               <button
                 type="button"
-                onClick={() => document.getElementById('reservation-hub')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => (document.getElementById('reservation-form-card') || document.getElementById('reservation-hub'))?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer text-center"
               >
                 <span>Proceed to Reservation Form</span>
@@ -276,11 +299,11 @@ Website: goflamingoresorts.com`;
           2. RESERVATION & INQUIRY HUB
           (Mobile First: Form appears FIRST [order-1], Info [order-2])
           ======================================================== */}
-      <section id="reservation-hub" className="py-10 sm:py-20 bg-[#FAF8F5] scroll-mt-16">
-        <Container size="xl" className="px-4 sm:px-6">
+      <section id="reservation-hub" className="py-8 sm:py-20 bg-[#FAF8F5] scroll-mt-16 w-full max-w-full overflow-x-hidden">
+        <Container size="xl" noPadding className="w-full max-w-full px-3.5 sm:px-6 md:px-8 mx-auto">
           
           {/* Section Introduction */}
-          <div className="max-w-3xl mb-8 sm:mb-12">
+          <div className="max-w-3xl mb-6 sm:mb-12">
             <SectionEyebrow color="terracotta" withLine className="mb-2">
               Direct Reservation Desk • Instant Confirmation
             </SectionEyebrow>
@@ -293,7 +316,7 @@ Website: goflamingoresorts.com`;
           </div>
 
           {/* Master Responsive Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full min-w-0 max-w-full">
             
             {/* ====================================================
                 FORM COLUMN: order-1 on mobile (APPEARS FIRST!),
@@ -302,7 +325,7 @@ Website: goflamingoresorts.com`;
             <div className="order-1 lg:order-2 lg:col-span-7 w-full min-w-0 max-w-full">
               <div
                 id="reservation-form-card"
-                className="p-4 sm:p-7 md:p-9 rounded-[6px] bg-ivory border-2 border-[#E7DFD0] shadow-[0_10px_35px_rgba(0,0,0,0.05)] relative w-full overflow-hidden"
+                className="p-3.5 sm:p-7 md:p-9 rounded-[6px] bg-ivory border-2 border-[#E7DFD0] shadow-[0_10px_35px_rgba(0,0,0,0.05)] relative w-full min-w-0 max-w-full box-border overflow-hidden scroll-mt-20 sm:scroll-mt-28"
               >
                 
                 {submitted ? (
@@ -398,19 +421,19 @@ Website: goflamingoresorts.com`;
                     <div className="border-b border-[#E6DEC9] pb-4">
                       
                       {/* Step Switcher Buttons */}
-                      <div className="grid grid-cols-2 gap-2 mb-3">
+                      <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-3 w-full min-w-0">
                         <button
                           type="button"
                           onClick={() => setPhase(1)}
                           className={cn(
-                            'flex items-center justify-center gap-2 py-2.5 px-3 rounded-[4px] text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer',
+                            'flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 sm:px-3 rounded-[4px] text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer min-w-0',
                             phase === 1
                               ? 'bg-forest-deep text-ivory border-forest-deep shadow-xs'
                               : 'bg-sand-light/60 text-charcoal-muted border-[#D5C9B3] hover:bg-sand-light'
                           )}
                         >
                           <span className={cn(
-                            'w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold',
+                            'w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0',
                             phase === 1 ? 'bg-gold text-forest-deep' : 'bg-sand text-charcoal'
                           )}>
                             1
@@ -428,14 +451,14 @@ Website: goflamingoresorts.com`;
                             }
                           }}
                           className={cn(
-                            'flex items-center justify-center gap-2 py-2.5 px-3 rounded-[4px] text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer',
+                            'flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 sm:px-3 rounded-[4px] text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer min-w-0',
                             phase === 2
                               ? 'bg-forest-deep text-ivory border-forest-deep shadow-xs'
                               : 'bg-sand-light/60 text-charcoal-muted border-[#D5C9B3] hover:bg-sand-light'
                           )}
                         >
                           <span className={cn(
-                            'w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold',
+                            'w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0',
                             phase === 2 ? 'bg-gold text-forest-deep' : 'bg-sand text-charcoal'
                           )}>
                             2
@@ -462,7 +485,7 @@ Website: goflamingoresorts.com`;
                         PHASE 1: STAY & SAFARI SELECTION
                         ------------------------------------------- */}
                     {phase === 1 && (
-                      <form onSubmit={handleProceedToPhase2} className="space-y-5">
+                      <form onSubmit={handleProceedToPhase2} className="space-y-4 sm:space-y-5 w-full min-w-0 max-w-full">
                         
                         <div>
                           <h3 className="font-serif text-lg sm:text-xl text-forest font-normal mb-1">
@@ -481,8 +504,8 @@ Website: goflamingoresorts.com`;
                         )}
 
                         {/* Check-In / Check-Out */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                          <div className="w-full min-w-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Check-In Date *
                             </label>
@@ -493,11 +516,11 @@ Website: goflamingoresorts.com`;
                               min={todayDate}
                               value={formData.checkIn}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border appearance-none cursor-pointer"
                             />
                           </div>
 
-                          <div className="w-full min-w-0">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Check-Out Date *
                             </label>
@@ -508,14 +531,14 @@ Website: goflamingoresorts.com`;
                               min={formData.checkIn || todayDate}
                               value={formData.checkOut}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border appearance-none cursor-pointer"
                             />
                           </div>
                         </div>
 
                         {/* Adults & Children */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                          <div className="w-full min-w-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Adults (Age 12+)
                             </label>
@@ -523,7 +546,7 @@ Website: goflamingoresorts.com`;
                               name="adults"
                               value={formData.adults}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
                             >
                               <option value="1">1 Adult</option>
                               <option value="2">2 Adults (Couple)</option>
@@ -533,7 +556,7 @@ Website: goflamingoresorts.com`;
                             </select>
                           </div>
 
-                          <div className="w-full min-w-0">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Children (Below 12)
                             </label>
@@ -541,7 +564,7 @@ Website: goflamingoresorts.com`;
                               name="children"
                               value={formData.children}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
                             >
                               <option value="0">0 Children</option>
                               <option value="1">1 Child</option>
@@ -552,7 +575,7 @@ Website: goflamingoresorts.com`;
                         </div>
 
                         {/* Preferred Accommodation */}
-                        <div className="w-full min-w-0">
+                        <div className="w-full min-w-0 max-w-full">
                           <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                             Preferred Accommodation
                           </label>
@@ -560,7 +583,7 @@ Website: goflamingoresorts.com`;
                             name="roomCategory"
                             value={formData.roomCategory}
                             onChange={handleChange}
-                            className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                            className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
                           >
                             <option>Deluxe Rooms (Haveli Garden View)</option>
                             <option>Super Deluxe Rooms (Haveli Balcony Suite)</option>
@@ -572,7 +595,7 @@ Website: goflamingoresorts.com`;
                         </div>
 
                         {/* Jungle Safari Coordination */}
-                        <div className="w-full min-w-0">
+                        <div className="w-full min-w-0 max-w-full">
                           <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                             Pench Safari Assistance (Sillari Gate)
                           </label>
@@ -580,7 +603,7 @@ Website: goflamingoresorts.com`;
                             name="safariCoordination"
                             value={formData.safariCoordination}
                             onChange={handleChange}
-                            className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                            className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
                           >
                             <option>Yes, Sillari Core Zone Assistance Needed</option>
                             <option>Already Have Forest Department Permits</option>
@@ -608,7 +631,7 @@ Website: goflamingoresorts.com`;
                         PHASE 2: GUEST CONTACT & SUBMIT
                         ------------------------------------------- */}
                     {phase === 2 && (
-                      <form onSubmit={handleSubmit} className="space-y-5">
+                      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 w-full min-w-0 max-w-full">
                         
                         <div>
                           <h3 className="font-serif text-lg sm:text-xl text-forest font-normal mb-1">
@@ -620,8 +643,8 @@ Website: goflamingoresorts.com`;
                         </div>
 
                         {/* Full Name & Phone */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                          <div className="w-full min-w-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Lead Guest Full Name *
                             </label>
@@ -632,11 +655,11 @@ Website: goflamingoresorts.com`;
                               placeholder="e.g. Vikram Sharma"
                               value={formData.fullName}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
                             />
                           </div>
 
-                          <div className="w-full min-w-0">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Phone (with WhatsApp) *
                             </label>
@@ -647,14 +670,14 @@ Website: goflamingoresorts.com`;
                               placeholder="+91 98765 43210"
                               value={formData.phoneNumber}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
                             />
                           </div>
                         </div>
 
                         {/* Email & Purpose */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                          <div className="w-full min-w-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Email Address *
                             </label>
@@ -665,11 +688,11 @@ Website: goflamingoresorts.com`;
                               placeholder="vikram@example.com"
                               value={formData.emailAddress}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
                             />
                           </div>
 
-                          <div className="w-full min-w-0">
+                          <div className="w-full min-w-0 max-w-full">
                             <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                               Purpose of Visit
                             </label>
@@ -677,7 +700,7 @@ Website: goflamingoresorts.com`;
                               name="inquiryType"
                               value={formData.inquiryType}
                               onChange={handleChange}
-                              className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
                             >
                               <option>Room Stay & Safari</option>
                               <option>Family Vacation</option>
@@ -690,7 +713,7 @@ Website: goflamingoresorts.com`;
                         </div>
 
                         {/* Special Requests */}
-                        <div className="w-full min-w-0">
+                        <div className="w-full min-w-0 max-w-full">
                           <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
                             Special Requests / Notes (Optional)
                           </label>
@@ -700,7 +723,7 @@ Website: goflamingoresorts.com`;
                             value={formData.specialNotes}
                             onChange={handleChange}
                             placeholder="Meal preferences, estimated arrival time, extra beds needed..."
-                            className="w-full min-w-0 px-3.5 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                            className="w-full min-w-0 max-w-full block px-3 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
                           />
                         </div>
 
@@ -930,8 +953,8 @@ Website: goflamingoresorts.com`;
                       <div className="min-w-0">
                         <span className="text-[10px] text-emerald-300/80 block truncate">Instant WhatsApp Desk</span>
                         <a
-                          href="https://wa.me/919372425968"
-                          target="_blank"
+                          href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20safari%20booking%20at%20Sillari%20Gate."
+                          target={linkTarget}
                           rel="noopener noreferrer"
                           className="text-xs sm:text-sm font-semibold text-ivory hover:text-emerald-300 transition-colors block truncate"
                         >
@@ -940,8 +963,8 @@ Website: goflamingoresorts.com`;
                       </div>
                     </div>
                     <a
-                      href="https://wa.me/919372425968"
-                      target="_blank"
+                      href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20safari%20booking%20at%20Sillari%20Gate."
+                      target={linkTarget}
                       rel="noopener noreferrer"
                       className="px-2.5 py-1 rounded-full bg-[#25D366] hover:bg-emerald-400 text-forest-deep text-[10px] font-bold uppercase tracking-wider transition-colors shrink-0 ml-2"
                     >

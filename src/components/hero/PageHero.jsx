@@ -1,7 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Heading, Text, SectionEyebrow, Button, Badge } from '../common';
+import { Container, Heading, Text, SectionEyebrow, Button, Badge, WhatsAppIcon } from '../common';
 import { cn } from '../../utils/cn';
+import { getWhatsAppTarget } from '../../utils/whatsapp';
+
+/**
+ * Universal action button renderer supporting internal router links,
+ * external safe URLs, and native mobile WhatsApp app triggers without duplicate tabs.
+ */
+function renderHeroAction(act, idx, defaultVariant = 'gold', size = 'md') {
+  const isHref = Boolean(act.href);
+  const isWhatsApp = isHref && act.href.includes('wa.me');
+  const Component = act.to ? Link : isHref ? 'a' : 'button';
+  const target = act.target || (isWhatsApp ? getWhatsAppTarget() : isHref ? '_blank' : undefined);
+  const rel = isHref ? 'noopener noreferrer' : undefined;
+
+  return (
+    <Button
+      key={idx}
+      as={Component}
+      to={act.to}
+      href={act.href}
+      target={target}
+      rel={rel}
+      variant={act.variant || (idx === 0 ? defaultVariant : 'inverted')}
+      size={size}
+      onClick={act.onClick}
+      className={cn(
+        'w-full sm:w-auto justify-center font-bold tracking-wider text-center flex items-center gap-2 shadow-md',
+        act.hideOnMobile && 'hidden sm:inline-flex'
+      )}
+    >
+      {isWhatsApp && <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />}
+      <span>{act.label}</span>
+    </Button>
+  );
+}
 
 /**
  * Reusable PageHero System — Mobile & Responsive Refinement
@@ -69,22 +103,7 @@ export default function PageHero({
             {/* Mobile-Optimized CTA Group */}
             {actions.length > 0 && (
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
-                {actions.map((act, idx) => (
-                  <Button
-                    key={idx}
-                    as={act.to ? Link : 'button'}
-                    to={act.to}
-                    variant={act.variant || (idx === 0 ? 'gold' : 'inverted')}
-                    size="lg"
-                    onClick={act.onClick}
-                    className={cn(
-                      'w-full sm:w-auto justify-center font-bold tracking-wider shadow-md text-center',
-                      act.hideOnMobile && 'hidden sm:inline-flex'
-                    )}
-                  >
-                    {act.label}
-                  </Button>
-                ))}
+                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'lg'))}
               </div>
             )}
           </div>
@@ -135,22 +154,7 @@ export default function PageHero({
             {/* Mobile-Optimized CTA Group */}
             {actions.length > 0 && (
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
-                {actions.map((act, idx) => (
-                  <Button
-                    key={idx}
-                    as={act.to ? Link : 'button'}
-                    to={act.to}
-                    variant={act.variant || (idx === 0 ? 'gold' : 'inverted')}
-                    size="md"
-                    onClick={act.onClick}
-                    className={cn(
-                      'w-full sm:w-auto justify-center font-bold tracking-wider text-center',
-                      act.hideOnMobile && 'hidden sm:inline-flex'
-                    )}
-                  >
-                    {act.label}
-                  </Button>
-                ))}
+                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
               </div>
             )}
           </div>
@@ -191,22 +195,7 @@ export default function PageHero({
               {/* Mobile-Optimized CTA Group */}
               {actions.length > 0 && (
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-                  {actions.map((act, idx) => (
-                    <Button
-                      key={idx}
-                      as={act.to ? Link : 'button'}
-                      to={act.to}
-                      variant={act.variant || (idx === 0 ? 'primary' : 'secondary')}
-                      size="md"
-                      onClick={act.onClick}
-                      className={cn(
-                        'w-full sm:w-auto justify-center text-center',
-                        act.hideOnMobile && 'hidden sm:inline-flex'
-                      )}
-                    >
-                      {act.label}
-                    </Button>
-                  ))}
+                  {actions.map((act, idx) => renderHeroAction(act, idx, 'primary', 'md'))}
                 </div>
               )}
             </div>
@@ -266,22 +255,7 @@ export default function PageHero({
           {/* Mobile-Optimized CTA Group */}
           {actions.length > 0 && (
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto w-full">
-              {actions.map((act, idx) => (
-                <Button
-                  key={idx}
-                  as={act.to ? Link : 'button'}
-                  to={act.to}
-                  variant={act.variant || (idx === 0 ? 'gold' : 'inverted')}
-                  size="md"
-                  onClick={act.onClick}
-                  className={cn(
-                    'w-full sm:w-auto justify-center text-center',
-                    act.hideOnMobile && 'hidden sm:inline-flex'
-                  )}
-                >
-                  {act.label}
-                </Button>
-              ))}
+              {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
             </div>
           )}
         </Container>

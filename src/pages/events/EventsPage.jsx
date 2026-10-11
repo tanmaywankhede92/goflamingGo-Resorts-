@@ -24,6 +24,7 @@ import {
 import { AUTHENTIC_RESORT, RESORT_DRIVE_PHOTOS, IMAGES } from '../../data/images';
 import { QUICK_CONTACT } from '../../data/navigation';
 import { cn } from '../../utils/cn';
+import { getWhatsAppTarget } from '../../utils/whatsapp';
 
 /**
  * EventsPage Component — GoFlamingo Resort (Pench • Sillari)
@@ -400,10 +401,11 @@ export default function EventsPage() {
                     <div className="flex flex-wrap items-center gap-3 pt-2">
                       <a
                         href={whatsappUrl}
-                        target="_blank"
+                        target={getWhatsAppTarget()}
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md hover:shadow-lg border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+                        className="group inline-flex items-center justify-center gap-2 pl-4 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md hover:shadow-lg border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
                       >
+                        <WhatsAppIcon size="sm" className="text-[#08130B] shrink-0" />
                         <span>Enquire for {category.title.split('&')[0].trim()}</span>
                         <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
                           <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
@@ -468,10 +470,11 @@ export default function EventsPage() {
               {/* WhatsApp Coordinator Action */}
               <a
                 href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20enquire%20about%20event%20and%20wedding%20venue%20bookings."
-                target="_blank"
+                target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
+                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
               >
+                <WhatsAppIcon size="sm" className="text-[#08130B] shrink-0" />
                 <span>WhatsApp Event Desk</span>
                 <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
                   <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />

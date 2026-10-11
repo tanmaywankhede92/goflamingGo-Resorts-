@@ -21,10 +21,10 @@ export default function DiningPage() {
       relatedRoutes={[
         { label: 'Forest Pool Refreshments', path: '/resort/pool' },
         { label: 'Bonfires & Celebrations', path: '/weddings/celebrations' },
-        { label: 'Book Stay with Meals', path: '/contact' },
+        { label: 'Book Stay with Meals', path: '/contact?book=true#reservation-form-card' },
       ]}
       actionLabel="Reserve a Dining Table"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }

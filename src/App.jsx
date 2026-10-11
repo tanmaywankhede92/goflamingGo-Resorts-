@@ -8,7 +8,8 @@ import MainLayout from './layouts/MainLayout';
  */
 function BookToContactRedirect() {
   const location = useLocation();
-  return <Navigate to={`/contact${location.search}`} replace />;
+  const search = location.search ? `${location.search}&book=true` : '?book=true';
+  return <Navigate to={`/contact${search}#reservation-form-card`} replace />;
 }
 
 // Page components

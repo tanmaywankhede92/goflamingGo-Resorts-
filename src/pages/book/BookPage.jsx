@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import PageHero from '../../components/hero/PageHero';
 import { Container, Heading, Text, SectionEyebrow, Button, WhatsAppIcon } from '../../components/common';
 import { IMAGES } from '../../data/images';
+import { getWhatsAppTarget, buildWhatsAppUrl } from '../../utils/whatsapp';
 
 export default function BookPage() {
   const [searchParams] = useSearchParams();
@@ -100,8 +101,8 @@ export default function BookPage() {
                   </Heading>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 w-full min-w-0 max-w-full">
+                  <div className="w-full min-w-0 max-w-full">
                     <label className="text-xs font-semibold uppercase tracking-wider text-charcoal-muted block mb-1.5">
                       Check-In Date *
                     </label>
@@ -111,10 +112,10 @@ export default function BookPage() {
                       name="checkIn"
                       value={formData.checkIn}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-[2px] bg-ivory border border-sand-dark/40 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+                      className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[2px] bg-ivory border border-sand-dark/40 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-gold box-border appearance-none cursor-pointer"
                     />
                   </div>
-                  <div>
+                  <div className="w-full min-w-0 max-w-full">
                     <label className="text-xs font-semibold uppercase tracking-wider text-charcoal-muted block mb-1.5">
                       Check-Out Date *
                     </label>
@@ -124,7 +125,7 @@ export default function BookPage() {
                       name="checkOut"
                       value={formData.checkOut}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-[2px] bg-ivory border border-sand-dark/40 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+                      className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[2px] bg-ivory border border-sand-dark/40 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-gold box-border appearance-none cursor-pointer"
                     />
                   </div>
                 </div>
@@ -289,8 +290,8 @@ export default function BookPage() {
 
                 <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                   <a
-                    href="https://wa.me/919372425968"
-                    target="_blank"
+                    href={buildWhatsAppUrl('Hello Go Flamingo Resort, I submitted a booking inquiry online and would like to follow up on room availability.')}
+                    target={getWhatsAppTarget()}
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 px-6 py-3 rounded-[2px] bg-[#25D366] text-forest-dark text-xs uppercase tracking-wider font-bold hover:bg-emerald-400 transition-colors shadow-sm"
                   >

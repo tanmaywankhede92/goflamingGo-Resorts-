@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
-import { Container } from '../../../components/common';
+import { Container, WhatsAppIcon } from '../../../components/common';
 import { RESORT_DRIVE_PHOTOS } from '../../../data/images';
 import { QUICK_CONTACT } from '../../../data/navigation';
+import { getWhatsAppTarget } from '../../../utils/whatsapp';
 
 /**
  * EventsCelebrations Component (Section 5 — Weddings, Corporate Events & Social Celebrations)
@@ -99,10 +100,11 @@ export default function EventsCelebrations() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 self-start lg:self-auto shrink-0">
             <a
               href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to enquire about holding an event / wedding / conference at your resort.')}`}
-              target="_blank"
+              target={getWhatsAppTarget()}
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-[#C5A880] hover:bg-[#D5B890] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.14em] font-bold transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
             >
+              <WhatsAppIcon size="sm" className="text-[#08130B] shrink-0" />
               <span>Enquire for Events</span>
               <span className="w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-[#08130B] text-[#C5A880] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
                 <ArrowRight className="w-3 h-3 text-[#C5A880]" />
@@ -170,7 +172,7 @@ export default function EventsCelebrations() {
                 <div className="pt-4 border-t border-[#163824]/15 flex items-center justify-between">
                   <a
                     href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(item.enquiryMsg)}`}
-                    target="_blank"
+                    target={getWhatsAppTarget()}
                     rel="noopener noreferrer"
                     className="group/btn inline-flex items-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-[#0E2718] hover:bg-[#163824] text-white text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap"
                   >

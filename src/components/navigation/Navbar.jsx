@@ -143,7 +143,7 @@ export default function Navbar() {
             ======================================================== */}
         <div
           className={cn(
-            'relative w-full rounded-full transition-all duration-300 flex items-center justify-between gap-2 lg:gap-3 px-3.5 sm:px-5 py-2 sm:py-2.5 min-h-[46px] sm:min-h-[50px]',
+            'relative w-full rounded-full transition-all duration-300 flex items-center justify-between gap-2 lg:gap-3 px-3.5 sm:px-5 py-2 sm:py-2.5 min-h-[50px] sm:min-h-[52px]',
             'bg-white/95 backdrop-blur-xl border border-stone-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
           )}
         >
@@ -159,7 +159,7 @@ export default function Navbar() {
               <img
                 src="/assets/logo/go-flamingo-logo-trimmed.png"
                 alt="Go Flamingo Resorts"
-                className="h-8 sm:h-9 lg:h-10 w-auto object-contain select-none transition-opacity duration-200 group-hover:opacity-90"
+                className="h-10 sm:h-10 lg:h-10.5 w-auto object-contain select-none transition-opacity duration-200 group-hover:opacity-90"
               />
             </Link>
           </div>
@@ -260,7 +260,7 @@ export default function Navbar() {
             {/* Desktop Pill CTA: Book Your Stay with Accent Arrow Circle */}
             <div className="hidden sm:block shrink-0">
               <Link
-                to="/contact"
+                to="/contact?book=true#reservation-form-card"
                 className="group inline-flex items-center gap-2 pl-4 sm:pl-4.5 pr-1.5 py-1.5 rounded-full bg-forest-deep text-ivory text-xs uppercase tracking-[0.12em] font-semibold hover:bg-forest-dark transition-all duration-300 shadow-md"
               >
                 <span>Book Your Stay</span>

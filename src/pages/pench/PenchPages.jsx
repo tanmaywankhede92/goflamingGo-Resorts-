@@ -50,7 +50,7 @@ export function SillariGatePage() {
       ]}
       relatedRoutes={PENCH_ROUTES}
       actionLabel="Book Stay Near Sillari Gate"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }
@@ -73,7 +73,7 @@ export function SafariGuidePage() {
       ]}
       relatedRoutes={PENCH_ROUTES}
       actionLabel="Request Safari Booking Assistance"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }

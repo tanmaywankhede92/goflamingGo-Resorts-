@@ -152,7 +152,7 @@ export default function MobileMenu({ isOpen, onClose }) {
       <div className="sticky bottom-0 px-6 py-5 bg-forest-dark border-t border-sand/20 shadow-2xl space-y-3">
         <Button
           as={Link}
-          to="/contact"
+          to="/contact?book=true#reservation-form-card"
           onClick={onClose}
           variant="gold"
           size="lg"
@@ -169,8 +169,8 @@ export default function MobileMenu({ isOpen, onClose }) {
             <span>Call: 9372425968</span>
           </a>
           <a
-            href="https://wa.me/919372425968"
-            target="_blank"
+            href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20safari%20booking%20at%20Pench%20%E2%80%93%20Sillari%20Gate."
+            target="_self"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-[3px] border border-sand/30 bg-forest-deep text-xs text-sand-light hover:text-ivory hover:border-sand hover:bg-forest/60 transition-colors uppercase tracking-wider font-sans font-semibold min-h-[44px]"
           >

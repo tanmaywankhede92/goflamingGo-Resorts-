@@ -27,7 +27,7 @@ export default function Logo({
   // Height-driven sizing so the logo fits elegantly in the navbar without layout shift
   const imageSizeClasses = {
     header: 'h-[38px] sm:h-[44px] lg:h-[48px] w-auto max-w-[170px] sm:max-w-[200px] lg:max-w-[225px]',
-    mobile: 'h-[36px] sm:h-[40px] w-auto max-w-[160px]',
+    mobile: 'h-[40px] sm:h-[44px] w-auto max-w-[180px]',
     footer: 'w-[200px] sm:w-[230px] lg:w-[250px] h-auto',
     hero: 'w-[180px] sm:w-[210px] h-auto',
     standalone: 'w-[190px] h-auto',

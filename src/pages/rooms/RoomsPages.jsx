@@ -38,6 +38,7 @@ import {
 import { AUTHENTIC_RESORT, RESORT_DRIVE_PHOTOS, IMAGES } from '../../data/images';
 import { QUICK_CONTACT } from '../../data/navigation';
 import { cn } from '../../utils/cn';
+import { getWhatsAppTarget } from '../../utils/whatsapp';
 
 /**
  * =========================================================================
@@ -575,7 +576,7 @@ function AccommodationCard({ item, index }) {
         {/* Direct Action Buttons */}
         <div className="pt-3 flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2.5 sm:gap-3.5 w-full">
           <Link
-            to={`/contact?room=${item.slug}`}
+            to={`/contact?room=${item.slug}&book=true#reservation-form-card`}
             className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 pl-5 pr-2 py-3 sm:py-2.5 rounded-full bg-[#0E2718] hover:bg-[#163824] text-white text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer text-center"
           >
             <span>
@@ -592,7 +593,7 @@ function AccommodationCard({ item, index }) {
 
           <a
             href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about booking the ${item.title}.`)}`}
-            target="_blank"
+            target={getWhatsAppTarget()}
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full bg-white hover:bg-stone-50 border-2 border-[#25D366]/70 text-xs uppercase tracking-[0.10em] font-bold text-[#163824] shadow-xs hover:shadow-md transition-all cursor-pointer text-center"
           >
@@ -720,7 +721,7 @@ export function RoomsOverview() {
             {/* Primary Action Buttons */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4 pt-4 w-full sm:w-auto">
               <Link
-                to="/contact"
+                to="/contact?book=true#reservation-form-card"
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 pl-5 pr-2 py-3 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] cursor-pointer text-center"
               >
                 <span>Check Availability & Book</span>
@@ -731,7 +732,7 @@ export function RoomsOverview() {
 
               <a
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to inquire about room availability and tariffs.')}`}
-                target="_blank"
+                target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-xs uppercase tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] cursor-pointer text-center"
               >
@@ -1015,7 +1016,7 @@ export function RoomsOverview() {
                     <div className="pt-4 border-t border-[#163824]/15 flex items-center justify-between">
                       <a
                         href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about the ${amenity.title} facility.`)}`}
-                        target="_blank"
+                        target={getWhatsAppTarget()}
                         rel="noopener noreferrer"
                         className="group/btn inline-flex items-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-[#0E2718] hover:bg-[#163824] text-white text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap"
                       >
@@ -1192,7 +1193,7 @@ export function RoomsOverview() {
 
             <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto mb-8">
               <Link
-                to="/contact"
+                to="/contact?book=true#reservation-form-card"
                 className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
               >
                 <span>Check Availability & Book</span>
@@ -1203,7 +1204,7 @@ export function RoomsOverview() {
 
               <a
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Sillari Gate.')}`}
-                target="_blank"
+                target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
               >
@@ -1288,7 +1289,7 @@ export function RoomDetails() {
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-3 w-full sm:w-auto">
               <Link
-                to={`/contact?room=${room.slug}`}
+                to={`/contact?room=${room.slug}&book=true#reservation-form-card`}
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 pl-5 pr-2 py-3 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md cursor-pointer text-center"
               >
                 <span>Book This Category</span>
@@ -1299,7 +1300,7 @@ export function RoomDetails() {
 
               <a
                 href={whatsappInquiryUrl}
-                target="_blank"
+                target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full bg-[#0D2418]/90 border-2 border-[#25D366]/50 text-xs uppercase tracking-[0.10em] font-bold text-white cursor-pointer text-center"
               >
@@ -1461,7 +1462,7 @@ export function RoomDetails() {
 
                 <div className="space-y-3">
                   <Link
-                    to={`/contact?room=${room.slug}`}
+                    to={`/contact?room=${room.slug}&book=true#reservation-form-card`}
                     className="w-full inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2.5 sm:pl-5 sm:pr-2 sm:py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md cursor-pointer text-center"
                   >
                     <span>Check Availability & Book</span>
@@ -1472,7 +1473,7 @@ export function RoomDetails() {
 
                   <a
                     href={whatsappInquiryUrl}
-                    target="_blank"
+                    target={getWhatsAppTarget()}
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 rounded-full bg-[#0E2718] hover:bg-[#163824] text-white text-xs uppercase tracking-[0.10em] font-bold shadow-md transition-colors cursor-pointer text-center"
                   >

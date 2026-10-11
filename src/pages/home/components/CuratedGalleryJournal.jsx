@@ -169,7 +169,7 @@ export default function CuratedGalleryJournal() {
                   </p>
                 </div>
                 <Link
-                  to="/contact"
+                  to="/contact?book=true#reservation-form-card"
                   onClick={() => setSelectedPhoto(null)}
                   className="px-4 py-2 rounded-full bg-[#163824] text-white text-xs font-semibold hover:bg-[#0E2A1B] transition-colors shrink-0 ml-3"
                 >

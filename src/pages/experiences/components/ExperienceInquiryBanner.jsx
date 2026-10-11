@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Heading, Text, Button, WhatsAppIcon } from '../../../components/common';
 import { cn } from '../../../utils/cn';
+import { getWhatsAppTarget } from '../../../utils/whatsapp';
 
 /**
  * ExperienceInquiryBanner
@@ -49,7 +50,7 @@ export default function ExperienceInquiryBanner({
           {/* Primary High-Intent Room Booking */}
           <Button
             as={Link}
-            to="/contact"
+            to="/contact?book=true#reservation-form-card"
             variant="gold"
             size="lg"
             className="w-full sm:w-auto font-bold tracking-wider shadow-md text-center"
@@ -61,7 +62,7 @@ export default function ExperienceInquiryBanner({
           <Button
             as="a"
             href={whatsappUrl}
-            target="_blank"
+            target={getWhatsAppTarget()}
             rel="noopener noreferrer"
             variant="inverted"
             size="lg"

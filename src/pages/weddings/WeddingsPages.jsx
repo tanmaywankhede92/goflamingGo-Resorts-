@@ -26,7 +26,7 @@ export function WeddingsOverview() {
       ]}
       relatedRoutes={WEDDINGS_ROUTES}
       actionLabel="Enquire for Wedding Dates"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }
@@ -48,7 +48,7 @@ export function CelebrationsPage() {
       ]}
       relatedRoutes={WEDDINGS_ROUTES}
       actionLabel="Plan a Celebration"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }
@@ -70,7 +70,7 @@ export function EventsPage() {
       ]}
       relatedRoutes={WEDDINGS_ROUTES}
       actionLabel="Schedule Venue Walkthrough"
-      actionTo="/contact"
+      actionTo="/contact?book=true#reservation-form-card"
     />
   );
 }

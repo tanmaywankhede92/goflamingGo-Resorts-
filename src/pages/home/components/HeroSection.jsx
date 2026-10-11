@@ -140,7 +140,7 @@ export default function HeroSection() {
           <div className="hero-fade flex flex-row items-center justify-start sm:justify-center gap-3 sm:gap-4 pt-1 sm:pt-2">
             <Button
               as={Link}
-              to="/contact"
+              to="/contact?book=true#reservation-form-card"
               variant="gold"
               size="md"
               className="hidden sm:inline-flex w-full sm:w-auto font-bold tracking-[0.12em] text-xs uppercase px-8 py-3.5 shadow-lg"

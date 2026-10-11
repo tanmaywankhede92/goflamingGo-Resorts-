@@ -12,16 +12,28 @@ import { FloatingWhatsApp, LuxuryPreloader } from '../components/common';
  * route-change scroll reset, sticky conversion bar, and hospitality footer.
  */
 export default function MainLayout() {
-  const { pathname } = useLocation();
+  const location = useLocation();
 
-  // Reset scroll to top on all page transitions, redirects, and reloads
+  // Reset scroll on page transitions, but respect hash anchors (e.g. #reservation-form-card)
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    const timer = setTimeout(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      const scrollToHash = () => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+      const t1 = setTimeout(scrollToHash, 80);
+      const t2 = setTimeout(scrollToHash, 260);
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
+    } else {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    }, 50);
-    return () => clearTimeout(timer);
-  }, [pathname]);
+    }
+  }, [location.pathname, location.hash, location.search]);
 
   return (
     <div className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased selection:bg-gold/30 selection:text-forest-deep">
