@@ -173,29 +173,6 @@ export default function AmenitiesInteractive() {
             </div>
           ))}
         </div>
-
-        {/* ========================================================
-            RELIABILITY & COMFORT STRIP
-            ======================================================== */}
-        <div className="mt-10 sm:mt-12 p-4 sm:p-5 rounded-xl bg-stone-100/80 border border-stone-200/80 grid grid-cols-2 md:grid-cols-4 gap-3 text-center sm:text-left">
-          <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-            <span className="w-7 h-7 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-            <span className="text-xs text-stone-700 font-medium">24/7 Uninterrupted Power Backup</span>
-          </div>
-          <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-            <span className="w-7 h-7 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-            <span className="text-xs text-stone-700 font-medium">Free High-Speed Wi-Fi</span>
-          </div>
-          <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-            <span className="w-7 h-7 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-            <span className="text-xs text-stone-700 font-medium">24/7 Front Safari Desk</span>
-          </div>
-          <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-            <span className="w-7 h-7 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center text-xs font-bold shrink-0">✓</span>
-            <span className="text-xs text-stone-700 font-medium">Ample Secure Valet Parking</span>
-          </div>
-        </div>
-
       </Container>
     </section>
   );

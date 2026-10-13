@@ -261,6 +261,18 @@ export const RESORT_DRIVE_PHOTOS = {
     tag: 'Executive Lounge',
     title: 'Conference & Club Lounge',
   },
+  conferenceHallEnhanced: {
+    src: '/assets/resort_drive/conference_hall_enhanced.jpg',
+    alt: 'Corporate executive conference and strategy meeting in the club lounge at Go Flamingo Resort Pench',
+    tag: 'Conference & Offsites',
+    title: 'Executive Conference Room',
+  },
+  weddingLawnEnhanced: {
+    src: '/assets/resort_drive/wedding_lawn_enhanced.jpg',
+    alt: 'Grand destination wedding lawn celebration under festive illuminated canopy at Go Flamingo Resort Pench',
+    tag: 'Destination Weddings',
+    title: 'Banquet Wedding Lawns',
+  },
   weddingLawnBuffet: {
     src: '/assets/resort_drive/IMG-20261010-WA0017.jpg',
     alt: 'Outdoor lawn banquet with colorful canopy and buffet counters for destination weddings',

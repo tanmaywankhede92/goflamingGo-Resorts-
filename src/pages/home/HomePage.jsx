@@ -5,6 +5,7 @@ import AccommodationsShowcase from './components/AccommodationsShowcase';
 import AmenitiesInteractive from './components/AmenitiesInteractive';
 import EventsCelebrations from './components/EventsCelebrations';
 import CuratedGalleryJournal from './components/CuratedGalleryJournal';
+import GuestStoriesTestimonials from './components/GuestStoriesTestimonials';
 import ClosingCallToAction from './components/ClosingCallToAction';
 
 /**
@@ -17,7 +18,8 @@ import ClosingCallToAction from './components/ClosingCallToAction';
  * Section 4 — Resort Experiences & Amenities (Swimming pool, rain dance, restaurant and bar, landscaped garden, kids play area & game zone)
  * Section 5 — Weddings, Corporate Events & Social Celebrations (Highlighting event enquiries & dedicated conference room)
  * Section 6 — Gallery Preview (Compact authentic property mosaic with interactive lightbox & link to /gallery)
- * Section 7 — Booking CTA (Twilight property backdrop, concise invitation & direct booking / WhatsApp actions)
+ * Section 7 — Verified Guest Stories & Reviews (Interactive Journal, category filters & Google Trust badge)
+ * Section 8 — Booking CTA (Twilight property backdrop, concise invitation & direct booking / WhatsApp actions)
  */
 export default function HomePage() {
   useEffect(() => {
@@ -46,7 +48,10 @@ export default function HomePage() {
       {/* Section 6 — Gallery Preview */}
       <CuratedGalleryJournal />
 
-      {/* Section 7 — Booking CTA */}
+      {/* Section 7 — Verified Guest Stories & Reviews */}
+      <GuestStoriesTestimonials />
+
+      {/* Section 8 — Booking CTA */}
       <ClosingCallToAction />
 
     </div>

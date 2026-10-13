@@ -25,6 +25,7 @@ import { AUTHENTIC_RESORT, RESORT_DRIVE_PHOTOS, IMAGES } from '../../data/images
 import { QUICK_CONTACT } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 import { getWhatsAppTarget } from '../../utils/whatsapp';
+import ClosingCallToAction from '../home/components/ClosingCallToAction';
 
 /**
  * EventsPage Component — GoFlamingo Resort (Pench • Sillari)
@@ -70,7 +71,6 @@ export default function EventsPage() {
   const categories = [
     {
       id: 'weddings',
-      num: '5.1',
       badge: 'Forest Destination Weddings',
       title: 'Weddings & Sacred Vows',
       lead: 'A dedicated venue for wedding celebrations, sacred ceremonies, and memorable destination gatherings surrounded by ancient teak trees.',
@@ -100,7 +100,6 @@ export default function EventsPage() {
     },
     {
       id: 'corporate',
-      num: '5.2',
       badge: 'Corporate Getaways & Offsites',
       title: 'Corporate Events & Team Retreats',
       lead: 'An inspiring wilderness environment for companies seeking executive strategy sessions, team bonding, and refreshing group getaways.',
@@ -130,7 +129,6 @@ export default function EventsPage() {
     },
     {
       id: 'conferences',
-      num: '5.3',
       badge: 'Meeting Facilities',
       title: 'Conferences & Meeting Facilities',
       lead: 'A dedicated air-conditioned conference room equipped for executive conclaves, workshops, and business presentations.',
@@ -160,7 +158,6 @@ export default function EventsPage() {
     },
     {
       id: 'social-celebrations',
-      num: '5.4',
       badge: 'Milestone Celebrations',
       title: 'Social Celebrations & Family Gatherings',
       lead: 'A vibrant setting for birthdays, anniversaries, family reunions, and festive milestones under starlit skies.',
@@ -230,59 +227,40 @@ export default function EventsPage() {
               The resort features dedicated facilities across four distinct event categories—from forest destination weddings and company offsites to air-conditioned conferences and joyful milestone gatherings.
             </p>
 
-            {/* MOBILE ONLY: Single Clean Explore Action */}
-            <div className="sm:hidden flex items-center pt-1 pb-2">
+            {/* Luxury Editorial Hero Action CTAs */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              <Link
+                to="/contact?book=true#reservation-form-card"
+                className="group inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+              >
+                <span>Plan Your Event</span>
+                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
+                  <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
+                </span>
+              </Link>
+
               <button
                 type="button"
                 onClick={() => scrollToCategory('weddings')}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-ivory border border-white/30 text-xs font-semibold uppercase tracking-wider backdrop-blur-md cursor-pointer transition-all shadow-md"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-xs uppercase tracking-[0.10em] font-semibold text-white backdrop-blur-sm transition-all duration-200 cursor-pointer whitespace-nowrap"
               >
-                <span>Explore 4 Categories</span>
+                <span>Explore Venues</span>
                 <ArrowDown className="w-3.5 h-3.5 text-gold animate-bounce" />
               </button>
-            </div>
 
-            {/* DESKTOP ONLY: 4 Category Jump Pills Bar */}
-            <div className="hidden sm:flex flex-wrap items-center gap-2.5 pt-1">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => scrollToCategory(cat.id)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-forest-dark/80 hover:bg-gold hover:text-forest-deep text-ivory border border-sand/30 hover:border-gold text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
-                >
-                  <span className="text-gold group-hover:text-forest-deep font-bold">{cat.num}</span>
-                  <span>{cat.id === 'social-celebrations' ? 'Social Celebrations' : cat.title.split('&')[0].trim()}</span>
-                  <ArrowDown className="w-3 h-3 ml-0.5 opacity-70" />
-                </button>
-              ))}
+              <a
+                href={`https://wa.me/919372425968?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to enquire about event dates, venues and packages.')}`}
+                target={getWhatsAppTarget()}
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/60 hover:border-[#25D366] text-xs uppercase tracking-[0.10em] font-bold text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
+              >
+                <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
+                <span>WhatsApp Enquiry</span>
+              </a>
             </div>
 
           </div>
         </Container>
-
-        {/* Bottom Quick Jump Anchor Strip */}
-        <div className="relative z-10 w-full border-t border-sand/20 bg-forest-deep/95 backdrop-blur-md py-3.5 sm:py-4 shadow-lg">
-          <Container size="xl">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center divide-x-0 sm:divide-x divide-sand/15">
-              {categories.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => scrollToCategory(c.id)}
-                  className="px-2 text-left sm:text-center group cursor-pointer transition-colors"
-                >
-                  <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-sand-dark font-medium group-hover:text-gold">
-                    {c.num} Category
-                  </span>
-                  <span className="text-xs sm:text-sm font-serif font-bold text-ivory group-hover:text-gold flex items-center justify-start sm:justify-center gap-1">
-                    <span>{c.badge.replace('Forest Destination ', '').replace('Meeting Facilities', 'Conferences')}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </Container>
-        </div>
       </section>
 
 
@@ -305,8 +283,7 @@ export default function EventsPage() {
                 {/* Section Top Header Pill */}
                 <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold/15 border border-gold/40 text-gold-dark text-xs font-semibold tracking-wider uppercase">
-                    <span>Category {category.num}</span>
-                    <span className="text-stone-400">•</span>
+                    <Sparkles className="w-3.5 h-3.5 text-gold-dark" />
                     <span>{category.badge}</span>
                   </div>
 
@@ -417,7 +394,7 @@ export default function EventsPage() {
                         className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white hover:bg-stone-50 border border-sand/50 text-xs uppercase tracking-wider font-semibold text-forest-deep shadow-xs transition-all duration-200 cursor-pointer whitespace-nowrap"
                       >
                         <Phone className="w-3.5 h-3.5 text-gold-dark" />
-                        <span>Call Desk</span>
+                        <span>Call</span>
                       </a>
                     </div>
 
@@ -433,86 +410,16 @@ export default function EventsPage() {
 
 
       {/* ========================================================
-          3. MASTER EVENT ENQUIRY CARD (LUXURY SHADOWED BOX)
+          3. CLOSING CTA (UNIFIED RADIANT CHAMPAGNE CARD)
           ======================================================== */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF6F1] text-charcoal border-t border-stone-200/80 overflow-hidden">
-        
-        {/* Ambient subtle glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-100/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#163824]/5 rounded-full blur-3xl pointer-events-none" />
-
-        <Container size="lg" className="relative z-10">
-          
-          <div className="relative rounded-3xl border-2 border-[#C5A880]/40 bg-gradient-to-br from-[#0F291B] via-[#0C2417] to-[#07160E] p-8 sm:p-12 md:p-14 text-center shadow-[0_20px_50px_-15px_rgba(15,41,27,0.4)] overflow-hidden ring-1 ring-inset ring-white/10">
-
-            {/* Inner champagne & emerald light glows */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-[220px] bg-[#C5A880]/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 right-10 w-60 h-60 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
-
-            {/* Eyebrow Pill */}
-            <div className="relative z-10 inline-flex items-center px-4 py-1 rounded-full bg-white/10 border border-[#C5A880]/40 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#DFBF8E] font-semibold mb-4 backdrop-blur-sm">
-              <span>Event Coordinator Desk · Pench</span>
-            </div>
-
-            {/* Headline */}
-            <h2 className="relative z-10 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-normal leading-[1.2] text-white mb-3.5 max-w-2xl mx-auto text-balance">
-              Plan Your Gathering at Go Flamingo Resort
-            </h2>
-
-            {/* Supporting Copy */}
-            <p className="relative z-10 font-sans text-xs sm:text-sm md:text-base text-sand-light/85 max-w-lg mx-auto mb-8 font-light leading-relaxed">
-              Whether you need customized wedding mandap setups, executive conference dates, or social celebration lawns, our hospitality team will prepare a tailored package for your group.
-            </p>
-
-            {/* High-Intent Dual Actions with Signature Home Page Arrow Capsule */}
-            <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xl mx-auto mb-8">
-              
-              {/* WhatsApp Coordinator Action */}
-              <a
-                href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20enquire%20about%20event%20and%20wedding%20venue%20bookings."
-                target={getWhatsAppTarget()}
-                rel="noopener noreferrer"
-                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
-              >
-                <WhatsAppIcon size="sm" className="text-[#08130B] shrink-0" />
-                <span>WhatsApp Event Desk</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
-                </span>
-              </a>
-
-              {/* Direct Call Button */}
-              <a
-                href={`tel:${QUICK_CONTACT.phoneRaw}`}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs uppercase tracking-[0.10em] font-semibold text-white backdrop-blur-sm transition-all duration-200 w-full sm:w-auto whitespace-nowrap"
-              >
-                <Phone className="w-3.5 h-3.5 text-gold-light" />
-                <span>Call {QUICK_CONTACT.phone}</span>
-              </a>
-
-            </div>
-
-            {/* Reassurance Footer Strip */}
-            <div className="relative z-10 pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-sand-light/75 font-light">
-              <span>
-                Direct Coordination:{' '}
-                <a href="tel:+919561957009" className="text-[#DFBF8E] font-semibold hover:underline">
-                  +91 95619 57009
-                </a>
-              </span>
-              <span className="hidden sm:inline text-white/30">·</span>
-              <span>20 Rooms & Dormitory Accommodation Available</span>
-              <span className="hidden sm:inline text-white/30">·</span>
-              <span className="text-[#DFBF8E] font-medium inline-flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A880]" />
-                <span>Sillari Gate, Pench National Park (1 Hr from Nagpur)</span>
-              </span>
-            </div>
-
-          </div>
-
-        </Container>
-      </section>
+      <ClosingCallToAction
+        eyebrow="Event Planning · Sillari Gate"
+        title="Plan Your Gathering at Go Flamingo Resort"
+        description="Whether you need customized wedding mandap setups, executive conference dates, or social celebration lawns, our hospitality team will prepare a tailored package for your group."
+        primaryBtnLabel="Plan Your Event Online"
+        whatsappLabel="WhatsApp Event Inquiry"
+        whatsappMsg="Hello Go Flamingo Resort, I would like to enquire about wedding, corporate, or celebration venue bookings."
+      />
 
     </div>
   );

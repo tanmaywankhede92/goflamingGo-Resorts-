@@ -263,7 +263,7 @@ Website: goflamingoresorts.com`;
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-full bg-black/40 hover:bg-black/60 text-ivory border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-md transition-all shadow-md text-center"
               >
                 <Phone className="w-3.5 h-3.5 text-gold shrink-0" />
-                <span>Call Desk: {QUICK_CONTACT.phone}</span>
+                <span>Call: {QUICK_CONTACT.phone}</span>
               </a>
             </div>
 

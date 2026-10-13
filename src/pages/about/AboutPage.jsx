@@ -11,9 +11,6 @@ import {
   Building2,
   Briefcase,
   Sparkles,
-  CheckCircle2,
-  Globe,
-  ExternalLink,
   Waves,
   UtensilsCrossed,
   Music,
@@ -33,6 +30,7 @@ import { AUTHENTIC_RESORT, RESORT_DRIVE_PHOTOS, IMAGES } from '../../data/images
 import { QUICK_CONTACT } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 import { getWhatsAppTarget } from '../../utils/whatsapp';
+import ClosingCallToAction from '../home/components/ClosingCallToAction';
 
 /**
  * AboutPage Component — GoFlamingo Resort (Pench • Sillari Gate)
@@ -53,82 +51,81 @@ export default function AboutPage() {
     'Hello Go Flamingo Resort, I would like to inquire about rooms, facilities, and safari booking at Sillari Gate.'
   )}`;
 
-  // Key Property Facts Grid
-  const propertySpecs = [
+  // The Resort at a Glance Specification Badges
+  const glanceItems = [
     {
-      label: 'Resort Name',
-      value: 'GoFlamingo Resort',
-      highlight: 'Sillari, Pench',
-      icon: <Building2 className="w-5 h-5 text-gold" />,
+      label: '20 Rooms',
+      icon: (
+        <svg viewBox="0 0 48 48" className="w-9 h-9 text-[#163824]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 16v20M41 16v20" />
+          <path d="M7 20h34" />
+          <rect x="11" y="22" width="11" height="5.5" rx="1.5" />
+          <rect x="26" y="22" width="11" height="5.5" rx="1.5" />
+          <path d="M7 27.5h34v6H7z" />
+        </svg>
+      ),
     },
     {
-      label: 'Location',
-      value: 'Sillari, Pench Region',
-      highlight: 'Maharashtra, India',
-      icon: <MapPin className="w-5 h-5 text-gold" />,
+      label: '1 Dormitory',
+      icon: (
+        <svg viewBox="0 0 48 48" className="w-9 h-9 text-[#163824]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 8v32M40 8v32" />
+          <path d="M8 15h32M8 21h32" />
+          <path d="M8 31h32" />
+          <path d="M29 15v16" />
+          <path d="M29 19h11M29 23h11M29 27h11" />
+        </svg>
+      ),
     },
     {
-      label: 'Accommodation',
-      value: '20 Rooms + 1 Dormitory',
-      highlight: 'Deluxe & Super Deluxe',
-      icon: <CheckCircle2 className="w-5 h-5 text-gold" />,
+      label: 'Swimming Pool',
+      icon: (
+        <svg viewBox="0 0 48 48" className="w-9 h-9 text-[#163824]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 10v18M29 10v18" />
+          <path d="M15 13a4 4 0 0 1 4-3M33 13a4 4 0 0 0-4-3" />
+          <path d="M19 16h10M19 21h10M19 26h10" />
+          <path d="M8 32c4-1.8 8-1.8 12 0s8 1.8 12 0 8-1.8 12 0" />
+          <path d="M8 37c4-1.8 8-1.8 12 0s8 1.8 12 0 8-1.8 12 0" />
+        </svg>
+      ),
     },
     {
-      label: 'Meeting Facility',
-      value: 'Conference Room',
-      highlight: 'Offsites & Conclaves',
-      icon: <Briefcase className="w-5 h-5 text-gold" />,
+      label: 'Restaurant & Bar',
+      icon: (
+        <svg viewBox="0 0 48 48" className="w-9 h-9 text-[#163824]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10 13v9a3 3 0 0 0 3 3v10M10 13v5M13 13v5M16 13v5a3 3 0 0 1-3 3" />
+          <path d="M24 16a10 10 0 0 1 10 10H14a10 10 0 0 1 10-10z" />
+          <path d="M24 13v3M12 28h24" />
+          <path d="M37 13v22M37 13c2.5 0 3.5 3.5 3.5 8s-1 4-3.5 4" />
+        </svg>
+      ),
     },
     {
-      label: 'Official Website',
-      value: 'goflamingoresorts.com',
-      highlight: 'Direct Bookings',
-      isLink: true,
-      href: 'https://goflamingoresorts.com/',
-      icon: <Globe className="w-5 h-5 text-gold" />,
+      label: 'Game Zone',
+      icon: (
+        <svg viewBox="0 0 48 48" className="w-9 h-9 text-[#163824]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="19" cy="19" r="9.5" />
+          <path d="M13 26l-5 5a2 2 0 0 0 2.8 2.8l5-5" />
+          <circle cx="28" cy="12" r="2.5" />
+          <circle cx="36" cy="18" r="2.5" />
+          <path d="M33.5 24h5M34.5 24l-2 9h8l-2-9M31 33h10" />
+        </svg>
+      ),
     },
     {
-      label: 'Sillari Gate Distance',
-      value: 'Just Minutes Away',
-      highlight: 'Direct Tiger Safari',
-      icon: <Compass className="w-5 h-5 text-gold" />,
-    },
-  ];
-
-  // Room Categories Showcase
-  const roomTypes = [
-    {
-      title: 'Deluxe Rooms',
-      category: 'Comfort & Nature Sit-out',
-      image: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
-      alt: 'Go Flamingo Deluxe Room with King Bed and Teak Finishes',
-      description:
-        'Elegantly appointed air-conditioned rooms featuring handcrafted king beds, warm teak finishes, and modern attached bathrooms. Perfect for couples and peaceful weekend getaways.',
-      specs: ['King Size Bed', 'Split AC & LED TV', 'Attached Modern Bath', 'Garden Sit-out'],
-      badge: 'Popular for Couples',
-      link: '/rooms/luxury-cottage',
-    },
-    {
-      title: 'Super Deluxe Rooms',
-      category: 'Premium Balcony & Spacious Suite',
-      image: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
-      alt: 'Go Flamingo Super Deluxe Room with Private Balcony and Forest View',
-      description:
-        'Spacious luxury rooms featuring panoramic glass doors opening to a private balcony overlooking green gardens and tall trees. Includes bathtub amenities and plush lounge seating.',
-      specs: ['Private Forest Balcony', 'Bathtub & Rain Shower', 'Spacious Seating Area', 'Tea / Coffee Station'],
-      badge: 'Luxury Stays',
-      link: '/rooms/luxury-cottage',
-    },
-    {
-      title: 'Group Dormitory',
-      category: '1 Dedicated AC Hall for Groups',
-      image: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
-      alt: 'Go Flamingo Group Dormitory Accommodation with Multiple Beds',
-      description:
-        'Spacious, fully air-conditioned group hall equipped with comfortable individual beds and clean linens. Specially designed for student excursions, wildlife photography clubs, and family reunions.',
-      specs: ['1 Large AC Dormitory', 'Individual Bunk/Cots', 'Dedicated Washrooms', 'Secure Luggage Storage'],
-      badge: 'Groups & Wildlife Tours',
-      link: '/rooms',
+      label: 'Conference Room',
+      icon: (
+        <svg viewBox="0 0 48 48" className="w-9 h-9 text-[#163824]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="10" y="10" width="28" height="16" rx="1.5" />
+          <path d="M24 26v5M18 36l6-5 6 5" />
+          <circle cx="15" cy="30" r="2" />
+          <path d="M12 36a3 3 0 0 1 6 0" />
+          <circle cx="24" cy="27" r="2.5" />
+          <path d="M20 33a4 4 0 0 1 8 0" />
+          <circle cx="33" cy="30" r="2" />
+          <path d="M30 36a3 3 0 0 1 6 0" />
+        </svg>
+      ),
     },
   ];
 
@@ -262,7 +259,7 @@ export default function AboutPage() {
 
               <a
                 href={whatsappUrl}
-                target="_blank"
+                target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/60 hover:border-[#25D366] text-xs uppercase tracking-[0.10em] font-bold text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
               >
@@ -308,60 +305,6 @@ export default function AboutPage() {
       </section>
 
 
-      {/* ========================================================
-          2. KEY PROPERTY DETAILS (FACTSHEET GRID WITH INNER SHADOWS)
-          ======================================================== */}
-      <section className="py-14 sm:py-18 bg-white border-b border-sand/30">
-        <Container size="xl">
-          <div className="max-w-2xl mb-8 sm:mb-12">
-            <span className="text-xs uppercase tracking-[0.2em] text-gold font-semibold block mb-2">
-              Property Overview
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif text-forest-deep tracking-tight">
-              Key Property Details
-            </h2>
-            <p className="text-sm sm:text-base text-charcoal-muted mt-2">
-              Essential facts and infrastructure specifications of GoFlamingo Resort, Sillari.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {propertySpecs.map((spec, index) => (
-              <div
-                key={index}
-                className="p-5 sm:p-6 rounded-2xl bg-[#FCFAF6] border border-stone-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:border-gold/50 transition-all duration-300 flex items-start gap-4 group ring-1 ring-inset ring-black/5"
-              >
-                <div className="w-12 h-12 rounded-xl bg-forest-deep/5 group-hover:bg-gold/15 border border-sand/40 flex items-center justify-center shrink-0 transition-colors duration-200 shadow-xs">
-                  {spec.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="block text-[11px] uppercase tracking-wider text-charcoal-light font-medium mb-1">
-                    {spec.label}
-                  </span>
-                  {spec.isLink ? (
-                    <a
-                      href={spec.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-base sm:text-lg font-serif font-bold text-forest-deep group-hover:text-gold transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>{spec.value}</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-gold shrink-0" />
-                    </a>
-                  ) : (
-                    <span className="text-base sm:text-lg font-serif font-bold text-forest-deep block truncate">
-                      {spec.value}
-                    </span>
-                  )}
-                  <span className="inline-block text-xs font-medium text-gold-dark mt-0.5">
-                    {spec.highlight}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
 
 
       {/* ========================================================
@@ -435,70 +378,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* 4 Pillars Grid with REALISTIC LUXURY ICONS (No Emojis) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                
-                {/* Pillar 1 */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-gold/50 transition-all duration-300 ring-1 ring-inset ring-black/5 group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/60 flex items-center justify-center shrink-0">
-                      <Compass className="w-4 h-4 text-emerald-700" />
-                    </div>
-                    <span className="text-sm font-serif font-bold text-forest-deep">
-                      Leisure & Wildlife Stays
-                    </span>
-                  </div>
-                  <p className="text-xs text-charcoal-muted leading-relaxed pl-11">
-                    Instant proximity to Sillari Gate for hassle-free morning and evening safaris.
-                  </p>
-                </div>
 
-                {/* Pillar 2 */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-gold/50 transition-all duration-300 ring-1 ring-inset ring-black/5 group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 border border-amber-200/60 flex items-center justify-center shrink-0">
-                      <Users className="w-4 h-4 text-amber-700" />
-                    </div>
-                    <span className="text-sm font-serif font-bold text-forest-deep">
-                      Family Getaways
-                    </span>
-                  </div>
-                  <p className="text-xs text-charcoal-muted leading-relaxed pl-11">
-                    Safe swimming pool, children’s play grove, and delicious multi-cuisine meals.
-                  </p>
-                </div>
-
-                {/* Pillar 3 */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-gold/50 transition-all duration-300 ring-1 ring-inset ring-black/5 group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-teal-50 text-teal-800 border border-teal-200/60 flex items-center justify-center shrink-0">
-                      <Building2 className="w-4 h-4 text-teal-700" />
-                    </div>
-                    <span className="text-sm font-serif font-bold text-forest-deep">
-                      Group Accommodation
-                    </span>
-                  </div>
-                  <p className="text-xs text-charcoal-muted leading-relaxed pl-11">
-                    Dedicated AC Dormitory + 20 rooms for wildlife clubs, schools and big families.
-                  </p>
-                </div>
-
-                {/* Pillar 4 */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md hover:border-gold/50 transition-all duration-300 ring-1 ring-inset ring-black/5 group">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-rose-50 text-rose-800 border border-rose-200/60 flex items-center justify-center shrink-0">
-                      <Briefcase className="w-4 h-4 text-rose-700" />
-                    </div>
-                    <span className="text-sm font-serif font-bold text-forest-deep">
-                      Event & Meeting Facilities
-                    </span>
-                  </div>
-                  <p className="text-xs text-charcoal-muted leading-relaxed pl-11">
-                    Conference room for corporate conclaves and sprawling lawns for social events.
-                  </p>
-                </div>
-
-              </div>
             </div>
 
           </div>
@@ -507,91 +387,31 @@ export default function AboutPage() {
 
 
       {/* ========================================================
-          4. ACCOMMODATION: 20 ROOMS & 1 DORMITORY
+          THE RESORT AT A GLANCE (QUICK SPECIFICATION ICONS)
           ======================================================== */}
-      <section className="py-16 sm:py-20 bg-forest-dark text-ivory">
+      <section className="py-14 sm:py-18 bg-[#FBF9F4] border-y border-[#EAE3D4]/90">
         <Container size="xl">
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs uppercase tracking-[0.2em] text-gold font-semibold block mb-2">
-              Stay & Accommodations
+          <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
+            <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#A6865A] font-semibold block mb-2">
+              The Resort at a Glance
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-ivory tracking-tight">
-              20 Rooms & 1 Group Dormitory
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0E2718] font-normal tracking-tight">
+              The Resort at a Glance
             </h2>
-            <p className="text-sm sm:text-base text-sand-light/80 mt-3">
-              Comfortable, air-conditioned accommodations crafted for deep rest between jungle drives.
-            </p>
+            <div className="w-14 h-0.5 bg-[#C5A880]/80 mx-auto mt-3.5 rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {roomTypes.map((room, idx) => (
-              <div
-                key={idx}
-                className="rounded-3xl bg-forest-deep/80 border border-sand/20 overflow-hidden flex flex-col group hover:border-gold/50 transition-all duration-300 shadow-xl"
-              >
-                {/* Image */}
-                <div className="relative aspect-16/10 overflow-hidden bg-forest-dark">
-                  <img
-                    src={room.image}
-                    alt={room.alt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-forest-dark/85 text-gold border border-gold/30 backdrop-blur-sm">
-                      {room.badge}
-                    </span>
-                  </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 max-w-5xl mx-auto">
+            {glanceItems.map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center text-center group cursor-default">
+                <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full bg-[#F3EDE2] border border-[#E8DEC9] flex items-center justify-center mb-3.5 shadow-[0_2px_8px_rgba(0,0,0,0.03)] group-hover:scale-105 group-hover:bg-[#EFE7D8] group-hover:border-[#C5A880]/60 transition-all duration-300">
+                  {item.icon}
                 </div>
-
-                {/* Content */}
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
-                  <div>
-                    <span className="text-xs uppercase tracking-wider text-sand-dark block mb-1">
-                      {room.category}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-serif text-ivory font-bold mb-3">
-                      {room.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-sand-light/80 leading-relaxed font-light mb-4">
-                      {room.description}
-                    </p>
-
-                    {/* Specs Checklist */}
-                    <ul className="space-y-2 border-t border-sand/15 pt-4">
-                      {room.specs.map((item, sIdx) => (
-                        <li key={sIdx} className="text-xs text-sand-light flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Link
-                    to={room.link}
-                    className="group inline-flex items-center justify-center gap-2 w-full pl-4 pr-2 py-2.5 rounded-full bg-white/10 hover:bg-gold hover:text-forest-deep text-ivory text-xs font-semibold tracking-wider uppercase transition-all duration-200 border border-sand/20 cursor-pointer"
-                  >
-                    <span>Explore Room Details</span>
-                    <span className="w-5.5 h-5.5 rounded-full bg-forest-dark/70 group-hover:bg-forest-deep text-gold group-hover:text-gold-light flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 shrink-0">
-                      <ArrowRight className="w-3 h-3" />
-                    </span>
-                  </Link>
-                </div>
+                <span className="text-sm sm:text-base font-serif font-medium text-[#163824] tracking-tight group-hover:text-[#A6865A] transition-colors duration-200">
+                  {item.label}
+                </span>
               </div>
             ))}
-          </div>
-
-          {/* Quick Summary Pill */}
-          <div className="mt-10 text-center">
-            <div className="inline-flex flex-wrap items-center justify-center gap-3 px-6 py-3 rounded-full bg-forest-deep border border-sand/20 text-xs sm:text-sm text-sand-light shadow-md">
-              <span>All 20 rooms feature split AC, en-suite bathrooms & forest views.</span>
-              <span className="text-gold">•</span>
-              <Link to="/rooms" className="text-gold hover:underline font-semibold inline-flex items-center gap-1">
-                <span>View Full Room Gallery & Inventory</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
           </div>
         </Container>
       </section>
@@ -724,101 +544,9 @@ export default function AboutPage() {
 
 
       {/* ========================================================
-          7. LUXURY ARCHITECTURAL CTA BOX (SCREENSHOT 3 REDESIGNED)
-          Inner Border, Deep Shadows & Ambient Light Glow
+          7. CLOSING BOOKING CTA (SHARED HOMEPAGE COMPONENT)
           ======================================================== */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-[#FAF6F1] text-charcoal border-t border-stone-200/80 overflow-hidden">
-        
-        {/* Subtle warm ambient background glow on outer light section */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-100/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#163824]/5 rounded-full blur-3xl pointer-events-none" />
-
-        <Container size="lg" className="relative z-10">
-          
-          {/* Luxury Architectural Box: Deep Emerald Card with Gold Inner Border & Strong Drop Shadow */}
-          <div className="relative rounded-3xl border-2 border-[#C5A880]/40 bg-gradient-to-br from-[#0F291B] via-[#0C2417] to-[#07160E] p-8 sm:p-12 md:p-14 text-center shadow-[0_20px_50px_-15px_rgba(15,41,27,0.4)] overflow-hidden ring-1 ring-inset ring-white/10">
-
-            {/* Ambient inner champagne & emerald light glows */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-[220px] bg-[#C5A880]/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 right-10 w-60 h-60 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
-
-            {/* Eyebrow Pill */}
-            <div className="relative z-10 inline-flex items-center px-4 py-1 rounded-full bg-white/10 border border-[#C5A880]/40 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#DFBF8E] font-semibold mb-4 backdrop-blur-sm">
-              <span>Plan Your Visit · Sillari Gate</span>
-            </div>
-
-            {/* Headline */}
-            <h2 className="relative z-10 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-normal leading-[1.2] text-white mb-3.5 max-w-2xl mx-auto text-balance">
-              Experience GoFlamingo Resort, Sillari
-            </h2>
-
-            {/* Grounded Supporting Copy */}
-            <p className="relative z-10 font-sans text-xs sm:text-sm md:text-base text-sand-light/85 max-w-lg mx-auto mb-8 font-light leading-relaxed">
-              Whether you are planning a weekend safari holiday, a family reunion, group tour accommodation, or a corporate offsite, our reservations team is ready to assist you.
-            </p>
-
-            {/* High-Intent Dual Actions with Signature Home Page Arrow Capsule */}
-            <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xl mx-auto mb-8">
-              
-              {/* Online Booking Button with Signature Arrow Capsule */}
-              <Link
-                to="/contact?book=true#reservation-form-card"
-                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
-              >
-                <span>Book Your Stay Online</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
-                </span>
-              </Link>
-
-              {/* Direct Call Button */}
-              <a
-                href={`tel:${QUICK_CONTACT.phoneRaw}`}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs uppercase tracking-[0.10em] font-semibold text-white backdrop-blur-sm transition-all duration-200 w-full sm:w-auto whitespace-nowrap"
-              >
-                <Phone className="w-3.5 h-3.5 text-gold-light" />
-                <span>Call {QUICK_CONTACT.phone}</span>
-              </a>
-
-              {/* WhatsApp Button */}
-              <a
-                href={whatsappUrl}
-                target={getWhatsAppTarget()}
-                rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/60 hover:border-[#25D366] text-xs uppercase tracking-[0.08em] font-bold text-white shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] transition-all duration-300 w-full sm:w-auto cursor-pointer whitespace-nowrap"
-              >
-                <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
-                <span>WhatsApp Instant Inquiry</span>
-              </a>
-
-            </div>
-
-            {/* Reassurance Footer Strip with MapPin */}
-            <div className="relative z-10 pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-sand-light/75 font-light">
-              <span>
-                Official Website:{' '}
-                <a
-                  href="https://goflamingoresorts.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#DFBF8E] font-medium hover:underline"
-                >
-                  https://goflamingoresorts.com/
-                </a>
-              </span>
-              <span className="hidden sm:inline text-white/30">·</span>
-              <span>Sillari Gate, Sitapur, Pench</span>
-              <span className="hidden sm:inline text-white/30">·</span>
-              <span className="text-[#DFBF8E] font-medium inline-flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A880]" />
-                <span>Just 65 km from Nagpur via NH 44 (1 Hr)</span>
-              </span>
-            </div>
-
-          </div>
-
-        </Container>
-      </section>
+      <ClosingCallToAction />
 
     </div>
   );

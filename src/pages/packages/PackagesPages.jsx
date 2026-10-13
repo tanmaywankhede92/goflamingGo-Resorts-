@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import PlaceholderPage from '../../components/common/PlaceholderPage';
 import { Container, Heading, SectionEyebrow, Button, Badge } from '../../components/common';
 import { IMAGES } from '../../data/images';
+import ClosingCallToAction from '../home/components/ClosingCallToAction';
 
 const PACKAGES_ROUTES = [
   { label: 'All Packages', path: '/packages' },
@@ -28,6 +29,7 @@ export function PackagesOverview() {
           { title: 'Custom Group Itineraries', desc: 'Personalized plans for weekenders from Nagpur, corporate offsites, and families.' },
         ]}
         relatedRoutes={PACKAGES_ROUTES}
+        showClosingCta={false}
       />
 
       {/* Package Teaser Cards */}
@@ -129,6 +131,9 @@ export function PackagesOverview() {
           </div>
         </Container>
       </section>
+
+      {/* Universal Radiant Closing Call To Action */}
+      <ClosingCallToAction />
     </div>
   );
 }

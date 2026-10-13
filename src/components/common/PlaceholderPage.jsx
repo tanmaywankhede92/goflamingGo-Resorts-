@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../hero/PageHero';
 import { Container, Heading, Text, SectionEyebrow, Button, Badge } from './index';
+import ClosingCallToAction from '../../pages/home/components/ClosingCallToAction';
 
 /**
  * PlaceholderPage Component
@@ -22,6 +23,7 @@ export default function PlaceholderPage({
   relatedRoutes = [],
   actionLabel = 'Enquire for Your Stay',
   actionTo = '/contact?book=true#reservation-form-card',
+  showClosingCta = true,
 }) {
   return (
     <div className="w-full">
@@ -145,6 +147,9 @@ export default function PlaceholderPage({
           </div>
         </Container>
       </section>
+
+      {/* Universal Radiant Closing Call To Action */}
+      {showClosingCta && <ClosingCallToAction />}
     </div>
   );
 }
