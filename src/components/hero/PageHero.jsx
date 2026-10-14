@@ -60,50 +60,44 @@ export default function PageHero({
   className = '',
   children,
 }) {
-  // 1. FULL-SCREEN CINEMATIC HERO (Home)
+  // 1. CINEMATIC HERO (BREATHABLE & LUXURIOUS)
   if (variant === 'cinematic') {
     return (
-      <section className={cn('relative w-full h-[92dvh] min-h-[580px] sm:min-h-[620px] flex items-end pb-14 sm:pb-16 md:pb-24 overflow-hidden bg-forest-dark text-ivory', className)}>
-        {/* Background Image with Cinematic Protection Scrim */}
+      <section className={cn('relative w-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] flex items-center pt-28 sm:pt-36 md:pt-40 pb-14 sm:pb-20 overflow-hidden bg-forest-dark text-ivory', className)}>
+        {/* Background Image with Natural Scrim */}
         <div className="absolute inset-0 z-0">
           <img
             src={image}
             alt={imageAlt}
             fetchPriority="high"
             loading="eager"
-            className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000"
+            className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
           />
-          {/* Multi-stage gradient ensures text & buttons are 100% readable while maintaining photo beauty */}
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/70 to-forest-dark/45" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/85 via-forest-dark/40 to-transparent sm:block hidden" />
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/60 to-forest-dark/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
         </div>
 
         {/* Foreground Content */}
         <Container size="xl" className="relative z-10 w-full">
-          <div className="max-w-3xl">
-            {badge && (
-              <div className="mb-3 sm:mb-4">
-                <Badge variant="gold">{badge}</Badge>
+          <div className="max-w-2xl">
+            {eyebrow && (
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A880]/40 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
+                <span>{eyebrow}</span>
               </div>
             )}
-            {eyebrow && (
-              <SectionEyebrow color="gold" withLine className="mb-3 sm:mb-4 text-gold-light">
-                {eyebrow}
-              </SectionEyebrow>
-            )}
-            <Heading as="h1" variant="hero" font="serif" className="text-ivory mb-4 sm:mb-6 leading-[1.08]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-3.5 text-balance">
               {title}
-            </Heading>
+            </h1>
             {subtitle && (
-              <Text variant="lead" className="text-sand-light/95 mb-6 sm:mb-8 max-w-2xl font-light text-sm sm:text-base md:text-lg leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-sand-light/90 leading-relaxed font-light mb-7 max-w-xl">
                 {subtitle}
-              </Text>
+              </p>
             )}
 
-            {/* Mobile-Optimized CTA Group */}
+            {/* Clean CTA Group */}
             {actions.length > 0 && (
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
-                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'lg'))}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
               </div>
             )}
           </div>
@@ -114,46 +108,39 @@ export default function PageHero({
     );
   }
 
-  // 2. LARGE IMAGE HERO (Major Section Landings: Rooms, Dining, Weddings)
+  // 2. LARGE IMAGE HERO (Major Section Landings: Dining, Packages, Resort)
   if (variant === 'large') {
     return (
-      <section className={cn('relative w-full min-h-[460px] sm:min-h-[500px] md:min-h-[560px] flex items-center pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 overflow-hidden bg-forest-deep text-ivory', className)}>
+      <section className={cn('relative w-full min-h-[420px] sm:min-h-[480px] flex items-center pt-28 sm:pt-36 pb-14 sm:pb-18 overflow-hidden bg-forest-dark text-ivory', className)}>
         <div className="absolute inset-0 z-0">
           <img
             src={image}
             alt={imageAlt}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
           />
-          {/* Protective gradient scrim */}
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/80 to-forest-dark/60 sm:bg-gradient-to-r sm:from-forest-dark/95 sm:via-forest-deep/85 sm:to-forest-deep/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/65 to-forest-dark/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
         </div>
 
         <Container size="xl" className="relative z-10 w-full">
           <div className="max-w-2xl">
-
-
-            {badge && (
-              <div className="mb-3">
-                <Badge variant="gold">{badge}</Badge>
+            {eyebrow && (
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A880]/40 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
+                <span>{eyebrow}</span>
               </div>
             )}
-            {eyebrow && (
-              <SectionEyebrow color="gold" withLine className="mb-2.5 sm:mb-3 text-gold-light">
-                {eyebrow}
-              </SectionEyebrow>
-            )}
-            <Heading as="h1" variant="h1" font="serif" className="text-ivory mb-3 sm:mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-3.5 text-balance">
               {title}
-            </Heading>
+            </h1>
             {subtitle && (
-              <Text variant="lead" className="text-sand-light/95 mb-5 sm:mb-6 max-w-xl font-light text-sm sm:text-base leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-sand-light/90 leading-relaxed font-light mb-7 max-w-xl">
                 {subtitle}
-              </Text>
+              </p>
             )}
 
-            {/* Mobile-Optimized CTA Group */}
+            {/* Clean CTA Group */}
             {actions.length > 0 && (
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
                 {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
               </div>
             )}
@@ -166,35 +153,28 @@ export default function PageHero({
   // 3. SPLIT EDITORIAL HERO (Asymmetric: Narrative on Left, Visual on Right)
   if (variant === 'split') {
     return (
-      <section className={cn('w-full pt-24 sm:pt-28 md:pt-32 pb-10 sm:pb-14 md:pb-20 bg-ivory text-charcoal', className)}>
+      <section className={cn('w-full pt-28 sm:pt-36 pb-12 sm:pb-16 bg-[#FAF8F5] text-charcoal border-b border-stone-200/80', className)}>
         <Container size="xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
             {/* Left Narrative */}
-            <div className="lg:col-span-6 lg:pr-6">
-
-
-              {badge && (
-                <div className="mb-3">
-                  <Badge variant="terracotta">{badge}</Badge>
+            <div className="lg:col-span-6 lg:pr-4">
+              {eyebrow && (
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#163824]/8 border border-[#163824]/15 text-[#163824] text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-4">
+                  <span>{eyebrow}</span>
                 </div>
               )}
-              {eyebrow && (
-                <SectionEyebrow color="terracotta" withLine className="mb-2.5 sm:mb-3">
-                  {eyebrow}
-                </SectionEyebrow>
-              )}
-              <Heading as="h1" variant="h1" font="serif" color="forest" className="mb-4 sm:mb-5 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0E2718] font-normal leading-[1.14] mb-3.5">
                 {title}
-              </Heading>
+              </h1>
               {subtitle && (
-                <Text variant="lead" color="muted" className="mb-6 sm:mb-8 font-light text-sm sm:text-base leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-charcoal/80 font-light leading-relaxed mb-6 max-w-xl">
                   {subtitle}
-                </Text>
+                </p>
               )}
 
-              {/* Mobile-Optimized CTA Group */}
+              {/* Clean CTA Group */}
               {actions.length > 0 && (
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                   {actions.map((act, idx) => renderHeroAction(act, idx, 'primary', 'md'))}
                 </div>
               )}
@@ -202,13 +182,12 @@ export default function PageHero({
 
             {/* Right Image */}
             <div className="lg:col-span-6 mt-4 lg:mt-0">
-              <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[4px] shadow-sm">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-2xl shadow-md border-2 border-white">
                 <img
                   src={image}
                   alt={imageAlt}
                   className="w-full h-full object-cover object-center"
                 />
-                <div className="absolute inset-0 ring-1 ring-inset ring-charcoal/10" />
               </div>
             </div>
           </div>
@@ -220,68 +199,64 @@ export default function PageHero({
   // 4. DARK IMMERSIVE HERO (Deep Forest / Safari / Wildlife Mood)
   if (variant === 'dark') {
     return (
-      <section className={cn('relative w-full pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-28 bg-forest-deep text-ivory overflow-hidden', className)}>
+      <section className={cn('relative w-full min-h-[420px] sm:min-h-[480px] flex items-center pt-28 sm:pt-36 pb-14 sm:pb-18 bg-forest-dark text-ivory overflow-hidden', className)}>
         {image && (
-          <div className="absolute inset-0 z-0 opacity-25">
+          <div className="absolute inset-0 z-0">
             <img
               src={image}
               alt={imageAlt}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/65 to-forest-dark/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
           </div>
         )}
-        <div className="absolute inset-0 bg-radial from-forest-jungle/40 via-forest-deep/90 to-forest-dark" />
 
-        <Container size="lg" className="relative z-10 text-center">
-          {badge && (
-            <div className="mb-3 sm:mb-4">
-              <Badge variant="gold">{badge}</Badge>
-            </div>
-          )}
-          {eyebrow && (
-            <SectionEyebrow color="gold" withLine className="mb-3 sm:mb-4 justify-center text-gold-light">
-              {eyebrow}
-            </SectionEyebrow>
-          )}
-          <Heading as="h1" variant="h1" font="serif" className="text-ivory mb-4 sm:mb-6 max-w-3xl mx-auto leading-tight">
-            {title}
-          </Heading>
-          {subtitle && (
-            <Text variant="lead" className="text-sand-light/95 max-w-2xl mx-auto mb-6 sm:mb-8 font-light text-sm sm:text-base leading-relaxed">
-              {subtitle}
-            </Text>
-          )}
+        <Container size="xl" className="relative z-10 w-full">
+          <div className="max-w-2xl">
+            {eyebrow && (
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A880]/40 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
+                <span>{eyebrow}</span>
+              </div>
+            )}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-3.5 text-balance">
+              {title}
+            </h1>
+            {subtitle && (
+              <p className="text-xs sm:text-sm md:text-base text-sand-light/90 leading-relaxed font-light mb-7 max-w-xl">
+                {subtitle}
+              </p>
+            )}
 
-          {/* Mobile-Optimized CTA Group */}
-          {actions.length > 0 && (
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto w-full">
-              {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
-            </div>
-          )}
+            {/* Clean CTA Group */}
+            {actions.length > 0 && (
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
+              </div>
+            )}
+          </div>
         </Container>
       </section>
     );
   }
 
-  // 5. MINIMAL PAGE HERO (Clean & Functional: Booking, Contact, Policies)
+  // 5. MINIMAL PAGE HERO (Clean & Luminous: Booking, Policies)
   return (
-    <section className={cn('w-full pt-24 sm:pt-28 md:pt-32 pb-12 sm:py-16 md:py-20 bg-ivory-warm/60 border-b border-sand/40 text-charcoal', className)}>
+    <section className={cn('w-full pt-28 sm:pt-36 pb-10 sm:pb-14 bg-gradient-to-b from-[#F5EFE6] via-[#FAF6F1] to-[#FAF8F5] text-charcoal border-b border-[#E5DAC7]', className)}>
       <Container size="xl">
         <div className="max-w-2xl">
-
-
           {eyebrow && (
-            <SectionEyebrow color="terracotta" withLine className="mb-2 sm:mb-3">
-              {eyebrow}
-            </SectionEyebrow>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#163824]/8 border border-[#163824]/15 text-[#163824] text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-4">
+              <span>{eyebrow}</span>
+            </div>
           )}
-          <Heading as="h1" variant="h1" font="serif" color="forest" className="mb-3 sm:mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0E2718] font-normal leading-[1.14] mb-3.5">
             {title}
-          </Heading>
+          </h1>
           {subtitle && (
-            <Text variant="lead" color="muted" className="font-light text-sm sm:text-base leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-charcoal/80 font-light leading-relaxed max-w-xl">
               {subtitle}
-            </Text>
+            </p>
           )}
         </div>
       </Container>

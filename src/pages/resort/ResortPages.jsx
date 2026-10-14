@@ -68,46 +68,62 @@ export function ResortFacilities() {
 
   return (
     <div className="w-full bg-[#FAF6F1] text-charcoal font-sans selection:bg-[#C5A880]/30 selection:text-[#0E2718]">
-      {/* 1. CINEMATIC HERO SECTION (AT THE TOP OF THE PAGE) */}
-      <section className="relative pt-28 pb-14 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 bg-[#08150D] text-ivory border-b border-sand/20 overflow-hidden">
-        {/* Ambient lighting & background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#0A1810]/95 to-[#08150D] pointer-events-none" />
-        <div className="absolute top-1/4 -right-24 w-[550px] h-[550px] bg-[#C5A880]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 -left-20 w-[450px] h-[450px] bg-emerald-700/10 rounded-full blur-3xl pointer-events-none" />
+      {/* 1. CINEMATIC LUXURY HERO BANNER */}
+      <section className="relative w-full min-h-[500px] sm:min-h-[560px] lg:min-h-[600px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
+        {/* Full-Bleed Authentic Resort Pool & Grounds Photo */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={AUTHENTIC_RESORT.videos.pool.poster}
+            alt="Go Flamingo Resort turquoise outdoor pool, teak trees and haveli leisure facilities"
+            fetchPriority="high"
+            className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
+          />
+          {/* Tailored architectural gradient scrims */}
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
+        </div>
 
-        <Container size="xl" className="relative z-10">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-[#DFBF8E] text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold border border-[#C5A880]/30 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-[#DFBF8E]" />
-              <span>Resort Amenities & Leisure · Sillari Gate Pench</span>
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
+              <span>Resort Amenities & Leisure · Sillari Gate</span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] text-white">
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] text-ivory text-balance">
               Resort Amenities, <br className="hidden sm:inline" />
-              <span className="italic text-[#E8D7B8]">Lawns & Recreation.</span>
+              <span className="italic text-[#DFBF8E]">Lawns & Recreation</span>
             </h1>
 
-            <p className="font-sans text-xs sm:text-sm md:text-base text-sand-light/85 font-light leading-relaxed max-w-2xl">
-              Experience complete on-site leisure at Go Flamingo Resort — from our turquoise outdoor pool and rain dance arena to our chandelier-lit restaurant, landscaped haveli lawns, kids play park, indoor game zone, and executive conference room.
+            <p className="font-sans text-xs sm:text-base md:text-lg text-sand-light/95 font-light leading-relaxed max-w-2xl">
+              Complete on-site leisure at Go Flamingo Resort — crystal outdoor pool, rain dance arena, chandelier restaurant, landscaped haveli lawns, kids play park, indoor games, and executive meeting room.
             </p>
 
-            {/* Quick Action CTAs */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-3 w-full sm:w-auto">
+            {/* Clean Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+              <button
+                type="button"
+                onClick={() => document.getElementById('amenities-grid-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer text-center"
+              >
+                <span>Explore All Facilities</span>
+                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-y-0.5 shrink-0 shadow-inner">
+                  <ArrowDown className="w-3 h-3 text-[#DFBF8E]" />
+                </span>
+              </button>
+
               <Link
                 to="/contact?book=true#reservation-form-card"
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 pl-5 pr-2 py-3 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md cursor-pointer text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center"
               >
-                <span>Reserve Your Stay Online</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
-                  <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
-                </span>
+                <span>Reserve Your Stay</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
               </Link>
 
               <a
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to inquire about resort amenities, swimming pool, and day visit packages at Sillari Gate.')}`}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full bg-[#0D2418]/90 border-2 border-[#25D366]/50 text-xs uppercase tracking-[0.10em] font-bold text-white cursor-pointer text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>Inquire on WhatsApp</span>

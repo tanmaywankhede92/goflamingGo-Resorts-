@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowRight, X } from 'lucide-react';
 import { Button, Logo, WhatsAppIcon } from '../common';
 import { NAV_ITEMS } from '../../data/navigation';
 import { cn } from '../../utils/cn';
@@ -61,9 +61,7 @@ export default function MobileMenu({ isOpen, onClose }) {
           aria-label="Close navigation menu"
           className="w-10 h-10 flex items-center justify-center rounded-full bg-ivory-warm/80 text-charcoal hover:text-forest-deep hover:bg-ivory-warm border border-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest transition-colors cursor-pointer"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <X className="w-5 h-5 text-forest-deep" />
         </button>
       </div>
 

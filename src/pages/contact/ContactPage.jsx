@@ -21,6 +21,7 @@ import {
   ExternalLink,
   Check,
   Send,
+  ChevronDown,
 } from 'lucide-react';
 import {
   Container,
@@ -36,18 +37,55 @@ import { AUTHENTIC_RESORT } from '../../data/images';
 import { cn } from '../../utils/cn';
 
 /**
+ * 6 Curated Luxury Resort FAQs with verified details on Pench, Sillari Gate, tariffs, and amenities.
+ */
+const FAQS = [
+  {
+    question: "How far is GoFlamingo Resort from Nagpur, and how is the road connectivity?",
+    answer: "GoFlamingo Resort is located just 65 km from Nagpur city via the smooth, scenic 4-lane National Highway 44 (NH 44). The hassle-free drive takes only 60 to 75 minutes by car or taxi from Dr. Babasaheb Ambedkar Nagpur International Airport and Nagpur Junction Railway Station."
+  },
+  {
+    question: "Can the resort assist with Pench safari permits and open 4x4 gypsy bookings?",
+    answer: "Yes! We coordinate licensed 4x4 open safari gypsies, certified forest naturalists, and gate transfers specifically for the Sillari Core Zone and nearby buffer gates. Because forest department permits are strictly limited per shift, we advise sharing your tentative travel dates early so we can assist before permits sell out."
+  },
+  {
+    question: "What are the resort's check-in and check-out timings?",
+    answer: "Our standard check-in is at 12:00 PM (noon) and check-out is at 10:30 AM. If you are arriving early for a morning safari or departing late after an afternoon forest drive, early check-in or late check-out can gladly be arranged subject to room availability."
+  },
+  {
+    question: "What dining and recreational amenities are available on-site?",
+    answer: "Guests enjoy our turquoise swimming pool, open rain dance setup, dedicated multicuisine dining hall serving fresh authentic Maharashtrian and North Indian fare, expansive lush green lawns, children's adventure play area, and indoor games lounge (badminton, carrom, board games)."
+  },
+  {
+    question: "Do you offer accommodation for families, large groups, or reunions?",
+    answer: "Yes. GoFlamingo features 20 spacious air-conditioned Haveli-style rooms, premium Balcony Suites with garden and courtyard views, and a dedicated 14-bed AC Group Dormitory ideal for family reunions, corporate team offsites, and school/college excursions."
+  },
+  {
+    question: "Can we book the entire resort for a destination wedding or corporate offsite?",
+    answer: "Absolutely. We offer complete property buyouts for intimate jungle destination weddings, anniversaries, and corporate retreats. You get exclusive access to all 20 rooms, our 20,000+ sq.ft manicured banquet lawns, customizable buffet catering, and private event decor."
+  }
+];
+
+
+
+/**
  * ContactPage — Unified Direct Reservations & Inquiry Hub
  * 
- * Mobile-First Conversion Architecture:
- * - Clean 100dvh hero banner without mobile clipping or overlapping buttons.
- * - 2-Phase Interactive Reservation Form (Step 1: Stay & Safari -> Step 2: Guest Details).
- * - Mobile ordering: Form displays FIRST on mobile (order-1), followed by resort details (order-2).
- * - 100% Responsive inputs with zero horizontal box overflow or clipping.
- * - Dual Instant Dispatch on submit: Pre-filled WhatsApp transmission AND direct Email dispatch.
+ * Aesthetic & Minimalist Architecture:
+ * - 4-Card Quick Contact Action Strip for immediate calling & chat.
+ * - Balanced 2-Column Split: Responsive Form on one side, Resort Details & Embedded Google Map on the other.
+ * - Interactive Google Map embedded with direct coordinates to Sillari Gate Pench.
+ * - 6-Question Smooth Accordion Dropdown with luxury colors and rotating chevron.
  */
 export default function ContactPage() {
   const [searchParams] = useSearchParams();
   const roomParam = searchParams.get('room');
+
+  // FAQ Accordion State (first item open by default)
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const toggleFaq = (index) => {
+    setOpenFaqIndex((prev) => (prev === index ? -1 : index));
+  };
 
   // Map incoming URL parameter to room category
   const getInitialRoom = (param) => {
@@ -209,10 +247,10 @@ Website: goflamingoresorts.com`;
     <div className="w-full bg-[#FAF8F5] text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold/30 selection:text-forest-deep">
       
       {/* ========================================================
-          1. FULL-FRAME EDITORIAL HERO BANNER (100DVH VIEWPORT)
+          1. CINEMATIC LUXURY HERO BANNER (BREATHABLE & MAJESTIC)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[560px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
-        {/* Background Photo */}
+      <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
+        {/* Full-Bleed Authentic Haveli Courtyard Photo */}
         <div className="absolute inset-0 z-0">
           <img
             src={AUTHENTIC_RESORT.photos.courtyardTwilight.src}
@@ -220,39 +258,39 @@ Website: goflamingoresorts.com`;
             fetchPriority="high"
             className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
           />
-          {/* Lighter architectural scrims */}
+          {/* Tailored architectural gradient scrims */}
           <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
           <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
         </div>
 
         {/* Foreground Content */}
-        <Container size="xl" noPadding className="relative z-10 w-full pt-24 sm:pt-36 md:pt-40 pb-6 sm:pb-12 px-4 sm:px-6">
-          <div className="max-w-3xl">
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
 
-            {/* Eyebrow Pill — Responsive & Clean on Mobile */}
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/45 border border-gold/50 text-gold-light text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-2.5 sm:mb-4 backdrop-blur-md shadow-sm">
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span className="truncate">Direct Reservations • Sillari Gate, Pench</span>
+            {/* Clean Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span>Direct Reservations · Sillari Gate, Pench</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-2.5xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-2.5 sm:mb-4 text-balance drop-shadow-sm">
-              Book Your Stay & <span className="text-gold font-serif italic">Contact Us</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
+              Book Your Stay & <span className="text-[#DFBF8E] font-serif italic">Contact Us</span>
             </h1>
 
             {/* Core Subtitle */}
-            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light mb-5 sm:mb-7 max-w-2xl border-l-2 border-gold/80 pl-3 sm:pl-3.5 drop-shadow-xs">
-              Plan your jungle getaway to Pench Tiger Reserve. Book directly with our Sillari team for best seasonal tariffs, haveli room availability, and licensed gypsy safari assistance.
+            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
+              Plan your wilderness escape to Pench Tiger Reserve. Book directly with our on-site team for best seasonal tariffs, haveli rooms, and verified gypsy safari assistance.
             </p>
 
-            {/* High-Conversion Fast Actions */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 pt-1">
+            {/* High-Conversion Luxury Fast Actions */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <button
                 type="button"
                 onClick={() => (document.getElementById('reservation-form-card') || document.getElementById('reservation-hub'))?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer text-center"
+                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
-                <span>Proceed to Reservation Form</span>
+                <span>Go to Reservation Form</span>
                 <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-y-0.5 shrink-0 shadow-inner">
                   <ArrowDown className="w-3 h-3 text-[#DFBF8E]" />
                 </span>
@@ -260,52 +298,39 @@ Website: goflamingoresorts.com`;
 
               <a
                 href={`tel:${QUICK_CONTACT.phoneRaw}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-full bg-black/40 hover:bg-black/60 text-ivory border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-md transition-all shadow-md text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center"
               >
-                <Phone className="w-3.5 h-3.5 text-gold shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#DFBF8E] shrink-0" />
                 <span>Call: {QUICK_CONTACT.phone}</span>
+              </a>
+
+              <a
+                href={whatsappInquiryUrl}
+                target={linkTarget}
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center"
+              >
+                <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
+                <span>WhatsApp</span>
               </a>
             </div>
 
           </div>
         </Container>
-
-        {/* Desktop-Only Trust Bar (Hidden on Mobile to completely eliminate clutter & text cuts) */}
-        <div className="hidden sm:block relative z-10 w-full border-t border-white/10 bg-black/35 backdrop-blur-md">
-          <Container size="xl" className="py-3 sm:py-3.5">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs">
-              <div className="flex items-center gap-2 text-sand-light/90">
-                <ShieldCheck className="w-4 h-4 text-gold shrink-0" />
-                <span className="truncate">Best Direct Rate Guarantee</span>
-              </div>
-              <div className="flex items-center gap-2 text-sand-light/90">
-                <Compass className="w-4 h-4 text-gold shrink-0" />
-                <span className="truncate">5 Mins from Sillari Safari Gate</span>
-              </div>
-              <div className="flex items-center gap-2 text-sand-light/90">
-                <Car className="w-4 h-4 text-gold shrink-0" />
-                <span className="truncate">65 km / 1 Hr from Nagpur (NH 44)</span>
-              </div>
-              <div className="flex items-center gap-2 text-sand-light/90">
-                <Hotel className="w-4 h-4 text-gold shrink-0" />
-                <span className="truncate">20 Haveli Rooms & Dormitory</span>
-              </div>
-            </div>
-          </Container>
-        </div>
       </section>
 
       {/* ========================================================
           2. RESERVATION & INQUIRY HUB
-          (Mobile First: Form appears FIRST [order-1], Info [order-2])
+          - 4-Desk Quick Action Strip
+          - Balanced 2-Column Split: Form (Left) & Resort Map (Right)
           ======================================================== */}
-      <section id="reservation-hub" className="py-8 sm:py-20 bg-[#FAF8F5] scroll-mt-16 w-full max-w-full overflow-x-hidden">
-        <Container size="xl" noPadding className="w-full max-w-full px-3.5 sm:px-6 md:px-8 mx-auto">
+      <section id="reservation-hub" className="py-10 sm:py-20 bg-[#FAF8F5] scroll-mt-16 w-full overflow-x-hidden">
+        <Container size="xl" className="px-5 sm:px-8 md:px-12 lg:px-16">
           
           {/* Section Introduction */}
-          <div className="max-w-3xl mb-6 sm:mb-12">
+          <div className="max-w-3xl mb-8 sm:mb-12">
             <SectionEyebrow color="terracotta" withLine className="mb-2">
-              Direct Reservation Desk • Instant Confirmation
+              Direct Reservation Desk
             </SectionEyebrow>
             <Heading as="h2" variant="h2" font="serif" color="forest" className="mb-2 sm:mb-3 text-balance">
               Plan Your Pench Experience With Us
@@ -315,23 +340,150 @@ Website: goflamingoresorts.com`;
             </Text>
           </div>
 
-          {/* Master Responsive Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full min-w-0 max-w-full">
+          {/* Master 2-Column Split: Clean Location & Contact Panel (Col-5) + Light Reservation Box (Col-7) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
             
             {/* ====================================================
-                FORM COLUMN: order-1 on mobile (APPEARS FIRST!),
-                order-2 on desktop (RIGHT COLUMN)
+                LEFT COLUMN: RESORT LOCATION, DETAILS & CONTACT
+                (Col-5 on lg, order-1 on mobile & desktop)
+                Starts right from the TOP with Address & Details!
                 ==================================================== */}
-            <div className="order-1 lg:order-2 lg:col-span-7 w-full min-w-0 max-w-full">
+            <div className="order-1 lg:order-1 lg:col-span-5 flex flex-col w-full min-w-0">
+              <div className="h-full rounded-2xl sm:rounded-3xl bg-[#10251B] text-[#FAF8F5] border border-[#23432F] p-5 sm:p-7 md:p-8 flex flex-col justify-between space-y-6 shadow-sm">
+                
+                {/* 1. TOP: Exact Resort Address & Proximity (Starts Right at Top) */}
+                <div className="space-y-3">
+                  <span className="text-[11px] uppercase tracking-[0.18em] text-[#C5A880] font-semibold block">
+                    Resort Location & Coordinates
+                  </span>
+                  
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-white font-normal leading-snug">
+                    GoFlamingo Resort, Pench
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#D4C8B5] font-light leading-relaxed">
+                    Sillari Gate Pench National Park, Sitapur, Maharashtra 441401, India
+                  </p>
+
+                </div>
+
+                {/* 2. Direct Contact Numbers (Clean 2-Column Grid) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {/* Primary Reservations */}
+                    <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2 hover:border-[#C5A880]/40 transition-colors">
+                      <div className="min-w-0">
+                        <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">Reservations</span>
+                        <a href={`tel:${QUICK_CONTACT.phoneRaw}`} className="text-xs sm:text-sm font-semibold text-white hover:text-[#C5A880] transition-colors block truncate">
+                          {QUICK_CONTACT.phone}
+                        </a>
+                        <span className="text-[10px] text-[#A69B88] block">Tariff & stay</span>
+                      </div>
+                      <a
+                        href={`tel:${QUICK_CONTACT.phoneRaw}`}
+                        className="px-2.5 py-1 rounded-md bg-[#C5A880] hover:bg-[#D4B991] text-[#0E2718] text-[11px] font-bold uppercase tracking-wider shrink-0 transition-colors"
+                      >
+                        Call
+                      </a>
+                    </div>
+
+                    {/* Manager On-Site */}
+                    <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2 hover:border-[#C5A880]/40 transition-colors">
+                      <div className="min-w-0">
+                        <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">Manager Desk</span>
+                        <a href={`tel:${QUICK_CONTACT.phoneSecondary.replace(/\s+/g, '')}`} className="text-xs sm:text-sm font-semibold text-white hover:text-[#C5A880] transition-colors block truncate">
+                          {QUICK_CONTACT.phoneSecondary}
+                        </a>
+                        <span className="text-[10px] text-[#A69B88] block">Safari support</span>
+                      </div>
+                      <a
+                        href={`tel:${QUICK_CONTACT.phoneSecondary.replace(/\s+/g, '')}`}
+                        className="px-2.5 py-1 rounded-md bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold uppercase tracking-wider shrink-0 transition-colors border border-white/15"
+                      >
+                        Call
+                      </a>
+                    </div>
+
+                    {/* Instant WhatsApp */}
+                    <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2 hover:border-[#25D366]/40 transition-colors">
+                      <div className="min-w-0">
+                        <span className="text-[10px] uppercase tracking-wider text-[#25D366] font-medium block">WhatsApp</span>
+                        <a
+                          href={`https://wa.me/${QUICK_CONTACT.whatsappNumber}?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20stay%20and%20safari%20availability%20at%20Sillari%20Gate.`}
+                          target={linkTarget}
+                          rel="noopener noreferrer"
+                          className="text-xs sm:text-sm font-semibold text-white hover:text-[#25D366] transition-colors block truncate"
+                        >
+                          {QUICK_CONTACT.whatsapp}
+                        </a>
+                        <span className="text-[10px] text-[#A69B88] block">Instant quotes</span>
+                      </div>
+                      <a
+                        href={`https://wa.me/${QUICK_CONTACT.whatsappNumber}?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20stay%20and%20safari%20availability%20at%20Sillari%20Gate.`}
+                        target={linkTarget}
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1 rounded-md bg-[#25D366] hover:bg-[#20bd5a] text-[#08130B] text-[11px] font-bold uppercase tracking-wider shrink-0 transition-colors"
+                      >
+                        Chat
+                      </a>
+                    </div>
+
+                    {/* Official Email */}
+                    <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2 hover:border-[#C5A880]/40 transition-colors">
+                      <div className="min-w-0">
+                        <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">Email</span>
+                        <a href={`mailto:${QUICK_CONTACT.email}`} className="text-xs font-semibold text-white hover:text-[#C5A880] transition-colors block truncate">
+                          {QUICK_CONTACT.email}
+                        </a>
+                        <span className="text-[10px] text-[#A69B88] block">Group buyouts</span>
+                      </div>
+                      <a
+                        href={`mailto:${QUICK_CONTACT.email}`}
+                        className="px-2.5 py-1 rounded-md bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold uppercase tracking-wider shrink-0 transition-colors border border-white/15"
+                      >
+                        Email
+                      </a>
+                    </div>
+                  </div>
+
+                {/* 3. Interactive Location Map Embed */}
+                <div className="space-y-2.5 pt-2 flex-1 flex flex-col justify-between">
+                  <div className="relative flex-1 min-h-[190px] w-full rounded-xl overflow-hidden border border-white/10 bg-[#08150D]">
+                    <iframe
+                      title="GoFlamingo Resort Location Map"
+                      src="https://maps.google.com/maps?q=Go+Flamingo+Resort,+Sillari+Gate,+Pench+National+Park,+Sitapur,+Maharashtra+441401&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                      className="w-full h-full border-0 absolute inset-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
+                  </div>
+
+                  <a
+                    href={QUICK_CONTACT.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/15 text-xs font-semibold uppercase tracking-wider transition-colors text-center cursor-pointer"
+                  >
+                    <span>Open in Google Maps App ↗</span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+            {/* ====================================================
+                RIGHT COLUMN: CRISP LUXURY LIGHT RESERVATION ENQUIRY BOX
+                (Col-7 on lg, order-2 on mobile & desktop)
+                ==================================================== */}
+            <div className="order-2 lg:order-2 lg:col-span-7 flex flex-col w-full min-w-0 max-w-full">
               <div
                 id="reservation-form-card"
-                className="p-3.5 sm:p-7 md:p-9 rounded-[6px] bg-ivory border-2 border-[#E7DFD0] shadow-[0_10px_35px_rgba(0,0,0,0.05)] relative w-full min-w-0 max-w-full box-border overflow-hidden scroll-mt-20 sm:scroll-mt-28"
+                className="h-full p-4 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5DAC7] shadow-[0_8px_30px_rgba(16,37,27,0.04)] relative w-full min-w-0 max-w-full box-border overflow-hidden scroll-mt-20 sm:scroll-mt-28 flex flex-col justify-between"
               >
                 
                 {submitted ? (
                   /* ==============================================
                      SUBMISSION SUCCESS STATE
-                     (Direct WhatsApp & Email Dispatch Links)
                      ============================================== */
                   <div className="py-6 sm:py-10 text-center space-y-5">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-emerald-100 border-2 border-emerald-400 text-emerald-700 flex items-center justify-center text-3xl font-serif shadow-inner">
@@ -351,8 +503,8 @@ Website: goflamingoresorts.com`;
                     </div>
 
                     {/* Summary Card */}
-                    <div className="p-4 rounded-[4px] bg-[#F7F4EE] border border-[#DFD7C7] text-left text-xs space-y-1.5 max-w-md mx-auto">
-                      <p className="text-[11px] uppercase tracking-wider text-forest font-bold border-b border-[#DFD7C7] pb-1 mb-2">
+                    <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#E5DAC7] text-left text-xs space-y-1.5 max-w-md mx-auto">
+                      <p className="text-[11px] uppercase tracking-wider text-[#10251B] font-bold border-b border-[#E5DAC7] pb-1 mb-2">
                         Inquiry Details Summary
                       </p>
                       <p><strong>Dates:</strong> {formData.checkIn || 'TBD'} to {formData.checkOut || 'TBD'}</p>
@@ -405,7 +557,7 @@ Website: goflamingoresorts.com`;
                             specialNotes: '',
                           });
                         }}
-                        className="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-full bg-sand-light text-forest text-xs uppercase tracking-wider font-medium hover:bg-sand transition-colors border border-sand-dark/40"
+                        className="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-full bg-sand-light text-forest text-xs uppercase tracking-wider font-medium hover:bg-sand transition-colors border border-sand-dark/40 cursor-pointer"
                       >
                         Start a New Inquiry
                       </button>
@@ -415,26 +567,26 @@ Website: goflamingoresorts.com`;
                   /* ==============================================
                      THE 2-PHASE INTERACTIVE INQUIRY FORM
                      ============================================== */
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     
                     {/* Stepper Header Tabs (Interactive 2 Phases) */}
-                    <div className="border-b border-[#E6DEC9] pb-4">
+                    <div className="border-b border-[#E8DFC8] pb-3 sm:pb-4">
                       
                       {/* Step Switcher Buttons */}
-                      <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-3 w-full min-w-0">
+                      <div className="grid grid-cols-2 gap-2 mb-2.5 sm:mb-3.5 w-full min-w-0">
                         <button
                           type="button"
                           onClick={() => setPhase(1)}
                           className={cn(
-                            'flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 sm:px-3 rounded-[4px] text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer min-w-0',
+                            'flex items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer min-w-0',
                             phase === 1
-                              ? 'bg-forest-deep text-ivory border-forest-deep shadow-xs'
-                              : 'bg-sand-light/60 text-charcoal-muted border-[#D5C9B3] hover:bg-sand-light'
+                              ? 'bg-[#10251B] text-[#FAF8F5] border-[#10251B] shadow-sm'
+                              : 'bg-[#FAF8F5] text-charcoal-muted border-[#E5DAC7] hover:bg-[#F2EDE4]'
                           )}
                         >
                           <span className={cn(
-                            'w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0',
-                            phase === 1 ? 'bg-gold text-forest-deep' : 'bg-sand text-charcoal'
+                            'w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] font-bold shrink-0',
+                            phase === 1 ? 'bg-[#DFBF8E] text-[#10251B]' : 'bg-[#E5DAC7] text-charcoal'
                           )}>
                             1
                           </span>
@@ -451,15 +603,15 @@ Website: goflamingoresorts.com`;
                             }
                           }}
                           className={cn(
-                            'flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 sm:px-3 rounded-[4px] text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer min-w-0',
+                            'flex items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-semibold tracking-wider uppercase transition-all border cursor-pointer min-w-0',
                             phase === 2
-                              ? 'bg-forest-deep text-ivory border-forest-deep shadow-xs'
-                              : 'bg-sand-light/60 text-charcoal-muted border-[#D5C9B3] hover:bg-sand-light'
+                              ? 'bg-[#10251B] text-[#FAF8F5] border-[#10251B] shadow-sm'
+                              : 'bg-[#FAF8F5] text-charcoal-muted border-[#E5DAC7] hover:bg-[#F2EDE4]'
                           )}
                         >
                           <span className={cn(
-                            'w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0',
-                            phase === 2 ? 'bg-gold text-forest-deep' : 'bg-sand text-charcoal'
+                            'w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center text-[9px] sm:text-[10px] font-bold shrink-0',
+                            phase === 2 ? 'bg-[#DFBF8E] text-[#10251B]' : 'bg-[#E5DAC7] text-charcoal'
                           )}>
                             2
                           </span>
@@ -468,14 +620,14 @@ Website: goflamingoresorts.com`;
                       </div>
 
                       {/* Visual Progress Line */}
-                      <div className="w-full bg-[#E0D7C5] h-1.5 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#E8DFC8] h-1 sm:h-1.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-gold h-full transition-all duration-300"
+                          className="bg-[#C5A880] h-full transition-all duration-300"
                           style={{ width: phase === 1 ? '50%' : '100%' }}
                         />
                       </div>
 
-                      <div className="flex items-center justify-between text-[11px] text-charcoal-muted mt-2 font-light">
+                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-charcoal-muted mt-1.5 sm:mt-2 font-light">
                         <span>{phase === 1 ? 'Step 1: Choose Travel Dates & Room' : 'Step 2: Enter Contact & Submit'}</span>
                         <span className="font-semibold text-forest">Phase {phase} of 2</span>
                       </div>
@@ -485,28 +637,28 @@ Website: goflamingoresorts.com`;
                         PHASE 1: STAY & SAFARI SELECTION
                         ------------------------------------------- */}
                     {phase === 1 && (
-                      <form onSubmit={handleProceedToPhase2} className="space-y-4 sm:space-y-5 w-full min-w-0 max-w-full">
+                      <form onSubmit={handleProceedToPhase2} className="space-y-3.5 sm:space-y-4 w-full min-w-0 max-w-full">
                         
                         <div>
-                          <h3 className="font-serif text-lg sm:text-xl text-forest font-normal mb-1">
+                          <h3 className="font-serif text-[15px] sm:text-lg text-[#10251B] font-medium leading-tight mb-0.5 sm:mb-1">
                             Travel Schedule & Cottage Category
                           </h3>
-                          <p className="text-xs text-charcoal-muted font-light">
+                          <p className="text-[11px] sm:text-xs text-[#736B5E] font-light leading-relaxed">
                             Select your tentative check-in and check-out dates to check direct availability.
                           </p>
                         </div>
 
                         {/* Date Error Message */}
                         {dateError && (
-                          <div className="p-3 rounded-[3px] bg-red-50 border border-red-200 text-xs text-red-700">
+                          <div className="p-2.5 sm:p-3 rounded-xl bg-red-50 border border-red-200 text-[11px] sm:text-xs text-red-700">
                             {dateError}
                           </div>
                         )}
 
                         {/* Check-In / Check-Out */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5 w-full min-w-0 max-w-full">
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Check-In Date *
                             </label>
                             <input
@@ -516,12 +668,12 @@ Website: goflamingoresorts.com`;
                               min={todayDate}
                               value={formData.checkIn}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border appearance-none cursor-pointer"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border appearance-none cursor-pointer"
                             />
                           </div>
 
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Check-Out Date *
                             </label>
                             <input
@@ -531,22 +683,22 @@ Website: goflamingoresorts.com`;
                               min={formData.checkIn || todayDate}
                               value={formData.checkOut}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border appearance-none cursor-pointer"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border appearance-none cursor-pointer"
                             />
                           </div>
                         </div>
 
                         {/* Adults & Children */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5 w-full min-w-0 max-w-full">
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
-                              Adults (Age 12+)
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
+                              Adults (12+ Yrs)
                             </label>
                             <select
                               name="adults"
                               value={formData.adults}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border cursor-pointer"
                             >
                               <option value="1">1 Adult</option>
                               <option value="2">2 Adults (Couple)</option>
@@ -557,14 +709,14 @@ Website: goflamingoresorts.com`;
                           </div>
 
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Children (Below 12)
                             </label>
                             <select
                               name="children"
                               value={formData.children}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border cursor-pointer"
                             >
                               <option value="0">0 Children</option>
                               <option value="1">1 Child</option>
@@ -576,14 +728,14 @@ Website: goflamingoresorts.com`;
 
                         {/* Preferred Accommodation */}
                         <div className="w-full min-w-0 max-w-full">
-                          <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
-                            Preferred Accommodation
+                          <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
+                            Accommodation Category
                           </label>
                           <select
                             name="roomCategory"
                             value={formData.roomCategory}
                             onChange={handleChange}
-                            className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
+                            className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border cursor-pointer truncate"
                           >
                             <option>Deluxe Rooms (Haveli Garden View)</option>
                             <option>Super Deluxe Rooms (Haveli Balcony Suite)</option>
@@ -596,14 +748,14 @@ Website: goflamingoresorts.com`;
 
                         {/* Jungle Safari Coordination */}
                         <div className="w-full min-w-0 max-w-full">
-                          <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
-                            Pench Safari Assistance (Sillari Gate)
+                          <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
+                            Safari Assistance (Sillari Gate)
                           </label>
                           <select
                             name="safariCoordination"
                             value={formData.safariCoordination}
                             onChange={handleChange}
-                            className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
+                            className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border cursor-pointer truncate"
                           >
                             <option>Yes, Sillari Core Zone Assistance Needed</option>
                             <option>Already Have Forest Department Permits</option>
@@ -612,14 +764,14 @@ Website: goflamingoresorts.com`;
                         </div>
 
                         {/* Proceed to Phase 2 Button */}
-                        <div className="pt-2">
+                        <div className="pt-1.5 sm:pt-2">
                           <button
                             type="submit"
-                            className="group w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] font-bold text-xs uppercase tracking-[0.14em] shadow-md border border-[#F3DFC1] transition-all cursor-pointer"
+                            className="group w-full inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm border border-[#F3DFC1] transition-all cursor-pointer"
                           >
                             <span>Continue to Step 2: Guest Details</span>
-                            <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform group-hover:translate-x-1 shrink-0">
-                              <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
+                            <span className="w-5 h-5 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform group-hover:translate-x-0.5 shrink-0">
+                              <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
                             </span>
                           </button>
                         </div>
@@ -631,21 +783,21 @@ Website: goflamingoresorts.com`;
                         PHASE 2: GUEST CONTACT & SUBMIT
                         ------------------------------------------- */}
                     {phase === 2 && (
-                      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 w-full min-w-0 max-w-full">
+                      <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4 w-full min-w-0 max-w-full">
                         
                         <div>
-                          <h3 className="font-serif text-lg sm:text-xl text-forest font-normal mb-1">
+                          <h3 className="font-serif text-[15px] sm:text-lg text-[#10251B] font-medium leading-tight mb-0.5 sm:mb-1">
                             Guest Details & Final Transmission
                           </h3>
-                          <p className="text-xs text-charcoal-muted font-light">
+                          <p className="text-[11px] sm:text-xs text-[#736B5E] font-light leading-relaxed">
                             Provide your contact details. Submitting connects directly with our reservations manager via WhatsApp and Email.
                           </p>
                         </div>
 
                         {/* Full Name & Phone */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5 w-full min-w-0 max-w-full">
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Lead Guest Full Name *
                             </label>
                             <input
@@ -655,12 +807,12 @@ Website: goflamingoresorts.com`;
                               placeholder="e.g. Vikram Sharma"
                               value={formData.fullName}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border"
                             />
                           </div>
 
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Phone (with WhatsApp) *
                             </label>
                             <input
@@ -670,15 +822,15 @@ Website: goflamingoresorts.com`;
                               placeholder="+91 98765 43210"
                               value={formData.phoneNumber}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border"
                             />
                           </div>
                         </div>
 
                         {/* Email & Purpose */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0 max-w-full">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5 w-full min-w-0 max-w-full">
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Email Address *
                             </label>
                             <input
@@ -688,19 +840,19 @@ Website: goflamingoresorts.com`;
                               placeholder="vikram@example.com"
                               value={formData.emailAddress}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border"
                             />
                           </div>
 
                           <div className="w-full min-w-0 max-w-full">
-                            <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                            <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                               Purpose of Visit
                             </label>
                             <select
                               name="inquiryType"
                               value={formData.inquiryType}
                               onChange={handleChange}
-                              className="w-full min-w-0 max-w-full block h-11 px-3 py-2 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border cursor-pointer"
+                              className="w-full min-w-0 max-w-full block h-10 sm:h-11 px-3 sm:px-3.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border cursor-pointer truncate"
                             >
                               <option>Room Stay & Safari</option>
                               <option>Family Vacation</option>
@@ -714,48 +866,48 @@ Website: goflamingoresorts.com`;
 
                         {/* Special Requests */}
                         <div className="w-full min-w-0 max-w-full">
-                          <label className="text-[11px] font-bold uppercase tracking-wider text-charcoal-muted block mb-1">
+                          <label className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#635B4E] block mb-1">
                             Special Requests / Notes (Optional)
                           </label>
                           <textarea
-                            rows={3}
+                            rows={2}
                             name="specialNotes"
                             value={formData.specialNotes}
                             onChange={handleChange}
                             placeholder="Meal preferences, estimated arrival time, extra beds needed..."
-                            className="w-full min-w-0 max-w-full block px-3 py-2.5 rounded-[3px] bg-ivory border border-[#D5C9B3] text-base sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent box-border"
+                            className="w-full min-w-0 max-w-full block px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl bg-[#FAF8F5] border border-[#DFD7C7] text-xs sm:text-sm text-[#10251B] focus:outline-none focus:border-[#C5A880] focus:ring-1 focus:ring-[#C5A880] box-border"
                           />
                         </div>
 
                         {/* Summary Pill of Phase 1 */}
-                        <div className="p-3 rounded-[3px] bg-sand-light/60 border border-[#D5C9B3] text-xs text-charcoal-muted flex items-center justify-between">
+                        <div className="p-2.5 sm:p-3 rounded-xl bg-[#FAF8F5] border border-[#E8DFC8] text-[11px] sm:text-xs text-charcoal-muted flex items-center justify-between">
                           <div>
                             <span className="font-semibold text-forest block">
                               {formData.checkIn || 'Dates pending'} → {formData.checkOut || 'pending'}
                             </span>
-                            <span className="text-[11px]">
+                            <span className="text-[10px] sm:text-[11px]">
                               {formData.adults} Adults · {formData.roomCategory}
                             </span>
                           </div>
                           <button
                             type="button"
                             onClick={() => setPhase(1)}
-                            className="text-xs text-terracotta font-semibold underline hover:text-forest"
+                            className="text-[11px] sm:text-xs text-terracotta font-semibold underline hover:text-forest cursor-pointer"
                           >
                             Edit Dates
                           </button>
                         </div>
 
                         {/* Dual Action Buttons */}
-                        <div className="pt-2 space-y-3">
+                        <div className="pt-1.5 sm:pt-2 space-y-2.5 sm:space-y-3">
                           <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] font-bold text-xs uppercase tracking-[0.14em] shadow-md border border-[#F3DFC1] transition-all cursor-pointer disabled:opacity-75"
+                            className="group w-full inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-sm border border-[#F3DFC1] transition-all cursor-pointer disabled:opacity-75"
                           >
                             <span>{isSubmitting ? 'Logging Inquiry...' : 'Submit Inquiry & Connect Directly'}</span>
-                            <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform group-hover:translate-x-1 shrink-0">
-                              <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
+                            <span className="w-5 h-5 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform group-hover:translate-x-0.5 shrink-0">
+                              <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
                             </span>
                           </button>
 
@@ -764,7 +916,7 @@ Website: goflamingoresorts.com`;
                               href={whatsappInquiryUrl}
                               target={linkTarget}
                               rel="noopener noreferrer"
-                              className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-[#132A1D] hover:bg-[#1A3A27] text-white border-2 border-[#25D366]/60 text-[11px] uppercase tracking-wider font-bold transition-all text-center"
+                              className="inline-flex items-center justify-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-full bg-[#132A1D] hover:bg-[#1A3A27] text-white border-2 border-[#25D366]/60 text-[10px] sm:text-[11px] uppercase tracking-wider font-bold transition-all text-center cursor-pointer"
                             >
                               <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                               <span className="truncate">WhatsApp</span>
@@ -773,7 +925,7 @@ Website: goflamingoresorts.com`;
                             <a
                               href={emailInquiryUrl}
                               target="_self"
-                              className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-forest-dark hover:bg-forest text-ivory border border-gold/40 text-[11px] uppercase tracking-wider font-semibold transition-all text-center"
+                              className="inline-flex items-center justify-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-full bg-forest-dark hover:bg-forest text-ivory border border-gold/40 text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold transition-all text-center cursor-pointer"
                             >
                               <Mail className="w-3.5 h-3.5 text-gold shrink-0" />
                               <span className="truncate">Send Email</span>
@@ -793,7 +945,7 @@ Website: goflamingoresorts.com`;
                         </div>
 
                         {/* Footnote Reassurance */}
-                        <div className="text-center text-[11px] text-charcoal-muted flex items-center justify-center gap-1.5 font-light pt-1">
+                        <div className="text-center text-[10px] sm:text-[11px] text-charcoal-muted flex items-center justify-center gap-1.5 font-light pt-1">
                           <ShieldCheck className="w-3.5 h-3.5 text-forest shrink-0" />
                           <span>Direct Host Reservation • Zero Booking Commission • Instant Response</span>
                         </div>
@@ -807,266 +959,98 @@ Website: goflamingoresorts.com`;
               </div>
             </div>
 
-            {/* ====================================================
-                LEFT COLUMN: order-2 on mobile (APPEARS AFTER FORM!),
-                order-1 on desktop (LEFT COLUMN)
-                ==================================================== */}
-            <div className="order-2 lg:order-1 lg:col-span-5 space-y-6 w-full min-w-0 max-w-full">
-              
-              {/* Card 1: Authentic Resort Photographic Card */}
-              <div className="rounded-[6px] overflow-hidden border border-sand/60 bg-ivory shadow-sm w-full">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={AUTHENTIC_RESORT.photos.archedCorridorFountain.src}
-                    alt="GoFlamingo Resort authentic arched haveli corridor and stone fountain"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/25 to-transparent" />
-                  
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-forest-dark/80 text-gold-light border border-gold/40 text-[10px] font-semibold tracking-wide backdrop-blur-md">
-                      <Trees className="w-3 h-3 text-gold" />
-                      <span>Sillari Buffer Zone</span>
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-3 left-3 right-3 text-ivory">
-                    <p className="font-serif text-base sm:text-lg text-ivory leading-snug">
-                      GoFlamingo Resort
-                    </p>
-                    <p className="text-[11px] sm:text-xs text-sand-light/90 font-light">
-                      20 Haveli-style Rooms, Swimming Pool & Forest Serenity
-                    </p>
-                  </div>
-                </div>
-
-                {/* Location Details & Highway Distance */}
-                <div className="p-4 sm:p-5 space-y-3.5">
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-terracotta block mb-1">
-                      Exact Address & Coordinates
-                    </span>
-                    <p className="text-xs text-charcoal leading-relaxed font-normal">
-                      {QUICK_CONTACT.address}
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-[4px] bg-[#F2EDE4] border border-[#DFD7C7] text-xs text-charcoal-muted space-y-1.5">
-                    <div className="flex items-start gap-2">
-                      <Car className="w-3.5 h-3.5 text-forest mt-0.5 shrink-0" />
-                      <p>
-                        <strong>From Nagpur:</strong> ~65 km (1 hour smooth drive via 4-lane NH 44).
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Compass className="w-3.5 h-3.5 text-forest mt-0.5 shrink-0" />
-                      <p>
-                        <strong>Safari Gate:</strong> Just 5 minutes from Sillari Core Gate entry.
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-forest mt-0.5 shrink-0" />
-                      <p>
-                        <strong>Transit:</strong> Dr. Babasaheb Ambedkar Nagpur Airport & Railway Station.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Google Maps Directions Button */}
-                  <div>
-                    <a
-                      href={QUICK_CONTACT.mapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-forest-deep text-ivory text-xs font-semibold uppercase tracking-wider hover:bg-forest-jungle transition-all shadow-sm group cursor-pointer text-center"
-                    >
-                      <MapPin className="w-3.5 h-3.5 text-gold group-hover:scale-110 transition-transform shrink-0" />
-                      <span>Get Directions on Google Maps ↗</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: Direct Contact Channels & Instant Calling */}
-              <div className="p-5 sm:p-6 rounded-[6px] bg-forest-deep text-ivory border border-[#C5A880]/30 shadow-md space-y-4 w-full">
-                <div>
-                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-gold font-bold block mb-0.5">
-                    Direct Assistance Desk
-                  </span>
-                  <h3 className="font-serif text-lg sm:text-xl text-ivory">
-                    Call or WhatsApp Our Hosts
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-sand/80 font-light mt-0.5">
-                    Direct communication ensures immediate tariff discounts and zero middlemen confusion.
-                  </p>
-                </div>
-
-                <div className="space-y-2.5 pt-1 border-t border-sand/20">
-                  {/* Phone 1 */}
-                  <div className="flex items-center justify-between p-2.5 rounded-[4px] bg-forest-dark/60 border border-sand/20">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-7 h-7 rounded-full bg-gold/15 text-gold flex items-center justify-center shrink-0">
-                        <Phone className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="min-w-0">
-                        <span className="text-[10px] text-sand/70 block truncate">Primary Reservation</span>
-                        <a href="tel:+919561957009" className="text-xs sm:text-sm font-semibold text-ivory hover:text-gold transition-colors block truncate">
-                          +91 95619 57009
-                        </a>
-                      </div>
-                    </div>
-                    <a
-                      href="tel:+919561957009"
-                      className="px-2.5 py-1 rounded-full bg-gold/20 hover:bg-gold/30 text-gold-light text-[10px] font-semibold uppercase tracking-wider transition-colors shrink-0 ml-2"
-                    >
-                      Call
-                    </a>
-                  </div>
-
-                  {/* Phone 2 */}
-                  <div className="flex items-center justify-between p-2.5 rounded-[4px] bg-forest-dark/60 border border-sand/20">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-7 h-7 rounded-full bg-gold/15 text-gold flex items-center justify-center shrink-0">
-                        <Phone className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="min-w-0">
-                        <span className="text-[10px] text-sand/70 block truncate">Manager Line</span>
-                        <a href="tel:+919372425968" className="text-xs sm:text-sm font-semibold text-ivory hover:text-gold transition-colors block truncate">
-                          +91 93724 25968
-                        </a>
-                      </div>
-                    </div>
-                    <a
-                      href="tel:+919372425968"
-                      className="px-2.5 py-1 rounded-full bg-gold/20 hover:bg-gold/30 text-gold-light text-[10px] font-semibold uppercase tracking-wider transition-colors shrink-0 ml-2"
-                    >
-                      Call
-                    </a>
-                  </div>
-
-                  {/* WhatsApp */}
-                  <div className="flex items-center justify-between p-2.5 rounded-[4px] bg-emerald-950/40 border border-[#25D366]/30">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="w-7 h-7 rounded-full bg-[#25D366]/20 text-[#25D366] flex items-center justify-center shrink-0">
-                        <WhatsAppIcon size="sm" className="text-[#25D366]" />
-                      </div>
-                      <div className="min-w-0">
-                        <span className="text-[10px] text-emerald-300/80 block truncate">Instant WhatsApp Desk</span>
-                        <a
-                          href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20safari%20booking%20at%20Sillari%20Gate."
-                          target={linkTarget}
-                          rel="noopener noreferrer"
-                          className="text-xs sm:text-sm font-semibold text-ivory hover:text-emerald-300 transition-colors block truncate"
-                        >
-                          +91 93724 25968
-                        </a>
-                      </div>
-                    </div>
-                    <a
-                      href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20safari%20booking%20at%20Sillari%20Gate."
-                      target={linkTarget}
-                      rel="noopener noreferrer"
-                      className="px-2.5 py-1 rounded-full bg-[#25D366] hover:bg-emerald-400 text-forest-deep text-[10px] font-bold uppercase tracking-wider transition-colors shrink-0 ml-2"
-                    >
-                      Chat
-                    </a>
-                  </div>
-
-                  {/* Email */}
-                  <div className="flex items-center gap-2.5 p-2.5 rounded-[4px] bg-forest-dark/60 border border-sand/20 min-w-0">
-                    <div className="w-7 h-7 rounded-full bg-gold/15 text-gold flex items-center justify-center shrink-0">
-                      <Mail className="w-3.5 h-3.5" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="text-[10px] text-sand/70 block truncate">Official Email</span>
-                      <a href={`mailto:${QUICK_CONTACT.email}`} className="text-xs sm:text-sm font-medium text-ivory hover:text-gold transition-colors block truncate">
-                        {QUICK_CONTACT.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-1 flex items-center gap-2 text-[10px] text-sand/70">
-                  <Clock className="w-3 h-3 text-gold shrink-0" />
-                  <span>Hours: {QUICK_CONTACT.hours}</span>
-                </div>
-              </div>
-
-              {/* Card 3: Pench Tiger Safari Coordination Advisory */}
-              <div className="p-4 sm:p-5 rounded-[6px] bg-sand-light/60 border border-[#D9CEBA] space-y-2 w-full">
-                <div className="flex items-center gap-2">
-                  <Badge variant="gold">Safari Advisory</Badge>
-                  <span className="text-[11px] font-semibold text-forest uppercase tracking-wider">
-                    Sillari Gate Permits
-                  </span>
-                </div>
-                <h4 className="font-serif text-sm sm:text-base text-forest">
-                  Booking Morning or Evening Safaris?
-                </h4>
-                <p className="text-xs text-charcoal-muted leading-relaxed font-light">
-                  Pench Tiger Reserve gypsy permits are limited per shift. For confirmed entry through Sillari core gate, we recommend sending your inquiry early with tentative dates so our reservations desk can coordinate gypsy vehicles and naturalist guides.
-                </p>
-              </div>
-
-            </div>
-
           </div>
         </Container>
       </section>
 
       {/* ========================================================
-          3. FAQ SECTION
+          3. FAQ SECTION — Warm Luxury Light Palette (Contrasting with Dark Footer)
           ======================================================== */}
-      <section className="py-12 sm:py-16 bg-[#F4EFE7] border-t border-[#DFD7C7]">
-        <Container size="lg" className="px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-            <SectionEyebrow color="terracotta" className="mb-1.5">
-              Guest Assistance
-            </SectionEyebrow>
-            <Heading as="h3" variant="h3" font="serif" color="forest" className="text-xl sm:text-2xl">
-              Frequently Asked Questions
-            </Heading>
-            <p className="text-xs text-charcoal-muted mt-1.5 font-light">
-              Essential tips for traveling to Sillari Gate and staying at GoFlamingo Resort.
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-[#FAF8F5] via-[#F4EDE2] to-[#FAF8F5] text-charcoal relative overflow-hidden border-t border-[#E5DAC7]">
+        
+        {/* Subtle Ambient Background Warm Glows */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#DFBF8E]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <Container size="lg" className="px-4 sm:px-6 relative z-10">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#10251B]/8 border border-[#10251B]/15 text-[#10251B] text-[11px] font-bold tracking-wider uppercase mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#A07C4A]" />
+              <span>Guest Assistance & Safari Guidance</span>
+            </div>
+            
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-[#0E2718] font-normal tracking-tight mb-3">
+              Frequently Asked <span className="text-[#8A6836] italic font-serif">Questions</span>
+            </h2>
+            
+            <p className="text-xs sm:text-sm text-[#5A6578] font-light max-w-xl mx-auto leading-relaxed">
+              Essential tips for traveling to Sillari Gate, booking licensed gypsies, and enjoying your stay at GoFlamingo Resort.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 text-xs leading-relaxed">
-            <div className="p-4 sm:p-5 rounded-[4px] bg-ivory border border-[#D5C9B3] space-y-1.5">
-              <h4 className="font-serif text-sm font-semibold text-forest">
-                How far is GoFlamingo Resort from Nagpur?
-              </h4>
-              <p className="text-charcoal-muted font-light">
-                The resort is located just 65 km from Nagpur city via the smooth 4-lane National Highway 44 (NH 44). The drive takes only about 60 to 75 minutes by car.
-              </p>
-            </div>
+          {/* 6 Curated Luxury Dropdown Items with Crisp Ivory & Warm Terracotta Contrast */}
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    'rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-xs',
+                    isOpen
+                      ? 'bg-[#FAF6EF] border-2 border-[#A07C4A] shadow-[0_8px_25px_rgba(160,124,74,0.12)]'
+                      : 'bg-white border-2 border-[#E8DFC8] hover:border-[#C5A880] shadow-[0_2px_12px_rgba(0,0,0,0.02)]'
+                  )}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleFaq(idx)}
+                    aria-expanded={isOpen}
+                    className="w-full flex items-center justify-between gap-4 p-4.5 sm:p-5.5 text-left cursor-pointer transition-colors"
+                  >
+                    <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                      <span className={cn(
+                        'w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-serif font-bold flex items-center justify-center shrink-0 transition-colors',
+                        isOpen
+                          ? 'bg-[#10251B] text-[#DFBF8E] shadow-sm'
+                          : 'bg-[#FAF6EF] text-[#A07C4A] border border-[#E8DFC8]'
+                      )}>
+                        {idx + 1}
+                      </span>
+                      <span className={cn(
+                        'font-serif text-sm sm:text-base md:text-lg leading-snug transition-colors',
+                        isOpen ? 'text-[#10251B] font-semibold' : 'text-[#10251B] font-medium'
+                      )}>
+                        {faq.question}
+                      </span>
+                    </div>
+                    
+                    <span className={cn(
+                      'w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300',
+                      isOpen
+                        ? 'rotate-180 bg-[#10251B] text-[#DFBF8E]'
+                        : 'bg-[#FAF6EF] text-[#A07C4A] border border-[#E8DFC8] hover:bg-[#A07C4A] hover:text-white'
+                    )}>
+                      <ChevronDown className="w-4 h-4" />
+                    </span>
+                  </button>
 
-            <div className="p-4 sm:p-5 rounded-[4px] bg-ivory border border-[#D5C9B3] space-y-1.5">
-              <h4 className="font-serif text-sm font-semibold text-forest">
-                Can the resort assist with Pench safari bookings?
-              </h4>
-              <p className="text-charcoal-muted font-light">
-                Yes! We coordinate licensed 4x4 open gypsies, certified forest guides, and gate transfers for the Sillari Core Zone. Please contact us as early as possible because permits sell out quickly.
-              </p>
-            </div>
-
-            <div className="p-4 sm:p-5 rounded-[4px] bg-ivory border border-[#D5C9B3] space-y-1.5">
-              <h4 className="font-serif text-sm font-semibold text-forest">
-                What are check-in and check-out timings?
-              </h4>
-              <p className="text-charcoal-muted font-light">
-                Standard check-in is at 12:00 PM and check-out is at 10:30 AM. Early check-in or late check-out can be accommodated subject to room availability.
-              </p>
-            </div>
-
-            <div className="p-4 sm:p-5 rounded-[4px] bg-ivory border border-[#D5C9B3] space-y-1.5">
-              <h4 className="font-serif text-sm font-semibold text-forest">
-                Are swimming pool and dining available on-site?
-              </h4>
-              <p className="text-charcoal-muted font-light">
-                Yes. Guests enjoy our turquoise swimming pool, rain dance setup, dedicated multicuisine dining hall, children’s play park, and indoor game zone.
-              </p>
-            </div>
+                  {/* Smooth CSS Grid Dropdown Animation */}
+                  <div
+                    className={cn(
+                      'grid transition-all duration-300 ease-in-out',
+                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    )}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-5 pt-1 sm:px-6 sm:pb-6 text-xs sm:text-sm text-[#4A5568] leading-relaxed font-light border-t border-[#E8DFC8] mt-1 pl-12 sm:pl-16">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Container>
       </section>

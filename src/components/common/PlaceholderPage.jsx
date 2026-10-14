@@ -82,20 +82,22 @@ export default function PlaceholderPage({
                 </div>
               )}
 
-              {/* Status Note adhering to Business Accuracy */}
-              <div className="p-6 rounded-[3px] bg-sand-light/40 border border-sand/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              {/* Guest Hospitality & Inquiries Box */}
+              <div className="p-6 rounded-2xl bg-gradient-to-r from-sand-light/60 to-ivory-warm border border-sand/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
                 <div>
-                  <Badge variant="forest" className="mb-2">Phase 2 Architectural Foundation</Badge>
-                  <p className="text-xs text-charcoal-muted font-light leading-relaxed">
-                    This dedicated destination page is fully routed and ready. Full editorial photography and verified resort details will be integrated in subsequent phases.
+                  <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#8A6836] mb-1 block">
+                    ✦ Direct Desk Assistance
+                  </span>
+                  <p className="text-xs text-charcoal/80 font-light leading-relaxed">
+                    Our on-site Pench team is available to assist with custom itineraries, room combinations, and safari coordination.
                   </p>
                 </div>
                 {actionTo?.startsWith('http') ? (
-                  <Button as="a" href={actionTo} target="_blank" rel="noopener noreferrer" variant="primary" size="sm" className="whitespace-nowrap">
+                  <Button as="a" href={actionTo} target="_blank" rel="noopener noreferrer" variant="primary" size="sm" className="whitespace-nowrap shrink-0">
                     {actionLabel}
                   </Button>
                 ) : (
-                  <Button as={Link} to={actionTo} variant="primary" size="sm" className="whitespace-nowrap">
+                  <Button as={Link} to={actionTo} variant="primary" size="sm" className="whitespace-nowrap shrink-0">
                     {actionLabel}
                   </Button>
                 )}

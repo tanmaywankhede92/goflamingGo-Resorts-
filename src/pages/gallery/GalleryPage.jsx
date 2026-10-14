@@ -9,17 +9,21 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Film,
   Camera,
   ArrowRight,
   ArrowDown,
   Sparkles,
-  Layers,
   MapPin,
-  Grid,
-  Columns,
-  Eye,
-  Zap,
+  BedDouble,
+  Bath,
+  Waves,
+  UtensilsCrossed,
+  Landmark,
+  Compass,
+  PartyPopper,
+  Dices,
 } from 'lucide-react';
 import {
   Container,
@@ -396,22 +400,207 @@ const MASTER_CURATED_MEDIA = [
   },
 ];
 
-// Curated Category Filter definitions with High Contrast styling
+// Curated Category Filter definitions with High Contrast styling & semantic luxury Lucide icons
 const FILTER_TABS = [
   { id: 'All', label: 'All Highlights', icon: Sparkles, count: MASTER_CURATED_MEDIA.length },
   { id: 'Videos', label: 'Property Films', icon: Film, count: MASTER_CURATED_MEDIA.filter((m) => m.type === 'video').length },
-  { id: 'Resort', label: 'Haveli Architecture', icon: Camera, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Resort').length },
-  { id: 'Leisure', label: 'Pool & Recreation', icon: Zap, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Leisure').length },
-  { id: 'Events', label: 'Weddings & Celebrations', icon: Sparkles, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Events').length },
-  { id: 'Rooms', label: 'Luxury Stays', icon: Layers, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Rooms').length },
-  { id: 'Dining', label: 'Dining & Bar', icon: Camera, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Dining').length },
-  { id: 'Wildlife', label: 'Pench Safaris', icon: Eye, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Wildlife').length },
+  { id: 'Resort', label: 'Haveli Architecture', icon: Landmark, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Resort').length },
+  { id: 'Leisure', label: 'Pool & Recreation', icon: Waves, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Leisure').length },
+  { id: 'Events', label: 'Weddings & Celebrations', icon: PartyPopper, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Events').length },
+  { id: 'Rooms', label: 'Luxury Stays', icon: BedDouble, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Rooms').length },
+  { id: 'Dining', label: 'Dining & Bar', icon: UtensilsCrossed, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Dining').length },
+  { id: 'Wildlife', label: 'Pench Safaris', icon: Compass, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Wildlife').length },
 ];
+
+// Context-aware dynamic Lucide icon matching the exact asset
+function getMediaBadgeIcon(item) {
+  if (item.type === 'video') return Film;
+
+  const tag = (item.tag || '').toLowerCase();
+  const category = (item.category || '').toLowerCase();
+  const title = (item.title || '').toLowerCase();
+
+  // Bathrooms
+  if (tag.includes('bath') || title.includes('bath') || title.includes('tub')) {
+    return Bath;
+  }
+  // Rooms, Bedrooms, Suites, Dormitory
+  if (
+    category === 'rooms' ||
+    tag.includes('room') ||
+    tag.includes('suite') ||
+    tag.includes('dormitory') ||
+    tag.includes('bed') ||
+    title.includes('room') ||
+    title.includes('bedroom') ||
+    title.includes('suite')
+  ) {
+    return BedDouble;
+  }
+  // Pool, Water, Rain dance
+  if (
+    tag.includes('pool') ||
+    tag.includes('rain dance') ||
+    title.includes('pool') ||
+    title.includes('swim')
+  ) {
+    return Waves;
+  }
+  // Game zone, Kids play park
+  if (
+    tag.includes('game') ||
+    tag.includes('play') ||
+    tag.includes('lounge') ||
+    title.includes('game') ||
+    title.includes('billiards') ||
+    title.includes('park')
+  ) {
+    return Dices;
+  }
+  // Dining, Restaurant, Bar, Feasts
+  if (
+    category === 'dining' ||
+    tag.includes('dine') ||
+    tag.includes('food') ||
+    tag.includes('restaurant') ||
+    tag.includes('bar') ||
+    tag.includes('cuisine') ||
+    tag.includes('banquet') ||
+    title.includes('dining') ||
+    title.includes('restaurant') ||
+    title.includes('cuisine')
+  ) {
+    return UtensilsCrossed;
+  }
+  // Weddings, Mandap, Mehendi, Celebrations
+  if (
+    category === 'events' ||
+    tag.includes('wedding') ||
+    tag.includes('mandap') ||
+    tag.includes('mehendi') ||
+    tag.includes('reception') ||
+    tag.includes('baithak') ||
+    tag.includes('starlit') ||
+    title.includes('wedding') ||
+    title.includes('mandap') ||
+    title.includes('celebration')
+  ) {
+    return PartyPopper;
+  }
+  // Pench Wildlife, Tigers, Safari, Chital, Birds
+  if (
+    category === 'wildlife' ||
+    tag.includes('tiger') ||
+    tag.includes('safari') ||
+    tag.includes('deer') ||
+    tag.includes('bird') ||
+    title.includes('tiger') ||
+    title.includes('safari') ||
+    title.includes('deer')
+  ) {
+    return Compass;
+  }
+  // Haveli Heritage Architecture
+  if (
+    category === 'resort' ||
+    tag.includes('haveli') ||
+    tag.includes('arch') ||
+    tag.includes('entrance') ||
+    tag.includes('verandah') ||
+    title.includes('haveli') ||
+    title.includes('arch')
+  ) {
+    return Landmark;
+  }
+
+  return Landmark;
+}
+
+/**
+ * Luxury Curated Media Card Component
+ * - Live autoplaying looped video for property films
+ * - Natural photographic zoom and luxury shadow (Zero AI sheen or gimmicks)
+ * - Compact and fast 2-column layout on mobile
+ * - Grand architectural anchor on desktop
+ */
+function GalleryCard({ item, index, activeCategory, onOpenLightbox }) {
+  const isVideo = item.type === 'video';
+
+  // Grand architectural hero anchor for the first film in All Highlights (Matches User's Screenshot)
+  const isHero = activeCategory === 'All' && index === 0;
+
+  return (
+    <div
+      onClick={onOpenLightbox}
+      className={cn(
+        "group relative overflow-hidden rounded-2xl sm:rounded-3xl cursor-pointer select-none",
+        "bg-forest-dark border border-[#E5DAC7] hover:border-[#C5A880] transition-all duration-300",
+        "shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_36px_rgba(16,37,27,0.18)]",
+        isHero
+          ? "col-span-2 sm:col-span-2 lg:col-span-2 lg:row-span-2 h-[260px] sm:h-[420px] lg:h-[620px]"
+          : "col-span-1 h-[175px] sm:h-[260px] lg:h-[298px]"
+      )}
+    >
+      {/* Media: Real continuous live autoplaying looped video if property film, else photo */}
+      <div className="relative w-full h-full overflow-hidden bg-forest-dark">
+        {isVideo ? (
+          <video
+            src={item.videoSrc}
+            poster={item.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onPause={(e) => {
+              // Ensure video keeps playing smoothly without staying paused
+              e.target.play().catch(() => {});
+            }}
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+          />
+        ) : (
+          <img
+            src={item.src}
+            alt={item.title}
+            loading="lazy"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-[0.98]"
+          />
+        )}
+
+        {/* Natural Photographic Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300" />
+
+        {/* Center Play / Expand Icon on Hover */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gold/90 text-forest-deep flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+            {isVideo ? (
+              <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-forest-deep ml-0.5" />
+            ) : (
+              <Maximize2 className="w-5 h-5 sm:w-6 sm:h-6" />
+            )}
+          </div>
+        </div>
+
+        {/* Bottom Caption Overlay (Visible titles & subtitles as in user screenshot) */}
+        <div className="absolute bottom-0 inset-x-0 p-3 sm:p-5 z-10 transform translate-y-0.5 group-hover:translate-y-0 transition-transform duration-300">
+          <span className="text-[9px] sm:text-[10px] text-gold uppercase tracking-widest font-bold block mb-1">
+            {item.category}
+          </span>
+          <h3 className="font-serif text-xs sm:text-base lg:text-lg font-bold text-ivory leading-snug drop-shadow-sm line-clamp-1 sm:line-clamp-2">
+            {item.title}
+          </h3>
+          <p className="hidden sm:block text-xs text-sand-light/90 font-light mt-1 line-clamp-2 drop-shadow-xs">
+            {item.subtitle}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const [viewMode, setViewMode] = useState('masonry'); // 'masonry' | 'grid'
   
   const [isHoverPaused, setIsHoverPaused] = useState(false);
 
@@ -420,6 +609,14 @@ export default function GalleryPage() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const featuredVideoRef = useRef(null);
+  const filterScrollRef = useRef(null);
+
+  const scrollFilters = (direction) => {
+    if (filterScrollRef.current) {
+      const scrollAmount = direction === 'left' ? -280 : 280;
+      filterScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const theaterVideos = [
     {
@@ -563,10 +760,9 @@ export default function GalleryPage() {
     <div className="w-full bg-[#FAF8F5] text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold/30 selection:text-forest-deep">
       
       {/* ========================================================
-          1. FULL-FRAME CINEMATIC HERO (100DVH VIEWPORT)
-          Bleeds edge-to-edge behind floating navbar without top gap
+          1. CINEMATIC LUXURY HERO BANNER (MAJESTIC ARCHITECTURE)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[600px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
+      <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         
         {/* Background Full Frame Media */}
         <div className="absolute inset-0 z-0">
@@ -574,39 +770,38 @@ export default function GalleryPage() {
             src={AUTHENTIC_RESORT.photos.courtyardTwilight.src}
             alt="Go Flamingo Resort illuminated haveli courtyard at twilight"
             fetchPriority="high"
-            className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.98] contrast-[1.03] scale-102 transition-transform duration-1000"
+            className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
           />
-          {/* Lighter architectural gradient scrims: keeps top vibrant */}
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/65 to-forest-dark/25" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
+          {/* Tailored architectural gradient scrims */}
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
         </div>
 
         {/* Foreground Content */}
-        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-8 sm:pb-12">
-          <div className="max-w-3xl">
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
 
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/45 border border-gold/50 text-gold-light text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-3 sm:mb-4 backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              <span>Architectural Showcase • Sillari, Pench</span>
+            {/* Clean Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
+              <span>Visual Showcase · Sillari Gate, Pench</span>
             </div>
 
             {/* Main Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] mb-3 sm:mb-4 text-balance drop-shadow-sm">
-              The <span className="text-gold font-serif italic">Gallery & Films</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
+              The Visual Gallery & <span className="text-[#DFBF8E] font-serif italic">Films</span>
             </h1>
 
             {/* Concise Supporting Copy */}
-            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light mb-6 sm:mb-8 max-w-2xl border-l-2 border-gold/80 pl-3.5 drop-shadow-xs">
-              Explore authentic high-resolution moments from GoFlamingo Resort—from drone aerials and palatial haveli arches to turquoise pool loungers, destination weddings, and thrilling Pench tiger safaris.
+            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
+              Authentic high-resolution photographs, drone aerials, and peaceful glimpses of haveli life at the threshold of Pench Tiger Reserve.
             </p>
 
-            {/* Fast Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+            {/* Simple Dual Actions */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <button
                 type="button"
                 onClick={() => document.getElementById('featured-film-theater')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
               >
                 <span>Watch Resort Films</span>
                 <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shrink-0 shadow-inner">
@@ -617,39 +812,14 @@ export default function GalleryPage() {
               <button
                 type="button"
                 onClick={() => document.getElementById('horizon-stream-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-xs uppercase tracking-[0.10em] font-semibold text-white backdrop-blur-md transition-all duration-200 cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
               >
-                <span>Explore Grand Gallery</span>
-                <ArrowDown className="w-3.5 h-3.5 text-gold" />
+                <span>View Photos ↓</span>
               </button>
             </div>
 
           </div>
         </Container>
-
-        {/* Bottom Quick-Fact Highlight Bar */}
-        <div className="relative z-10 w-full border-t border-sand/20 bg-forest-deep/95 backdrop-blur-md py-3.5 sm:py-4 shadow-lg">
-          <Container size="xl">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center divide-x-0 sm:divide-x divide-sand/15">
-              <div className="px-2">
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-sand-dark font-medium">Curated Highlights</span>
-                <span className="text-xs sm:text-sm font-serif font-bold text-ivory">5-Star Authentic Imagery</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-sand-dark font-medium">Property Films</span>
-                <span className="text-xs sm:text-sm font-serif font-bold text-gold">5 High-Def Drone & Video Reels</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-sand-dark font-medium">Resolution</span>
-                <span className="text-xs sm:text-sm font-serif font-bold text-ivory">Full HD & 4K Aerials</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-sand-dark font-medium">Location</span>
-                <span className="text-xs sm:text-sm font-serif font-bold text-gold">Sillari Gate, Pench</span>
-              </div>
-            </div>
-          </Container>
-        </div>
       </section>
 
 
@@ -683,7 +853,7 @@ export default function GalleryPage() {
 
             {/* Subtle Minimalist Indicator */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D2216]/90 border border-gold/30 text-xs text-sand-light/80 font-light backdrop-blur-md shadow-sm self-start md:self-auto">
-              <span className="w-2 h-2 rounded-full bg-gold/80 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gold/80" />
               <span>Hover to pause • Click to expand</span>
             </div>
 
@@ -718,13 +888,15 @@ export default function GalleryPage() {
                 {/* Subtle Luxury Vignette */}
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/15 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
                 
-                {/* Floating Top Luxury Tag (Frosted Pill) */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-gold text-[11px] font-semibold tracking-wider uppercase border border-gold/30 shadow-md">
-                    {item.type === 'video' ? <Film className="w-3 h-3 text-gold" /> : <Camera className="w-3 h-3 text-gold" />}
-                    <span>{item.tag || item.category}</span>
-                  </span>
-                </div>
+                {/* Floating Top Luxury Tag (Only for Video Reels) */}
+                {item.type === 'video' && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-gold text-[11px] font-bold tracking-wider uppercase border border-gold/40 shadow-md">
+                      <Film className="w-3.5 h-3.5 text-gold shrink-0" />
+                      <span>{item.duration ? `Film (${item.duration})` : 'Film'}</span>
+                    </span>
+                  </div>
+                )}
 
                 {/* Video Play Badge if Video */}
                 {item.type === 'video' && (
@@ -837,8 +1009,8 @@ export default function GalleryPage() {
                 <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-forest-dark/95 via-forest-dark/60 to-transparent flex items-center justify-between pointer-events-auto">
                   <div className="min-w-0 pr-4">
                     <span className="text-[10px] uppercase tracking-wider text-gold font-bold flex items-center gap-1.5 mb-0.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Now Auto-Playing • {theaterVideos[activeVideoIdx].tag}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold/80" />
+                      <span>Resort Property Film • {theaterVideos[activeVideoIdx].tag}</span>
                     </span>
                     <h3 className="text-sm sm:text-base font-serif font-bold text-ivory truncate">
                       {theaterVideos[activeVideoIdx].title}
@@ -873,13 +1045,9 @@ export default function GalleryPage() {
 
             {/* Video Selector Playlist (4 cols) */}
             <div className="lg:col-span-4 space-y-3">
-              <div className="flex items-center justify-between mb-1">
+              <div className="mb-2">
                 <span className="text-[11px] uppercase tracking-wider text-sand-dark font-semibold block">
                   Select Property Film ({theaterVideos.length} Reels)
-                </span>
-                <span className="text-[10px] uppercase tracking-wider text-gold/90 font-medium flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
-                  Auto-Advance On
                 </span>
               </div>
 
@@ -952,7 +1120,7 @@ export default function GalleryPage() {
       <section id="media-grid-section" className="py-6 sm:py-8 bg-white border-y border-stone-200 sticky top-16 sm:top-20 z-30 shadow-xs backdrop-blur-md">
         <Container size="xl">
           
-          {/* Top Bar: Headline & Layout Toggle */}
+          {/* Top Bar: Curated Collection Count + Quick Category Dropdown */}
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-forest-deep font-bold block">
@@ -963,68 +1131,87 @@ export default function GalleryPage() {
               </span>
             </div>
 
-            {/* View Mode Toggle */}
-            <div className="flex items-center gap-1.5 bg-stone-100 p-1 rounded-full border border-stone-300">
-              <button
-                type="button"
-                onClick={() => setViewMode('masonry')}
-                className={cn(
-                  'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer',
-                  viewMode === 'masonry'
-                    ? 'bg-forest-deep text-white shadow-xs'
-                    : 'text-stone-600 hover:text-forest-deep'
-                )}
-                title="Editorial Masonry Flow"
+            {/* Category Dropdown Selector for instant direct selection */}
+            <div className="relative inline-flex items-center">
+              <label htmlFor="category-select-dropdown" className="sr-only">Select Category</label>
+              <select
+                id="category-select-dropdown"
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value)}
+                className="appearance-none pl-4 pr-9 py-2 rounded-full bg-[#FAF7F2] hover:bg-white border border-[#DDD3C4] hover:border-gold/60 text-xs font-bold text-forest-deep uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-gold/50 cursor-pointer shadow-xs transition-all"
               >
-                <Columns className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Masonry</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode('grid')}
-                className={cn(
-                  'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer',
-                  viewMode === 'grid'
-                    ? 'bg-forest-deep text-white shadow-xs'
-                    : 'text-stone-600 hover:text-forest-deep'
-                )}
-                title="Curated Grid View"
-              >
-                <Grid className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Grid</span>
-              </button>
+                {FILTER_TABS.map((tab) => (
+                  <option key={tab.id} value={tab.id}>
+                    {tab.label} ({tab.count})
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="w-4 h-4 text-forest-deep absolute right-3 pointer-events-none" />
             </div>
           </div>
 
-          {/* High Contrast Filter Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-            {FILTER_TABS.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeCategory === tab.id;
+          {/* High Contrast Filter Tabs with Horizontal Scroll & Left/Right Nav Arrows */}
+          <div className="relative flex items-center gap-2">
+            {/* Left Scroll Arrow */}
+            <button
+              type="button"
+              onClick={() => scrollFilters('left')}
+              className="hidden sm:flex w-8 h-8 rounded-full bg-white hover:bg-forest-deep hover:text-gold text-forest-deep border border-[#DDD3C4] items-center justify-center shrink-0 shadow-xs transition-colors cursor-pointer z-10"
+              title="Scroll Left"
+              aria-label="Scroll Left"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
 
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => setActiveCategory(tab.id)}
-                  className={cn(
-                    'inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 whitespace-nowrap cursor-pointer shadow-xs',
-                    isActive
-                      ? 'bg-forest-deep text-white border-2 border-gold shadow-md font-bold ring-2 ring-gold/40'
-                      : 'bg-stone-50 hover:bg-stone-100 text-stone-700 hover:text-forest-deep border border-stone-300 hover:border-forest-deep/40'
-                  )}
-                >
-                  <Icon className={cn('w-3.5 h-3.5', isActive ? 'text-gold' : 'text-stone-500')} />
-                  <span>{tab.label}</span>
-                  <span className={cn(
-                    'px-1.5 py-0.5 rounded-full text-[10px] font-mono',
-                    isActive ? 'bg-gold text-forest-deep font-bold' : 'bg-stone-200 text-stone-600'
-                  )}>
-                    {tab.count}
-                  </span>
-                </button>
-              );
-            })}
+            {/* Horizontal Scrollable Tabs */}
+            <div
+              ref={filterScrollRef}
+              onWheel={(e) => {
+                if (filterScrollRef.current && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                  filterScrollRef.current.scrollLeft += e.deltaY;
+                }
+              }}
+              className="flex items-center gap-2 overflow-x-auto pb-1.5 scroll-smooth scrollbar-thin scrollbar-thumb-stone-300 hover:scrollbar-thumb-gold/50 scrollbar-track-transparent flex-1"
+            >
+              {FILTER_TABS.map((tab) => {
+                const Icon = tab.icon;
+                const isActive = activeCategory === tab.id;
+
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveCategory(tab.id)}
+                    className={cn(
+                      'inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 whitespace-nowrap cursor-pointer shadow-xs shrink-0',
+                      isActive
+                        ? 'bg-forest-deep text-gold border-2 border-gold shadow-md font-bold ring-2 ring-gold/40'
+                        : 'bg-[#FAF7F2] hover:bg-white text-[#243E2B] hover:text-forest-deep border border-[#DDD3C4] hover:border-gold/60 shadow-xs'
+                    )}
+                  >
+                    <Icon className={cn('w-3.5 h-3.5 shrink-0', isActive ? 'text-gold' : 'text-[#8E6D3E]')} />
+                    <span>{tab.label}</span>
+                    <span className={cn(
+                      'px-1.5 py-0.5 rounded-full text-[10px] font-mono',
+                      isActive ? 'bg-gold text-forest-deep font-bold' : 'bg-[#EAE2D5] text-[#243E2B] font-semibold'
+                    )}>
+                      {tab.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Scroll Arrow */}
+            <button
+              type="button"
+              onClick={() => scrollFilters('right')}
+              className="hidden sm:flex w-8 h-8 rounded-full bg-white hover:bg-forest-deep hover:text-gold text-forest-deep border border-[#DDD3C4] items-center justify-center shrink-0 shadow-xs transition-colors cursor-pointer z-10"
+              title="Scroll Right"
+              aria-label="Scroll Right"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
 
         </Container>
@@ -1033,68 +1220,21 @@ export default function GalleryPage() {
 
       {/* ========================================================
           5. CURATED GALLERY MEDIA GRID (EXCLUSIVE 5-STAR QUALITY)
-          Supporting Masonry & Uniform Grid Modes
+          Clean, unified, fast-loading responsive grid
           ======================================================== */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#FAF8F5]">
+      <section className="py-8 sm:py-12 lg:py-16 bg-[#FAF8F5]">
         <Container size="xl">
-          
-          <div className={cn(
-            viewMode === 'masonry'
-              ? 'columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6'
-              : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
-          )}>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 lg:gap-6">
             {filteredItems.map((item, index) => (
-              <div
+              <GalleryCard
                 key={item.id}
-                onClick={() => setLightboxIndex(index)}
-                className="group relative rounded-3xl overflow-hidden break-inside-avoid shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.18)] border border-stone-200/90 hover:border-gold transition-all duration-500 cursor-pointer bg-forest-dark"
-              >
-                {/* Media Image / Video Poster */}
-                <div className={cn("relative w-full overflow-hidden bg-forest-dark", item.aspect || "aspect-4/3")}>
-                  <img
-                    src={item.src || item.poster}
-                    alt={item.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-1000 filter brightness-[0.98]"
-                  />
-
-                  {/* Gradient Scrim */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/20 to-transparent opacity-65 group-hover:opacity-95 transition-opacity duration-300" />
-
-                  {/* Floating Tag */}
-                  <div className="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 text-gold text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border border-gold/40 shadow-sm">
-                    {item.type === 'video' ? <Film className="w-3 h-3 text-gold" /> : <Camera className="w-3 h-3 text-gold" />}
-                    <span>{item.type === 'video' ? `Video (${item.duration})` : (item.tag || item.category)}</span>
-                  </div>
-
-                  {/* Hover Center Play / Expand Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-14 h-14 rounded-full bg-gold/90 text-forest-deep flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                      {item.type === 'video' ? (
-                        <Play className="w-6 h-6 fill-forest-deep ml-0.5" />
-                      ) : (
-                        <Maximize2 className="w-6 h-6" />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Bottom Caption Overlay */}
-                  <div className="absolute bottom-0 inset-x-0 p-5 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-[10px] text-gold uppercase tracking-widest font-bold block mb-1">
-                      {item.category}
-                    </span>
-                    <h3 className="font-serif text-base sm:text-lg font-bold text-ivory leading-snug drop-shadow-sm">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-sand-light/85 font-light mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">
-                      {item.subtitle}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                item={item}
+                index={index}
+                activeCategory={activeCategory}
+                onOpenLightbox={() => setLightboxIndex(index)}
+              />
             ))}
           </div>
-
         </Container>
       </section>
 

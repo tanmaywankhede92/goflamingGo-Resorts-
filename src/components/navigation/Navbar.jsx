@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight, Menu } from 'lucide-react';
 import { Container, Logo } from '../common';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
@@ -277,9 +277,7 @@ export default function Navbar() {
               aria-label="Open navigation menu"
               className="lg:hidden p-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-charcoal hover:text-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest transition-colors w-9 h-9 flex items-center justify-center shrink-0 cursor-pointer"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <Menu className="w-5 h-5 text-forest-deep" />
             </button>
           </div>
 

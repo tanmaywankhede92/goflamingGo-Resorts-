@@ -191,47 +191,48 @@ export default function EventsPage() {
     <div className="w-full bg-ivory-pure text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold/30 selection:text-forest-deep">
       
       {/* ========================================================
-          1. FULL-FRAME CINEMATIC HERO (100DVH VIEWPORT)
+          1. ELEGANT CINEMATIC HERO (BREATHABLE & PREMIUM)
+      {/* ========================================================
+          1. CINEMATIC LUXURY HERO BANNER (FAIRY-LIT NIGHT LAWNS)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[580px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
-        {/* Full-Frame Background Image with Natural Lighter Scrim */}
+      <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
+        {/* Full-Frame Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={RESORT_DRIVE_PHOTOS.socialEventLawnNight.src}
             alt="Go Flamingo Resort evening lawn celebrations under fairy lights"
             fetchPriority="high"
-            className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.95] contrast-[1.03]"
+            className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
           />
-          {/* Gradients protecting text readability without over-darkening the scene */}
+          {/* Tailored architectural gradient scrims */}
           <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
           <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
         </div>
 
         {/* Foreground Content */}
-        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-8 sm:pb-12">
-          <div className="max-w-3xl">
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
 
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/40 border border-gold/45 text-gold-light text-[11px] sm:text-sm font-medium tracking-wide mb-3 sm:mb-4 backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              <span>Venues & Gatherings • Sillari, Pench</span>
+            {/* Clean Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
+              <span>Venues & Gatherings · Sillari Gate, Pench</span>
             </div>
 
             {/* Main Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] mb-3 sm:mb-4 text-balance drop-shadow-sm">
-              Events & <span className="text-gold font-serif italic">Celebrations</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
+              Weddings & <span className="text-[#DFBF8E] font-serif italic">Celebrations</span>
             </h1>
 
             {/* Concise Supporting Copy */}
-            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light mb-6 sm:mb-8 max-w-2xl border-l-2 border-gold/70 pl-3 sm:pl-3.5 drop-shadow-xs">
-              The resort features dedicated facilities across four distinct event categories—from forest destination weddings and company offsites to air-conditioned conferences and joyful milestone gatherings.
+            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
+              Dedicated lawn venues, air-conditioned conference halls, and authentic forest hospitality for destination weddings, corporate summits, and family milestones.
             </p>
 
-            {/* Luxury Editorial Hero Action CTAs */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+            {/* Clean Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <Link
                 to="/contact?book=true#reservation-form-card"
-                className="group inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
               >
                 <span>Plan Your Event</span>
                 <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
@@ -242,17 +243,16 @@ export default function EventsPage() {
               <button
                 type="button"
                 onClick={() => scrollToCategory('weddings')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-xs uppercase tracking-[0.10em] font-semibold text-white backdrop-blur-sm transition-all duration-200 cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
               >
-                <span>Explore Venues</span>
-                <ArrowDown className="w-3.5 h-3.5 text-gold animate-bounce" />
+                <span>Explore Venues ↓</span>
               </button>
 
               <a
                 href={`https://wa.me/919372425968?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to enquire about event dates, venues and packages.')}`}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/60 hover:border-[#25D366] text-xs uppercase tracking-[0.10em] font-bold text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>WhatsApp Enquiry</span>

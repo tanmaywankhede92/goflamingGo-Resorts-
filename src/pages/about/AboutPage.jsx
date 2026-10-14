@@ -197,59 +197,46 @@ export default function AboutPage() {
     <div className="w-full bg-ivory-pure text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold/30 selection:text-forest-deep">
       
       {/* ========================================================
-          1. FULL-FRAME EDITORIAL HERO BANNER (100DVH VIEWPORT)
+          1. CINEMATIC LUXURY HERO BANNER (MAJESTIC HAVELI ENTRANCE)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[580px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
-        {/* Full Frame Background Image - Anchored to top so resort entrance sign is fully visible */}
+      <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
+        {/* Full Frame Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={AUTHENTIC_RESORT.photos.entrancePorch.src}
             alt="GoFlamingo Resort Sillari Pench Grand Entrance Porch and Stone Fountains"
             fetchPriority="high"
-            className="w-full h-full object-cover object-[center_top] sm:object-[center_16%] filter brightness-[0.95] contrast-[1.02]"
+            className="w-full h-full object-cover object-[center_top] sm:object-[center_16%] filter brightness-[0.96] contrast-[1.03]"
           />
-          {/* Lighter architectural gradient scrims: Top remains clear so building & signage show through */}
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/50 to-forest-dark/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/35 to-transparent sm:block hidden" />
+          {/* Subtle architectural gradient scrims */}
+          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
         </div>
 
-        {/* Foreground Hero Content: Balanced clearance above floating navbar and bottom bar */}
-        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-8 sm:pb-12">
-          <div className="max-w-3xl">
+        {/* Foreground Hero Content */}
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
 
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/35 border border-gold/45 text-gold-light text-[11px] sm:text-sm font-medium tracking-wide mb-3 sm:mb-4 backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              <span>Sillari Area • Pench Region, Maharashtra</span>
+            {/* Clean Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
+              <span>The Haveli Sanctuary · Sillari Gate, Pench</span>
             </div>
 
             {/* Main Title */}
-            <h1 className="text-2.5xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] mb-3 sm:mb-4 text-balance drop-shadow-sm">
-              About <span className="text-gold font-serif italic">GoFlamingo Resort</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
+              The Story of <span className="text-[#DFBF8E] font-serif italic">GoFlamingo Resort</span>
             </h1>
 
-            {/* Core Requirement Lead Paragraph */}
-            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light mb-5 sm:mb-7 max-w-2xl border-l-2 border-gold/70 pl-3 sm:pl-3.5 drop-shadow-xs">
-              GoFlamingo Resort is a premier hospitality property located in the Sillari area of Maharashtra's Pench region. The resort offers accommodation, leisure facilities, dining and recreation options, and facilities for meetings and gatherings.
+            {/* Refined Hospitality Narrative */}
+            <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
+              A peaceful wilderness retreat located at the threshold of Pench Tiger Reserve, where Rajasthani haveli architecture, tranquil garden courtyards, and heartfelt Vidarbha hospitality welcome you.
             </p>
 
-            {/* MOBILE ONLY: Single Clean Explore Action (No CTA Clutter on mobile) */}
-            <div className="sm:hidden flex items-center pt-1 pb-2">
-              <button
-                type="button"
-                onClick={() => document.getElementById('property-overview')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 text-ivory border border-white/30 text-xs font-semibold uppercase tracking-wider backdrop-blur-md cursor-pointer transition-all shadow-md"
-              >
-                <span>Explore Resort Overview</span>
-                <ArrowDown className="w-3.5 h-3.5 text-gold animate-bounce" />
-              </button>
-            </div>
-
-            {/* DESKTOP ONLY: High-Intent Dual Actions */}
-            <div className="hidden sm:flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+            {/* Clean Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <Link
                 to="/rooms"
-                className="group inline-flex items-center justify-center gap-2 pl-5 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
               >
                 <span>View Accommodations</span>
                 <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
@@ -261,7 +248,7 @@ export default function AboutPage() {
                 href={whatsappUrl}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/60 hover:border-[#25D366] text-xs uppercase tracking-[0.10em] font-bold text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>Chat on WhatsApp</span>
@@ -270,38 +257,6 @@ export default function AboutPage() {
 
           </div>
         </Container>
-
-        {/* Bottom Quick-Fact Highlight Bar */}
-        <div id="property-overview" className="relative z-10 w-full border-t border-sand/20 bg-forest-deep/95 backdrop-blur-md py-3.5 sm:py-5 shadow-lg">
-          <Container size="xl">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center divide-x-0 sm:divide-x divide-sand/15">
-              <div className="px-2">
-                <span className="block text-[11px] uppercase tracking-wider text-sand-dark font-medium">Rooms</span>
-                <span className="text-sm sm:text-base font-serif font-bold text-ivory">20 AC Rooms</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[11px] uppercase tracking-wider text-sand-dark font-medium">Dormitory</span>
-                <span className="text-sm sm:text-base font-serif font-bold text-gold">1 Large Hall</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[11px] uppercase tracking-wider text-sand-dark font-medium">Categories</span>
-                <span className="text-sm sm:text-base font-serif font-bold text-ivory">Deluxe & Super Deluxe</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[11px] uppercase tracking-wider text-sand-dark font-medium">Meetings</span>
-                <span className="text-sm sm:text-base font-serif font-bold text-ivory">Conference Room</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[11px] uppercase tracking-wider text-sand-dark font-medium">Location</span>
-                <span className="text-sm sm:text-base font-serif font-bold text-ivory">Sillari, Pench</span>
-              </div>
-              <div className="px-2">
-                <span className="block text-[11px] uppercase tracking-wider text-sand-dark font-medium">Recreation</span>
-                <span className="text-sm sm:text-base font-serif font-bold text-gold">Pool & Rain Dance</span>
-              </div>
-            </div>
-          </Container>
-        </div>
       </section>
 
 
@@ -387,27 +342,32 @@ export default function AboutPage() {
 
 
       {/* ========================================================
-          THE RESORT AT A GLANCE (QUICK SPECIFICATION ICONS)
+          THE RESORT AT A GLANCE (RICH DARK SECTION WITH LIGHT BADGES)
           ======================================================== */}
-      <section className="py-14 sm:py-18 bg-[#FBF9F4] border-y border-[#EAE3D4]/90">
-        <Container size="xl">
+      <section className="relative py-14 sm:py-20 bg-gradient-to-b from-[#0B1E13] via-[#0E2718] to-[#08150D] text-ivory border-y border-[#DFBF8E]/30 overflow-hidden">
+        {/* Subtle ambient luxury glows */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A880]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <Container size="xl" className="relative z-10">
           <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
-            <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#A6865A] font-semibold block mb-2">
-              The Resort at a Glance
+            <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#DFBF8E] font-semibold block mb-2">
+              Resort Facilities · Key Highlights
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0E2718] font-normal tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white font-normal tracking-tight">
               The Resort at a Glance
             </h2>
-            <div className="w-14 h-0.5 bg-[#C5A880]/80 mx-auto mt-3.5 rounded-full" />
+            <div className="w-14 h-0.5 bg-gradient-to-r from-transparent via-[#DFBF8E] to-transparent mx-auto mt-3.5 rounded-full" />
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {glanceItems.map((item, idx) => (
               <div key={idx} className="flex flex-col items-center text-center group cursor-default">
-                <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full bg-[#F3EDE2] border border-[#E8DEC9] flex items-center justify-center mb-3.5 shadow-[0_2px_8px_rgba(0,0,0,0.03)] group-hover:scale-105 group-hover:bg-[#EFE7D8] group-hover:border-[#C5A880]/60 transition-all duration-300">
+                {/* Luminous Light Luxury Circle Inside Dark Container */}
+                <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F1] to-[#F5EFE6] border-2 border-[#DFBF8E]/80 flex items-center justify-center mb-3.5 shadow-[0_4px_20px_rgba(0,0,0,0.35)] group-hover:scale-108 group-hover:border-[#DFBF8E] group-hover:shadow-[0_0_24px_rgba(223,191,142,0.45)] transition-all duration-300">
                   {item.icon}
                 </div>
-                <span className="text-sm sm:text-base font-serif font-medium text-[#163824] tracking-tight group-hover:text-[#A6865A] transition-colors duration-200">
+                <span className="text-xs sm:text-sm font-serif font-medium text-white/95 tracking-wide group-hover:text-[#DFBF8E] transition-colors duration-200">
                   {item.label}
                 </span>
               </div>
