@@ -26,7 +26,7 @@ export default function MegaMenu({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={cn(
-        'absolute top-full left-0 w-full bg-[#FAF7F2] text-[#0E2718] border-b border-[#E3D7C3] shadow-https://127.0.0.1:55792/static/artifacts/f7ac385c-1559-4882-a419-2155fabbff8d/.user_uploaded/media_1792005202339.png?csrf=2ef02639-7f8e-4e43-8116-d77656bb69b2[0_25px_60px_-15px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 z-50',
+        'absolute top-full left-0 w-full bg-[#FAF7F2] text-[#0E2718] border-b border-[#E3D7C3] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 z-50',
         'animate-in fade-in-0 slide-in-from-top-1',
         'before:content-[\'\'] before:absolute before:-top-6 before:left-0 before:w-full before:h-6 before:pointer-events-auto'
       )}

@@ -9,7 +9,6 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  ChevronDown,
   Film,
   Camera,
   ArrowRight,
@@ -609,14 +608,6 @@ export default function GalleryPage() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const featuredVideoRef = useRef(null);
-  const filterScrollRef = useRef(null);
-
-  const scrollFilters = (direction) => {
-    if (filterScrollRef.current) {
-      const scrollAmount = direction === 'left' ? -280 : 280;
-      filterScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
 
   const theaterVideos = [
     {
@@ -781,14 +772,9 @@ export default function GalleryPage() {
         <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl space-y-3 sm:space-y-4">
 
-            {/* Clean Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
-              <span>Visual Showcase · Sillari Gate, Pench</span>
-            </div>
-
             {/* Main Title */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
-              The Visual Gallery & <span className="text-[#DFBF8E] font-serif italic">Films</span>
+              Visual Gallery & Property Films
             </h1>
 
             {/* Concise Supporting Copy */}
@@ -801,18 +787,16 @@ export default function GalleryPage() {
               <button
                 type="button"
                 onClick={() => document.getElementById('featured-film-theater')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] text-xs font-semibold uppercase tracking-[0.14em] shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
                 <span>Watch Resort Films</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shrink-0 shadow-inner">
-                  <Play className="w-3 h-3 fill-[#DFBF8E] text-[#DFBF8E]" />
-                </span>
+                <Play className="w-3.5 h-3.5 fill-[#0E2718] text-[#0E2718]" />
               </button>
 
               <button
                 type="button"
                 onClick={() => document.getElementById('horizon-stream-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm cursor-pointer text-center"
               >
                 <span>View Photos ↓</span>
               </button>
@@ -827,9 +811,13 @@ export default function GalleryPage() {
           2. THE GRAND HORIZON STREAM (ARCHITECTURAL LUXURY FILMSTRIP)
           Reimagined for ultra-premium luxury feel with speed controller
           ======================================================== */}
+      {/* ========================================================
+          2. THE GRAND HORIZON STREAM (ARCHITECTURAL LUXURY FILMSTRIP)
+          Reimagined with Warm Sandstone Luxury Light Aesthetic
+          ======================================================== */}
       <section
         id="horizon-stream-section"
-        className="py-12 sm:py-16 bg-[#08150D] text-ivory overflow-hidden border-b border-[#1A3323] relative scroll-mt-20"
+        className="py-12 sm:py-16 bg-gradient-to-b from-[#FAF6F0] via-[#F4EDE2] to-[#EFE7D8] text-[#1A2E22] overflow-hidden border-y border-[#E2D6C0] relative scroll-mt-20"
         onMouseEnter={() => setIsHoverPaused(true)}
         onMouseLeave={() => setIsHoverPaused(false)}
         onTouchStart={() => setIsHoverPaused(true)}
@@ -842,18 +830,18 @@ export default function GalleryPage() {
             
             {/* Title & Eyebrow */}
             <div>
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-gold font-bold mb-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-gold" />
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[#B85D38] font-bold mb-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#B85D38]" />
                 <span>The Living Stream • Authentic Resort Moments</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-serif text-ivory font-normal tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#10251B] font-normal tracking-tight">
                 A Visual Odyssey Across GoFlamingo
               </h2>
             </div>
 
             {/* Subtle Minimalist Indicator */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D2216]/90 border border-gold/30 text-xs text-sand-light/80 font-light backdrop-blur-md shadow-sm self-start md:self-auto">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold/80" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#DCD1BF] text-xs text-[#5C5549] font-medium backdrop-blur-md shadow-xs self-start md:self-auto">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B85D38]" />
               <span>Hover to pause • Click to expand</span>
             </div>
 
@@ -873,7 +861,7 @@ export default function GalleryPage() {
                 key={`stream-${item.id}-${idx}`}
                 onClick={() => setLightboxIndex(MASTER_CURATED_MEDIA.findIndex((m) => m.id === item.id))}
                 className={cn(
-                  "group relative h-[360px] sm:h-[420px] md:h-[460px] rounded-3xl overflow-hidden shrink-0 cursor-pointer shadow-[0_12px_40px_rgba(0,0,0,0.5)] border border-sand/20 hover:border-gold/90 transition-all duration-500 hover:scale-[1.02] mx-3 sm:mx-4 bg-forest-dark",
+                  "group relative h-[360px] sm:h-[420px] md:h-[460px] rounded-3xl overflow-hidden shrink-0 cursor-pointer shadow-[0_12px_36px_rgba(16,37,27,0.10)] border border-[#DFD5C2] hover:border-[#C5A880] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(16,37,27,0.18)] mx-3 sm:mx-4 bg-white",
                   item.ribbonWidth || 'w-80 sm:w-96'
                 )}
               >
@@ -886,13 +874,13 @@ export default function GalleryPage() {
                 />
 
                 {/* Subtle Luxury Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/15 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#08130B]/95 via-[#08130B]/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300" />
                 
                 {/* Floating Top Luxury Tag (Only for Video Reels) */}
                 {item.type === 'video' && (
                   <div className="absolute top-4 left-4 z-10">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-gold text-[11px] font-bold tracking-wider uppercase border border-gold/40 shadow-md">
-                      <Film className="w-3.5 h-3.5 text-gold shrink-0" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#10251B] text-[11px] font-bold tracking-wider uppercase border border-[#E5DAC7] shadow-md">
+                      <Film className="w-3.5 h-3.5 text-[#B85D38] shrink-0" />
                       <span>{item.duration ? `Film (${item.duration})` : 'Film'}</span>
                     </span>
                   </div>
@@ -901,32 +889,32 @@ export default function GalleryPage() {
                 {/* Video Play Badge if Video */}
                 {item.type === 'video' && (
                   <div className="absolute top-4 right-4 z-10">
-                    <span className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-gold border border-gold/40 flex items-center justify-center shadow-lg">
-                      <Play className="w-3.5 h-3.5 fill-gold ml-0.5" />
+                    <span className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md text-[#10251B] border border-[#E5DAC7] flex items-center justify-center shadow-lg group-hover:bg-[#C5A880] group-hover:text-[#08130B] transition-colors">
+                      <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
                     </span>
                   </div>
                 )}
 
                 {/* Minimal Elegant Bottom Caption */}
                 <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-[10px] text-gold uppercase tracking-[0.2em] font-bold block mb-1">
+                  <span className="text-[10px] text-[#DFBF8E] uppercase tracking-[0.2em] font-bold block mb-1">
                     {item.category}
                   </span>
-                  <h3 className="text-base sm:text-lg font-serif font-bold text-ivory tracking-tight drop-shadow-md">
+                  <h3 className="text-base sm:text-lg font-serif font-bold text-white tracking-tight drop-shadow-md">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-sand-light/85 font-light truncate mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="text-xs text-[#EAE2D5] font-light truncate mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {item.subtitle}
                   </p>
                 </div>
 
                 {/* Hover Center Magnifier */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="w-14 h-14 rounded-full bg-gold/90 text-forest-deep flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-full bg-[#C5A880] text-[#08130B] flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
                     {item.type === 'video' ? (
-                      <Play className="w-6 h-6 fill-forest-deep ml-0.5" />
+                      <Play className="w-6 h-6 fill-[#08130B] text-[#08130B] ml-0.5" />
                     ) : (
-                      <Maximize2 className="w-6 h-6" />
+                      <Maximize2 className="w-6 h-6 text-[#08130B]" />
                     )}
                   </div>
                 </div>
@@ -937,7 +925,7 @@ export default function GalleryPage() {
         </div>
 
         {/* Hover Hint */}
-        <div className="mt-4 text-center text-xs text-sand-dark/70 font-light">
+        <div className="mt-4 text-center text-xs text-[#7A7265] font-light">
           <span>Tip: Hover cursor over any frame to pause and admire • Click to view in full-screen 4K lightbox</span>
         </div>
 
@@ -1117,101 +1105,44 @@ export default function GalleryPage() {
           4. INTERACTIVE CATEGORY FILTER CAPSULE & VIEW SWITCHER
           High-Contrast Luxury Styling (Crystal Clear Contrast)
           ======================================================== */}
-      <section id="media-grid-section" className="py-6 sm:py-8 bg-white border-y border-stone-200 sticky top-16 sm:top-20 z-30 shadow-xs backdrop-blur-md">
-        <Container size="xl">
+      <section id="media-grid-section" className="py-5 sm:py-6 bg-white border-y border-stone-200 sticky top-16 sm:top-20 z-30 shadow-xs backdrop-blur-md">
+        <Container size="wide" className="px-3 sm:px-6 lg:px-8 max-w-[1540px]">
           
-          {/* Top Bar: Curated Collection Count + Quick Category Dropdown */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          {/* Top Bar: Curated Collection Count */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 mb-3.5 sm:mb-4 text-center sm:text-left">
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-forest-deep font-bold block">
+              <span className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-forest-deep font-bold block">
                 Curated Photographic Portfolio
               </span>
               <span className="text-xs text-charcoal-muted">
                 Displaying <strong className="text-forest-deep font-bold">{filteredItems.length}</strong> 5-Star Architectural & Nature Masterpieces
               </span>
             </div>
-
-            {/* Category Dropdown Selector for instant direct selection */}
-            <div className="relative inline-flex items-center">
-              <label htmlFor="category-select-dropdown" className="sr-only">Select Category</label>
-              <select
-                id="category-select-dropdown"
-                value={activeCategory}
-                onChange={(e) => setActiveCategory(e.target.value)}
-                className="appearance-none pl-4 pr-9 py-2 rounded-full bg-[#FAF7F2] hover:bg-white border border-[#DDD3C4] hover:border-gold/60 text-xs font-bold text-forest-deep uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-gold/50 cursor-pointer shadow-xs transition-all"
-              >
-                {FILTER_TABS.map((tab) => (
-                  <option key={tab.id} value={tab.id}>
-                    {tab.label} ({tab.count})
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="w-4 h-4 text-forest-deep absolute right-3 pointer-events-none" />
-            </div>
           </div>
 
-          {/* High Contrast Filter Tabs with Horizontal Scroll & Left/Right Nav Arrows */}
-          <div className="relative flex items-center gap-2">
-            {/* Left Scroll Arrow */}
-            <button
-              type="button"
-              onClick={() => scrollFilters('left')}
-              className="hidden sm:flex w-8 h-8 rounded-full bg-white hover:bg-forest-deep hover:text-gold text-forest-deep border border-[#DDD3C4] items-center justify-center shrink-0 shadow-xs transition-colors cursor-pointer z-10"
-              title="Scroll Left"
-              aria-label="Scroll Left"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
+          {/* Unified Single-Row Luxury Filter Tabs (No Horizontal Scroll, All in One Clean Row) */}
+          <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-1.5 sm:gap-2 xl:gap-2.5 w-full">
+            {FILTER_TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeCategory === tab.id;
 
-            {/* Horizontal Scrollable Tabs */}
-            <div
-              ref={filterScrollRef}
-              onWheel={(e) => {
-                if (filterScrollRef.current && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                  filterScrollRef.current.scrollLeft += e.deltaY;
-                }
-              }}
-              className="flex items-center gap-2 overflow-x-auto pb-1.5 scroll-smooth scrollbar-thin scrollbar-thumb-stone-300 hover:scrollbar-thumb-gold/50 scrollbar-track-transparent flex-1"
-            >
-              {FILTER_TABS.map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeCategory === tab.id;
-
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setActiveCategory(tab.id)}
-                    className={cn(
-                      'inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 whitespace-nowrap cursor-pointer shadow-xs shrink-0',
-                      isActive
-                        ? 'bg-forest-deep text-gold border-2 border-gold shadow-md font-bold ring-2 ring-gold/40'
-                        : 'bg-[#FAF7F2] hover:bg-white text-[#243E2B] hover:text-forest-deep border border-[#DDD3C4] hover:border-gold/60 shadow-xs'
-                    )}
-                  >
-                    <Icon className={cn('w-3.5 h-3.5 shrink-0', isActive ? 'text-gold' : 'text-[#8E6D3E]')} />
-                    <span>{tab.label}</span>
-                    <span className={cn(
-                      'px-1.5 py-0.5 rounded-full text-[10px] font-mono',
-                      isActive ? 'bg-gold text-forest-deep font-bold' : 'bg-[#EAE2D5] text-[#243E2B] font-semibold'
-                    )}>
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Right Scroll Arrow */}
-            <button
-              type="button"
-              onClick={() => scrollFilters('right')}
-              className="hidden sm:flex w-8 h-8 rounded-full bg-white hover:bg-forest-deep hover:text-gold text-forest-deep border border-[#DDD3C4] items-center justify-center shrink-0 shadow-xs transition-colors cursor-pointer z-10"
-              title="Scroll Right"
-              aria-label="Scroll Right"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveCategory(tab.id)}
+                  className={cn(
+                    'inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3 xl:px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] xl:text-xs font-bold uppercase tracking-wider transition-all duration-200 whitespace-nowrap cursor-pointer shadow-xs',
+                    isActive
+                      ? 'bg-forest-deep text-gold border-2 border-gold shadow-md font-bold ring-2 ring-gold/40'
+                      : 'bg-[#FAF7F2] hover:bg-white text-[#243E2B] hover:text-forest-deep border border-[#DDD3C4] hover:border-gold/60'
+                  )}
+                >
+                  <Icon className={cn('w-3.5 h-3.5 shrink-0', isActive ? 'text-gold' : 'text-[#8E6D3E]')} />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
 
         </Container>

@@ -7,45 +7,64 @@ import { getWhatsAppTarget } from '../../utils/whatsapp';
 /**
  * Universal action button renderer supporting internal router links,
  * external safe URLs, and native mobile WhatsApp app triggers without duplicate tabs.
+ * Styled with classic 5-star heritage resort aesthetics.
  */
-function renderHeroAction(act, idx, defaultVariant = 'gold', size = 'md') {
+function renderHeroAction(act, idx, defaultVariant = 'gold') {
   const isHref = Boolean(act.href);
   const isWhatsApp = isHref && act.href.includes('wa.me');
   const Component = act.to ? Link : isHref ? 'a' : 'button';
   const target = act.target || (isWhatsApp ? getWhatsAppTarget() : isHref ? '_blank' : undefined);
   const rel = isHref ? 'noopener noreferrer' : undefined;
 
+  if (isWhatsApp) {
+    return (
+      <a
+        key={idx}
+        href={act.href}
+        target={target}
+        rel={rel}
+        onClick={act.onClick}
+        className={cn(
+          'hidden sm:inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm cursor-pointer whitespace-nowrap'
+        )}
+      >
+        <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
+        <span>{act.label}</span>
+      </a>
+    );
+  }
+
+  const isPrimary = act.variant === 'gold' || act.variant === 'primary' || (idx === 0 && act.variant !== 'inverted' && act.variant !== 'secondary');
+
   return (
-    <Button
+    <Component
       key={idx}
-      as={Component}
       to={act.to}
       href={act.href}
       target={target}
       rel={rel}
-      variant={act.variant || (idx === 0 ? defaultVariant : 'inverted')}
-      size={size}
       onClick={act.onClick}
       className={cn(
-        'w-full sm:w-auto justify-center font-bold tracking-wider text-center flex items-center gap-2 shadow-md',
+        'w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer whitespace-nowrap shadow-md text-center',
+        isPrimary
+          ? 'bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] font-semibold shadow-lg hover:shadow-xl'
+          : 'bg-white/10 hover:bg-white/20 text-white border border-white/30 font-medium backdrop-blur-sm hover:border-white/50',
         act.hideOnMobile && 'hidden sm:inline-flex'
       )}
     >
-      {isWhatsApp && <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />}
       <span>{act.label}</span>
-    </Button>
+    </Component>
   );
 }
 
 /**
- * Reusable PageHero System — Mobile & Responsive Refinement
+ * Reusable PageHero System — Authentic Luxury Indian Heritage Architecture
  * 
- * Supports 5 distinct variants with strict mobile CTA hierarchy:
- * 1. 'cinematic' - Full-screen 92-100dvh hero with dark overlay & protected contrast
- * 2. 'large'     - Rich landscape image hero with horizontal dark gradient scrim
- * 3. 'split'     - Asymmetric editorial split: narrative on left, visual on right
- * 4. 'dark'      - Deep forest immersive hero with mood lighting for wildlife/safari
- * 5. 'minimal'   - Restrained, typography-forward hero for booking, contact, policy
+ * Supports responsive variants with refined editorial typography and rich photography:
+ * 1. 'cinematic' & 'large' - Full-bleed authentic photography with architectural dark scrim
+ * 2. 'dark'                - Immersive twilight mood with teak canopy backdrops
+ * 3. 'split'               - Refined editorial presentation
+ * 4. 'minimal'             - Elegant light haveli palette for policy / informational pages
  */
 export default function PageHero({
   variant = 'large',
@@ -60,92 +79,52 @@ export default function PageHero({
   className = '',
   children,
 }) {
-  // 1. CINEMATIC HERO (BREATHABLE & LUXURIOUS)
-  if (variant === 'cinematic') {
+  // 1 & 2. CINEMATIC & LARGE HERO (GRAND FULL-BLEED PHOTOGRAPHY BANNER)
+  if (variant === 'cinematic' || variant === 'large') {
     return (
-      <section className={cn('relative w-full min-h-[460px] sm:min-h-[520px] lg:min-h-[560px] flex items-center pt-28 sm:pt-36 md:pt-40 pb-14 sm:pb-20 overflow-hidden bg-forest-dark text-ivory', className)}>
-        {/* Background Image with Natural Scrim */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={image}
-            alt={imageAlt}
-            fetchPriority="high"
-            loading="eager"
-            className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/60 to-forest-dark/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
-        </div>
+      <section className={cn('relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden', className)}>
+        {/* Full-Bleed Background Image */}
+        {image && (
+          <div className="absolute inset-0 z-0">
+            <img
+              src={image}
+              alt={imageAlt}
+              fetchPriority="high"
+              loading="eager"
+              className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
+            />
+            {/* Subtle architectural gradient scrims */}
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
+          </div>
+        )}
 
         {/* Foreground Content */}
-        <Container size="xl" className="relative z-10 w-full">
-          <div className="max-w-2xl">
-            {eyebrow && (
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A880]/40 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
-                <span>{eyebrow}</span>
-              </div>
-            )}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-3.5 text-balance">
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+
+            {/* Majestic Royal Serif Title */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
               {title}
             </h1>
+
+            {/* Warm Hospitality Subtitle */}
             {subtitle && (
-              <p className="text-xs sm:text-sm md:text-base text-sand-light/90 leading-relaxed font-light mb-7 max-w-xl">
+              <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
                 {subtitle}
               </p>
             )}
 
-            {/* Clean CTA Group */}
+            {/* Clean Luxury CTA Group */}
             {actions.length > 0 && (
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold'))}
               </div>
             )}
           </div>
         </Container>
 
         {children}
-      </section>
-    );
-  }
-
-  // 2. LARGE IMAGE HERO (Major Section Landings: Dining, Packages, Resort)
-  if (variant === 'large') {
-    return (
-      <section className={cn('relative w-full min-h-[420px] sm:min-h-[480px] flex items-center pt-28 sm:pt-36 pb-14 sm:pb-18 overflow-hidden bg-forest-dark text-ivory', className)}>
-        <div className="absolute inset-0 z-0">
-          <img
-            src={image}
-            alt={imageAlt}
-            className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/65 to-forest-dark/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
-        </div>
-
-        <Container size="xl" className="relative z-10 w-full">
-          <div className="max-w-2xl">
-            {eyebrow && (
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A880]/40 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
-                <span>{eyebrow}</span>
-              </div>
-            )}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-3.5 text-balance">
-              {title}
-            </h1>
-            {subtitle && (
-              <p className="text-xs sm:text-sm md:text-base text-sand-light/90 leading-relaxed font-light mb-7 max-w-xl">
-                {subtitle}
-              </p>
-            )}
-
-            {/* Clean CTA Group */}
-            {actions.length > 0 && (
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
-              </div>
-            )}
-          </div>
-        </Container>
       </section>
     );
   }
@@ -158,11 +137,6 @@ export default function PageHero({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-6 lg:pr-4">
-              {eyebrow && (
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#163824]/8 border border-[#163824]/15 text-[#163824] text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-4">
-                  <span>{eyebrow}</span>
-                </div>
-              )}
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0E2718] font-normal leading-[1.14] mb-3.5">
                 {title}
               </h1>
@@ -172,10 +146,9 @@ export default function PageHero({
                 </p>
               )}
 
-              {/* Clean CTA Group */}
               {actions.length > 0 && (
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                  {actions.map((act, idx) => renderHeroAction(act, idx, 'primary', 'md'))}
+                  {actions.map((act, idx) => renderHeroAction(act, idx, 'primary'))}
                 </div>
               )}
             </div>
@@ -199,39 +172,33 @@ export default function PageHero({
   // 4. DARK IMMERSIVE HERO (Deep Forest / Safari / Wildlife Mood)
   if (variant === 'dark') {
     return (
-      <section className={cn('relative w-full min-h-[420px] sm:min-h-[480px] flex items-center pt-28 sm:pt-36 pb-14 sm:pb-18 bg-forest-dark text-ivory overflow-hidden', className)}>
+      <section className={cn('relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden', className)}>
         {image && (
           <div className="absolute inset-0 z-0">
             <img
               src={image}
               alt={imageAlt}
-              className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.02]"
+              className="w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.03]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/65 to-forest-dark/30" />
-            <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/45 to-transparent sm:block hidden" />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
           </div>
         )}
 
-        <Container size="xl" className="relative z-10 w-full">
-          <div className="max-w-2xl">
-            {eyebrow && (
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A880]/40 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
-                <span>{eyebrow}</span>
-              </div>
-            )}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ivory font-normal tracking-tight leading-[1.14] mb-3.5 text-balance">
+        <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
               {title}
             </h1>
             {subtitle && (
-              <p className="text-xs sm:text-sm md:text-base text-sand-light/90 leading-relaxed font-light mb-7 max-w-xl">
+              <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light mb-7 max-w-2xl">
                 {subtitle}
               </p>
             )}
 
-            {/* Clean CTA Group */}
             {actions.length > 0 && (
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold', 'md'))}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+                {actions.map((act, idx) => renderHeroAction(act, idx, 'gold'))}
               </div>
             )}
           </div>
@@ -242,19 +209,14 @@ export default function PageHero({
 
   // 5. MINIMAL PAGE HERO (Clean & Luminous: Booking, Policies)
   return (
-    <section className={cn('w-full pt-28 sm:pt-36 pb-10 sm:pb-14 bg-gradient-to-b from-[#F5EFE6] via-[#FAF6F1] to-[#FAF8F5] text-charcoal border-b border-[#E5DAC7]', className)}>
+    <section className={cn('w-full pt-28 sm:pt-36 pb-12 sm:pb-16 bg-gradient-to-b from-[#F5EFE6] via-[#FAF6F1] to-[#FAF8F5] text-charcoal border-b border-[#E5DAC7]', className)}>
       <Container size="xl">
-        <div className="max-w-2xl">
-          {eyebrow && (
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#163824]/8 border border-[#163824]/15 text-[#163824] text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase mb-4">
-              <span>{eyebrow}</span>
-            </div>
-          )}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0E2718] font-normal leading-[1.14] mb-3.5">
+        <div className="max-w-3xl space-y-3">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0E2718] font-normal leading-[1.14]">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-xs sm:text-sm md:text-base text-charcoal/80 font-light leading-relaxed max-w-xl">
+            <p className="text-xs sm:text-base text-charcoal/80 font-light leading-relaxed max-w-2xl">
               {subtitle}
             </p>
           )}

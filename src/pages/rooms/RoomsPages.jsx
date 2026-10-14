@@ -693,17 +693,9 @@ export function RoomsOverview() {
         <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl space-y-3 sm:space-y-4">
             
-            {/* Clean Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
-              <span>Accommodations · Sillari Gate, Pench</span>
-            </div>
-
             {/* Headline */}
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] text-ivory text-balance">
-              Rest in Haveli Comfort,{' '}
-              <span className="italic text-[#DFBF8E]">
-                Wake to the Pench Wild
-              </span>
+              Rest in Haveli Comfort, Wake to the Pench Wild
             </h1>
 
             {/* Hospitality Subtitle */}
@@ -715,19 +707,16 @@ export function RoomsOverview() {
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <Link
                 to="/contact?book=true#reservation-form-card"
-                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] text-xs font-semibold uppercase tracking-[0.14em] shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
                 <span>Check Availability & Book</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
-                  <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
-                </span>
               </Link>
 
               <a
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to inquire about room availability and tariffs.')}`}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center"
+                className="hidden sm:inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm text-center"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>Chat on WhatsApp</span>
@@ -736,7 +725,7 @@ export function RoomsOverview() {
               <button
                 type="button"
                 onClick={() => document.getElementById('accommodation-categories')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm text-center cursor-pointer"
               >
                 <span>View Categories ↓</span>
               </button>
@@ -1233,10 +1222,6 @@ export function RoomDetails() {
 
         <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
-              <span>{room.badge}</span>
-            </div>
-
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] text-ivory text-balance">
               {room.title}
             </h1>
@@ -1248,19 +1233,16 @@ export function RoomDetails() {
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <Link
                 to={`/contact?room=${room.slug}&book=true#reservation-form-card`}
-                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] text-xs font-semibold uppercase tracking-[0.14em] shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
                 <span>Book This Category</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
-                  <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
-                </span>
               </Link>
 
               <a
                 href={whatsappInquiryUrl}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md text-center"
+                className="hidden sm:inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm text-center"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>WhatsApp Inquiry</span>

@@ -86,7 +86,7 @@ export default function PlaceholderPage({
               <div className="p-6 rounded-2xl bg-gradient-to-r from-sand-light/60 to-ivory-warm border border-sand/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
                 <div>
                   <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#8A6836] mb-1 block">
-                    ✦ Direct Desk Assistance
+                    ✦ Dedicated Guest Support & Planning
                   </span>
                   <p className="text-xs text-charcoal/80 font-light leading-relaxed">
                     Our on-site Pench team is available to assist with custom itineraries, room combinations, and safari coordination.

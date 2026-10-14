@@ -191,8 +191,6 @@ export default function EventsPage() {
     <div className="w-full bg-ivory-pure text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold/30 selection:text-forest-deep">
       
       {/* ========================================================
-          1. ELEGANT CINEMATIC HERO (BREATHABLE & PREMIUM)
-      {/* ========================================================
           1. CINEMATIC LUXURY HERO BANNER (FAIRY-LIT NIGHT LAWNS)
           ======================================================== */}
       <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
@@ -213,14 +211,9 @@ export default function EventsPage() {
         <Container size="xl" className="relative z-10 w-full pt-28 sm:pt-36 md:pt-40 pb-12 sm:pb-16 px-5 sm:px-8 md:px-12 lg:px-16">
           <div className="max-w-3xl space-y-3 sm:space-y-4">
 
-            {/* Clean Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-[#DFBF8E]/45 text-[#DFBF8E] text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase backdrop-blur-md">
-              <span>Venues & Gatherings · Sillari Gate, Pench</span>
-            </div>
-
             {/* Main Title */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
-              Weddings & <span className="text-[#DFBF8E] font-serif italic">Celebrations</span>
+              Weddings & Grand Celebrations in Pench
             </h1>
 
             {/* Concise Supporting Copy */}
@@ -232,18 +225,15 @@ export default function EventsPage() {
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <Link
                 to="/contact?book=true#reservation-form-card"
-                className="group inline-flex items-center justify-center gap-2 pl-6 pr-2.5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] text-xs font-semibold uppercase tracking-[0.14em] shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
                 <span>Plan Your Event</span>
-                <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
-                  <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
-                </span>
               </Link>
 
               <button
                 type="button"
                 onClick={() => scrollToCategory('weddings')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm cursor-pointer text-center"
               >
                 <span>Explore Venues ↓</span>
               </button>
@@ -252,7 +242,7 @@ export default function EventsPage() {
                 href={`https://wa.me/919372425968?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to enquire about event dates, venues and packages.')}`}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm transition-all shadow-md cursor-pointer whitespace-nowrap"
+                className="hidden sm:inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>WhatsApp Enquiry</span>
