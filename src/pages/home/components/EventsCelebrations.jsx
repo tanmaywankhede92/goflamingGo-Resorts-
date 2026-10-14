@@ -12,11 +12,11 @@ import { getWhatsAppTarget } from '../../../utils/whatsapp';
  * Luxury two-column auto-rotating showcase (Weddings, Conferences, Celebrations)
  * - Left: Large portrait photo with seamless stacked cross-fade animation
  * - Right: Crisp headline, concise description, feature badges, and direct action buttons
- * - Auto-transitions every 5.5s with pause-on-hover & interactive tab selectors
+ * - Uninterrupted 5.5s auto-rotation: No hover pause; clicking any tab restarts auto-play seamlessly
+ * - Mobile-first luxury segmented dock: All 3 tabs fit in a sleek single horizontal bar (no awkward stacking)
  */
 export default function EventsCelebrations() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const autoPlayRef = useRef(null);
 
   const slides = [
@@ -24,6 +24,7 @@ export default function EventsCelebrations() {
       id: 'weddings',
       num: '01',
       tabLabel: 'Destination Weddings',
+      mobileLabel: 'Weddings',
       tag: 'DESTINATION CELEBRATIONS',
       title: 'WEDDINGS & GRAND EVENTS IN THE FOREST.',
       desc: 'Host your sacred vows and landmark celebrations across 25 acres of untamed wilderness. 250+ guest lawns, illuminated canopy, royal Vidarbha feasting, and luxury villa stays.',
@@ -38,6 +39,7 @@ export default function EventsCelebrations() {
       id: 'corporate',
       num: '02',
       tabLabel: 'Conferences & Offsites',
+      mobileLabel: 'Conferences',
       tag: 'EXECUTIVE RETREATS',
       title: 'CORPORATE OFFSITES & STRATEGY SUMMITS.',
       desc: 'Step outside traditional city boardrooms into rejuvenating nature. Air-conditioned conference hall, high-speed Wi-Fi, audio-visual presentation setup, and Pench tiger safaris.',
@@ -52,6 +54,7 @@ export default function EventsCelebrations() {
       id: 'social',
       num: '03',
       tabLabel: 'Social Celebrations',
+      mobileLabel: 'Celebrations',
       tag: 'STARLIT CELEBRATIONS',
       title: 'STARLIT PARTIES & MILESTONE GATHERINGS.',
       desc: 'Celebrate milestone birthdays, anniversaries, and family reunions under starlit skies. Elevated DJ stages, fairy-lit lawns, rain dance mist sessions, and poolside sundowners.',
@@ -64,30 +67,42 @@ export default function EventsCelebrations() {
     },
   ];
 
+  // Helper to restart uninterrupted 7s auto-play countdown from current activeIndex
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 7000);
+  }, [slides.length]);
+
+  const goToSlide = (idx) => {
+    setActiveIndex(idx);
+    startAutoPlay(); // Immediately restarts timer from this chosen slide without pausing
+  };
+
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
+    startAutoPlay();
+  }, [slides.length, startAutoPlay]);
 
   const prevSlide = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  }, [slides.length]);
+    startAutoPlay();
+  }, [slides.length, startAutoPlay]);
 
-  // Auto-play interval: snappy 3-second cycle for dynamic presentation
+  // Continuous auto-play with NO mouse pause
   useEffect(() => {
-    autoPlayRef.current = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
+    startAutoPlay();
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [nextSlide]);
+  }, [startAutoPlay]);
 
   const current = slides[activeIndex];
 
   return (
     <section 
-      className="relative py-14 sm:py-20 bg-[#09150E] text-ivory border-b border-sand/15 overflow-hidden"
+      className="relative py-12 sm:py-20 bg-[#09150E] text-ivory border-b border-sand/15 overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#0A1710] to-black/75 pointer-events-none" />
@@ -98,32 +113,40 @@ export default function EventsCelebrations() {
 
         {/* ========================================================
             TOP CATEGORY TABS WITH AUTO-PROGRESS INDICATOR
+            Mobile: Sleek single-row segmented control (Weddings | Conferences | Celebrations)
+            Desktop: Spacious pill tabs with full titles + counter
             ======================================================== */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-8 sm:mb-12 pb-4 border-b border-white/10">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+        <div className="flex items-center justify-between gap-3 mb-6 sm:mb-12 pb-3 sm:pb-4 border-b border-white/10">
+          
+          {/* Segmented Pill Dock */}
+          <div className="w-full sm:w-auto flex items-center gap-1 sm:gap-3 p-1 sm:p-0 bg-white/[0.04] sm:bg-transparent rounded-full border border-white/10 sm:border-0">
             {slides.map((slide, idx) => {
               const isActive = idx === activeIndex;
               return (
                 <button
                   key={slide.id}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`group relative px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[11px] sm:text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 cursor-pointer overflow-hidden ${
+                  onClick={() => goToSlide(idx)}
+                  className={`group relative flex-1 sm:flex-initial text-center px-3 sm:px-4 py-2 sm:py-2 rounded-full text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.14em] font-semibold transition-all duration-300 cursor-pointer overflow-hidden whitespace-nowrap ${
                     isActive
-                      ? 'bg-white/15 text-[#E8D7B8] border border-[#C5A880]/50 shadow-sm'
-                      : 'bg-white/5 text-sand-light/60 hover:text-white hover:bg-white/10 border border-transparent'
+                      ? 'bg-white/20 sm:bg-white/15 text-[#E8D7B8] border border-[#C5A880]/60 shadow-sm'
+                      : 'text-sand-light/60 hover:text-white hover:bg-white/5 border border-transparent'
                   }`}
                 >
-                  <span className="relative z-10">
+                  {/* Short label on mobile, full label on tablet/desktop */}
+                  <span className="relative z-10 sm:hidden">
+                    {slide.mobileLabel}
+                  </span>
+                  <span className="relative z-10 hidden sm:inline">
                     {slide.tabLabel}
                   </span>
 
-                  {/* Active Slide Timer Progress Bar */}
+                  {/* Active Slide Timer Progress Bar (7s synchronized) */}
                   {isActive && (
                     <span 
                       key={`progress-${activeIndex}`}
-                      className="absolute bottom-0 left-0 h-[2.5px] bg-[#C5A880]"
+                      className="absolute bottom-0 left-0 h-[2px] sm:h-[2.5px] bg-[#C5A880]"
                       style={{
-                        animation: 'eventProgress 3s linear infinite',
+                        animation: 'eventProgress 7s linear forwards',
                       }}
                     />
                   )}
@@ -132,8 +155,8 @@ export default function EventsCelebrations() {
             })}
           </div>
 
-          {/* Prev / Next controls */}
-          <div className="hidden sm:flex items-center gap-2">
+          {/* Desktop Prev / Next controls */}
+          <div className="hidden sm:flex items-center gap-2 shrink-0">
             <button
               onClick={prevSlide}
               aria-label="Previous event showcase"
@@ -165,10 +188,10 @@ export default function EventsCelebrations() {
               {slides.map((slide, idx) => (
                 <div
                   key={slide.id}
-                  className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                  className={`absolute inset-0 transition-all duration-1000 ease-out ${
                     idx === activeIndex
                       ? 'opacity-100 scale-100 z-10'
-                      : 'opacity-0 scale-105 z-0 pointer-events-none'
+                      : 'opacity-0 scale-103 z-0 pointer-events-none'
                   }`}
                 >
                   <img
@@ -217,11 +240,11 @@ export default function EventsCelebrations() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.id}
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -14 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-5 sm:space-y-6"
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-4 sm:space-y-6"
               >
                 {/* Category Tag */}
                 <div className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#C5A880]">
@@ -233,7 +256,7 @@ export default function EventsCelebrations() {
                   {current.title}
                 </h2>
 
-                {/* Concise 2-line Description */}
+                {/* Concise Description */}
                 <p className="font-sans text-xs sm:text-sm md:text-[15px] text-sand-light/85 font-light leading-relaxed max-w-xl">
                   {current.desc}
                 </p>
@@ -250,7 +273,7 @@ export default function EventsCelebrations() {
                   ))}
                 </div>
 
-                {/* Action Buttons (Matching Reference Design) */}
+                {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3 sm:pt-4">
                   {/* Primary Exploration Button */}
                   <Link
