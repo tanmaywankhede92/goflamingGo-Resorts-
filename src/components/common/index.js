@@ -13,4 +13,5 @@ export { default as PlaceholderPage } from './PlaceholderPage';
 export { default as WhatsAppIcon } from './WhatsAppIcon';
 export { default as FloatingWhatsApp } from './FloatingWhatsApp';
 export { default as LuxuryPreloader } from './LuxuryPreloader';
+export { default as ScrollToTop } from './ScrollToTop';
 export * from './LuxuryIcons';

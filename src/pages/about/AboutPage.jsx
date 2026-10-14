@@ -199,7 +199,7 @@ export default function AboutPage() {
       {/* ========================================================
           1. FULL-FRAME EDITORIAL HERO BANNER (100DVH VIEWPORT)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[580px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden snap-start">
+      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[580px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         {/* Full Frame Background Image - Anchored to top so resort entrance sign is fully visible */}
         <div className="absolute inset-0 z-0">
           <img

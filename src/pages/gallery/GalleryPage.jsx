@@ -497,11 +497,48 @@ export default function GalleryPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxIndex, filteredItems]);
 
+  // Auto-advance to next video when current video completes playing
+  const handleVideoEnded = () => {
+    setActiveVideoIdx((prev) => (prev + 1) % theaterVideos.length);
+  };
+
+  // Automatically trigger play and sync playback state on video index switch
+  useEffect(() => {
+    if (featuredVideoRef.current) {
+      featuredVideoRef.current.currentTime = 0;
+      const playPromise = featuredVideoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsVideoPlaying(true);
+          })
+          .catch(() => {
+            if (featuredVideoRef.current) {
+              featuredVideoRef.current.muted = true;
+              setIsMuted(true);
+              featuredVideoRef.current.play().then(() => setIsVideoPlaying(true)).catch(() => {});
+            }
+          });
+      }
+    }
+  }, [activeVideoIdx]);
+
+  // Initial autoplay trigger on component load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (featuredVideoRef.current) {
+        featuredVideoRef.current.muted = true;
+        setIsMuted(true);
+        featuredVideoRef.current.play().then(() => setIsVideoPlaying(true)).catch(() => {});
+      }
+    }, 350);
+    return () => clearTimeout(timer);
+  }, []);
+
   const toggleFeaturedPlay = () => {
     if (!featuredVideoRef.current) return;
     if (featuredVideoRef.current.paused) {
-      featuredVideoRef.current.play();
-      setIsVideoPlaying(true);
+      featuredVideoRef.current.play().then(() => setIsVideoPlaying(true)).catch(() => {});
     } else {
       featuredVideoRef.current.pause();
       setIsVideoPlaying(false);
@@ -517,10 +554,6 @@ export default function GalleryPage() {
   const handleVideoSelect = (idx) => {
     setActiveVideoIdx(idx);
     setIsVideoPlaying(true);
-    if (featuredVideoRef.current) {
-      featuredVideoRef.current.load();
-      featuredVideoRef.current.play().catch(() => {});
-    }
   };
 
   // Duplicate items for continuous seamless horizon stream
@@ -533,7 +566,7 @@ export default function GalleryPage() {
           1. FULL-FRAME CINEMATIC HERO (100DVH VIEWPORT)
           Bleeds edge-to-edge behind floating navbar without top gap
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[600px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden snap-start">
+      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[600px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         
         {/* Background Full Frame Media */}
         <div className="absolute inset-0 z-0">
@@ -629,6 +662,8 @@ export default function GalleryPage() {
         className="py-12 sm:py-16 bg-[#08150D] text-ivory overflow-hidden border-b border-[#1A3323] relative scroll-mt-20"
         onMouseEnter={() => setIsHoverPaused(true)}
         onMouseLeave={() => setIsHoverPaused(false)}
+        onTouchStart={() => setIsHoverPaused(true)}
+        onTouchEnd={() => setTimeout(() => setIsHoverPaused(false), 2400)}
       >
         
         {/* Stream Header & Dynamic Speed Bar */}
@@ -769,11 +804,12 @@ export default function GalleryPage() {
                   ref={featuredVideoRef}
                   key={theaterVideos[activeVideoIdx].src}
                   poster={theaterVideos[activeVideoIdx].poster}
-                  loop
+                  autoPlay
                   playsInline
                   muted={isMuted}
                   onPlay={() => setIsVideoPlaying(true)}
                   onPause={() => setIsVideoPlaying(false)}
+                  onEnded={handleVideoEnded}
                   className="w-full h-full object-cover object-center"
                 >
                   <source src={theaterVideos[activeVideoIdx].webm} type="video/webm" />
@@ -784,7 +820,7 @@ export default function GalleryPage() {
                 <div
                   onClick={toggleFeaturedPlay}
                   className={cn(
-                    "absolute inset-0 bg-forest-dark/40 flex items-center justify-center transition-opacity duration-300 cursor-pointer",
+                    "absolute inset-0 bg-forest-dark/35 flex items-center justify-center transition-opacity duration-300 cursor-pointer",
                     isVideoPlaying ? "opacity-0 hover:opacity-100" : "opacity-100"
                   )}
                 >
@@ -800,8 +836,9 @@ export default function GalleryPage() {
                 {/* Bottom Video Control Scrim */}
                 <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-forest-dark/95 via-forest-dark/60 to-transparent flex items-center justify-between pointer-events-auto">
                   <div className="min-w-0 pr-4">
-                    <span className="text-[10px] uppercase tracking-wider text-gold font-bold block">
-                      Now Playing • {theaterVideos[activeVideoIdx].tag}
+                    <span className="text-[10px] uppercase tracking-wider text-gold font-bold flex items-center gap-1.5 mb-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Now Auto-Playing • {theaterVideos[activeVideoIdx].tag}</span>
                     </span>
                     <h3 className="text-sm sm:text-base font-serif font-bold text-ivory truncate">
                       {theaterVideos[activeVideoIdx].title}
@@ -836,18 +873,24 @@ export default function GalleryPage() {
 
             {/* Video Selector Playlist (4 cols) */}
             <div className="lg:col-span-4 space-y-3">
-              <span className="text-[11px] uppercase tracking-wider text-sand-dark font-semibold block mb-1">
-                Select Property Film ({theaterVideos.length} Reels)
-              </span>
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[11px] uppercase tracking-wider text-sand-dark font-semibold block">
+                  Select Property Film ({theaterVideos.length} Reels)
+                </span>
+                <span className="text-[10px] uppercase tracking-wider text-gold/90 font-medium flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                  Auto-Advance On
+                </span>
+              </div>
 
               {theaterVideos.map((vid, idx) => (
                 <div
                   key={idx}
                   onClick={() => handleVideoSelect(idx)}
                   className={cn(
-                    "p-3 sm:p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center gap-3.5 group",
+                    "p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-3.5 group relative overflow-hidden",
                     activeVideoIdx === idx
-                      ? "bg-forest-deep border-gold shadow-md ring-1 ring-gold/50"
+                      ? "bg-forest-deep border-gold shadow-lg ring-1 ring-gold/60 scale-[1.01]"
                       : "bg-[#0E2015]/70 border-sand/20 hover:border-gold/50 hover:bg-[#122b1c]"
                   )}
                 >
@@ -859,18 +902,33 @@ export default function GalleryPage() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
-                      <Play className="w-4 h-4 fill-white text-white opacity-85 group-hover:scale-110 transition-transform" />
+                      {activeVideoIdx === idx && isVideoPlaying ? (
+                        <div className="flex items-end gap-0.5 h-3.5">
+                          <span className="w-1 h-2 bg-gold animate-pulse rounded-full" />
+                          <span className="w-1 h-3.5 bg-gold animate-pulse delay-100 rounded-full" />
+                          <span className="w-1 h-2.5 bg-gold animate-pulse delay-200 rounded-full" />
+                        </div>
+                      ) : (
+                        <Play className="w-4 h-4 fill-white text-white opacity-85 group-hover:scale-110 transition-transform" />
+                      )}
                     </div>
                   </div>
 
                   {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <h4 className={cn(
-                      "text-xs sm:text-sm font-serif font-bold truncate transition-colors",
-                      activeVideoIdx === idx ? "text-gold" : "text-ivory group-hover:text-gold"
-                    )}>
-                      {vid.title}
-                    </h4>
+                    <div className="flex items-center justify-between gap-1.5">
+                      <h4 className={cn(
+                        "text-xs sm:text-sm font-serif font-bold truncate transition-colors",
+                        activeVideoIdx === idx ? "text-gold" : "text-ivory group-hover:text-gold"
+                      )}>
+                        {vid.title}
+                      </h4>
+                      {activeVideoIdx === idx && (
+                        <span className="px-2 py-0.5 rounded-full bg-gold/20 border border-gold/40 text-[9px] uppercase font-bold text-gold shrink-0">
+                          Playing
+                        </span>
+                      )}
+                    </div>
                     <p className="text-[11px] text-sand-light/70 truncate mt-0.5">
                       {vid.subtitle}
                     </p>

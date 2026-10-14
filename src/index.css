@@ -71,8 +71,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
   }
 
   /* Accessible focus indicators */
@@ -135,8 +133,10 @@
 .animate-stream-slow {
   display: flex;
   width: max-content;
-  animation: marqueeLeft 70s linear infinite;
+  animation: marqueeLeft 185s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .animate-stream-normal {

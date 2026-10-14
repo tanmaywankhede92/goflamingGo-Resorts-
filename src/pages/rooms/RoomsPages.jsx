@@ -676,7 +676,7 @@ export function RoomsOverview() {
       {/* ========================================================
           01. HERO SECTION — CINEMATIC HAVELI RESORT ARRIVAL
           ======================================================== */}
-      <section className="relative pt-28 pb-14 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 bg-[#0C1E14] text-ivory border-b border-sand/20 overflow-hidden">
+      <section className="relative pt-24 pb-10 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 bg-[#0C1E14] text-ivory border-b border-sand/20 overflow-hidden">
         {/* Subtle ambient lighting */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-[#0A1810]/95 to-black/85 pointer-events-none" />
         <div className="absolute top-1/4 -right-20 w-[550px] h-[550px] bg-[#C5A880]/12 rounded-full blur-3xl pointer-events-none" />
@@ -687,7 +687,7 @@ export function RoomsOverview() {
             
             {/* Eyebrow Pill */}
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 border border-[#C5A880]/35 text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#DFBF8E] font-semibold backdrop-blur-md">
-              Accommodations · 20 Rooms & 1 Dormitory
+              Accommodations & Stays · Sillari Gate
             </div>
 
             {/* Headline */}
@@ -700,24 +700,8 @@ export function RoomsOverview() {
 
             {/* Hospitality Subtitle */}
             <p className="font-sans text-xs sm:text-base md:text-lg text-sand-light/85 font-light leading-relaxed max-w-2xl">
-              GoFlamingo Resort offers 20 thoughtfully appointed rooms and 1 spacious group dormitory, providing comfortable accommodation options for individual travellers, families, and wildlife groups just minutes from Sillari Gate.
+              GoFlamingo Resort offers thoughtfully appointed haveli rooms and a spacious group dormitory, providing comfortable accommodation options for individual travellers, families, and wildlife groups just minutes from Sillari Gate.
             </p>
-
-            {/* Quick Summary Pill Strip */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-2 text-xs text-white/90">
-              <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-sm">
-                ✦ 20 Deluxe & Super Deluxe Rooms
-              </span>
-              <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-sm">
-                ✦ 1 Air-Conditioned Dormitory
-              </span>
-              <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-sm">
-                ✦ 100% Generator Backup
-              </span>
-              <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 backdrop-blur-sm">
-                ✦ 65 km from Nagpur via NH 44 (1 Hr)
-              </span>
-            </div>
 
             {/* Primary Action Buttons */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4 pt-4 w-full sm:w-auto">

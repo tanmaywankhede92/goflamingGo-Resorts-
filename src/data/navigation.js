@@ -22,26 +22,25 @@ export const NAV_ITEMS = [
     matchPaths: ['/stay', '/rooms'],
     hasMegaMenu: true,
     preview: {
-      image: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
-      title: 'Deluxe & Super Deluxe Stays',
-      description: '20 comfortable haveli rooms and 1 group dormitory with swimming pool, dining, and Sillari Gate proximity.',
-      cta: 'Explore Accommodations & Facilities',
+      image: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
+      title: 'Haveli Living & Garden Suites',
+      description: '20 comfortable air-conditioned rooms, haveli verandahs, swimming pool, and pristine Sillari Gate proximity.',
+      cta: 'Explore Stays & Facilities',
       path: '/stay',
     },
     sections: [
       {
-        title: 'Accommodations (20 Rooms & 1 Dormitory)',
+        title: 'Accommodations',
         items: [
-          { label: '2.1 Deluxe Rooms', path: '/stay/deluxe-rooms', desc: 'Teak king bed, split AC & private balcony garden views' },
-          { label: '2.2 Super Deluxe Rooms', path: '/stay/super-deluxe-rooms', desc: 'Arched haveli verandah suites with direct lawn access' },
-          { label: '2.3 Group Dormitory', path: '/stay/dormitory', desc: 'Spacious air-conditioned communal hall for large groups' },
+          { label: 'Deluxe Rooms', path: '/stay/deluxe-rooms', desc: 'Teak king bed, split AC & private balcony garden views' },
+          { label: 'Super Deluxe Rooms', path: '/stay/super-deluxe-rooms', desc: 'Arched haveli verandah suites with direct lawn access' },
+          { label: 'Group Dormitory', path: '/stay/dormitory', desc: 'Spacious air-conditioned communal hall for large groups' },
         ]
       },
       {
         title: 'Resort Facilities & Amenities',
         items: [
-          { label: 'Resort Amenities & Activities', path: '/stay#amenities', desc: 'Swimming pool, rain dance, dining hall, kids park & game zone' },
-          { label: 'Conference & Meeting Hall', path: '/stay#conference-room', desc: 'Air-conditioned conference space for corporate gatherings & offsites' },
+          { label: 'Resort Amenities & Activities', path: '/resort/facilities', desc: 'Swimming pool, rain dance, dining hall, kids park & game zone' },
         ]
       }
     ]

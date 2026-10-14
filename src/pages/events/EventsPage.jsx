@@ -193,7 +193,7 @@ export default function EventsPage() {
       {/* ========================================================
           1. FULL-FRAME CINEMATIC HERO (100DVH VIEWPORT)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[580px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden snap-start">
+      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[580px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         {/* Full-Frame Background Image with Natural Lighter Scrim */}
         <div className="absolute inset-0 z-0">
           <img
@@ -265,9 +265,9 @@ export default function EventsPage() {
 
 
       {/* ========================================================
-          2. THE 4 EVENT CATEGORIES DETAILED SECTIONS
+          2. THE EVENT CATEGORIES DETAILED SECTIONS
           ======================================================== */}
-      <div className="py-12 sm:py-16 space-y-16 sm:space-y-24 bg-white">
+      <div className="pt-6 sm:pt-8 pb-14 sm:pb-20 space-y-12 sm:space-y-16 bg-white">
         {categories.map((category, idx) => {
           const isEven = idx % 2 === 1;
           const whatsappUrl = `https://wa.me/919372425968?text=${encodeURIComponent(category.whatsappMsg)}`;
@@ -276,20 +276,16 @@ export default function EventsPage() {
             <section
               key={category.id}
               id={category.id}
-              className="scroll-mt-24 border-b border-sand/20 pb-16 sm:pb-24 last:border-b-0"
+              className="scroll-mt-28 border-b border-sand/20 pb-12 sm:pb-16 last:border-b-0"
             >
               <Container size="xl">
                 
                 {/* Section Top Header Pill */}
-                <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8">
+                <div className="mb-3.5 sm:mb-4">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold/15 border border-gold/40 text-gold-dark text-xs font-semibold tracking-wider uppercase">
                     <Sparkles className="w-3.5 h-3.5 text-gold-dark" />
                     <span>{category.badge}</span>
                   </div>
-
-                  <span className="hidden sm:inline-block text-xs uppercase tracking-widest text-charcoal-light font-medium">
-                    GoFlamingo Venues
-                  </span>
                 </div>
 
                 <div className={cn(

@@ -71,7 +71,7 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative w-full h-[100dvh] max-h-[100dvh] min-h-0 sm:min-h-[580px] flex items-end justify-center overflow-hidden bg-forest-dark text-ivory selection:bg-gold/40 selection:text-forest-dark snap-start"
+      className="relative w-full h-[100dvh] max-h-[100dvh] min-h-0 sm:min-h-[580px] flex items-end justify-center overflow-hidden bg-forest-dark text-ivory selection:bg-gold/40 selection:text-forest-dark"
       aria-label="Welcome to Go Flamingo Resort"
     >
       {/* ========================================================

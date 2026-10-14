@@ -211,7 +211,7 @@ Website: goflamingoresorts.com`;
       {/* ========================================================
           1. FULL-FRAME EDITORIAL HERO BANNER (100DVH VIEWPORT)
           ======================================================== */}
-      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[560px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden snap-start">
+      <section className="relative w-full h-[100dvh] max-h-[100dvh] min-h-[560px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         {/* Background Photo */}
         <div className="absolute inset-0 z-0">
           <img

@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
+import ScrollToTop from './components/common/ScrollToTop';
 
 /**
  * Redirect /book route to /contact while preserving URL search parameters (e.g. ?room=...)
@@ -65,6 +65,7 @@ import BookPage from './pages/book/BookPage';
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           {/* Home */}
@@ -77,6 +78,10 @@ export default function App() {
           <Route path="resort/facilities" element={<ResortFacilities />} />
           <Route path="resort/pool" element={<ResortPool />} />
           <Route path="resort/dining" element={<ResortDining />} />
+          <Route path="facilities" element={<Navigate to="/resort/facilities" replace />} />
+          <Route path="amenities" element={<Navigate to="/resort/facilities" replace />} />
+          <Route path="stay/amenities" element={<Navigate to="/resort/facilities" replace />} />
+          <Route path="stay/facilities" element={<Navigate to="/resort/facilities" replace />} />
 
           {/* Stay / Rooms Group */}
           <Route path="rooms" element={<RoomsOverview />} />
