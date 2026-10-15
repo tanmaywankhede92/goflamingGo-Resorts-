@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Sparkles, ArrowRight, ArrowUpRight, Check } from 'lucide-react';
 import PlaceholderPage from '../../components/common/PlaceholderPage';
-import { IMAGES } from '../../data/images';
+import { Container, WhatsAppIcon } from '../../components/common';
+import { IMAGES, AUTHENTIC_RESORT } from '../../data/images';
+import { RESORT_AMENITIES } from '../rooms/RoomsPages';
+import { QUICK_CONTACT } from '../../data/navigation';
+import { getWhatsAppTarget } from '../../utils/whatsapp';
+import ClosingCallToAction from '../home/components/ClosingCallToAction';
 
 const RESORT_ROUTES = [
   { label: 'Resort Overview', path: '/resort' },
@@ -50,14 +57,6 @@ export function ResortAbout() {
     />
   );
 }
-
-import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, ArrowUpRight, Check } from 'lucide-react';
-import { Container, WhatsAppIcon } from '../../components/common';
-import { RESORT_AMENITIES } from '../rooms/RoomsPages';
-import { QUICK_CONTACT } from '../../data/navigation';
-import { getWhatsAppTarget } from '../../utils/whatsapp';
-import ClosingCallToAction from '../home/components/ClosingCallToAction';
 
 export function ResortFacilities() {
   const [activeFilter, setActiveFilter] = React.useState('all');
