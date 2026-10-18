@@ -43,6 +43,7 @@ import {
   MeetingsPage,
 } from './pages/corporate/CorporatePages';
 import DiningPage from './pages/dining/DiningPage';
+import PenchSafariPage from './pages/pench/PenchSafariPage';
 import {
   PenchOverview,
   SillariGatePage,
@@ -109,10 +110,14 @@ export default function App() {
           {/* Dedicated Dining Page */}
           <Route path="dining" element={<DiningPage />} />
 
+          {/* Dedicated Pench Safari Hub */}
+          <Route path="pench-safari" element={<PenchSafariPage />} />
+          <Route path="pench/safari" element={<Navigate to="/pench-safari" replace />} />
+
           {/* Pench Destination Hub */}
-          <Route path="pench" element={<PenchOverview />} />
+          <Route path="pench" element={<Navigate to="/pench-safari" replace />} />
           <Route path="pench/sillari-gate" element={<SillariGatePage />} />
-          <Route path="pench/safari-guide" element={<SafariGuidePage />} />
+          <Route path="pench/safari-guide" element={<Navigate to="/pench-safari" replace />} />
           <Route path="pench/things-to-do" element={<ThingsToDoPage />} />
           <Route path="pench/how-to-reach" element={<HowToReachPage />} />
           <Route path="pench/best-time-to-visit" element={<BestTimeToVisitPage />} />

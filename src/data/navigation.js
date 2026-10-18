@@ -47,40 +47,10 @@ export const NAV_ITEMS = [
   },
   {
     id: 'pench',
-    label: 'Pench',
-    path: '/pench',
-    matchPaths: ['/pench', '/experiences'],
-    hasMegaMenu: true,
-    preview: {
-      image: IMAGES.wildlife.tiger,
-      title: 'The Land of Mowgli',
-      description: 'Morning safaris through Sillari Gate into the storied heart of tiger country.',
-      cta: 'Explore Pench & Safaris',
-      path: '/pench',
-    },
-    sections: [
-      {
-        title: 'Wilderness Experiences',
-        items: [
-          { label: 'Jungle Safari', path: '/experiences/safari', desc: 'Open 4x4 gypsies led by certified forest guides' },
-          { label: 'Wildlife & Birding', path: '/experiences/wildlife', desc: 'Approximately 310 documented bird species & rich fauna' },
-          { label: 'Forest Trails & Nature', path: '/experiences/nature', desc: 'Guided nature walks along the forest buffer zone' },
-          { label: 'Family & Couples Moments', path: '/experiences/family', desc: 'Bonfires, star gazing & peaceful forest relaxation' },
-          { label: 'All Experiences Hub', path: '/experiences', desc: 'Complete catalogue of wilderness memories' },
-        ]
-      },
-      {
-        title: 'Destination & Travel Guide',
-        items: [
-          { label: 'Discover Pench', path: '/pench', desc: 'Forest geography, flora, fauna & history' },
-          { label: 'Sillari Gate Guide', path: '/pench/sillari-gate', desc: 'Location advantage & gate entrance details' },
-          { label: 'Safari Timings & Permits', path: '/pench/safari-guide', desc: 'Booking guidance, zones, morning & evening shifts' },
-          { label: 'Things To Do', path: '/pench/things-to-do', desc: 'Pottery villages, Totladoh dam & birdwatching' },
-          { label: 'How To Reach', path: '/pench/how-to-reach', desc: 'Just 65 km / 1 hr from Nagpur airport & station' },
-          { label: 'Best Time To Visit', path: '/pench/best-time-to-visit', desc: 'Seasonal weather & wildlife spotting calendar' },
-        ]
-      }
-    ]
+    label: 'Pench Safari',
+    path: '/pench-safari',
+    matchPaths: ['/pench', '/pench-safari', '/experiences'],
+    hasMegaMenu: false,
   },
   {
     id: 'events',
