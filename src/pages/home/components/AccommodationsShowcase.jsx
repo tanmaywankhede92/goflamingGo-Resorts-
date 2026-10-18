@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, WhatsAppIcon, CheckIcon } from '../../../components/common';
 import { ArrowRight } from 'lucide-react';
-import { AUTHENTIC_RESORT } from '../../../data/images';
+import { AUTHENTIC_RESORT, RESORT_DRIVE_PHOTOS } from '../../../data/images';
 import { QUICK_CONTACT } from '../../../data/navigation';
 import { cn } from '../../../utils/cn';
 
@@ -30,32 +30,71 @@ export default function AccommodationsShowcase() {
       shortLabel: 'Deluxe',
       category: 'Couples & Small Families · 20 Keys',
       title: 'Deluxe Air-Conditioned Haveli Rooms',
-      lead: 'Teak wood furnishings, crisp linens, split AC, and private balcony overlooking lush gardens.',
-      photo: photos.deluxeBedroom,
-      badge: 'Private Balcony',
-      amenities: ['King Bed & Daybed', 'Private Balcony', 'Split Air-Conditioning', 'Hot Water En-suite'],
+      lead: 'Teak wood furnishings, crisp linens, split AC, and modern en-suite bathroom with bathtub, offering a relaxing sanctuary after a day exploring Pench.',
+      photo: {
+        src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+        alt: 'Deluxe Air-Conditioned Haveli Room with King Bed, Sitting Area and En-Suite Bathroom with Bathtub',
+      },
+      badge: 'DELUXE ROOM',
+      imageBadge: 'DELUXE ROOM',
+      imageSmallLabel: 'COUPLES & SMALL FAMILIES · 20 KEYS',
+      caption: 'Deluxe Air-Conditioned Haveli Rooms',
+      amenities: [
+        'King Bed & Sitting Area',
+        'En-Suite Bath with Bathtub',
+        'Split Air-Conditioning',
+        'Hot Water En-suite',
+      ],
+      primaryButtonText: 'Book This Room',
+      whatsappButtonText: 'WhatsApp Inquiry',
+      whatsappMessage: 'Hello Go Flamingo Resort, I would like to inquire about booking the Deluxe Air-Conditioned Haveli Room.',
     },
     'super-deluxe': {
       id: 'super-deluxe',
-      tabLabel: 'Super Deluxe Cottages',
+      tabLabel: 'Super Deluxe Rooms',
       shortLabel: 'Super Deluxe',
-      category: 'Premium Leisure & Extra Space',
-      title: 'Super Deluxe Garden Verandah Suites',
-      lead: 'Expanded living volume with traditional haveli arch views and direct corridor access to central lawns.',
-      photo: photos.sunlitVerandah,
-      badge: 'Direct Courtyard Walkway',
-      amenities: ['Haveli Arch Views', 'Direct Lawn Sitout', 'Split Air-Conditioning', 'In-Room Tea & Coffee'],
+      category: 'PREMIUM COMFORT & BEAUTIFUL VIEWS',
+      title: 'Super Deluxe Rooms with Private Balcony',
+      lead: 'Our most spacious and luxurious rooms are located on the first floor and feature private balconies with beautiful views. Enjoy extra space, comfort and a relaxing setting during your stay at GoFlamingo Resort.',
+      photo: {
+        src: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
+        alt: 'Super Deluxe Room with private balcony overlooking garden canopy',
+      },
+      badge: 'PRIVATE BALCONY',
+      imageBadge: 'PRIVATE BALCONY',
+      imageSmallLabel: 'PREMIUM COMFORT & BEAUTIFUL VIEWS',
+      caption: 'Super Deluxe Rooms with Private Balcony',
+      amenities: [
+        'Spacious Interiors',
+        'Private Balcony',
+        'First-Floor Location',
+        'Beautiful Views',
+      ],
+      primaryButtonText: 'Book This Room',
+      whatsappButtonText: 'WhatsApp Inquiry',
+      whatsappMessage: 'Hello Go Flamingo Resort, I would like to inquire about booking the Super Deluxe Room with Private Balcony.',
     },
     'dormitory': {
       id: 'dormitory',
       tabLabel: 'Group Dormitory',
       shortLabel: 'Dormitory',
-      category: 'Wildlife Groups & Family Conclaves',
-      title: 'Air-Conditioned Group Wilderness Dormitory',
-      lead: 'Comfortable individual beds, neat linens, powerful split AC, and dedicated multi-stall washrooms.',
+      category: 'STAYS FOR GROUPS',
+      title: 'A Comfortable Stay for Your Group',
+      lead: 'Travelling to Pench with friends, family or a larger group? Our dormitory offers shared accommodation for guests who want to stay together and enjoy the experience.',
       photo: photos.dormitoryRoom,
-      badge: 'Group Facility',
-      amenities: ['Individual Beds', 'Split Air-Conditioning', 'Multi-Stall Washrooms', 'Secure Personal Lockers'],
+      badge: 'GROUP DORMITORY',
+      imageBadge: 'GROUP DORMITORY',
+      imageSmallLabel: 'STAYS FOR GROUPS',
+      caption: 'A practical and comfortable option for group stays.',
+      amenities: [
+        'Individual Beds',
+        'Shared Group Accommodation',
+        'Air Conditioning',
+        'Multiple Washroom Facilities',
+      ],
+      primaryButtonText: 'Enquire About the Dormitory',
+      whatsappButtonText: 'WhatsApp Enquiry',
+      whatsappMessage: 'Hello Go Flamingo Resort, I would like to inquire about dormitory shared accommodation for our group.',
     },
   };
 
@@ -100,17 +139,17 @@ export default function AccommodationsShowcase() {
       {/* In-Image Floating Badge */}
       <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
         <span className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-black/75 text-[#DFBF8E] border border-[#C5A880]/50 text-[11px] sm:text-xs font-medium uppercase tracking-[0.16em] shadow-md backdrop-blur-md">
-          {current.badge}
+          {current.imageBadge || current.badge}
         </span>
       </div>
 
-      {/* Bottom In-Image Category & Title */}
+      {/* Bottom In-Image Category & Caption */}
       <div className="absolute bottom-3.5 left-4 right-4 sm:bottom-4 sm:left-5 text-ivory">
         <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#DFBF8E] font-semibold block mb-0.5 sm:mb-1">
-          {current.category}
+          {current.imageSmallLabel || current.category}
         </span>
         <p className="font-serif text-base sm:text-lg lg:text-xl font-normal leading-snug text-white">
-          {current.title}
+          {current.caption || current.title}
         </p>
       </div>
     </div>
@@ -142,10 +181,10 @@ export default function AccommodationsShowcase() {
             {/* 1. SECTION HEADING */}
             <div className="space-y-2">
               <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[#DFBF8E] text-[11px] sm:text-xs uppercase tracking-[0.18em] font-semibold">
-                <span>Authentic Accommodations</span>
+                <span>Comfortable Stays</span>
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-white">
-                Rest Crafted Between Tiger Safaris.
+                Deluxe Rooms for a Relaxing Getaway
               </h2>
             </div>
 
@@ -214,20 +253,20 @@ export default function AccommodationsShowcase() {
                 to={`/contact?room=${current.id}&book=true#reservation-form-card`}
                 className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] cursor-pointer whitespace-nowrap"
               >
-                <span>Book This Room</span>
+                <span>{current.primaryButtonText || 'Book This Room'}</span>
                 <span className="w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
                   <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
                 </span>
               </Link>
 
               <a
-                href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about availability for ${current.title}.`)}`}
+                href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(current.whatsappMessage || `Hello Go Flamingo Resort, I would like to inquire about availability for ${current.title}.`)}`}
                 target={typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
-                <span>WhatsApp Inquiry</span>
+                <span>{current.whatsappButtonText || 'WhatsApp Inquiry'}</span>
               </a>
             </div>
 

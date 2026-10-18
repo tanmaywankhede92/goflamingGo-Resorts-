@@ -65,108 +65,260 @@ export const ROOMS_DATA = {
   'deluxe-rooms': {
     slug: 'deluxe-rooms',
     title: 'Deluxe Rooms',
-    subtitle: 'Air-conditioned haveli guest rooms crafted with teak wood furnishings, plush king beds, and private balcony views overlooking lush garden greenery.',
+    subtitle: 'Thoughtfully furnished rooms with teak wood furnishings, comfortable king beds, crisp cotton linens and modern essentials. Enjoy a relaxing stay at GoFlamingo Resort during your visit to Pench.',
+    primaryBtnLabel: 'BOOK THIS CATEGORY',
+    secondaryBtnLabel: 'WHATSAPP INQUIRY',
+    sidebarLabel: 'DIRECT ENQUIRY & BOOKING',
+    sidebarTitle: 'Deluxe Rooms',
+    locationText: 'GoFlamingo Resort · Sillari, Pench',
     badge: 'Couples & Small Families · 20 Keys Total',
     eyebrow: 'Category 2.1 · Haveli Living',
     count: 'Part of 20 Rooms Portfolio',
-    heroImage: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
+    heroImage: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
     gallery: [
-      { src: AUTHENTIC_RESORT.photos.deluxeBedroom.src, alt: 'Deluxe Room Teak Wood King Bed with Private Balcony View' },
+      { src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src, alt: 'Deluxe Room Teak Wood King Bed with En-Suite Bathtub' },
       { src: AUTHENTIC_RESORT.photos.sunlitVerandah.src, alt: 'Sunlit Arched Verandah Walkway connecting Deluxe Wings' },
       { src: AUTHENTIC_RESORT.photos.archedCorridorFountain.src, alt: 'Haveli Courridor and Central Courtyard Lawn' },
       { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Illuminated Evening Haveli Courtyard' },
     ],
+    quickDetails: [
+      { label: 'Gate Proximity', value: 'Sillari Gate nearby' },
+      { label: 'Power Backup', value: '100% Generator Backup' },
+      { label: 'Amenities Access', value: 'Pool, Dining, Games' },
+    ],
+    sidebarPrimaryBtn: 'CHECK AVAILABILITY & BOOK',
+    sidebarSecondaryBtn: 'INQUIRE ON WHATSAPP',
+    phone: 'CALL: +91 95619 57009',
+    phoneTel: '+919561957009',
+    bookingAdvantages: [
+      'Best seasonal rates',
+      'Assistance with safari enquiries',
+      'Meal package options available',
+    ],
+    overviewLabel: 'ACCOMMODATION OVERVIEW',
+    overviewHeading: 'A Comfortable Stay in the Heart of Pench',
+    storyParagraphs: [
+      "Deluxe Rooms at GoFlamingo Resort offer a welcoming retreat for guests visiting the Pench region. Whether you're here for a wildlife safari, a family holiday or a peaceful break, enjoy a comfortable stay surrounded by the resort's inviting spaces.",
+      "Featuring teak wood furnishings, crisp white cotton linens, quality bedding, split air-conditioning and a television, these rooms offer the essentials for a relaxing stay. After a day exploring Pench, return to a comfortable space to rest and recharge.",
+    ],
+    story: `Deluxe Rooms at GoFlamingo Resort offer a welcoming retreat for guests visiting the Pench region. Whether you're here for a wildlife safari, a family holiday or a peaceful break, enjoy a comfortable stay surrounded by the resort's inviting spaces.\n\nFeaturing teak wood furnishings, crisp white cotton linens, quality bedding, split air-conditioning and a television, these rooms offer the essentials for a relaxing stay. After a day exploring Pench, return to a comfortable space to rest and recharge.`,
+    specsList: [
+      { label: 'OCCUPANCY', value: '2 Adults + 1 Child (Extra mattress available on request)' },
+      { label: 'BEDDING SETUP', value: 'Handcrafted Teak King Bed & Premium Mattress' },
+      { label: 'CLIMATE & COMFORT', value: 'Quiet Split Air-Conditioning & Ceiling Fan' },
+      { label: 'POWER RELIABILITY', value: '100% Silent Generator Backup for 24/7 Uninterrupted Comfort' },
+      { label: 'BATHROOM FACILITIES', value: 'En-suite Western Bathroom with 24/7 Hot Water Rain Shower' },
+      { label: 'VIEW / OUTDOOR ACCESS', value: 'Lush Garden Greenery & Haveli Courtyard' },
+    ],
     specs: {
       occupancy: '2 Adults + 1 Child (Extra mattress available on request)',
       bedType: 'Handcrafted Teak King Bed & Premium Mattress',
-      verandah: 'Private Balcony overlooking garden greenery',
+      verandah: 'Garden Sit-out & Courtyard Views',
       view: 'Lush Garden Greenery & Haveli Courtyard',
       bathroom: 'En-suite Western Bathroom with 24/7 Hot Water Rain Shower',
       climate: 'Quiet Split Air-Conditioning & Ceiling Fan',
-      powerBackup: '100% Silent Generator Backup for 24/7 uninterrupted comfort',
+      powerBackup: '100% Silent Generator Backup for 24/7 Uninterrupted Comfort',
     },
-    story: `Deluxe Rooms are a prime accommodation category at GoFlamingo Resort, providing comfortable and welcoming stays for guests visiting the Pench tiger reserve. 
-
-Crafted with teak wood furniture, crisp white cotton linens, quiet split air-conditioning, and expansive private balconies that overlook the resort's lush landscaped gardens. Wake up to the natural morning calls of native birds, enjoy fresh tea on your balcony, and reach Sillari Safari Gate in just 5-7 minutes.`,
     highlights: [
-      '20 beautifully appointed air-conditioned rooms across the haveli wings',
-      'Private balcony with views of tranquil garden foliage and teak trees',
-      'Handcrafted teakwood king bed with premium high-thread-count linens',
-      'En-suite modern bathroom with hot and cold running water',
-      'Quiet split air-conditioning for peaceful afternoon post-safari relaxation',
-      '100% generator power backup for seamless illumination & cooling',
-      'Complimentary morning safari wake-up tea & biscuits',
+      'Thoughtfully furnished rooms with handcrafted teak wood furnishings',
+      'Comfortable king bed, crisp cotton linens, and quiet split air-conditioning',
+      'En-suite western bathroom with hot water rain shower and bathtub',
+      'Lush garden greenery, courtyard access, and ambient lighting',
+      '100% silent generator backup for 24/7 uninterrupted comfort',
+      'Full access to swimming pool, dining restaurant, and indoor game zone',
+      'Proximity to Sillari Gate with personalized safari booking assistance',
     ],
     amenities: [
-      { category: 'Bedding & Comfort', items: ['Plush King Bed', 'Crisp Cotton Linens', 'Comfortable Day Pillow Set', 'Luggage Rack', 'Wardrobe & Hangers'] },
-      { category: 'Balcony & Views', items: ['Private Balcony Sit-Out', 'Garden & Courtyard Views', 'Ambient Lighting', 'Fresh Forest Air'] },
-      { category: 'Bathroom & Care', items: ['En-suite Western Bathroom', 'Hot & Cold Rain Shower', '24/7 Running Water', 'Clean Bath Towels', 'Complimentary Toiletries'] },
-      { category: 'Resort Inclusions', items: ['Swimming Pool Access', 'Restaurant & Bar Dining', 'Indoor Game Zone Access', 'Free Wi-Fi in Public Areas', 'Complimentary Parking'] },
+      {
+        category: 'BEDDING & COMFORT',
+        items: [
+          'Plush King Bed',
+          'Crisp Cotton Linens',
+          'Comfortable Day Pillow Set',
+          'Luggage Rack',
+          'Wardrobe & Hangers',
+        ],
+      },
+      {
+        category: 'BALCONY & VIEWS',
+        items: [
+          'Garden Sit-out',
+          'Garden & Courtyard Views',
+          'Ambient Lighting',
+          'Fresh Forest Air',
+        ],
+      },
+      {
+        category: 'BATHROOM & CARE',
+        items: [
+          'En-suite Western Bathroom',
+          'Bathtubs',
+          '24/7 Running Water',
+          'Clean Bath Towels',
+          'Complimentary Toiletries',
+        ],
+      },
+      {
+        category: 'RESORT INCLUSIONS',
+        items: [
+          'Swimming Pool Access',
+          'Restaurant & Bar Dining',
+          'Indoor Game Zone Access',
+          'Free Wi-Fi in Public Areas',
+          'Complimentary Parking',
+        ],
+      },
     ],
-    idealFor: 'Individual travellers, couples seeking a quiet forest haven, and wildlife photographers looking for early morning access to Sillari Gate.',
+    idealFor: 'Individual travellers, couples seeking a quiet forest haven, and families looking for comfort and early morning access to Sillari Gate.',
+    otherCategoryCard: {
+      smallLabel: 'YOU MAY ALSO CONSIDER',
+      title: 'Super Deluxe Rooms',
+      desc: 'Enjoy more space, a private balcony and beautiful views from our most spacious and luxurious rooms, located on the first floor.',
+      slug: 'super-deluxe-rooms',
+      image: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
+    },
     otherCategory: {
       slug: 'super-deluxe-rooms',
       title: 'Super Deluxe Rooms',
-      image: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
-      desc: 'Expanded luxury suites with scalloped haveli arches, personal sit-outs, and direct central lawn connectivity.',
+      image: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
+      desc: 'Enjoy more space, a private balcony and beautiful views from our most spacious and luxurious rooms, located on the first floor.',
     },
   },
 
   'super-deluxe-rooms': {
     slug: 'super-deluxe-rooms',
     title: 'Super Deluxe Rooms',
-    subtitle: 'Expanded luxury suites featuring traditional Rajasthani scalloped arches, private verandah sit-outs, and direct central lawn connectivity.',
-    badge: 'Premium Leisure & Extra Space',
+    subtitle: 'Our most spacious and luxurious rooms, located on the first floor, feature private balconies with beautiful views. Enjoy added comfort, elegant interiors and a relaxing retreat during your stay at GoFlamingo Resort near Pench National Park.',
+    primaryBtnLabel: 'BOOK THIS CATEGORY',
+    secondaryBtnLabel: 'WHATSAPP INQUIRY',
+    sidebarLabel: 'DIRECT ENQUIRY & BOOKING',
+    sidebarTitle: 'Super Deluxe Rooms',
+    locationText: 'GoFlamingo Resort · Sillari, Pench',
+    badge: 'PREMIUM COMFORT & BEAUTIFUL VIEWS',
     eyebrow: 'Category 2.2 · Premium Comfort',
     count: 'Part of 20 Rooms Portfolio',
-    heroImage: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
+    heroImage: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
     gallery: [
-      { src: AUTHENTIC_RESORT.photos.sunlitVerandah.src, alt: 'Super Deluxe Arched Verandah overlooking Lawns' },
-      { src: AUTHENTIC_RESORT.photos.deluxeBedroom.src, alt: 'Plush King Bed & Expanded Living Area' },
-      { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Illuminated Haveli Corridor at Twilight' },
-      { src: AUTHENTIC_RESORT.photos.archedCorridorFountain.src, alt: 'Central Fountain & Sculpted Stone Arches' },
+      { src: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src, alt: 'Super Deluxe Room Private Balcony View' },
+      { src: AUTHENTIC_RESORT.photos.deluxeBedroom.src, alt: 'Super Deluxe Bedroom with Teak Finishes and King Bed' },
+      { src: AUTHENTIC_RESORT.photos.sunlitVerandah.src, alt: 'First-Floor Balcony Corridor and Sunlit Archways' },
+      { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Illuminated Haveli Courtyard View from Balcony' },
+    ],
+    quickDetails: [
+      { label: 'Room Location', value: 'First Floor' },
+      { label: 'Outdoor Access', value: 'Private Balcony' },
+      { label: 'Amenities Access', value: 'Pool, Dining, Games' },
+    ],
+    sidebarPrimaryBtn: 'CHECK AVAILABILITY & BOOK',
+    sidebarSecondaryBtn: 'INQUIRE ON WHATSAPP',
+    phone: 'CALL: +91 95619 57009',
+    phoneTel: '+919561957009',
+    bookingAdvantages: [
+      'Best seasonal rates',
+      'Assistance with safari enquiries',
+      'Meal package options available',
+    ],
+    overviewLabel: 'ACCOMMODATION OVERVIEW',
+    overviewHeading: 'Extra Space, Beautiful Views & Added Comfort',
+    storyParagraphs: [
+      "Designed for guests who appreciate extra space and comfort, the Super Deluxe Rooms offer a premium stay at GoFlamingo Resort. Located on the first floor, these spacious rooms feature private balconies with beautiful views, creating a relaxing setting for your Pench getaway.",
+      "Enjoy thoughtfully furnished interiors, comfortable king-size bedding, air-conditioning and the added luxury of a bathtub. Whether you're returning from a wildlife safari or spending a leisurely day at the resort, these rooms offer a welcoming space to unwind.",
+    ],
+    story: `Designed for guests who appreciate extra space and comfort, the Super Deluxe Rooms offer a premium stay at GoFlamingo Resort. Located on the first floor, these spacious rooms feature private balconies with beautiful views, creating a relaxing setting for your Pench getaway.\n\nEnjoy thoughtfully furnished interiors, comfortable king-size bedding, air-conditioning and the added luxury of a bathtub. Whether you're returning from a wildlife safari or spending a leisurely day at the resort, these rooms offer a welcoming space to unwind.`,
+    specsList: [
+      { label: 'OCCUPANCY', value: '2 Adults + 1 Child (Extra mattress available on request)' },
+      { label: 'BEDDING SETUP', value: 'Comfortable King Bed & Quality Mattress' },
+      { label: 'CLIMATE & COMFORT', value: 'Split Air-Conditioning & Ceiling Fan' },
+      { label: 'POWER RELIABILITY', value: 'Generator Backup' },
+      { label: 'BATHROOM FACILITIES', value: 'Attached Bathroom with Bathtub, Shower & Hot Water' },
+      { label: 'VIEW / OUTDOOR ACCESS', value: 'Private Balcony with Beautiful Views' },
     ],
     specs: {
-      occupancy: 'Up to 3-4 Guests (2 Adults + 2 Children or 3 Adults)',
-      bedType: 'Handcrafted Teak King Bed + Plush Daybed / Sofa',
-      verandah: 'Extended Arched Haveli Verandah with Lawn Access',
-      view: 'Central Stone Fountain & Manicured Lawns',
-      bathroom: 'Spacious En-suite Stone Bath with Rain Shower',
-      climate: 'Powerful Split Air-Conditioning & Fans',
-      powerBackup: '100% Silent Generator Backup for 24/7 uninterrupted comfort',
+      occupancy: '2 Adults + 1 Child (Extra mattress available on request)',
+      bedType: 'Comfortable King Bed & Quality Mattress',
+      verandah: 'Private Balcony with Beautiful Views',
+      view: 'Private Balcony with Beautiful Views',
+      bathroom: 'Attached Bathroom with Bathtub, Shower & Hot Water',
+      climate: 'Split Air-Conditioning & Ceiling Fan',
+      powerBackup: 'Generator Backup',
     },
-    story: `Super Deluxe Rooms are designed for guests seeking extra space, refined aesthetics, and seamless connectivity to the outdoors. Presented separately on the website to help guests easily discover our enhanced accommodation options.
-
-Featuring high ceilings, traditional Rajasthani scalloped archways, and extended verandah sit-outs where families can sit together in the morning sun. Located with direct access to the central courtyard and fountain, these rooms offer the premier residential experience at GoFlamingo Resort.`,
     highlights: [
-      'Expanded floor plan with distinct sleeping and lounge alcove zones',
-      'Authentic haveli archways with private outdoor seating overlooking lawns',
-      'Accommodates families comfortably with extra daybed / sofa setup',
-      'Direct ground-level corridor access to pool, restaurant, and gardens',
-      'In-room electric kettle with curated tea & coffee station',
+      'Most spacious and luxurious rooms on the first floor with private balconies',
+      'Comfortable king bed, crisp cotton linens, and split air-conditioning',
+      'Attached bathroom with bathtub, shower, and running hot water',
+      'Beautiful open outdoor views of the lush garden and haveli courtyard',
       '100% generator power backup for uninterrupted comfort',
-      'Complimentary early safari wake-up call and kid-friendly dining options',
+      'Full access to swimming pool, rain dance arena, restaurant & bar, and game zone',
+      'Prime location near Sillari Gate with direct safari booking assistance',
     ],
     amenities: [
-      { category: 'Bedding & Comfort', items: ['Teakwood King Bed', 'Plush Sofa / Daybed', 'Extra Mattresses on Request', 'Spacious Wardrobe', 'Luggage Bench'] },
-      { category: 'Verandah & Outdoors', items: ['Extended Private Verandah', 'Courtyard Fountain Outlook', 'Outdoor Cane Chairs', 'Direct Garden Lawn Access'] },
-      { category: 'Bathroom & Care', items: ['Spacious En-suite Bathroom', 'Rain Shower with 24/7 Hot Water', 'Family Bath Linen Sets', 'Artisanal Herbal Toiletries'] },
-      { category: 'Resort Inclusions', items: ['Swimming Pool & Splash Pool', 'Rain Dance Arena Access', 'Restaurant & Bar Dining', 'Indoor Recreation Hall', 'Dedicated Concierge'] },
+      {
+        category: 'BEDDING & COMFORT',
+        items: [
+          'Comfortable King Bed',
+          'Crisp Cotton Linens',
+          'Pillows & Bedding',
+          'Luggage Rack',
+          'Wardrobe & Hangers',
+        ],
+      },
+      {
+        category: 'BALCONY & VIEWS',
+        items: [
+          'Private Balcony',
+          'Beautiful Outdoor Views',
+          'Garden & Courtyard Surroundings',
+          'Ambient Lighting',
+          'Fresh Air & Open Views',
+        ],
+      },
+      {
+        category: 'BATHROOM & CARE',
+        items: [
+          'Attached Bathroom',
+          'Bathtub',
+          'Shower with Hot Water',
+          'Fresh Bath Towels',
+          'Complimentary Toiletries',
+        ],
+      },
+      {
+        category: 'RESORT INCLUSIONS',
+        items: [
+          'Swimming Pool Access',
+          'Restaurant & Bar Dining',
+          'Indoor Game Zone Access',
+          'Free Wi-Fi in Public Areas',
+          'Complimentary Parking',
+        ],
+      },
     ],
-    idealFor: 'Families with children or grandparents, small friend circles, and couples desiring generous living space and heritage architectural charm.',
+    idealFor: 'Families with children, couples desiring generous living space, and wildlife travellers seeking refined comfort with private balcony views.',
+    otherCategoryCard: {
+      smallLabel: 'YOU MAY ALSO CONSIDER',
+      title: 'Group Dormitory',
+      desc: 'Travelling to Pench with family, friends or a group? Our air-conditioned dormitory offers a comfortable shared stay with individual beds.',
+      slug: 'dormitory',
+      image: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
+    },
     otherCategory: {
       slug: 'dormitory',
       title: 'Group Dormitory',
       image: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
-      desc: 'Spacious air-conditioned communal hall for large student groups, safari teams, and wedding entourages.',
+      desc: 'Travelling to Pench with family, friends or a group? Our air-conditioned dormitory offers a comfortable shared stay with individual beds.',
     },
   },
 
   'dormitory': {
     slug: 'dormitory',
     title: 'Group Dormitory',
-    subtitle: 'Spacious air-conditioned communal living facility with individual teak beds, secure lockers, and dedicated multi-stall washrooms.',
-    badge: 'Group Accommodation · 1 Dedicated Hall',
+    subtitle: 'Travelling to Pench with family, friends or a group? Our air-conditioned dormitory offers a comfortable shared stay with individual beds, making it a practical option for guests exploring the region together.',
+    primaryBtnLabel: 'ENQUIRE ABOUT DORMITORY',
+    secondaryBtnLabel: 'WHATSAPP INQUIRY',
+    sidebarLabel: 'DIRECT ENQUIRY & BOOKING',
+    sidebarTitle: 'Group Dormitory',
+    locationText: 'GoFlamingo Resort · Sillari, Pench',
+    badge: 'STAYS FOR GROUPS',
     eyebrow: 'Category 2.3 · Group Stays',
     count: '1 Dedicated Group Facility',
     heroImage: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
@@ -176,38 +328,106 @@ Featuring high ceilings, traditional Rajasthani scalloped archways, and extended
       { src: AUTHENTIC_RESORT.photos.archedCorridorFountain.src, alt: 'Courtyard Corridors connecting Dormitory' },
       { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Night Lawns for Group Gatherings' },
     ],
+    quickDetails: [
+      { label: 'Accommodation', value: 'Shared Dormitory' },
+      { label: 'Climate & Comfort', value: 'Air-Conditioned' },
+      { label: 'Amenities Access', value: 'Pool, Dining, Games' },
+    ],
+    sidebarPrimaryBtn: 'CHECK AVAILABILITY',
+    sidebarSecondaryBtn: 'INQUIRE ON WHATSAPP',
+    phone: 'CALL: +91 95619 57009',
+    phoneTel: '+919561957009',
+    bookingAdvantages: [
+      'Direct enquiry for group stays',
+      'Assistance with safari enquiries',
+      'Meal package options available',
+    ],
+    overviewLabel: 'ACCOMMODATION OVERVIEW',
+    overviewHeading: 'Stay Together, Explore Pench Together',
+    storyParagraphs: [
+      "Planning a wildlife getaway with friends, family or a larger group? The Group Dormitory at GoFlamingo Resort provides shared accommodation for guests who prefer to stay together while exploring the Pench region.",
+      "With individual beds, air-conditioning and essential comforts, the dormitory is a practical base for group trips and wildlife outings. Guests can also enjoy the resort's swimming pool, restaurant, game zone and outdoor spaces during their stay.",
+    ],
+    story: `Planning a wildlife getaway with friends, family or a larger group? The Group Dormitory at GoFlamingo Resort provides shared accommodation for guests who prefer to stay together while exploring the Pench region.\n\nWith individual beds, air-conditioning and essential comforts, the dormitory is a practical base for group trips and wildlife outings. Guests can also enjoy the resort's swimming pool, restaurant, game zone and outdoor spaces during their stay.`,
+    specsList: [
+      { label: 'ACCOMMODATION TYPE', value: 'Shared Group Dormitory' },
+      { label: 'BEDDING SETUP', value: 'Individual Beds with Bedding' },
+      { label: 'CLIMATE & COMFORT', value: 'Split Air-Conditioning' },
+      { label: 'POWER RELIABILITY', value: 'Generator Backup' },
+      { label: 'BATHROOM FACILITIES', value: 'Shared Washroom Facilities with Hot Water' },
+      { label: 'ROOM SETUP', value: 'Shared Accommodation for Groups' },
+    ],
     specs: {
-      occupancy: 'Large Groups, Student Teams, Safari Squads & Wedding Entourages',
-      bedType: 'Individual Single Beds with Clean Linens & Fresh Pillows',
-      washrooms: 'Dedicated Attached Multi-Stall Washrooms & Rain Showers',
-      climate: 'Multiple High-Capacity Split Air Conditioners',
-      security: 'Personal Storage Lockers & Individual Power Outlets',
-      powerBackup: '100% Silent Generator Backup for 24/7 uninterrupted comfort',
+      occupancy: 'Shared Group Dormitory',
+      bedType: 'Individual Beds with Bedding',
+      washrooms: 'Shared Washroom Facilities with Hot Water',
+      bathroom: 'Shared Washroom Facilities with Hot Water',
+      climate: 'Split Air-Conditioning',
+      security: 'Shared Accommodation for Groups',
+      view: 'Shared Accommodation for Groups',
+      powerBackup: 'Generator Backup',
     },
-    story: `The resort offers one dedicated dormitory as an economical and cohesive group accommodation option. Designed specifically for wildlife photographer groups, corporate retreats, student expeditions, and wedding family entourages visiting Pench together.
-
-The dormitory features high-capacity split air conditioners, clean individual beds with fresh linens, dedicated multi-stall washrooms with 24/7 hot running water, and personal charging hubs for camera gear and phones. It brings the joy of shared camaraderie under one roof with full access to all resort amenities.`,
     highlights: [
-      '1 dedicated, large-capacity air-conditioned group dormitory',
-      'Individual comfortable beds with crisp fresh bedsheets and pillows',
-      'Multiple heavy-duty split AC units ensuring cool air throughout the hall',
-      'Attached multi-stall western washrooms with 24/7 hot & cold water',
-      'Dedicated electrical charging points beside each bed for gadgets & cameras',
-      '100% generator power backup for non-stop air conditioning',
-      'Full access to swimming pool, rain dance arena, game zone, and dining',
+      'Individual beds with fresh bed linen and comfortable pillows',
+      'Shared group accommodation designed for friends, families, and tour groups',
+      'Split air-conditioning maintaining a cool and comfortable indoor climate',
+      'Shared washroom facilities with hot water and toiletries',
+      'Generator power backup for reliable stay comfort',
+      'Full access to swimming pool, restaurant & bar dining, and indoor game zone',
+      'Direct assistance with Pench safari permits and group meal packages',
     ],
     amenities: [
-      { category: 'Bedding & Space', items: ['Individual Single Beds', 'Fresh Daily Linens', 'Comfortable Pillows', 'Personal Locker Space', 'Wide Luggage Area'] },
-      { category: 'Climate & Power', items: ['High-Capacity Split ACs', 'Ceiling Air Circulation', 'Individual Power Sockets', '100% Generator Power Backup'] },
-      { category: 'Washrooms & Hygiene', items: ['Multiple Private Shower Stalls', 'Multiple Western Commodes', '24/7 Hot Running Water', 'Separate Handwash Sinks'] },
-      { category: 'Group Inclusions', items: ['Full Pool & Rain Dance Access', 'Group Buffet Dining Arrangements', 'Game Zone Recreation', 'Campfire Lawn Evenings'] },
+      {
+        category: 'BEDDING & COMFORT',
+        items: [
+          'Individual Beds',
+          'Fresh Bed Linen',
+          'Pillows & Bedding',
+          'Comfortable Sleeping Arrangements',
+        ],
+      },
+      {
+        category: 'ROOM FEATURES',
+        items: [
+          'Shared Group Accommodation',
+          'Air-Conditioning',
+          'Convenient Room Layout',
+          'Indoor Comfort',
+        ],
+      },
+      {
+        category: 'BATHROOM & CARE',
+        items: [
+          'Shared Washroom Facilities',
+          'Hot Water',
+          'Fresh Bath Towels',
+          'Toiletries',
+        ],
+      },
+      {
+        category: 'RESORT INCLUSIONS',
+        items: [
+          'Swimming Pool Access',
+          'Restaurant & Bar Dining',
+          'Indoor Game Zone Access',
+          'Free Wi-Fi in Public Areas',
+          'Complimentary Parking',
+        ],
+      },
     ],
-    idealFor: 'School and college wildlife tours, photography groups, corporate team-building delegations, and wedding guest entourages.',
+    idealFor: 'School and college wildlife tours, photography groups, corporate team-building delegations, family reunions, and wedding entourages.',
+    otherCategoryCard: {
+      smallLabel: 'YOU MAY ALSO CONSIDER',
+      title: 'Deluxe Rooms',
+      desc: 'Thoughtfully furnished rooms with teak wood furnishings, comfortable king beds, crisp cotton linens and modern essentials.',
+      slug: 'deluxe-rooms',
+      image: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    },
     otherCategory: {
       slug: 'deluxe-rooms',
       title: 'Deluxe Rooms',
-      image: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
-      desc: 'Independent air-conditioned haveli rooms with private balcony, king bed, and en-suite bath.',
+      image: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+      desc: 'Thoughtfully furnished rooms with teak wood furnishings, comfortable king beds, crisp cotton linens and modern essentials.',
     },
   },
 };
@@ -582,10 +802,8 @@ function AccommodationCard({ item, index }) {
           >
             <span>
               {item.slug === 'dormitory'
-                ? 'Book Dormitory'
-                : item.slug === 'super-deluxe-rooms'
-                  ? 'Book Super Deluxe'
-                  : 'Book Deluxe Room'}
+                ? 'Enquire About the Dormitory'
+                : 'Book This Room'}
             </span>
             <span className="w-6 h-6 rounded-full bg-[#C5A880] text-[#0E2718] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
               <ArrowRight className="w-3 h-3 text-[#0E2718]" />
@@ -593,13 +811,19 @@ function AccommodationCard({ item, index }) {
           </Link>
 
           <a
-            href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(`Hello Go Flamingo Resort, I would like to inquire about booking the ${item.title}.`)}`}
+            href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(
+              item.slug === 'dormitory'
+                ? 'Hello Go Flamingo Resort, I would like to inquire about dormitory shared accommodation for our group.'
+                : `Hello Go Flamingo Resort, I would like to inquire about booking the ${item.title}.`
+            )}`}
             target={getWhatsAppTarget()}
             rel="noopener noreferrer"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full bg-white hover:bg-stone-50 border-2 border-[#25D366]/70 text-xs uppercase tracking-[0.10em] font-bold text-[#163824] shadow-xs hover:shadow-md transition-all cursor-pointer text-center"
           >
             <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
-            <span>WhatsApp Inquiry</span>
+            <span>
+              {item.slug === 'dormitory' ? 'WhatsApp Enquiry' : 'WhatsApp Inquiry'}
+            </span>
           </a>
 
           <Link
@@ -626,8 +850,8 @@ function AccommodationCard({ item, index }) {
 const FILTER_OPTIONS = [
   { id: 'all', label: 'All Accommodations (3)', shortLabel: 'All Rooms (3)', desc: 'Full portfolio of 20 haveli rooms & 1 group dormitory', targetId: 'deluxe-rooms' },
   { id: 'deluxe', label: '2.1 Deluxe Rooms', shortLabel: 'Deluxe Rooms', desc: 'Teak king bed & garden balcony (20 Keys Total)', targetId: 'deluxe-rooms' },
-  { id: 'super-deluxe', label: '2.2 Super Deluxe Rooms', shortLabel: 'Super Deluxe', desc: 'Arched haveli suites with verandah & lawn connectivity', targetId: 'super-deluxe-rooms' },
-  { id: 'dormitory', label: '2.3 Group Dormitory', shortLabel: 'Group Dormitory', desc: 'Spacious air-conditioned communal hall for large squads', targetId: 'dormitory' },
+  { id: 'super-deluxe', label: '2.2 Super Deluxe Rooms', shortLabel: 'Super Deluxe', desc: 'First-floor rooms with private balcony & beautiful views', targetId: 'super-deluxe-rooms' },
+  { id: 'dormitory', label: '2.3 Group Dormitory', shortLabel: 'Group Dormitory', desc: 'Shared group accommodation for friends, family & squads', targetId: 'dormitory' },
 ];
 
 /**
@@ -1235,7 +1459,7 @@ export function RoomDetails() {
                 to={`/contact?room=${room.slug}&book=true#reservation-form-card`}
                 className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] text-xs font-semibold uppercase tracking-[0.14em] shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
-                <span>Book This Category</span>
+                <span>{room.primaryBtnLabel || (room.slug === 'dormitory' ? 'ENQUIRE ABOUT DORMITORY' : 'BOOK THIS CATEGORY')}</span>
               </Link>
 
               <a
@@ -1245,7 +1469,7 @@ export function RoomDetails() {
                 className="hidden sm:inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm text-center"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
-                <span>WhatsApp Inquiry</span>
+                <span>{room.secondaryBtnLabel || 'WHATSAPP INQUIRY'}</span>
               </a>
             </div>
           </div>
@@ -1292,13 +1516,13 @@ export function RoomDetails() {
               {/* Story Narrative */}
               <div className="p-7 sm:p-9 rounded-2xl bg-white border border-stone-200/90 shadow-md space-y-3">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-[#8A6836] font-bold block">
-                  Accommodation Overview
+                  {room.overviewLabel || 'ACCOMMODATION OVERVIEW'}
                 </span>
                 <h2 className="font-serif text-2xl sm:text-3xl text-[#0E2718] font-normal">
-                  Authentic Haveli Hospitality in Pench
+                  {room.overviewHeading || 'Accommodation Overview'}
                 </h2>
                 <div className="space-y-3 text-xs sm:text-sm text-charcoal/80 leading-relaxed font-light">
-                  {room.story.split('\n\n').map((para, i) => (
+                  {(room.storyParagraphs || room.story.split('\n\n')).map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
                 </div>
@@ -1310,30 +1534,41 @@ export function RoomDetails() {
                   Key Specifications
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
-                    <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Occupancy</span>
-                    <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.occupancy}</strong>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
-                    <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Bedding Setup</span>
-                    <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.bedType}</strong>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
-                    <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Climate & AC</span>
-                    <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.climate}</strong>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
-                    <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Power Reliability</span>
-                    <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.powerBackup}</strong>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
-                    <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Bathroom Facilities</span>
-                    <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.bathroom || room.specs.washrooms}</strong>
-                  </div>
-                  <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
-                    <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">View / Outdoor Access</span>
-                    <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.view || room.specs.security}</strong>
-                  </div>
+                  {room.specsList ? (
+                    room.specsList.map((spec, i) => (
+                      <div key={i} className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">{spec.label}</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{spec.value}</strong>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Occupancy</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.occupancy}</strong>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Bedding Setup</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.bedType}</strong>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Climate & Comfort</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.climate}</strong>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Power Reliability</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.powerBackup}</strong>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">Bathroom Facilities</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.bathroom || room.specs.washrooms}</strong>
+                      </div>
+                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
+                        <span className="text-charcoal/60 uppercase tracking-wider block text-[10px] font-semibold">View / Outdoor Access</span>
+                        <strong className="text-[#0E2718] text-sm font-semibold block mt-1">{room.specs.view || room.specs.security}</strong>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
@@ -1375,29 +1610,40 @@ export function RoomDetails() {
               <div className="p-7 sm:p-8 rounded-3xl bg-white border-2 border-[#C5A880]/35 shadow-xl space-y-6">
                 <div>
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.16em] font-bold text-[#8A6836] bg-[#C5A880]/15 mb-2">
-                    Direct Inquiry & Booking
+                    {room.sidebarLabel || 'DIRECT ENQUIRY & BOOKING'}
                   </span>
                   <h3 className="font-serif text-2xl text-[#0E2718] font-normal">
-                    {room.title}
+                    {room.sidebarTitle || room.title}
                   </h3>
                   <span className="text-xs text-charcoal/70 font-light block mt-1">
-                    GoFlamingo Resort · Sillari Gate, Pench
+                    {room.locationText || 'GoFlamingo Resort · Sillari, Pench'}
                   </span>
                 </div>
 
                 <div className="py-3.5 border-y border-stone-200/90 space-y-2 text-xs text-charcoal/80">
-                  <div className="flex justify-between">
-                    <span>Gate Proximity:</span>
-                    <strong className="text-[#0E2718] font-semibold">5 mins to Sillari</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Power Backup:</span>
-                    <strong className="text-[#0E2718] font-semibold">100% Generator</strong>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Amenities Access:</span>
-                    <strong className="text-[#0E2718] font-semibold">Pool, Dining, Games</strong>
-                  </div>
+                  {room.quickDetails ? (
+                    room.quickDetails.map((qd, i) => (
+                      <div key={i} className="flex justify-between">
+                        <span>{qd.label}:</span>
+                        <strong className="text-[#0E2718] font-semibold">{qd.value}</strong>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div className="flex justify-between">
+                        <span>Gate Proximity:</span>
+                        <strong className="text-[#0E2718] font-semibold">Sillari Gate nearby</strong>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Power Backup:</span>
+                        <strong className="text-[#0E2718] font-semibold">100% Generator Backup</strong>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Amenities Access:</span>
+                        <strong className="text-[#0E2718] font-semibold">Pool, Dining, Games</strong>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className="space-y-3">
@@ -1405,7 +1651,7 @@ export function RoomDetails() {
                     to={`/contact?room=${room.slug}&book=true#reservation-form-card`}
                     className="w-full inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2.5 sm:pl-5 sm:pr-2 sm:py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md cursor-pointer text-center"
                   >
-                    <span>Check Availability & Book</span>
+                    <span>{room.sidebarPrimaryBtn || (room.slug === 'dormitory' ? 'CHECK AVAILABILITY' : 'CHECK AVAILABILITY & BOOK')}</span>
                     <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center shrink-0 shadow-inner">
                       <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
                     </span>
@@ -1418,15 +1664,15 @@ export function RoomDetails() {
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 rounded-full bg-[#0E2718] hover:bg-[#163824] text-white text-xs uppercase tracking-[0.10em] font-bold shadow-md transition-colors cursor-pointer text-center"
                   >
                     <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
-                    <span>Inquire on WhatsApp</span>
+                    <span>{room.sidebarSecondaryBtn || 'INQUIRE ON WHATSAPP'}</span>
                   </a>
 
                   <a
-                    href="tel:+919561957009"
+                    href={`tel:${room.phoneTel || '+919561957009'}`}
                     className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-semibold text-charcoal/70 hover:text-[#0E2718] transition-colors text-center"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#0E2718]" />
-                    <span>Call: +91 95619 57009</span>
+                    <span>{room.phone || 'CALL: +91 95619 57009'}</span>
                   </a>
                 </div>
 
@@ -1434,46 +1680,44 @@ export function RoomDetails() {
                   <span className="font-bold uppercase tracking-wider text-[10px] text-[#0E2718] block mb-1">
                     Direct Booking Advantages:
                   </span>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-[#8A6836] shrink-0" />
-                    <span>Best seasonal rates with zero middleman fee</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-[#8A6836] shrink-0" />
-                    <span>Sillari Gate Gypsy & safari coordination</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-[#8A6836] shrink-0" />
-                    <span>All-inclusive meal package options available</span>
-                  </div>
+                  {(room.bookingAdvantages || [
+                    'Best seasonal rates',
+                    'Assistance with safari enquiries',
+                    'Meal package options available',
+                  ]).map((adv, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-[#8A6836] shrink-0" />
+                      <span>{adv}</span>
+                    </div>
+                  ))}
                 </div>
 
               </div>
 
               {/* Other Category Recommendation */}
-              {room.otherCategory && (
+              {(room.otherCategoryCard || room.otherCategory) && (
                 <div className="p-6 rounded-3xl bg-white border border-stone-200/90 shadow-md space-y-3">
                   <span className="text-[10px] uppercase tracking-wider text-charcoal/60 font-semibold block">
-                    You May Also Consider
+                    {room.otherCategoryCard?.smallLabel || 'YOU MAY ALSO CONSIDER'}
                   </span>
                   <div className="aspect-[16/10] overflow-hidden rounded-xl">
                     <img
-                      src={room.otherCategory.image}
-                      alt={room.otherCategory.title}
+                      src={room.otherCategoryCard?.image || room.otherCategory.image}
+                      alt={room.otherCategoryCard?.title || room.otherCategory.title}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <h4 className="font-serif text-lg text-[#0E2718]">
-                    {room.otherCategory.title}
+                    {room.otherCategoryCard?.title || room.otherCategory.title}
                   </h4>
                   <p className="text-xs text-charcoal/70 font-light leading-relaxed">
-                    {room.otherCategory.desc}
+                    {room.otherCategoryCard?.desc || room.otherCategory.desc}
                   </p>
                   <Link
-                    to={`/rooms/${room.otherCategory.slug}`}
+                    to={`/rooms/${room.otherCategoryCard?.slug || room.otherCategory.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-[#8A6836] hover:text-[#0E2718] pt-1"
                   >
-                    <span>View {room.otherCategory.title}</span>
+                    <span>View {room.otherCategoryCard?.title || room.otherCategory.title}</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

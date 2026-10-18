@@ -77,13 +77,13 @@ export default function CuratedGalleryJournal() {
   // Row 2 Photos (Bottom Left, 3 cols each)
   const row2Photos = [
     {
-      id: 'deluxe-bedroom',
+      id: 'super-deluxe-bedroom',
       type: 'photo',
-      title: 'Deluxe Air-Conditioned Haveli Bedroom',
-      caption: 'Teak wood king bed, clean linens, split AC, and private balcony sit-out.',
-      badge: 'Deluxe Stays',
+      title: 'Super Deluxe Bedroom with Private Balcony',
+      caption: 'Handcrafted teak bed, first-floor private balcony overlooking lush garden canopy.',
+      badge: 'Super Deluxe',
       src: photos.deluxeBedroom.src,
-      alt: 'Deluxe bedroom with balcony sitout at Go Flamingo Resort',
+      alt: 'Super Deluxe bedroom with private balcony at Go Flamingo Resort',
     },
     {
       id: 'grand-entrance',

@@ -41,28 +41,28 @@ import { cn } from '../../utils/cn';
  */
 const FAQS = [
   {
-    question: "How far is GoFlamingo Resort from Nagpur, and how is the road connectivity?",
-    answer: "GoFlamingo Resort is located just 65 km from Nagpur city via the smooth, scenic 4-lane National Highway 44 (NH 44). The hassle-free drive takes only 60 to 75 minutes by car or taxi from Dr. Babasaheb Ambedkar Nagpur International Airport and Nagpur Junction Railway Station."
+    question: "Where is GoFlamingo Resort located?",
+    answer: "GoFlamingo Resort is located in Sillari, near Pench National Park in Maharashtra. It offers a comfortable base for guests planning a Pench getaway, wildlife safari or relaxing holiday surrounded by nature."
   },
   {
-    question: "Can the resort assist with Pench safari permits and open 4x4 gypsy bookings?",
-    answer: "Yes! We coordinate licensed 4x4 open safari gypsies, certified forest naturalists, and gate transfers specifically for the Sillari Core Zone and nearby buffer gates. Because forest department permits are strictly limited per shift, we advise sharing your tentative travel dates early so we can assist before permits sell out."
+    question: "Can I book a Pench safari through GoFlamingo Resort?",
+    answer: "Yes, you can contact GoFlamingo Resort for assistance with Pench safari bookings. Safari permits and availability are subject to the relevant booking system and forest department rules. We recommend enquiring in advance, especially during busy travel periods."
   },
   {
-    question: "What are the resort's check-in and check-out timings?",
-    answer: "Our standard check-in is at 12:00 PM (noon) and check-out is at 10:30 AM. If you are arriving early for a morning safari or departing late after an afternoon forest drive, early check-in or late check-out can gladly be arranged subject to room availability."
+    question: "What types of rooms are available at GoFlamingo Resort?",
+    answer: "GoFlamingo Resort offers Deluxe Rooms, Super Deluxe Rooms and group dormitory accommodation. Super Deluxe Rooms are more spacious, located on the first floor, and feature private balconies with beautiful views. Contact us to enquire about room availability for your dates."
   },
   {
-    question: "What dining and recreational amenities are available on-site?",
-    answer: "Guests enjoy our turquoise swimming pool, open rain dance setup, dedicated multicuisine dining hall serving fresh authentic Maharashtrian and North Indian fare, expansive lush green lawns, children's adventure play area, and indoor games lounge (badminton, carrom, board games)."
+    question: "What facilities are available at GoFlamingo Resort?",
+    answer: "Guests can enjoy facilities including a swimming pool, restaurant and bar, landscaped gardens, a kids' play area, rain dance and a game zone with activities such as table tennis, snooker, carrom, chess and badminton. A conference room is also available for meetings and gatherings."
   },
   {
-    question: "Do you offer accommodation for families, large groups, or reunions?",
-    answer: "Yes. GoFlamingo features 20 spacious air-conditioned Haveli-style rooms, premium Balcony Suites with garden and courtyard views, and a dedicated 14-bed AC Group Dormitory ideal for family reunions, corporate team offsites, and school/college excursions."
+    question: "Is GoFlamingo Resort suitable for families and groups?",
+    answer: "Yes, the resort welcomes families, friends and groups looking for a shared getaway near Pench National Park. With different accommodation options, recreational facilities and outdoor spaces, guests can plan a stay suited to their group. Contact us to discuss your requirements."
   },
   {
-    question: "Can we book the entire resort for a destination wedding or corporate offsite?",
-    answer: "Absolutely. We offer complete property buyouts for intimate jungle destination weddings, anniversaries, and corporate retreats. You get exclusive access to all 20 rooms, our 20,000+ sq.ft manicured banquet lawns, customizable buffet catering, and private event decor."
+    question: "How can I check room prices and availability at GoFlamingo Resort?",
+    answer: "You can contact GoFlamingo Resort directly by phone or WhatsApp to enquire about room rates, availability, meal options and stay arrangements. Prices may vary depending on your dates, room category and package requirements."
   }
 ];
 

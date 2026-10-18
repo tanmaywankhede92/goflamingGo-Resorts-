@@ -126,6 +126,7 @@ export default function App() {
 
           {/* Contact & Unified Direct Reservations */}
           <Route path="contact" element={<ContactPage />} />
+          <Route path="faq" element={<Navigate to="/contact" replace />} />
 
           {/* Booking redirects directly to Unified Contact Page */}
           <Route path="book" element={<BookToContactRedirect />} />

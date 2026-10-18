@@ -124,28 +124,36 @@ export default function HeroSection() {
           WITH SAFE CLEARANCE ABOVE MOBILE WHATSAPP & STICKY BAR
           ======================================================== */}
       <Container size="lg" className="relative z-10 w-full text-left sm:text-center pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:pb-14 lg:pb-18 pt-16 sm:pt-20 px-5 sm:px-6 pr-16 sm:pr-6">
-        <div ref={contentRef} className="max-w-2xl mx-0 sm:mx-auto space-y-2.5 sm:space-y-4">
+        <div ref={contentRef} className="max-w-2xl mx-0 sm:mx-auto space-y-2 sm:space-y-3.5">
 
-          {/* Natural, Art-Directed Headline (Bigger, Royal Rajasthani Haveli Typography) */}
+          {/* Eyebrow: High-contrast luxury pill badge visible on any footage */}
+          <div className="hero-fade flex items-center justify-start sm:justify-center">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0E2718]/85 backdrop-blur-md border border-[#DFBF8E]/60 text-[#F5E6CC] text-[11px] sm:text-xs uppercase tracking-[0.22em] font-bold font-sans shadow-lg drop-shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E] animate-pulse" />
+              <span>GOFLAMINGO RESORT · SILLARI</span>
+            </span>
+          </div>
+
+          {/* Main Headline */}
           <h1 className="hero-fade font-serif text-[clamp(2.15rem,6vw,4.5rem)] font-normal leading-[1.12] tracking-[-0.015em] text-ivory text-balance">
-            Your Stay, Beyond the Ordinary.
+            A Little Closer to Nature. A World Away from Ordinary.
           </h1>
 
-          {/* Conversational Hospitality Copy (Larger, Comfortable Legibility) */}
+          {/* Conversational Hospitality Copy */}
           <p className="hero-fade font-sans text-[13.5px] sm:text-base md:text-lg text-sand-light/95 max-w-xl mx-0 sm:mx-auto font-light leading-relaxed text-pretty border-l border-gold/50 pl-3 sm:border-l-0 sm:pl-0">
-            Just 65 km from Nagpur (1 hr via NH 44) arched haveli verandahs, a quiet garden courtyard, and warm hospitality welcoming you home after every tiger safari.
+            Unwind in serene surroundings, enjoy thoughtful comforts, and make your Pench getaway truly memorable.
           </p>
 
-          {/* PRIMARY ACTIONS: On mobile, only 'Explore the Resort ↓' placed naturally */}
+          {/* Primary Actions */}
           <div className="hero-fade flex flex-row items-center justify-start sm:justify-center gap-3 sm:gap-4 pt-1 sm:pt-2">
             <Button
               as={Link}
               to="/contact?book=true#reservation-form-card"
               variant="gold"
               size="md"
-              className="hidden sm:inline-flex w-full sm:w-auto font-bold tracking-[0.12em] text-xs uppercase px-8 py-3.5 shadow-lg"
+              className="w-auto font-bold tracking-[0.12em] text-xs uppercase px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg"
             >
-              Enquire / Book Your Stay
+              Plan Your Stay
             </Button>
 
             <Button
@@ -153,7 +161,7 @@ export default function HeroSection() {
               onClick={scrollToResort}
               variant="inverted"
               size="md"
-              className="w-auto font-semibold tracking-[0.12em] text-xs uppercase px-5 sm:px-7 py-2.5 sm:py-3.5 cursor-pointer shadow-md inline-flex items-center gap-2"
+              className="w-auto font-semibold tracking-[0.12em] text-xs uppercase px-5 sm:px-7 py-3 sm:py-3.5 cursor-pointer shadow-md inline-flex items-center gap-2"
             >
               <span>Explore the Resort</span>
               <ArrowDown className="w-3.5 h-3.5" />

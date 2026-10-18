@@ -15,13 +15,16 @@ import { getWhatsAppTarget } from '../../../utils/whatsapp';
  * - Beautiful visual separation before transitioning into the dark sanctuary footer
  */
 export default function ClosingCallToAction({
-  eyebrow = 'Plan Your Visit · Sillari Gate',
-  title = 'Plan Your Stay at Go Flamingo Resort',
-  description = 'Direct access to Sillari Safari Gate, private balconies, turquoise pool, and authentic regional dining. Inquire directly for seasonal dates and group retreats.',
-  primaryBtnLabel = 'Check Availability & Book',
+  eyebrow = 'Plan Your Pench Getaway',
+  title = 'Your Pench Getaway Starts Here.',
+  description = 'Planning a visit to Pench? Make GoFlamingo Resort your place to unwind, with comfortable rooms, a swimming pool, jungle safari and spaces to relax after a day of adventure. Get in touch with us to plan your stay.',
+  primaryBtnLabel = 'Check Availability',
   primaryBtnTo = '/contact?book=true#reservation-form-card',
   whatsappLabel = 'Chat on WhatsApp',
   whatsappMsg = 'Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Sillari Gate.',
+  phone = '+91 95619 57009',
+  location = 'Sillari Gate, Pench, Maharashtra',
+  tagline = 'A Convenient Base for Your Pench Getaway',
 }) {
   const whatsappUrl = `${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(whatsappMsg)}`;
 
@@ -52,7 +55,7 @@ export default function ClosingCallToAction({
           </h2>
 
           {/* Concise, Grounded Supporting Copy */}
-          <p className="relative z-10 font-sans text-xs sm:text-sm md:text-base text-[#2E3C2F]/85 max-w-lg mx-auto mb-8 font-light leading-relaxed">
+          <p className="relative z-10 font-sans text-xs sm:text-sm md:text-base text-[#2E3C2F]/85 max-w-xl mx-auto mb-8 font-light leading-relaxed">
             {description}
           </p>
 
@@ -83,16 +86,18 @@ export default function ClosingCallToAction({
           <div className="relative z-10 pt-6 border-t border-[#163824]/15 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#2E3C2F]/80 font-normal">
             <span>
               Direct Assistance:{' '}
-              <a href="tel:+919561957009" className="text-[#163824] font-bold hover:underline">
-                +91 95619 57009
+              <a href={`tel:${phone.replace(/\s+/g, '')}`} className="text-[#163824] font-bold hover:underline">
+                {phone}
               </a>
             </span>
             <span className="hidden sm:inline text-[#163824]/30">·</span>
-            <span>Sillari Gate, Sitapur, Pench</span>
-            <span className="hidden sm:inline text-[#163824]/30">·</span>
-            <span className="text-[#163824] font-semibold inline-flex items-center gap-1.5">
+            <span className="inline-flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#163824]" />
-              <span>Just 65 km from Nagpur via NH 44 (1 Hr)</span>
+              <span>{location}</span>
+            </span>
+            <span className="hidden sm:inline text-[#163824]/30">·</span>
+            <span className="text-[#163824] font-semibold">
+              {tagline}
             </span>
           </div>
 

@@ -37,11 +37,11 @@ export default function WelcomeManifesto() {
           </div>
 
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal leading-[1.2] text-[#163824] text-balance">
-            Rajasthani Haveli Soul, Wild Central Indian Heart.
+            A Touch of Heritage, Surrounded by Nature.
           </h2>
 
           <p className="font-sans text-xs sm:text-sm md:text-base text-charcoal/75 font-light leading-relaxed max-w-xl text-pretty">
-            Built around an open-air central courtyard with sculpted arches, shaded stone verandahs, and a tranquil fountain — an authentic sanctuary just <strong className="font-semibold text-[#163824]">65 km from Nagpur</strong>.
+            Inspired by timeless haveli architecture, GoFlamingo Resort offers a peaceful escape with graceful arches, open verandahs and a tranquil garden courtyard. A place to slow down, unwind and enjoy your time in the heart of the Pench region.
           </p>
         </div>
 
@@ -83,10 +83,10 @@ export default function WelcomeManifesto() {
               {/* Bottom In-Image Caption */}
               <div className="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-5 text-ivory">
                 <span className="text-[10px] uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-                  Sculpted Arches & Fountain
+                  Arches, Verandahs & Gardens
                 </span>
                 <p className="font-serif text-sm sm:text-base font-normal leading-snug">
-                  Shaded verandahs looking onto the tranquil central lawn.
+                  Quiet corners and open spaces made for unhurried moments.
                 </p>
               </div>
             </div>
@@ -98,57 +98,57 @@ export default function WelcomeManifesto() {
             {/* Card Header */}
             <div>
               <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#163824] font-bold block mb-1">
-                Sanctuary Highlights
+                The GoFlamingo Experience
               </span>
               <h3 className="font-serif text-lg sm:text-xl text-[#163824] font-medium">
-                Why Guests Choose Go Flamingo
+                The Little Things Make the Stay.
               </h3>
             </div>
 
             {/* 3 Concise Feature Rows */}
             <div className="space-y-3">
               
-              {/* Feature 1: Highway Drive */}
+              {/* Feature 1 */}
               <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50/90 border border-stone-200/80 hover:border-[#C5A880]/50 transition-colors flex items-start gap-3">
                 <div className="w-9 h-9 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center shrink-0">
                   <HighwayCarIcon className="w-4.5 h-4.5" />
                 </div>
                 <div>
                   <h4 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
-                    Smooth 1-Hour Drive from Nagpur
+                    A Welcome Escape
                   </h4>
                   <p className="font-sans text-xs text-charcoal/75 font-light mt-0.5 leading-relaxed">
-                    Direct access via 4-lane NH 44 with zero rough interior roads.
+                    Leave the pace of the city behind and settle into the calm of the countryside.
                   </p>
                 </div>
               </div>
 
-              {/* Feature 2: Haveli Courtyard */}
+              {/* Feature 2 */}
               <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50/90 border border-stone-200/80 hover:border-[#C5A880]/50 transition-colors flex items-start gap-3">
                 <div className="w-9 h-9 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center shrink-0">
                   <HaveliArchIcon className="w-4.5 h-4.5" />
                 </div>
                 <div>
                   <h4 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
-                    Open-Air Haveli Courtyard
+                    Spaces with Character
                   </h4>
                   <p className="font-sans text-xs text-charcoal/75 font-light mt-0.5 leading-relaxed">
-                    Sculpted stone corridors, pitcher water fountain, and open lawns.
+                    Explore inviting verandahs, distinctive arches and green outdoor spaces.
                   </p>
                 </div>
               </div>
 
-              {/* Feature 3: Sillari Gate */}
+              {/* Feature 3 */}
               <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50/90 border border-stone-200/80 hover:border-[#C5A880]/50 transition-colors flex items-start gap-3">
                 <div className="w-9 h-9 rounded-full bg-[#163824]/10 text-[#163824] flex items-center justify-center shrink-0">
                   <SafariBinocularsIcon className="w-4.5 h-4.5" />
                 </div>
                 <div>
                   <h4 className="font-serif text-sm sm:text-base text-[#163824] font-semibold">
-                    Minutes to Sillari Safari Gate
+                    Close to the Wild
                   </h4>
                   <p className="font-sans text-xs text-charcoal/75 font-light mt-0.5 leading-relaxed">
-                    Direct core gate proximity for peaceful morning Gypsy departures.
+                    Enjoy a comfortable base for your Pench getaway, just minutes from the wild.
                   </p>
                 </div>
               </div>

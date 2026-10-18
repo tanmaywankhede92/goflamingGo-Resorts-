@@ -23,23 +23,33 @@ export default function EventsCelebrations() {
     {
       id: 'weddings',
       num: '01',
-      tabLabel: 'Destination Weddings',
+      tabLabel: 'DESTINATION WEDDINGS',
       mobileLabel: 'Weddings',
-      tag: 'DESTINATION CELEBRATIONS',
-      title: 'WEDDINGS & GRAND EVENTS IN THE FOREST.',
-      desc: 'Host your sacred vows and landmark celebrations across 25 acres of untamed wilderness. 250+ guest lawns, illuminated canopy, royal Vidarbha feasting, and luxury villa stays.',
-      badges: ['Sprawling Banquet Lawns', 'Illuminated Canopy', 'Royal Vidarbha Feast', '20 AC Villas'],
+      imageBadge: 'WEDDINGS & CELEBRATIONS',
+      smallLabel: 'CELEBRATE YOUR SPECIAL DAY',
+      tag: 'CELEBRATE YOUR SPECIAL DAY',
+      title: 'Beautiful Celebrations, Surrounded by Nature.',
+      desc: 'Bring your loved ones together for a memorable celebration at GoFlamingo Resort. With inviting outdoor spaces and accommodation for your guests, our resort offers a lovely setting for weddings and special occasions near Pench.',
+      badges: [
+        'Outdoor Celebration Spaces',
+        'Guest Accommodation',
+        'Scenic Green Surroundings',
+        'Personalised Event Enquiries'
+      ],
       photo: '/assets/resort_drive/wedding_lawn_enhanced.jpg',
       alt: 'Grand destination wedding lawn celebration under festive illuminated canopy at Go Flamingo Resort Pench',
       primaryCta: 'EXPLORE WEDDINGS & EVENTS',
+      secondaryCta: 'ENQUIRE ON WHATSAPP',
       link: '/events',
-      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about hosting a destination wedding / sangeet in the forest.',
+      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about hosting a destination wedding or special celebration near Pench.',
     },
     {
       id: 'corporate',
       num: '02',
       tabLabel: 'Conferences & Offsites',
       mobileLabel: 'Conferences',
+      imageBadge: 'CONFERENCES & OFFSITES',
+      smallLabel: 'EXECUTIVE RETREATS',
       tag: 'EXECUTIVE RETREATS',
       title: 'CORPORATE OFFSITES & STRATEGY SUMMITS.',
       desc: 'Step outside traditional city boardrooms into rejuvenating nature. Air-conditioned conference hall, high-speed Wi-Fi, audio-visual presentation setup, and Pench tiger safaris.',
@@ -47,6 +57,7 @@ export default function EventsCelebrations() {
       photo: '/assets/resort_drive/conference_hall_enhanced.jpg',
       alt: 'Corporate executive conference and strategy meeting in the club lounge at Go Flamingo Resort Pench',
       primaryCta: 'EXPLORE CORPORATE OFFSITES',
+      secondaryCta: 'ENQUIRE ON WHATSAPP',
       link: '/events',
       whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about booking the Conference Room and corporate offsite package.',
     },
@@ -55,6 +66,8 @@ export default function EventsCelebrations() {
       num: '03',
       tabLabel: 'Social Celebrations',
       mobileLabel: 'Celebrations',
+      imageBadge: 'SOCIAL CELEBRATIONS',
+      smallLabel: 'STARLIT CELEBRATIONS',
       tag: 'STARLIT CELEBRATIONS',
       title: 'STARLIT PARTIES & MILESTONE GATHERINGS.',
       desc: 'Celebrate milestone birthdays, anniversaries, and family reunions under starlit skies. Elevated DJ stages, fairy-lit lawns, rain dance mist sessions, and poolside sundowners.',
@@ -62,6 +75,7 @@ export default function EventsCelebrations() {
       photo: '/assets/resort_drive/social_celebrations_enhanced.jpg',
       alt: 'Magical evening lawn celebration under fairy lights and bonfires at Go Flamingo Resort Pench',
       primaryCta: 'EXPLORE CELEBRATIONS',
+      secondaryCta: 'ENQUIRE ON WHATSAPP',
       link: '/events',
       whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about holding a private milestone celebration / party.',
     },
@@ -208,7 +222,7 @@ export default function EventsCelebrations() {
               {/* Floating Slide Badge on Photo */}
               <div className="absolute top-4 left-4 z-20">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-semibold text-white bg-black/60 backdrop-blur-md border border-white/20 shadow-md">
-                  {current.tag}
+                  {current.imageBadge || current.tag}
                 </span>
               </div>
 
@@ -248,7 +262,7 @@ export default function EventsCelebrations() {
               >
                 {/* Category Tag */}
                 <div className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#C5A880]">
-                  {current.tag}
+                  {current.smallLabel || current.tag}
                 </div>
 
                 {/* Big Serif Heading */}
@@ -292,7 +306,7 @@ export default function EventsCelebrations() {
                     className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-transparent hover:bg-white/5 text-ivory border border-white/25 hover:border-white/50 text-[11px] sm:text-xs uppercase tracking-[0.14em] font-medium transition-all duration-300 cursor-pointer"
                   >
                     <WhatsAppIcon size="sm" className="text-[#25D366]" />
-                    <span>Request Proposal</span>
+                    <span>{current.secondaryCta || 'Enquire on WhatsApp'}</span>
                   </a>
                 </div>
 

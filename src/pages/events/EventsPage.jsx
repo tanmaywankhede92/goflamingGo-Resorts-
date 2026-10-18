@@ -71,17 +71,18 @@ export default function EventsPage() {
   const categories = [
     {
       id: 'weddings',
-      badge: 'Forest Destination Weddings',
-      title: 'Weddings & Sacred Vows',
-      lead: 'A dedicated venue for wedding celebrations, sacred ceremonies, and memorable destination gatherings surrounded by ancient teak trees.',
-      desc: 'Celebrate your special day with authentic Rajasthani haveli backdrops and open manicured lawns. From colorful mehendi afternoons to grand evening receptions under illuminated canopies, our venue accommodates up to 250+ guests with royal hospitality.',
+      badge: 'WEDDINGS & SPECIAL OCCASIONS',
+      title: 'Weddings & Celebrations to Remember',
+      paragraph1: 'Celebrate your special day surrounded by loved ones at GoFlamingo Resort. With outdoor spaces, welcoming surroundings and accommodation for your guests, the resort offers a lovely setting for wedding celebrations and special occasions near Pench.',
+      paragraph2: 'From intimate ceremonies to joyful gatherings, our team can discuss your event requirements, accommodation needs and available arrangements to help you plan a celebration that feels your own.',
       specs: [
-        'Sprawling banquet lawns accommodating 250+ guests',
-        'Grand floral mandap & themed mehendi stages',
-        'Authentic Vidarbha & North Indian wedding feasts with live counters',
-        '20 AC rooms & dormitory for family & guest accommodation',
-        'Morning safari drives arranged for wedding attendees',
+        'Outdoor Spaces for Celebrations',
+        'Accommodation for Guests',
+        'Green Surroundings',
+        'Personalised Event Enquiries',
+        'Convenient Location in the Pench Region',
       ],
+      buttonText: 'ENQUIRE FOR WEDDINGS',
       primaryPhoto: RESORT_DRIVE_PHOTOS.weddingMandap.src,
       primaryAlt: 'Grand wedding mandap with floral canopy and pillars at Go Flamingo Resort',
       secondaryPhotos: [
@@ -96,21 +97,22 @@ export default function EventsPage() {
           label: 'Banquet Lawn Buffet',
         },
       ],
-      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about wedding dates, lawn venue, and catering options.',
+      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about weddings and special occasions at Pench.',
     },
     {
       id: 'corporate',
-      badge: 'Corporate Getaways & Offsites',
-      title: 'Corporate Events & Team Retreats',
-      lead: 'An inspiring wilderness environment for companies seeking executive strategy sessions, team bonding, and refreshing group getaways.',
-      desc: 'Step away from urban boardroom fatigue. Just 65 km (1 hour) from Nagpur via 4-lane NH 44, GoFlamingo Resort combines distraction-free focus with high-energy wilderness bonding—including jungle safaris, lawn team games, and evening bonfire discussions.',
+      badge: 'CORPORATE GATHERINGS & TEAM RETREATS',
+      title: 'Corporate Events & Team Getaways',
+      paragraph1: 'Bring your team together in a refreshing setting away from the usual workplace. GoFlamingo Resort offers a conference room, accommodation and recreational facilities for corporate gatherings, team meetings and offsite stays.',
+      paragraph2: "Whether you're planning a team outing, a business meeting or time to reconnect outside the office, contact us to discuss your group's requirements and the facilities available for your event.",
       specs: [
-        'Dedicated team offsite planning & seamless logistics',
-        'Synchronized morning Pench tiger safaris via Sillari Gate',
-        'Expansive lawns for team-building outdoor activities',
-        'Spacious group stay across 20 AC rooms and 1 group dormitory',
-        'Customized corporate meal packages and evening barbecues',
+        'Conference Room',
+        'Accommodation for Groups',
+        'Recreational Facilities',
+        'Outdoor Spaces',
+        'Enquiries for Corporate Gatherings',
       ],
+      buttonText: 'ENQUIRE FOR CORPORATE EVENTS',
       primaryPhoto: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
       primaryAlt: 'Grand indoor dining hall and lounge for corporate banquets',
       secondaryPhotos: [
@@ -122,24 +124,25 @@ export default function EventsPage() {
         {
           src: RESORT_DRIVE_PHOTOS.socialEventLawnNight.src,
           alt: 'Evening lawn gathering under fairy lights',
-          label: 'Bonfire Baithak & Evening Lawns',
+          label: 'Evening Lawns',
         },
       ],
-      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about hosting a corporate offsite / team retreat.',
+      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about corporate events and team getaways.',
     },
     {
       id: 'conferences',
-      badge: 'Meeting Facilities',
-      title: 'Conferences & Meeting Facilities',
-      lead: 'A dedicated air-conditioned conference room equipped for executive conclaves, workshops, and business presentations.',
-      desc: 'Our private indoor conference hall provides a focused, professional setting amidst the calm of the forest. Featuring flexible seating setups, audio-visual support, and attentive food and beverage service throughout your proceedings.',
+      badge: 'MEETINGS & CONFERENCES',
+      title: 'A Comfortable Setting for Meetings & Conferences',
+      paragraph1: 'Host your next meeting or gathering at GoFlamingo Resort. Our conference room provides a dedicated space for business discussions, presentations and group meetings in a relaxed resort environment.',
+      paragraph2: 'With accommodation and recreational facilities available at the resort, guests can discuss their meeting requirements and stay arrangements with our team before planning their visit.',
       specs: [
-        'Dedicated air-conditioned Conference Hall',
-        'Flexible seating configurations (Boardroom, U-Shape, Cluster, Theater)',
-        'Audio-visual projection screen & sound system support',
-        'High-speed Wi-Fi connectivity for presentations',
-        'Continuous tea, coffee, cookies & executive lunch buffets',
+        'Conference Room',
+        'Meeting & Presentation Space',
+        'Accommodation Options',
+        'Resort Facilities',
+        'Enquire About Availability',
       ],
+      buttonText: 'ENQUIRE FOR CONFERENCES',
       primaryPhoto: RESORT_DRIVE_PHOTOS.gameZoneLounge.src,
       primaryAlt: 'Go Flamingo Resort air-conditioned conference hall and executive club lounge',
       secondaryPhotos: [
@@ -154,21 +157,22 @@ export default function EventsPage() {
           label: 'Verandah Coffee Break Lounge',
         },
       ],
-      whatsappMsg: 'Hello Go Flamingo Resort, I would like to check availability for the Conference Room and meeting setup.',
+      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about meetings and conferences at the resort.',
     },
     {
       id: 'social-celebrations',
-      badge: 'Milestone Celebrations',
-      title: 'Social Celebrations & Family Gatherings',
-      lead: 'A vibrant setting for birthdays, anniversaries, family reunions, and festive milestones under starlit skies.',
-      desc: 'Whether it is a 25th wedding anniversary, an energetic 50th birthday gala, or a long-awaited family reunion, we bring events to life with fairy-lit night lawns, poolside sundowners, rain dance mist sessions, and royal baithak seating.',
+      badge: 'FAMILY & SOCIAL CELEBRATIONS',
+      title: 'Bring Everyone Together for the Moments That Matter',
+      paragraph1: 'Make birthdays, anniversaries, family reunions and other special occasions memorable at GoFlamingo Resort. Enjoy time together in a welcoming setting surrounded by greenery and open spaces.',
+      paragraph2: "Whether you're planning a family get-together or a milestone celebration, our team can help you explore available spaces, accommodation options and arrangements suited to your gathering.",
       specs: [
-        'Illuminated night lawns with DJ and sound setup capabilities',
-        'Rain dance arena with cooling mist showers and music',
-        'Turquoise swimming pool and kids splash zone for daytime fun',
-        'Royal VIP baithak seating with traditional red bolsters and low tables',
-        'Delicious regional Vidarbha and multi-cuisine celebration feasts',
+        'Family Gatherings',
+        'Birthday & Anniversary Celebrations',
+        'Outdoor Spaces',
+        'Resort Accommodation',
+        'Recreational Facilities',
       ],
+      buttonText: 'ENQUIRE FOR SOCIAL CELEBRATIONS',
       primaryPhoto: RESORT_DRIVE_PHOTOS.socialEventLawnNight.src,
       primaryAlt: 'Magical evening lawn celebration with ambient fairy lights and bonfire baithak',
       secondaryPhotos: [
@@ -183,7 +187,7 @@ export default function EventsPage() {
           label: 'Rain Dance Mist Arena',
         },
       ],
-      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about hosting a family celebration / birthday party.',
+      whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about family and social celebrations.',
     },
   ];
 
@@ -213,12 +217,12 @@ export default function EventsPage() {
 
             {/* Main Title */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-ivory font-normal tracking-tight leading-[1.12] text-balance">
-              Weddings & Grand Celebrations in Pench
+              Weddings & Celebrations in the Heart of Pench
             </h1>
 
             {/* Concise Supporting Copy */}
             <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
-              Dedicated lawn venues, air-conditioned conference halls, and authentic forest hospitality for destination weddings, corporate summits, and family milestones.
+              From memorable family celebrations to corporate gatherings, GoFlamingo Resort offers inviting spaces, comfortable accommodation and a refreshing setting for bringing people together.
             </p>
 
             {/* Clean Action Buttons */}
@@ -235,11 +239,11 @@ export default function EventsPage() {
                 onClick={() => scrollToCategory('weddings')}
                 className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm cursor-pointer text-center"
               >
-                <span>Explore Venues ↓</span>
+                <span>Explore Venues</span>
               </button>
 
               <a
-                href={`https://wa.me/919372425968?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to enquire about event dates, venues and packages.')}`}
+                href={`https://wa.me/919561957009?text=${encodeURIComponent('Hello Go Flamingo Resort, I would like to enquire about event dates, venues and arrangements.')}`}
                 target={getWhatsAppTarget()}
                 rel="noopener noreferrer"
                 className="hidden sm:inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-[#25D366]/40 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm cursor-pointer whitespace-nowrap"
@@ -338,14 +342,12 @@ export default function EventsPage() {
                       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-forest-deep leading-tight font-normal">
                         {category.title}
                       </h2>
-                      <p className="text-sm sm:text-base text-forest-jungle font-medium mt-2 leading-snug">
-                        {category.lead}
-                      </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light">
-                      {category.desc}
-                    </p>
+                    <div className="space-y-3 text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light">
+                      <p>{category.paragraph1}</p>
+                      <p>{category.paragraph2}</p>
+                    </div>
 
                     {/* Venue Specs Checklist */}
                     <div className="p-4 sm:p-5 rounded-2xl bg-[#FCFAF6] border border-stone-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.03)] ring-1 ring-inset ring-black/5 space-y-2.5">
@@ -369,7 +371,7 @@ export default function EventsPage() {
                         className="group inline-flex items-center justify-center gap-2 pl-4 pr-2 py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold shadow-md hover:shadow-lg border border-[#F3DFC1] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
                       >
                         <WhatsAppIcon size="sm" className="text-[#08130B] shrink-0" />
-                        <span>Enquire for {category.title.split('&')[0].trim()}</span>
+                        <span>{category.buttonText}</span>
                         <span className="w-6 h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
                           <ArrowRight className="w-3.5 h-3.5 text-[#DFBF8E]" />
                         </span>
@@ -380,7 +382,7 @@ export default function EventsPage() {
                         className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white hover:bg-stone-50 border border-sand/50 text-xs uppercase tracking-wider font-semibold text-forest-deep shadow-xs transition-all duration-200 cursor-pointer whitespace-nowrap"
                       >
                         <Phone className="w-3.5 h-3.5 text-gold-dark" />
-                        <span>Call</span>
+                        <span>CALL</span>
                       </a>
                     </div>
 

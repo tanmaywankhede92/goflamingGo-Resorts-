@@ -306,22 +306,19 @@ export default function AboutPage() {
             <div className="lg:col-span-6 space-y-6">
               <div>
                 <span className="text-xs uppercase tracking-[0.2em] text-gold font-semibold block mb-2">
-                  The Sanctuary Experience
+                  The GoFlamingo Experience
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-forest-deep leading-tight">
-                  Suited for Leisure, Family, Groups & Celebrations
+                  A Relaxing Retreat for Every Kind of Getaway
                 </h2>
               </div>
 
               <div className="space-y-4 text-charcoal-muted text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-forest-deep font-semibold">The resort is suited to guests seeking leisure stays, family getaways, group accommodation and event experiences.</strong>
+                  Set in the beautiful surroundings of the Pench region, GoFlamingo Resort brings together comfortable accommodation, open green spaces and warm hospitality. Whether you're planning a family holiday, a getaway with friends or a relaxing break after a safari, there's room to slow down and enjoy your stay.
                 </p>
                 <p>
-                  Situated close to the Sillari Gate of Pench Tiger Reserve, GoFlamingo Resort combines the peaceful charm of the forest with comprehensive hospitality services. Whether returning from an early morning tiger safari or gathering around an evening starlit bonfire, our campus is designed to be calm, comfortable, and welcoming.
-                </p>
-                <p>
-                  From single leisure travelers and couple retreats to large group tours and corporate strategy offsites, our 20 air-conditioned guest rooms and large group dormitory provide the right balance of privacy and shared togetherness.
+                  With Deluxe Rooms, spacious Super Deluxe Rooms featuring private balconies, and dormitory accommodation for groups, the resort offers options for different kinds of travellers. Enjoy the swimming pool, landscaped gardens and recreational facilities, all in a welcoming setting near Pench National Park.
                 </p>
               </div>
 
@@ -447,27 +444,27 @@ export default function AboutPage() {
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8 space-y-5">
                 <span className="inline-block px-3 py-1 rounded-full bg-gold/20 border border-gold/30 text-gold-light text-xs font-semibold tracking-wider uppercase">
-                  Destination Advantage
+                  The Pench Location
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-ivory leading-tight">
-                  Located at Sillari — The Heart of Pench Tiger Country
+                  Your Gateway to the Wild Side of Pench
                 </h2>
                 <p className="text-sand-light/90 text-sm sm:text-base leading-relaxed max-w-2xl font-light">
-                  Sillari is Maharashtra’s primary gateway into the pristine forests of Pench Tiger Reserve. Situated just ~65 km (approx. 1 hour drive via 4-lane NH 44) from Nagpur Airport and Railway Station, GoFlamingo Resort provides effortless connectivity combined with pure wildlife tranquility.
+                  Discover the beauty of Pench Tiger Reserve and unwind at GoFlamingo Resort in Sillari, Maharashtra. Whether you're visiting for a wildlife safari or a peaceful escape into nature, enjoy a welcoming stay with convenient access to the Sillari Gate area.
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-3">
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xs">
-                    <span className="block text-xs text-sand-dark uppercase">Sillari Gate</span>
-                    <span className="text-sm sm:text-base font-serif font-bold text-gold">Minutes Away</span>
+                    <span className="block text-xs text-sand-dark uppercase">Location</span>
+                    <span className="text-sm sm:text-base font-serif font-bold text-gold">Pench National Park, MH</span>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xs">
                     <span className="block text-xs text-sand-dark uppercase">From Nagpur</span>
-                    <span className="text-sm sm:text-base font-serif font-bold text-ivory">65 km / 1 hr</span>
+                    <span className="text-sm sm:text-base font-serif font-bold text-ivory">Approx. 65 km</span>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xs">
-                    <span className="block text-xs text-sand-dark uppercase">Highway</span>
-                    <span className="text-sm sm:text-base font-serif font-bold text-ivory">NH 44 (4-Lane)</span>
+                    <span className="block text-xs text-sand-dark uppercase">Road Access</span>
+                    <span className="text-sm sm:text-base font-serif font-bold text-ivory">Via NH 44</span>
                   </div>
                 </div>
               </div>

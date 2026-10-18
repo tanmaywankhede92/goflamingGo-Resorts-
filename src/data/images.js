@@ -137,70 +137,6 @@ export const AUTHENTIC_RESORT = {
   },
 };
 
-export const IMAGES = {
-  // Homepage Specific Curated Assets — Grounded in Real Property Media
-  home: {
-    hero: AUTHENTIC_RESORT.videos.heroAerial.poster,
-    heroVideoMp4: AUTHENTIC_RESORT.videos.heroAerial.mp4,
-    heroVideoWebm: AUTHENTIC_RESORT.videos.heroAerial.webm,
-    safari: "/assets/images/homepage/home-safari.webp",
-    stay: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
-    resort: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
-    dining: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
-    tiger: "/assets/images/homepage/home-tiger.webp",
-    couples: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
-    family: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
-  },
-
-  // Hero & Destination Storytelling
-  hero: {
-    home: AUTHENTIC_RESORT.videos.heroAerial.poster,
-    pench: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=2000&q=85",
-    safari: "/assets/images/homepage/home-safari.webp",
-    resort: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
-  },
-
-  // Wildlife & Nature
-  wildlife: {
-    tiger: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1600&q=85",
-    spottedDeer: "https://images.unsplash.com/photo-1484406566174-9da000fda645?auto=format&fit=crop&w=1400&q=85",
-    birding: "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&w=1400&q=85",
-    forestCanopy: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85",
-  },
-
-  // Resort Lifestyle & Facilities
-  resort: {
-    pool: AUTHENTIC_RESORT.videos.pool.poster,
-    exterior: AUTHENTIC_RESORT.photos.entrancePorch.src,
-    pathway: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
-    evening: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
-  },
-
-  // Rooms & Cottages
-  rooms: {
-    hero: "/assets/images/rooms/rooms-hero-cottages.webp",
-    cottage: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
-    suite: "/assets/images/rooms/rooms-family-suite.webp",
-    verandah: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
-    bathroom: "/assets/images/rooms/rooms-bathroom-detail.webp",
-    dormitory: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
-  },
-
-  // Dining & Indian Hospitality
-  dining: {
-    restaurant: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
-    indianFood: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1600&q=85",
-    bonfireDinner: AUTHENTIC_RESORT.photos.diningBanquetArches.src,
-  },
-
-  // Celebrations & Corporate
-  events: {
-    wedding: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
-    celebration: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
-    corporate: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
-  },
-};
-
 /**
  * Authentic Go Flamingo Resort Google Drive Media Assets
  * Verified property photos matching exact on-site facilities:
@@ -315,3 +251,68 @@ export const RESORT_DRIVE_PHOTOS = {
   },
 };
 
+export const IMAGES = {
+  // Homepage Specific Curated Assets — Grounded in Real Property Media
+  home: {
+    hero: AUTHENTIC_RESORT.videos.heroAerial.poster,
+    heroVideoMp4: AUTHENTIC_RESORT.videos.heroAerial.mp4,
+    heroVideoWebm: AUTHENTIC_RESORT.videos.heroAerial.webm,
+    safari: "/assets/images/homepage/home-safari.webp",
+    stay: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
+    resort: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
+    dining: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
+    tiger: "/assets/images/homepage/home-tiger.webp",
+    couples: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
+    family: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
+  },
+
+  // Hero & Destination Storytelling
+  hero: {
+    home: AUTHENTIC_RESORT.videos.heroAerial.poster,
+    pench: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=2000&q=85",
+    safari: "/assets/images/homepage/home-safari.webp",
+    resort: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
+  },
+
+  // Wildlife & Nature
+  wildlife: {
+    tiger: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1600&q=85",
+    spottedDeer: "https://images.unsplash.com/photo-1484406566174-9da000fda645?auto=format&fit=crop&w=1400&q=85",
+    birding: "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&w=1400&q=85",
+    forestCanopy: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85",
+  },
+
+  // Resort Lifestyle & Facilities
+  resort: {
+    pool: AUTHENTIC_RESORT.videos.pool.poster,
+    exterior: AUTHENTIC_RESORT.photos.entrancePorch.src,
+    pathway: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
+    evening: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
+  },
+
+  // Rooms & Haveli Wings
+  rooms: {
+    hero: "/assets/images/rooms/rooms-hero-cottages.webp",
+    deluxe: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    superDeluxe: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
+    cottage: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    suite: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
+    verandah: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
+    bathroom: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    dormitory: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
+  },
+
+  // Dining & Indian Hospitality
+  dining: {
+    restaurant: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
+    indianFood: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1600&q=85",
+    bonfireDinner: AUTHENTIC_RESORT.photos.diningBanquetArches.src,
+  },
+
+  // Celebrations & Corporate
+  events: {
+    wedding: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
+    celebration: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
+    corporate: AUTHENTIC_RESORT.photos.restaurantBarHall.src,
+  },
+};
