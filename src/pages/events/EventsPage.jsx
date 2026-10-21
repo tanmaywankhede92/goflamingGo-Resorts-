@@ -264,7 +264,7 @@ export default function EventsPage() {
       <div className="pt-6 sm:pt-8 pb-14 sm:pb-20 space-y-12 sm:space-y-16 bg-white">
         {categories.map((category, idx) => {
           const isEven = idx % 2 === 1;
-          const whatsappUrl = `https://wa.me/919372425968?text=${encodeURIComponent(category.whatsappMsg)}`;
+          const whatsappUrl = `https://wa.me/919561957009?text=${encodeURIComponent(category.whatsappMsg)}`;
 
           return (
             <section

@@ -31,7 +31,7 @@ export default function StickyBookingBar() {
       <div className="flex items-center gap-3 max-w-md mx-auto w-full">
         {/* WHATSAPP CTA (Left) */}
         <a
-          href="https://wa.me/919372425968?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20enquire%20about%20room%20availability%20and%20safari%20booking."
+          href="https://wa.me/919561957009?text=Hello%20Go%20Flamingo%20Resort%2C%20I%20would%20like%20to%20enquire%20about%20room%20availability%20and%20safari%20booking."
           target="_self"
           rel="noopener noreferrer"
           className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#132A1D] hover:bg-[#1A3A27] text-white border-2 border-[#25D366]/60 text-xs uppercase tracking-[0.10em] font-bold min-h-[46px] transition-all cursor-pointer shadow-md text-center"

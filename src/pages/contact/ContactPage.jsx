@@ -208,7 +208,7 @@ Website: goflamingoresorts.com`;
   };
 
   const formattedMessage = generateInquiryMessage();
-  const whatsappInquiryUrl = `https://wa.me/919372425968?text=${encodeURIComponent(formattedMessage)}`;
+  const whatsappInquiryUrl = `https://wa.me/919561957009?text=${encodeURIComponent(formattedMessage)}`;
   const emailInquiryUrl = `mailto:${QUICK_CONTACT.email}?subject=${encodeURIComponent(
     `Resort Stay & Safari Inquiry - ${formData.fullName || 'Guest'}`
   )}&body=${encodeURIComponent(formattedMessage)}`;
@@ -517,7 +517,7 @@ Website: goflamingoresorts.com`;
                         className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-full bg-[#25D366] hover:bg-emerald-400 text-[#08130B] text-xs uppercase tracking-wider font-bold transition-colors shadow-md text-center cursor-pointer"
                       >
                         <WhatsAppIcon size="sm" className="text-[#08130B] shrink-0" />
-                        <span>1. Open in WhatsApp (+91 93724 25968)</span>
+                        <span>1. Open in WhatsApp (+91 95619 57009)</span>
                       </a>
 
                       <a

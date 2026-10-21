@@ -133,7 +133,7 @@ export function ResortFacilities() {
                 The Complete On-Site Experience
               </span>
               <h2 className="font-serif text-2xl sm:text-4xl text-[#0E2718] font-normal">
-                All 7 Resort Facilities & Activities
+                Resort Facilities & Activities
               </h2>
             </div>
 
@@ -189,7 +189,7 @@ export function ResortFacilities() {
                     
                     <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-2">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.16em] font-semibold text-white bg-black/75 backdrop-blur-md border border-white/20 shadow-md">
-                        {amenity.num} · {amenity.tag}
+                        {amenity.tag}
                       </span>
                     </div>
                   </div>

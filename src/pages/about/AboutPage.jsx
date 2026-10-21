@@ -203,10 +203,10 @@ export default function AboutPage() {
         {/* Full Frame Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src={AUTHENTIC_RESORT.photos.entrancePorch.src}
-            alt="GoFlamingo Resort Sillari Pench Grand Entrance Porch and Stone Fountains"
+            src={AUTHENTIC_RESORT.photos.archedCorridorFountain.src}
+            alt="GoFlamingo Resort Sillari Pench Grand Arched Corridors, Fountain and Haveli Lawns"
             fetchPriority="high"
-            className="w-full h-full object-cover object-[center_top] sm:object-[center_16%] filter brightness-[0.96] contrast-[1.03]"
+            className="w-full h-full object-cover object-[center_35%] sm:object-[center_30%] filter brightness-[0.96] contrast-[1.03]"
           />
           {/* Subtle architectural gradient scrims */}
           <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
@@ -230,7 +230,7 @@ export default function AboutPage() {
             {/* Clean Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <Link
-                to="/rooms"
+                to="/stay/deluxe-rooms"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#DFBF8E] hover:bg-[#E8CA9E] text-[#0E2718] text-xs font-semibold uppercase tracking-[0.14em] shadow-lg transition-all duration-300 cursor-pointer text-center"
               >
                 <span>Explore Accommodations</span>

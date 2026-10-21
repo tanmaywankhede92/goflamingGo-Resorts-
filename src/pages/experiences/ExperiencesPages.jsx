@@ -44,7 +44,7 @@ export function ExperiencesOverview() {
     stayConnection,
   } = EXPERIENCES_HUB_DATA;
 
-  const whatsappInquiryUrl = `https://wa.me/919372425968?text=${encodeURIComponent(
+  const whatsappInquiryUrl = `https://wa.me/919561957009?text=${encodeURIComponent(
     'Hello Go Flamingo Resort, I would like to inquire about wilderness experiences and safari planning.'
   )}`;
 
@@ -576,7 +576,7 @@ export function ExperiencesOverview() {
                 Step into standalone sandstone cottages crafted beneath mature teak trees. Generous wooden verandahs, natural stone rain showers, and the gentle sounds of Pench.
               </Text>
               <div className="pt-2 flex flex-wrap gap-4">
-                <Button as={Link} to="/rooms" variant="primary" size="md">
+                <Button as={Link} to="/stay/deluxe-rooms" variant="primary" size="md">
                   Explore Accommodations →
                 </Button>
                 <Button as={Link} to="/contact?book=true#reservation-form-card" variant="gold" size="md">
@@ -673,7 +673,7 @@ export function SafariPage() {
     resortSupport,
   } = SAFARI_DATA;
 
-  const whatsappInquiryUrl = `https://wa.me/919372425968?text=${encodeURIComponent(
+  const whatsappInquiryUrl = `https://wa.me/919561957009?text=${encodeURIComponent(
     'Hello Go Flamingo Resort, I would like to inquire about safari planning and permits for Sillari Gate.'
   )}`;
 
@@ -1023,7 +1023,7 @@ export function WildlifePage() {
     ethicalWildlifeTourism,
   } = WILDLIFE_DATA;
 
-  const whatsappInquiryUrl = `https://wa.me/919372425968?text=${encodeURIComponent(
+  const whatsappInquiryUrl = `https://wa.me/919561957009?text=${encodeURIComponent(
     'Hello Go Flamingo Resort, I am interested in a wildlife and birdwatching stay in Pench.'
   )}`;
 
@@ -1267,7 +1267,7 @@ export function NaturePage() {
     mindfulWilderness,
   } = NATURE_DATA;
 
-  const whatsappInquiryUrl = `https://wa.me/919372425968?text=${encodeURIComponent(
+  const whatsappInquiryUrl = `https://wa.me/919561957009?text=${encodeURIComponent(
     'Hello Go Flamingo Resort, I would like to inquire about guided buffer nature trails and stay options.'
   )}`;
 
@@ -1574,7 +1574,7 @@ export function NaturePage() {
                 {mindfulWilderness.body || mindfulWilderness.desc}
               </p>
               <div className="pt-2">
-                <Button as={Link} to="/rooms" variant="primary" size="md">
+                <Button as={Link} to="/stay/deluxe-rooms" variant="primary" size="md">
                   Explore Accommodations →
                 </Button>
               </div>

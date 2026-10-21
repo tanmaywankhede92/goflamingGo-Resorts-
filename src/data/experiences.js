@@ -199,16 +199,16 @@ export const EXPERIENCES_HUB_DATA = {
     title: 'Stay at Go Flamingo Resort',
     lead: 'Pair your wilderness adventures with restful comfort under the teak canopy.',
     cottage: {
-      title: 'Luxury Forest Cottage',
-      desc: 'Standalone sanctuary with private sit-out verandah facing lush foliage. Perfect for couples and wildlife photographers.',
+      title: 'Deluxe Haveli Room',
+      desc: 'Comfortable air-conditioned haveli room with teak furnishings, modern bath with bathtub, and private sit-out.',
       image: IMAGES.rooms.cottage,
-      to: '/rooms/luxury-cottage'
+      to: '/stay/deluxe-rooms'
     },
     suite: {
-      title: 'Spacious Family Suite',
-      desc: 'Generous connected living space ensuring comfort for families and groups traveling together to Pench.',
+      title: 'Super Deluxe Balcony Room',
+      desc: 'Spacious first-floor room with private balcony overlooking the lush garden canopy and forest trees.',
       image: IMAGES.rooms.suite,
-      to: '/rooms/family-suite'
+      to: '/stay/super-deluxe-rooms'
     }
   }
 };

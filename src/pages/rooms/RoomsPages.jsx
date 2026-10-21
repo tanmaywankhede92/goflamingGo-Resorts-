@@ -72,14 +72,14 @@ export const ROOMS_DATA = {
     sidebarTitle: 'Deluxe Rooms',
     locationText: 'GoFlamingo Resort · Sillari, Pench',
     badge: 'Couples & Small Families · 20 Keys Total',
-    eyebrow: 'Category 2.1 · Haveli Living',
+    eyebrow: 'Haveli Living',
     count: 'Part of 20 Rooms Portfolio',
-    heroImage: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    heroImage: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
     gallery: [
-      { src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src, alt: 'Deluxe Room Teak Wood King Bed with En-Suite Bathtub' },
-      { src: AUTHENTIC_RESORT.photos.sunlitVerandah.src, alt: 'Sunlit Arched Verandah Walkway connecting Deluxe Wings' },
-      { src: AUTHENTIC_RESORT.photos.archedCorridorFountain.src, alt: 'Haveli Courridor and Central Courtyard Lawn' },
-      { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Illuminated Evening Haveli Courtyard' },
+      { src: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src, alt: 'Deluxe Room Teak Wood King Bed, Extra Bed with En-Suite Bathtub' },
+      { src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src, alt: 'Deluxe Room Sitting Area and Bathroom View with Bathtub' },
+      { src: RESORT_DRIVE_PHOTOS.deluxeBathtubRoom.src, alt: 'Deluxe Room Modern Bathroom with Deep Soaking Bathtub' },
+      { src: AUTHENTIC_RESORT.photos.archedCorridorFountain.src, alt: 'Haveli Corridor and Central Courtyard Lawn' },
     ],
     quickDetails: [
       { label: 'Gate Proximity', value: 'Sillari Gate nearby' },
@@ -195,7 +195,7 @@ export const ROOMS_DATA = {
     sidebarTitle: 'Super Deluxe Rooms',
     locationText: 'GoFlamingo Resort · Sillari, Pench',
     badge: 'PREMIUM COMFORT & BEAUTIFUL VIEWS',
-    eyebrow: 'Category 2.2 · Premium Comfort',
+    eyebrow: 'Premium Comfort',
     count: 'Part of 20 Rooms Portfolio',
     heroImage: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
     gallery: [
@@ -319,7 +319,7 @@ export const ROOMS_DATA = {
     sidebarTitle: 'Group Dormitory',
     locationText: 'GoFlamingo Resort · Sillari, Pench',
     badge: 'STAYS FOR GROUPS',
-    eyebrow: 'Category 2.3 · Group Stays',
+    eyebrow: 'Group Stays',
     count: '1 Dedicated Group Facility',
     heroImage: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
     gallery: [
@@ -421,12 +421,12 @@ export const ROOMS_DATA = {
       title: 'Deluxe Rooms',
       desc: 'Thoughtfully furnished rooms with teak wood furnishings, comfortable king beds, crisp cotton linens and modern essentials.',
       slug: 'deluxe-rooms',
-      image: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+      image: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
     },
     otherCategory: {
       slug: 'deluxe-rooms',
       title: 'Deluxe Rooms',
-      image: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+      image: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
       desc: 'Thoughtfully furnished rooms with teak wood furnishings, comfortable king beds, crisp cotton linens and modern essentials.',
     },
   },
@@ -849,9 +849,9 @@ function AccommodationCard({ item, index }) {
  */
 const FILTER_OPTIONS = [
   { id: 'all', label: 'All Accommodations (3)', shortLabel: 'All Rooms (3)', desc: 'Full portfolio of 20 haveli rooms & 1 group dormitory', targetId: 'deluxe-rooms' },
-  { id: 'deluxe', label: '2.1 Deluxe Rooms', shortLabel: 'Deluxe Rooms', desc: 'Teak king bed & garden balcony (20 Keys Total)', targetId: 'deluxe-rooms' },
-  { id: 'super-deluxe', label: '2.2 Super Deluxe Rooms', shortLabel: 'Super Deluxe', desc: 'First-floor rooms with private balcony & beautiful views', targetId: 'super-deluxe-rooms' },
-  { id: 'dormitory', label: '2.3 Group Dormitory', shortLabel: 'Group Dormitory', desc: 'Shared group accommodation for friends, family & squads', targetId: 'dormitory' },
+  { id: 'deluxe', label: 'Deluxe Rooms', shortLabel: 'Deluxe Rooms', desc: 'Teak king bed & garden balcony (20 Keys Total)', targetId: 'deluxe-rooms' },
+  { id: 'super-deluxe', label: 'Super Deluxe Rooms', shortLabel: 'Super Deluxe', desc: 'First-floor rooms with private balcony & beautiful views', targetId: 'super-deluxe-rooms' },
+  { id: 'dormitory', label: 'Group Dormitory', shortLabel: 'Group Dormitory', desc: 'Shared group accommodation for friends, family & squads', targetId: 'dormitory' },
 ];
 
 /**
@@ -1122,7 +1122,7 @@ export function RoomsOverview() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div className="max-w-2xl space-y-3">
               <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-white/10 text-[#C5A880] text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold border border-[#C5A880]/30 backdrop-blur-md">
-                3. Resort Amenities & Facilities
+                Resort Amenities & Facilities
               </div>
 
               <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal leading-tight text-white text-balance">
@@ -1174,7 +1174,7 @@ export function RoomsOverview() {
                     {/* Floating Pill */}
                     <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-2">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] uppercase tracking-[0.16em] font-semibold text-white bg-black/75 backdrop-blur-md border border-white/20 shadow-md">
-                        {amenity.num} · {amenity.tag}
+                        {amenity.tag}
                       </span>
                     </div>
                   </div>
@@ -1328,17 +1328,17 @@ export function RoomsOverview() {
                 <tr>
                   <td className="p-4 sm:p-5 font-semibold text-[#0E2718]">Direct Action</td>
                   <td className="p-4 sm:p-5">
-                    <Link to="/rooms/deluxe-rooms" className="text-[#8A6836] font-bold hover:underline">
+                    <Link to="/stay/deluxe-rooms" className="text-[#8A6836] font-bold hover:underline">
                       View Details →
                     </Link>
                   </td>
                   <td className="p-4 sm:p-5">
-                    <Link to="/rooms/super-deluxe-rooms" className="text-[#8A6836] font-bold hover:underline">
+                    <Link to="/stay/super-deluxe-rooms" className="text-[#8A6836] font-bold hover:underline">
                       View Details →
                     </Link>
                   </td>
                   <td className="p-4 sm:p-5">
-                    <Link to="/rooms/dormitory" className="text-[#8A6836] font-bold hover:underline">
+                    <Link to="/stay/dormitory" className="text-[#8A6836] font-bold hover:underline">
                       View Details →
                     </Link>
                   </td>
@@ -1714,7 +1714,7 @@ export function RoomDetails() {
                     {room.otherCategoryCard?.desc || room.otherCategory.desc}
                   </p>
                   <Link
-                    to={`/rooms/${room.otherCategoryCard?.slug || room.otherCategory.slug}`}
+                    to={`/stay/${room.otherCategoryCard?.slug || room.otherCategory.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-[#8A6836] hover:text-[#0E2718] pt-1"
                   >
                     <span>View {room.otherCategoryCard?.title || room.otherCategory.title}</span>

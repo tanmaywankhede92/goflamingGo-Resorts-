@@ -111,12 +111,12 @@ export const AUTHENTIC_RESORT = {
       alt: 'Grand indoor dining restaurant and bar with crystal chandeliers, booth seating and indoor games zone',
     },
     deluxeBedroom: {
-      src: '/assets/images/resort-authentic/deluxe-bedroom.webp',
-      srcSet: '/assets/images/resort-authentic/deluxe-bedroom-600w.webp 600w, /assets/images/resort-authentic/deluxe-bedroom-1024w.webp 1024w, /assets/images/resort-authentic/deluxe-bedroom-1600w.webp 1600w',
+      src: '/assets/resort_drive/deluxe_bedroom_full.jpg',
+      srcSet: '/assets/resort_drive/deluxe_bedroom_full.jpg',
       sizes: '(max-width: 640px) 600px, (max-width: 1024px) 1024px, 1600px',
       width: 1600,
       height: 1200,
-      alt: 'Deluxe guest bedroom with teak wood king bed, split air-conditioning and private balcony view',
+      alt: 'Deluxe guest bedroom with teak wood king bed, single alcove bed, dressing table and en-suite bath',
     },
     diningBanquetArches: {
       src: '/assets/images/resort-authentic/dining-banquet-arches.webp',
@@ -245,6 +245,16 @@ export const RESORT_DRIVE_PHOTOS = {
     src: '/assets/resort_drive/IMG-20261003-WA0020.jpg',
     alt: 'Spacious family room with multiple beds, TV and attached bath',
   },
+  deluxeBedroomFull: {
+    src: '/assets/resort_drive/deluxe_bedroom_full.jpg',
+    alt: 'Deluxe room with comfortable king bed, single alcove bed, dressing table, TV console and en-suite bath',
+    title: 'Deluxe Room',
+  },
+  deluxeBathtubRoom: {
+    src: '/assets/resort_drive/IMG-20261003-WA0019.jpg',
+    alt: 'Modern en-suite bathroom with deep soaking bathtub and shower at Go Flamingo Resort',
+    title: 'Deluxe Bathroom Bathtub',
+  },
   bedroomSuiteBathtub: {
     src: '/assets/resort_drive/IMG-20261003-WA0016.jpg',
     alt: 'Deluxe bedroom suite with sitting area and modern bathroom with bathtub',
@@ -293,9 +303,9 @@ export const IMAGES = {
   // Rooms & Haveli Wings
   rooms: {
     hero: "/assets/images/rooms/rooms-hero-cottages.webp",
-    deluxe: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    deluxe: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
     superDeluxe: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
-    cottage: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    cottage: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
     suite: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
     verandah: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
     bathroom: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,

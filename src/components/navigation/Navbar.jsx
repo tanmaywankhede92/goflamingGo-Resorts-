@@ -214,40 +214,31 @@ export default function Navbar() {
                   onMouseEnter={() => handleItemMouseEnter(item.id)}
                 >
                   <div
+                    onClick={(e) => toggleDropdown(e, item.id)}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isOpen}
+                    aria-label={`Toggle ${item.label} menu`}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleDropdown(e, item.id);
+                      }
+                    }}
                     className={cn(
-                      'px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 flex items-center gap-1.5 select-none',
+                      'px-3 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 flex items-center gap-1.5 select-none cursor-pointer',
                       isActive || isOpen
                         ? 'bg-forest-deep text-white shadow-xs font-semibold'
                         : 'text-stone-700 hover:text-forest-deep hover:bg-stone-100/70'
                     )}
                   >
-                    <Link
-                      to={item.path}
-                      onClick={handleCloseMenu}
-                      className="hover:opacity-90 focus-visible:outline-none"
-                    >
-                      {item.label}
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={(e) => toggleDropdown(e, item.id)}
-                      aria-expanded={isOpen}
-                      aria-label={`Toggle ${item.label} dropdown`}
-                      title={`${isOpen && isPinned ? 'Click to close' : 'Click arrow to keep open'} ${item.label} menu`}
+                    <span className="hover:opacity-95">{item.label}</span>
+                    <ChevronDown
                       className={cn(
-                        'p-0.5 -mr-0.5 rounded-full transition-all duration-200 flex items-center justify-center cursor-pointer',
-                        isActive || isOpen
-                          ? 'hover:bg-white/20 text-white'
-                          : 'hover:bg-stone-200/70 text-stone-500 hover:text-stone-800'
+                        'w-3 h-3 transition-transform duration-200 shrink-0',
+                        isOpen ? 'rotate-180' : ''
                       )}
-                    >
-                      <ChevronDown
-                        className={cn(
-                          'w-3 h-3 transition-transform duration-200',
-                          isOpen ? 'rotate-180' : ''
-                        )}
-                      />
-                    </button>
+                    />
                   </div>
                 </div>
               );

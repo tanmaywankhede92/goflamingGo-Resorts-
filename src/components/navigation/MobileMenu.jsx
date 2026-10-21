@@ -189,11 +189,11 @@ export default function MobileMenu({ isOpen, onClose }) {
 
                     <div className="pt-2 pl-2 pb-1">
                       <Link
-                        to={item.path}
+                        to="/resort/facilities"
                         onClick={onClose}
                         className="inline-flex items-center gap-2 text-xs text-gold uppercase tracking-[0.14em] font-semibold py-1.5 px-3.5 rounded-full bg-gold/15 hover:bg-gold/25 border border-gold/35 transition-all duration-200"
                       >
-                        <span>Explore All {item.label}</span>
+                        <span>Explore Resort Facilities</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>

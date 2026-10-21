@@ -126,13 +126,6 @@ export default function HeroSection() {
       <Container size="lg" className="relative z-10 w-full text-left sm:text-center pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:pb-14 lg:pb-18 pt-16 sm:pt-20 px-5 sm:px-6 pr-16 sm:pr-6">
         <div ref={contentRef} className="max-w-2xl mx-0 sm:mx-auto space-y-2 sm:space-y-3.5">
 
-          {/* Eyebrow: High-contrast luxury pill badge visible on any footage */}
-          <div className="hero-fade flex items-center justify-start sm:justify-center">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0E2718]/85 backdrop-blur-md border border-[#DFBF8E]/60 text-[#F5E6CC] text-[11px] sm:text-xs uppercase tracking-[0.22em] font-bold font-sans shadow-lg drop-shadow-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E] animate-pulse" />
-              <span>GOFLAMINGO RESORT · SILLARI</span>
-            </span>
-          </div>
 
           {/* Main Headline */}
           <h1 className="hero-fade font-serif text-[clamp(2.15rem,6vw,4.5rem)] font-normal leading-[1.12] tracking-[-0.015em] text-ivory text-balance">

@@ -157,7 +157,8 @@ const MASTER_CURATED_MEDIA = [
     ribbonWidth: 'w-72 sm:w-88 md:w-96',
   },
 
-  // --- POOL & LEISURE RECREATION (ENHANCED 5-STAR QUALITY) ---
+  // --- POOL & LEISURE RECREATION (OMITTED AS REQUESTED) ---
+  /*
   {
     id: 'pool-1',
     type: 'photo',
@@ -214,7 +215,7 @@ const MASTER_CURATED_MEDIA = [
     ribbonWidth: 'w-80 sm:w-96 md:w-[440px]',
   },
 
-  // --- WEDDINGS & CELEBRATIONS ---
+  // --- WEDDINGS & CELEBRATIONS (OMITTED AS REQUESTED) ---
   {
     id: 'ev-1',
     type: 'photo',
@@ -270,6 +271,7 @@ const MASTER_CURATED_MEDIA = [
     aspect: 'aspect-4/3',
     ribbonWidth: 'w-72 sm:w-88 md:w-96',
   },
+  */
 
   // --- ROOMS & ACCOMMODATIONS ---
   {
@@ -287,10 +289,10 @@ const MASTER_CURATED_MEDIA = [
     id: 'stay-2',
     type: 'photo',
     category: 'Rooms',
-    tag: 'Super Deluxe Room',
-    title: 'Super Deluxe Bedroom with Teak Finishes',
-    subtitle: 'Handcrafted king-size teak bed, split air-conditioning and private balcony',
-    src: AUTHENTIC_RESORT.photos.deluxeBedroom.src,
+    tag: 'Deluxe Room',
+    title: 'Deluxe Haveli Bedroom with Extra Bed & Teak Finishes',
+    subtitle: 'Handcrafted king-size teak bed, additional bed alcove, TV console, and en-suite bath',
+    src: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
     aspect: 'aspect-4/3',
     ribbonWidth: 'w-72 sm:w-88 md:w-96',
   },
@@ -302,6 +304,17 @@ const MASTER_CURATED_MEDIA = [
     title: 'Deluxe Haveli Bedroom with Bathtub Suite',
     subtitle: 'Comfortable air-conditioned deluxe room with modern en-suite bathtub and sitting area',
     src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
+    aspect: 'aspect-4/3',
+    ribbonWidth: 'w-72 sm:w-80 md:w-96',
+  },
+  {
+    id: 'stay-3b',
+    type: 'photo',
+    category: 'Rooms',
+    tag: 'Deluxe Room',
+    title: 'Deluxe En-Suite Bathtub & Modern Bath',
+    subtitle: 'Deep soaking bathtub with 24/7 hot water supply and premium amenities',
+    src: RESORT_DRIVE_PHOTOS.deluxeBathtubRoom.src,
     aspect: 'aspect-4/3',
     ribbonWidth: 'w-72 sm:w-80 md:w-96',
   },
@@ -404,8 +417,6 @@ const FILTER_TABS = [
   { id: 'All', label: 'All Highlights', icon: Sparkles, count: MASTER_CURATED_MEDIA.length },
   { id: 'Videos', label: 'Property Films', icon: Film, count: MASTER_CURATED_MEDIA.filter((m) => m.type === 'video').length },
   { id: 'Resort', label: 'Haveli Architecture', icon: Landmark, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Resort').length },
-  { id: 'Leisure', label: 'Pool & Recreation', icon: Waves, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Leisure').length },
-  { id: 'Events', label: 'Weddings & Celebrations', icon: PartyPopper, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Events').length },
   { id: 'Rooms', label: 'Luxury Stays', icon: BedDouble, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Rooms').length },
   { id: 'Dining', label: 'Dining & Bar', icon: UtensilsCrossed, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Dining').length },
   { id: 'Wildlife', label: 'Pench Safaris', icon: Compass, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Wildlife').length },
@@ -582,9 +593,6 @@ function GalleryCard({ item, index, activeCategory, onOpenLightbox }) {
 
         {/* Bottom Caption Overlay (Visible titles & subtitles as in user screenshot) */}
         <div className="absolute bottom-0 inset-x-0 p-3 sm:p-5 z-10 transform translate-y-0.5 group-hover:translate-y-0 transition-transform duration-300">
-          <span className="text-[9px] sm:text-[10px] text-gold uppercase tracking-widest font-bold block mb-1">
-            {item.category}
-          </span>
           <h3 className="font-serif text-xs sm:text-base lg:text-lg font-bold text-ivory leading-snug drop-shadow-sm line-clamp-1 sm:line-clamp-2">
             {item.title}
           </h3>
@@ -824,27 +832,12 @@ export default function GalleryPage() {
         onTouchEnd={() => setTimeout(() => setIsHoverPaused(false), 2400)}
       >
         
-        {/* Stream Header & Dynamic Speed Bar */}
+        {/* Stream Header */}
         <Container size="xl" className="mb-6 sm:mb-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            
-            {/* Title & Eyebrow */}
-            <div>
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[#B85D38] font-bold mb-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#B85D38]" />
-                <span>The Living Stream • Authentic Resort Moments</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#10251B] font-normal tracking-tight">
-                A Visual Odyssey Across GoFlamingo
-              </h2>
-            </div>
-
-            {/* Subtle Minimalist Indicator */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#DCD1BF] text-xs text-[#5C5549] font-medium backdrop-blur-md shadow-xs self-start md:self-auto">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B85D38]" />
-              <span>Hover to pause • Click to expand</span>
-            </div>
-
+          <div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#10251B] font-normal tracking-tight">
+              A Visual Odyssey Across GoFlamingo
+            </h2>
           </div>
         </Container>
 
@@ -876,16 +869,6 @@ export default function GalleryPage() {
                 {/* Subtle Luxury Vignette */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#08130B]/95 via-[#08130B]/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300" />
                 
-                {/* Floating Top Luxury Tag (Only for Video Reels) */}
-                {item.type === 'video' && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#10251B] text-[11px] font-bold tracking-wider uppercase border border-[#E5DAC7] shadow-md">
-                      <Film className="w-3.5 h-3.5 text-[#B85D38] shrink-0" />
-                      <span>{item.duration ? `Film (${item.duration})` : 'Film'}</span>
-                    </span>
-                  </div>
-                )}
-
                 {/* Video Play Badge if Video */}
                 {item.type === 'video' && (
                   <div className="absolute top-4 right-4 z-10">
@@ -897,9 +880,6 @@ export default function GalleryPage() {
 
                 {/* Minimal Elegant Bottom Caption */}
                 <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="text-[10px] text-[#DFBF8E] uppercase tracking-[0.2em] font-bold block mb-1">
-                    {item.category}
-                  </span>
                   <h3 className="text-base sm:text-lg font-serif font-bold text-white tracking-tight drop-shadow-md">
                     {item.title}
                   </h3>
@@ -922,11 +902,6 @@ export default function GalleryPage() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Hover Hint */}
-        <div className="mt-4 text-center text-xs text-[#7A7265] font-light">
-          <span>Tip: Hover cursor over any frame to pause and admire • Click to view in full-screen 4K lightbox</span>
         </div>
 
       </section>
@@ -1184,7 +1159,7 @@ export default function GalleryPage() {
           <div className="flex items-center justify-between w-full max-w-6xl mx-auto z-10 py-2">
             <div className="flex items-center gap-3">
               <span className="text-xs uppercase tracking-widest text-gold font-bold px-3 py-1 rounded-full bg-white/10 border border-gold/40">
-                {filteredItems[lightboxIndex].category}
+                {filteredItems[lightboxIndex].type === 'video' ? 'Property Film' : 'Photograph'}
               </span>
               <span className="text-xs text-sand-light/80 font-mono">
                 {lightboxIndex + 1} of {filteredItems.length}

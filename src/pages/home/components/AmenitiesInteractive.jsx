@@ -25,7 +25,7 @@ export default function AmenitiesInteractive() {
       feature: 'Adult Pool & Kids Splash Zone',
       photo: RESORT_DRIVE_PHOTOS?.pool?.src || '/assets/resort_drive/swimming_pool_enhanced.jpg',
       alt: RESORT_DRIVE_PHOTOS?.pool?.alt || 'Swimming Pool at Go Flamingo Resort',
-      link: '/resort/pool',
+      link: '/resort/facilities',
     },
     {
       id: 'rain-dance',

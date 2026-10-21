@@ -32,8 +32,8 @@ export default function AccommodationsShowcase() {
       title: 'Deluxe Air-Conditioned Haveli Rooms',
       lead: 'Teak wood furnishings, crisp linens, split AC, and modern en-suite bathroom with bathtub, offering a relaxing sanctuary after a day exploring Pench.',
       photo: {
-        src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
-        alt: 'Deluxe Air-Conditioned Haveli Room with King Bed, Sitting Area and En-Suite Bathroom with Bathtub',
+        src: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
+        alt: 'Deluxe Air-Conditioned Haveli Room with King Bed, Single Alcove Bed, Sitting Area and En-Suite Bathroom with Bathtub',
       },
       badge: 'DELUXE ROOM',
       imageBadge: 'DELUXE ROOM',

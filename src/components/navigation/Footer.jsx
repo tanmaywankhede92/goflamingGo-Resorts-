@@ -107,12 +107,11 @@ export default function Footer() {
               Stay & Packages
             </span>
             <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/rooms" className="hover:text-gold transition-colors">All Accommodations</Link></li>
-              <li><Link to="/rooms/luxury-cottage" className="hover:text-gold transition-colors">Luxury Cottages</Link></li>
-              <li><Link to="/rooms/family-suite" className="hover:text-gold transition-colors">Family Suites</Link></li>
+              <li><Link to="/stay/deluxe-rooms" className="hover:text-gold transition-colors">Deluxe Rooms</Link></li>
+              <li><Link to="/stay/super-deluxe-rooms" className="hover:text-gold transition-colors">Super Deluxe Rooms</Link></li>
+              <li><Link to="/stay/dormitory" className="hover:text-gold transition-colors">Group Dormitory</Link></li>
+              <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Resort Facilities & Activities</Link></li>
               <li><Link to="/packages" className="hover:text-gold transition-colors">Curated Packages</Link></li>
-              <li><Link to="/packages/weekend-escape" className="hover:text-gold transition-colors">Weekend Escape</Link></li>
-              <li><Link to="/packages/wildlife-safari" className="hover:text-gold transition-colors">Wildlife Safari Tour</Link></li>
             </ul>
           </div>
 

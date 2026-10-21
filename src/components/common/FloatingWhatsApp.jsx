@@ -20,7 +20,7 @@ export default function FloatingWhatsApp() {
   const message = encodeURIComponent(
     'Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Pench – Sillari Gate.'
   );
-  const whatsappUrl = `https://wa.me/919372425968?text=${message}`;
+  const whatsappUrl = `https://wa.me/919561957009?text=${message}`;
 
   // Hide on mobile (always desktop-only via hidden lg:flex)
   return (

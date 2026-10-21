@@ -5,7 +5,7 @@
  * Prevents mobile Safari / Chrome blank tab bug by routing mobile directly via _self.
  */
 
-export const WHATSAPP_PHONE = '919372425968';
+export const WHATSAPP_PHONE = '919561957009';
 
 /**
  * Detect mobile device user agent

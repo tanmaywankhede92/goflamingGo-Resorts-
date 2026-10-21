@@ -275,7 +275,7 @@ export default function PenchSafariPage() {
               </a>
 
               <Link
-                to="/stay"
+                to="/stay/deluxe-rooms"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-medium uppercase tracking-[0.14em] backdrop-blur-sm transition-all duration-300 shadow-sm text-center"
               >
                 <span>EXPLORE OUR ROOMS</span>
@@ -816,7 +816,7 @@ export default function PenchSafariPage() {
               <div className="space-y-3">
                 <div className="aspect-[16/10] overflow-hidden rounded-2xl bg-black/20">
                   <img
-                    src={RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src}
+                    src={RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src}
                     alt="Deluxe Room at GoFlamingo Resort near Pench"
                     className="w-full h-full object-cover"
                   />

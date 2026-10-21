@@ -74,20 +74,22 @@ export default function App() {
 
           {/* About & Resort */}
           <Route path="about" element={<AboutPage />} />
-          <Route path="resort" element={<AboutPage />} />
+          <Route path="resort" element={<Navigate to="/resort/facilities" replace />} />
           <Route path="resort/about" element={<Navigate to="/about" replace />} />
           <Route path="resort/facilities" element={<ResortFacilities />} />
-          <Route path="resort/pool" element={<ResortPool />} />
-          <Route path="resort/dining" element={<ResortDining />} />
+          <Route path="resort/pool" element={<Navigate to="/resort/facilities" replace />} />
+          <Route path="resort/dining" element={<Navigate to="/resort/facilities" replace />} />
           <Route path="facilities" element={<Navigate to="/resort/facilities" replace />} />
           <Route path="amenities" element={<Navigate to="/resort/facilities" replace />} />
           <Route path="stay/amenities" element={<Navigate to="/resort/facilities" replace />} />
           <Route path="stay/facilities" element={<Navigate to="/resort/facilities" replace />} />
 
-          {/* Stay / Rooms Group */}
-          <Route path="rooms" element={<RoomsOverview />} />
+          {/* Stay / Rooms Group — Overview page commented out / redirected per user request */}
+          {/* <Route path="rooms" element={<RoomsOverview />} /> */}
+          {/* <Route path="stay" element={<RoomsOverview />} /> */}
+          <Route path="rooms" element={<Navigate to="/stay/deluxe-rooms" replace />} />
+          <Route path="stay" element={<Navigate to="/stay/deluxe-rooms" replace />} />
           <Route path="rooms/:slug" element={<RoomDetails />} />
-          <Route path="stay" element={<RoomsOverview />} />
           <Route path="stay/:slug" element={<RoomDetails />} />
 
           {/* Experiences Group */}
