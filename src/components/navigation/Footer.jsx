@@ -1,194 +1,299 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Logo, WhatsAppIcon } from '../common';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  ArrowUpRight,
+  ArrowRight,
+  ShieldCheck,
+} from 'lucide-react';
+import { Container, WhatsAppIcon } from '../common';
 import { QUICK_CONTACT } from '../../data/navigation';
 import { getWhatsAppTarget, buildWhatsAppUrl } from '../../utils/whatsapp';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 /**
- * Footer Component — Deep Forest Sanctuary Theme
+ * Clean & Luxurious Resort Footer Component
  * 
- * Deep, grounding luxury forest aesthetic:
- * - Rich sanctuary dark background (bg-[#08130B])
- * - Official white logo variant for dark backgrounds
- * - Muted ivory/sand typography with gold accents
- * - Clean multi-column sitemap and direct reservation contact
+ * - Unwanted quotes and redundant marketing blurbs removed
+ * - Strict 1:1 mapping with main navigation tabs (No extra/dead links)
+ * - "Gallery" cleanly labeled (No "4K" suffix)
+ * - Redesigned contact section into a clean, perfectly aligned column
+ *   replacing the bulky card widget for balanced symmetry
  */
 export default function Footer() {
   return (
-    <footer className="bg-[#08130B] text-ivory border-t border-white/10 pt-14 md:pt-20 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:pb-12 font-sans">
-      <Container size="xl">
-        
-        {/* BRAND SIGNATURE & TOP CALLOUT */}
-        <div className="pb-12 border-b border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-          <div className="space-y-3 max-w-xl">
-            {/* OFFICIAL GO FLAMINGO BRAND LOGO (Proper Authentic Identity) */}
-            <div>
-              <Link
-                to="/"
-                aria-label="Go Flamingo Resorts – Home"
-                className="inline-flex items-center px-4 py-2.5 rounded-2xl bg-white/95 border border-white/20 shadow-md hover:bg-white transition-all duration-200"
-              >
-                <img
-                  src="/assets/logo/go-flamingo-logo-trimmed.png"
-                  alt="Go Flamingo Resorts – Sillari Gate, Pench"
-                  className="h-9 sm:h-11 w-auto object-contain select-none"
-                />
-              </Link>
-            </div>
-            <div className="pt-1">
-              <span className="text-[11px] uppercase tracking-[0.2em] text-[#C5A880] font-semibold block mb-0.5">
-                Pench National Park · Sillari Gate
-              </span>
-              <p className="text-xs text-sand-light/80 font-light">
-                {QUICK_CONTACT.address} · {QUICK_CONTACT.nagpurDistance}
-              </p>
-              <div className="pt-1">
-                <a
-                  href={QUICK_CONTACT.mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#C5A880] hover:text-white transition-colors font-medium group"
-                >
-                  <svg className="w-3.5 h-3.5 text-[#C5A880] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span className="underline underline-offset-2">Get Directions on Google Maps ↗</span>
-                </a>
-              </div>
-              <p className="text-[11px] text-sand/60 font-light mt-1">
-                Safari Desk Hours: {QUICK_CONTACT.hours}
-              </p>
-            </div>
+    <footer className="relative bg-[#050E07] text-ivory border-t border-[#C5A880]/30 pt-12 sm:pt-14 lg:pt-16 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:pb-10 font-sans overflow-hidden">
+      
+      {/* Ambient Lighting Accents */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[250px] bg-[#C5A880]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-[#1A3824]/20 rounded-full blur-[100px] pointer-events-none" />
+
+      <Container size="xl" className="relative z-10">
+
+        {/* ========================================================
+            1. BRAND HEADER & ACTION BUTTONS
+            ======================================================== */}
+        <div className="pb-8 sm:pb-10 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          
+          {/* Logo & Subtitle */}
+          <div className="flex items-center gap-4">
+            <Link
+              to="/"
+              aria-label="GoFlamingo Resort – Pench Sillari Gate"
+              className="inline-block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg"
+            >
+              <img
+                src="/assets/logo/go-flamingo-logo-white.png"
+                alt="GoFlamingo Resort – Pench National Park, Sillari Gate"
+                className="h-11 sm:h-12 w-auto object-contain select-none group-hover:opacity-90 transition-opacity"
+              />
+            </Link>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          {/* Top Quick Actions */}
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 w-full sm:w-auto">
             <Link
               to="/contact?book=true#reservation-form-card"
-              className="inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.14em] font-bold hover:bg-[#d8be98] transition-colors shadow-sm text-center"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] text-[#08130B] text-xs font-bold uppercase tracking-[0.12em] shadow-md hover:from-[#E8CA9E] hover:to-[#C5A880] transition-all duration-300 text-center"
             >
-              Book Your Stay
+              <span>Book Your Stay</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#08130B]" />
             </Link>
+
             <a
-              href={buildWhatsAppUrl('Hello Go Flamingo Resort, I would like to inquire about room availability and safari booking at Pench – Sillari Gate.')}
+              href={buildWhatsAppUrl('Hello GoFlamingo Resort, I would like to inquire about room availability and safari booking at Sillari Gate.')}
               target={getWhatsAppTarget()}
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-xs uppercase tracking-[0.14em] font-semibold text-ivory transition-colors shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#0D2216] hover:bg-[#143522] border border-[#25D366]/40 hover:border-[#25D366] text-xs font-semibold uppercase tracking-[0.12em] text-white transition-all duration-300 shadow-sm"
             >
               <WhatsAppIcon size="sm" className="text-[#25D366]" />
               <span>WhatsApp Us</span>
             </a>
           </div>
+
         </div>
 
-        {/* Multi-Column Sitemap */}
-        <div className="py-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-sm">
+
+        {/* ========================================================
+            2. MAIN NAVIGATION & CONTACT COLUMNS (Perfect Alignment)
+            ======================================================== */}
+        <div className="py-10 sm:py-12 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 items-start">
           
-          {/* Column 1: About */}
-          <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              About Resort
-            </span>
-            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/about" className="hover:text-gold transition-colors">About Go Flamingo</Link></li>
-              <li><Link to="/resort" className="hover:text-gold transition-colors">Resort Overview</Link></li>
-              <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Facilities & Lawns</Link></li>
-              <li><Link to="/resort/pool" className="hover:text-gold transition-colors">Forest Stone Pool</Link></li>
-              <li><Link to="/resort/dining" className="hover:text-gold transition-colors">Dining & Cuisine</Link></li>
-              <li><Link to="/gallery" className="hover:text-gold transition-colors">Photo Gallery</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 2: Stay */}
-          <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Stay & Packages
-            </span>
-            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/stay/deluxe-rooms" className="hover:text-gold transition-colors">Deluxe Rooms</Link></li>
-              <li><Link to="/stay/super-deluxe-rooms" className="hover:text-gold transition-colors">Super Deluxe Rooms</Link></li>
-              <li><Link to="/stay/dormitory" className="hover:text-gold transition-colors">Group Dormitory</Link></li>
-              <li><Link to="/resort/facilities" className="hover:text-gold transition-colors">Resort Facilities & Activities</Link></li>
-              <li><Link to="/packages" className="hover:text-gold transition-colors">Curated Packages</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Pench & Safari Experiences */}
-          <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Pench & Safaris
-            </span>
-            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/pench" className="hover:text-gold transition-colors">Discover Pench Reserve</Link></li>
-              <li><Link to="/pench/sillari-gate" className="hover:text-gold transition-colors">Sillari Gate Advantage</Link></li>
-              <li><Link to="/experiences/safari" className="hover:text-gold transition-colors">Jungle Safaris</Link></li>
-              <li><Link to="/experiences/wildlife" className="hover:text-gold transition-colors">Wildlife & Birding</Link></li>
-              <li><Link to="/experiences/nature" className="hover:text-gold transition-colors">Nature Trails</Link></li>
-              <li><Link to="/pench/safari-guide" className="hover:text-gold transition-colors">Safari Permits & Guide</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Events & Celebrations */}
-          <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Events & Celebrations
-            </span>
-            <ul className="space-y-2 text-sand-light/80 font-light text-xs sm:text-sm">
-              <li><Link to="/events#weddings" className="hover:text-gold transition-colors">5.1 Weddings & Ceremonies</Link></li>
-              <li><Link to="/events#corporate" className="hover:text-gold transition-colors">5.2 Corporate Events</Link></li>
-              <li><Link to="/events#conferences" className="hover:text-gold transition-colors">5.3 Conference Facilities</Link></li>
-              <li><Link to="/events#social-celebrations" className="hover:text-gold transition-colors">5.4 Social Celebrations</Link></li>
-              <li><Link to="/events" className="hover:text-gold transition-colors">All Venues & Lawns</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 5: Direct Contact */}
-          <div className="space-y-3 col-span-2 md:col-span-1">
-            <span className="text-xs uppercase tracking-[0.16em] text-[#C5A880] font-semibold block">
-              Direct Contact
-            </span>
-            <div className="text-xs text-sand-light/80 space-y-2 font-light">
-              <p>
-                <a href={`tel:${QUICK_CONTACT.phoneRaw}`} className="hover:text-gold transition-colors inline-flex items-center gap-1.5">
-                  <span className="font-semibold text-ivory">Call:</span>
-                  <span>{QUICK_CONTACT.phone}</span>
-                </a>
-              </p>
-              <p>
-                <a
-                  href={QUICK_CONTACT.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gold transition-colors inline-flex items-center gap-1.5"
-                >
-                  <WhatsAppIcon size="sm" className="text-[#25D366]" />
-                  <span className="font-semibold text-ivory">WhatsApp:</span>
-                  <span>{QUICK_CONTACT.whatsapp}</span>
-                </a>
-              </p>
-              <p>
-                <a href={`mailto:${QUICK_CONTACT.email}`} className="hover:text-gold transition-colors">
-                  {QUICK_CONTACT.email}
-                </a>
-              </p>
+          {/* Column 1: Accommodations (Stay) */}
+          <div className="space-y-4">
+            <div className="border-b border-[#C5A880]/20 pb-2.5">
+              <span className="text-xs uppercase tracking-[0.20em] text-[#DFBF8E] font-bold block">
+                Accommodations
+              </span>
             </div>
+            <ul className="space-y-3 text-xs sm:text-[13px] text-[#CFC4B2] font-light">
+              <li>
+                <Link to="/stay/deluxe-rooms" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Deluxe Rooms</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/stay/super-deluxe-rooms" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Super Deluxe Balcony</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/stay/dormitory" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Group Dormitory</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/resort/facilities" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Facilities & Amenities</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 2: Quick Links (Nav Tabs Only) */}
+          <div className="space-y-4">
+            <div className="border-b border-[#C5A880]/20 pb-2.5">
+              <span className="text-xs uppercase tracking-[0.20em] text-[#DFBF8E] font-bold block">
+                Quick Links
+              </span>
+            </div>
+            <ul className="space-y-3 text-xs sm:text-[13px] text-[#CFC4B2] font-light">
+              <li>
+                <Link to="/" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>About GoFlamingo</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/pench-safari" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Pench Safari Booking</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/events" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Events & Celebrations</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Gallery</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-[#DFBF8E] transition-colors flex items-center gap-2 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DFBF8E]/40 group-hover:bg-[#DFBF8E] transition-colors" />
+                  <span>Contact Desk</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Contact & Location (Clean, Perfectly Aligned) */}
+          <div className="space-y-4">
+            <div className="border-b border-[#C5A880]/20 pb-2.5">
+              <span className="text-xs uppercase tracking-[0.20em] text-[#DFBF8E] font-bold block">
+                Contact & Location
+              </span>
+            </div>
+
+            <div className="space-y-3.5 text-xs sm:text-[13px] text-[#CFC4B2]">
+              
+              {/* Direct Call */}
+              <a
+                href={`tel:${QUICK_CONTACT.phoneRaw}`}
+                className="flex items-center gap-3 group hover:text-[#DFBF8E] transition-colors"
+              >
+                <span className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#DFBF8E] group-hover:border-[#DFBF8E]/50 group-hover:bg-[#DFBF8E]/10 transition-all shrink-0">
+                  <Phone className="w-3.5 h-3.5" />
+                </span>
+                <div className="min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-[#9E9484] block font-medium">Direct Reservations</span>
+                  <span className="font-semibold text-white group-hover:text-[#DFBF8E] transition-colors">
+                    {QUICK_CONTACT.phone}
+                  </span>
+                </div>
+              </a>
+
+              {/* WhatsApp Chat */}
+              <a
+                href={QUICK_CONTACT.whatsappUrl}
+                target={getWhatsAppTarget()}
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 group hover:text-[#25D366] transition-colors"
+              >
+                <span className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#25D366] group-hover:border-[#25D366]/50 group-hover:bg-[#25D366]/10 transition-all shrink-0">
+                  <WhatsAppIcon size="sm" className="text-[#25D366]" />
+                </span>
+                <div className="min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-[#9E9484] block font-medium">WhatsApp Concierge</span>
+                  <span className="font-semibold text-white group-hover:text-[#25D366] transition-colors">
+                    {QUICK_CONTACT.whatsapp}
+                  </span>
+                </div>
+              </a>
+
+              {/* Email Inquiries */}
+              <a
+                href={`mailto:${QUICK_CONTACT.email}`}
+                className="flex items-center gap-3 group hover:text-[#DFBF8E] transition-colors"
+              >
+                <span className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#DFBF8E] group-hover:border-[#DFBF8E]/50 group-hover:bg-[#DFBF8E]/10 transition-all shrink-0">
+                  <Mail className="w-3.5 h-3.5" />
+                </span>
+                <div className="min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-[#9E9484] block font-medium">Email Inquiries</span>
+                  <span className="text-white group-hover:text-[#DFBF8E] transition-colors truncate block">
+                    {QUICK_CONTACT.email}
+                  </span>
+                </div>
+              </a>
+
+              {/* Location & Google Maps */}
+              <a
+                href={QUICK_CONTACT.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 group hover:text-[#DFBF8E] transition-colors pt-0.5"
+              >
+                <span className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-[#DFBF8E] group-hover:border-[#DFBF8E]/50 group-hover:bg-[#DFBF8E]/10 transition-all shrink-0 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5" />
+                </span>
+                <div className="min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-[#9E9484] block font-medium">Resort Location</span>
+                  <span className="text-white font-medium block group-hover:text-[#DFBF8E] transition-colors">
+                    Sillari Gate, Pench National Park
+                  </span>
+                  <span className="text-[11px] text-[#DFBF8E] font-medium inline-flex items-center gap-1 mt-0.5 group-hover:underline">
+                    <span>Directions on Google Maps</span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </a>
+
+            </div>
+
+            {/* Direct Booking Assurance Note */}
+            <div className="pt-2 border-t border-white/10 flex items-center gap-2 text-[11px] text-[#A69B88]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
+              <span>Direct booking guarantees best tariffs & safari assistance.</span>
+            </div>
+
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-sand/60">
-          <p>© {CURRENT_YEAR} Go Flamingo Resort · Pench – Sillari Gate, Maharashtra, India.</p>
-          <div className="flex items-center gap-5 text-[11px]">
-            <Link to="/contact" className="hover:text-ivory transition-colors">Contact</Link>
-            <Link to="/pench/safari-guide" className="hover:text-ivory transition-colors">Safari Guidelines</Link>
-            <span className="text-white/20">|</span>
-            <span className="text-sand/50 tracking-wider uppercase">
-              Official Brand Website
-            </span>
+
+        {/* ========================================================
+            3. CLEAN BOTTOM BAR
+            ======================================================== */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#9E9484]">
+          
+          <div className="text-center md:text-left">
+            <p className="font-light">
+              © {CURRENT_YEAR} GoFlamingo Resort. All rights reserved.
+            </p>
+            <p className="text-[11px] text-[#7A7163] mt-0.5">
+              Sitapur, Sillari Gate, Pench National Park, Maharashtra 441401, India.
+            </p>
           </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-5 text-[11px] text-[#C4B8A6]">
+            <Link to="/" className="hover:text-white transition-colors">
+              Home
+            </Link>
+            <Link to="/about" className="hover:text-white transition-colors">
+              About
+            </Link>
+            <Link to="/stay/deluxe-rooms" className="hover:text-white transition-colors">
+              Stay
+            </Link>
+            <Link to="/pench-safari" className="hover:text-white transition-colors">
+              Safari
+            </Link>
+            <Link to="/gallery" className="hover:text-white transition-colors">
+              Gallery
+            </Link>
+            <Link to="/contact" className="hover:text-white transition-colors">
+              Contact
+            </Link>
+          </div>
+
         </div>
 
       </Container>
