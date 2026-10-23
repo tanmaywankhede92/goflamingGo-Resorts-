@@ -377,14 +377,14 @@ Website: goflamingoresorts.com`;
                       </a>
                     </div>
 
-                    {/* Manager On-Site */}
+                    {/* Managerial Desk On-Site */}
                     <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2 hover:border-[#C5A880]/40 transition-colors">
                       <div className="min-w-0">
-                        <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">Manager Desk</span>
+                        <span className="text-[10px] uppercase tracking-wider text-[#C5A880] font-medium block">Managerial Desk</span>
                         <a href={`tel:${QUICK_CONTACT.phoneSecondary.replace(/\s+/g, '')}`} className="text-xs sm:text-sm font-semibold text-white hover:text-[#C5A880] transition-colors block truncate">
                           {QUICK_CONTACT.phoneSecondary}
                         </a>
-                        <span className="text-[10px] text-[#A69B88] block">Safari support</span>
+                        <span className="text-[10px] text-[#A69B88] block">Direct manager & safari support</span>
                       </div>
                       <a
                         href={`tel:${QUICK_CONTACT.phoneSecondary.replace(/\s+/g, '')}`}

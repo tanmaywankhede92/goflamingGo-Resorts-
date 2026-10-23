@@ -144,7 +144,7 @@ export default function HeroSection() {
               to="/contact?book=true#reservation-form-card"
               variant="gold"
               size="md"
-              className="w-auto font-bold tracking-[0.12em] text-xs uppercase px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg"
+              className="hidden sm:inline-flex w-auto font-bold tracking-[0.12em] text-xs uppercase px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg whitespace-nowrap"
             >
               Plan Your Stay
             </Button>
@@ -154,10 +154,10 @@ export default function HeroSection() {
               onClick={scrollToResort}
               variant="inverted"
               size="md"
-              className="w-auto font-semibold tracking-[0.12em] text-xs uppercase px-5 sm:px-7 py-3 sm:py-3.5 cursor-pointer shadow-md inline-flex items-center gap-2"
+              className="w-auto font-semibold tracking-[0.12em] text-xs uppercase px-5 sm:px-7 py-3 sm:py-3.5 cursor-pointer shadow-md inline-flex items-center justify-center gap-2 whitespace-nowrap"
             >
-              <span>Explore the Resort</span>
-              <ArrowDown className="w-3.5 h-3.5" />
+              <span className="whitespace-nowrap">Explore the Resort</span>
+              <ArrowDown className="w-3.5 h-3.5 shrink-0" />
             </Button>
           </div>
 

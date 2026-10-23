@@ -200,7 +200,7 @@ export const ROOMS_DATA = {
     heroImage: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src,
     gallery: [
       { src: RESORT_DRIVE_PHOTOS.executiveBedroomBalcony.src, alt: 'Super Deluxe Room Private Balcony View' },
-      { src: AUTHENTIC_RESORT.photos.deluxeBedroom.src, alt: 'Super Deluxe Bedroom with Teak Finishes and King Bed' },
+      { src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src, alt: 'Super Deluxe Bedroom Suite with Large Window and Bathtub View' },
       { src: AUTHENTIC_RESORT.photos.sunlitVerandah.src, alt: 'First-Floor Balcony Corridor and Sunlit Archways' },
       { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Illuminated Haveli Courtyard View from Balcony' },
     ],
@@ -324,9 +324,9 @@ export const ROOMS_DATA = {
     heroImage: AUTHENTIC_RESORT.photos.dormitoryRoom.src,
     gallery: [
       { src: AUTHENTIC_RESORT.photos.dormitoryRoom.src, alt: 'Spacious Group Dormitory with Individual Beds and Split AC' },
+      { src: RESORT_DRIVE_PHOTOS.executiveBedroomDorm.src, alt: 'Group Dormitory Hall Setup with Multiple Beds, TV & Attached Bath' },
       { src: AUTHENTIC_RESORT.photos.restaurantBarHall.src, alt: 'Communal Dining Hall and Recreation' },
       { src: AUTHENTIC_RESORT.photos.archedCorridorFountain.src, alt: 'Courtyard Corridors connecting Dormitory' },
-      { src: AUTHENTIC_RESORT.photos.courtyardTwilight.src, alt: 'Night Lawns for Group Gatherings' },
     ],
     quickDetails: [
       { label: 'Accommodation', value: 'Shared Dormitory' },

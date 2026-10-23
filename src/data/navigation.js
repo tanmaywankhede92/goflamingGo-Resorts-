@@ -25,8 +25,6 @@ export const NAV_ITEMS = [
       image: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
       title: 'Haveli Living & Garden Suites',
       description: '20 comfortable air-conditioned rooms, haveli verandahs, swimming pool, and pristine Sillari Gate proximity.',
-      cta: 'Explore Stays & Facilities',
-      path: '/resort/facilities',
     },
     sections: [
       {
@@ -77,12 +75,12 @@ export const NAV_ITEMS = [
 
 export const QUICK_CONTACT = {
   phone: "+91 95619 57009",
-  phoneSecondary: "+91 93724 25968",
+  phoneSecondary: "+91 90493 19111",
   phoneRaw: "+919561957009",
   whatsapp: "+91 95619 57009",
   whatsappNumber: "919561957009",
   whatsappUrl: "https://wa.me/919561957009",
-  email: "Info@Goflamingoresorts.Com",
+  email: "info@goflamingoresorts.com",
   hours: "07:00 AM – 22:00 PM (Monday – Sunday)",
   address: "Sillari Gate Pench National Park, Sitapur, Maharashtra 441401, India",
   nagpurDistance: "~65 km (1 hr drive via NH 44)",

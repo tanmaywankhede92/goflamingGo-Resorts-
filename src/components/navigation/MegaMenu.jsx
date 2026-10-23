@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Container } from '../common';
 import { cn } from '../../utils/cn';
 
@@ -95,9 +94,7 @@ export default function MegaMenu({
           {/* Editorial Visual Preview Card (5 cols — Luxury Spotlight) */}
           {item.preview && (
             <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-[#E5DAC7] pt-6 lg:pt-0 lg:pl-8 flex">
-              <Link
-                to={item.preview.path}
-                onClick={onClose}
+              <div
                 className="group relative w-full rounded-2xl overflow-hidden bg-[#0E2718] text-white border border-[#C5A880]/30 shadow-xl flex flex-col justify-between hover:border-[#DFBF8E] transition-all duration-300"
               >
                 {/* Upper Photo with Vignette */}
@@ -128,16 +125,8 @@ export default function MegaMenu({
                       {item.preview.description}
                     </p>
                   </div>
-
-                  {/* Clean CTA Button */}
-                  <div className="pt-3.5 mt-3 border-t border-white/10 flex items-center justify-between">
-                    <span className="text-[11px] uppercase tracking-[0.14em] text-[#DFBF8E] font-bold group-hover:text-white transition-colors flex items-center gap-1.5">
-                      <span>{item.preview.cta}</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
-                  </div>
                 </div>
-              </Link>
+              </div>
             </div>
           )}
 
