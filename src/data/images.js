@@ -12,7 +12,7 @@
  * GO FLAMINGO RESORT — CURATED PHOTOGRAPHY & VISUAL ASSETS
  * 
  * High-resolution destination imagery embodying:
- * - Real Go Flamingo Resort property architecture, entrance & haveli corridors
+ * - Real Go Flamingo Resort property architecture, entrance &  corridors
  * - Authentic Deluxe & Dormitory rooms
  * - Real swimming pool, restaurant & bar with chandeliers
  * - Pench Tiger Reserve forest & Sillari Gate wilderness
@@ -198,10 +198,22 @@ export const RESORT_DRIVE_PHOTOS = {
     title: 'Conference & Club Lounge',
   },
   conferenceHallEnhanced: {
-    src: '/assets/resort_drive/conference_hall_enhanced.jpg',
-    alt: 'Corporate executive conference and strategy meeting in the club lounge at Go Flamingo Resort Pench',
+    src: '/assets/resort_drive/conference_hall_front.jpg',
+    alt: 'Grand air-conditioned conference hall with presentation screen and executive seating at Go Flamingo Resort Pench',
     tag: 'Conference & Offsites',
     title: 'Executive Conference Room',
+  },
+  conferenceHallFront: {
+    src: '/assets/resort_drive/conference_hall_front.jpg',
+    alt: 'Grand air-conditioned conference hall with presentation screen and executive seating at Go Flamingo Resort Pench',
+    tag: 'Conference & Offsites',
+    title: 'Executive Conference Room',
+  },
+  conferenceHallAngle: {
+    src: '/assets/resort_drive/conference_hall_angle.jpg',
+    alt: 'Conference hall with chandeliers, audio-visual stage, and theatre seating at Go Flamingo Resort Pench',
+    tag: 'Corporate Gatherings',
+    title: 'Conference Hall Perspective',
   },
   weddingLawnEnhanced: {
     src: '/assets/resort_drive/wedding_lawn_enhanced.jpg',

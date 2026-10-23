@@ -92,7 +92,7 @@ export default function AccommodationsShowcase() {
         'Air Conditioning',
         'Multiple Washroom Facilities',
       ],
-      primaryButtonText: 'Enquire About the Dormitory',
+      primaryButtonText: 'Explore Dormitory',
       whatsappButtonText: 'WhatsApp Enquiry',
       whatsappMessage: 'Hello Go Flamingo Resort, I would like to inquire about dormitory shared accommodation for our group.',
     },
@@ -206,9 +206,6 @@ export default function AccommodationsShowcase() {
                   >
                     <span className="sm:hidden">{r.shortLabel}</span>
                     <span className="hidden sm:inline">{r.tabLabel}</span>
-                    {isActive && !isPaused && (
-                      <span className="absolute bottom-0.5 left-2 right-2 h-0.5 bg-[#08130B]/50 rounded-full animate-pulse" />
-                    )}
                   </button>
                 );
               })}
@@ -247,13 +244,13 @@ export default function AccommodationsShowcase() {
               ))}
             </div>
 
-            {/* 6. DIRECT CONVERSION ACTIONS (Sleek unified size matching all site CTAs) */}
-            <div className="pt-2 flex flex-row items-center gap-2.5 sm:gap-3.5 w-full">
+            {/* 6. DIRECT CONVERSION ACTIONS (Responsive stack on mobile for perfect fit) */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 w-full">
               <Link
-                to={`/contact?room=${current.id}&book=true#reservation-form-card`}
-                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 pl-4 pr-1.5 py-2 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-[11px] sm:text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] cursor-pointer whitespace-nowrap"
+                to={current.id === 'dormitory' ? '/stay/dormitory' : `/contact?room=${current.id}&book=true#reservation-form-card`}
+                className="group flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:pl-5 sm:pr-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#DFBF8E] via-[#C5A880] to-[#B39366] hover:from-[#E8CA9E] hover:to-[#C5A880] text-[#08130B] text-xs uppercase tracking-[0.12em] font-bold transition-all duration-300 shadow-[0_4px_16px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_22px_rgba(197,168,128,0.4)] border border-[#F3DFC1] cursor-pointer whitespace-nowrap text-center"
               >
-                <span>{current.primaryButtonText || 'Book This Room'}</span>
+                <span>{current.id === 'dormitory' ? 'Explore Dormitory' : (current.primaryButtonText || 'Book This Room')}</span>
                 <span className="w-5.5 h-5.5 sm:w-6 sm:h-6 rounded-full bg-[#08130B] text-[#DFBF8E] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0 shadow-inner">
                   <ArrowRight className="w-3 h-3 text-[#DFBF8E]" />
                 </span>
@@ -263,7 +260,7 @@ export default function AccommodationsShowcase() {
                 href={`${QUICK_CONTACT.whatsappUrl}?text=${encodeURIComponent(current.whatsappMessage || `Hello Go Flamingo Resort, I would like to inquire about availability for ${current.title}.`)}`}
                 target={typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ? '_self' : '_blank'}
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-[11px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] cursor-pointer whitespace-nowrap"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-full bg-[#0D2418]/90 hover:bg-[#133522] border-2 border-[#25D366]/50 hover:border-[#25D366] text-xs uppercase tracking-[0.08em] sm:tracking-[0.10em] font-bold text-white transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.2)] cursor-pointer whitespace-nowrap text-center"
               >
                 <WhatsAppIcon size="sm" className="text-[#25D366] shrink-0" />
                 <span>{current.whatsappButtonText || 'WhatsApp Inquiry'}</span>

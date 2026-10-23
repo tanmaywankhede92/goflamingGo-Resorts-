@@ -79,7 +79,17 @@ export default function HeroSection() {
           ======================================================== */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         
-        {/* Authentic Rajasthani Haveli Courtyard Footage */}
+        {/* Eager Above-The-Fold Fallback Poster (Instant 0ms First Paint) */}
+        <img
+          src={heroMedia.poster}
+          alt="Go Flamingo Resort aerial architecture, entrance, canopy and turquoise swimming pool"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+        />
+
+        {/* Authentic Rajasthani Haveli Courtyard Footage (Fades smoothly over poster once ready) */}
         {!prefersReducedMotion && (
           <video
             ref={videoRef}
@@ -92,7 +102,7 @@ export default function HeroSection() {
             onLoadedData={() => setVideoLoaded(true)}
             aria-label={heroMedia.title}
             className={cn(
-              "w-full h-full object-cover object-center transition-opacity duration-1000",
+              "absolute inset-0 w-full h-full object-cover object-center z-[1] transition-opacity duration-1000",
               videoLoaded ? "opacity-100" : "opacity-0"
             )}
           >
@@ -100,18 +110,6 @@ export default function HeroSection() {
             <source src={heroMedia.mp4} type="video/mp4" />
           </video>
         )}
-
-        {/* Eager Fallback Poster */}
-        <img
-          src={heroMedia.poster}
-          alt="Go Flamingo Resort aerial architecture, entrance, canopy and turquoise swimming pool"
-          fetchPriority="high"
-          loading="eager"
-          className={cn(
-            "absolute inset-0 w-full h-full object-cover object-center",
-            videoLoaded && !prefersReducedMotion ? "opacity-0 pointer-events-none" : "opacity-100"
-          )}
-        />
 
         {/* Tailored architectural scrims — let property arches shine through while ensuring readable text */}
         <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/95 via-forest-deep/45 to-forest-dark/45" />
@@ -123,7 +121,7 @@ export default function HeroSection() {
           HERO COMPOSITION — ANCHORED AT THE BOTTOM
           WITH SAFE CLEARANCE ABOVE MOBILE WHATSAPP & STICKY BAR
           ======================================================== */}
-      <Container size="lg" className="relative z-10 w-full text-left sm:text-center pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] sm:pb-14 lg:pb-18 pt-16 sm:pt-20 px-5 sm:px-6 pr-16 sm:pr-6">
+      <Container size="lg" className="relative z-10 w-full text-left sm:text-center pb-[calc(7.25rem+env(safe-area-inset-bottom,0px))] sm:pb-14 lg:pb-18 pt-12 sm:pt-20 px-5 sm:px-6 sm:pr-6">
         <div ref={contentRef} className="max-w-2xl mx-0 sm:mx-auto space-y-2 sm:space-y-3.5">
 
 

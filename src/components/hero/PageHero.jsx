@@ -64,7 +64,7 @@ function renderHeroAction(act, idx, defaultVariant = 'gold') {
  * 1. 'cinematic' & 'large' - Full-bleed authentic photography with architectural dark scrim
  * 2. 'dark'                - Immersive twilight mood with teak canopy backdrops
  * 3. 'split'               - Refined editorial presentation
- * 4. 'minimal'             - Elegant light haveli palette for policy / informational pages
+ * 4. 'minimal'             - Elegant light  palette for policy / informational pages
  */
 export default function PageHero({
   variant = 'large',

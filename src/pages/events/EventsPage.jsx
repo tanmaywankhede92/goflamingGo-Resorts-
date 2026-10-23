@@ -143,18 +143,18 @@ export default function EventsPage() {
         'Enquire About Availability',
       ],
       buttonText: 'ENQUIRE FOR CONFERENCES',
-      primaryPhoto: RESORT_DRIVE_PHOTOS.gameZoneLounge.src,
-      primaryAlt: 'Go Flamingo Resort air-conditioned conference hall and executive club lounge',
+      primaryPhoto: RESORT_DRIVE_PHOTOS.conferenceHallFront.src,
+      primaryAlt: 'Go Flamingo Resort air-conditioned conference hall with presentation screen and theatre seating',
       secondaryPhotos: [
+        {
+          src: RESORT_DRIVE_PHOTOS.conferenceHallAngle.src,
+          alt: 'Conference hall chandeliers and audio-visual stage setup',
+          label: 'Conference Hall Perspective & Stage',
+        },
         {
           src: AUTHENTIC_RESORT.photos.diningBanquetArches.src,
           alt: 'Restaurant dining hall with arched windows and comfortable booth seating',
           label: 'Executive Dining & Breakout Space',
-        },
-        {
-          src: AUTHENTIC_RESORT.photos.sunlitVerandah.src,
-          alt: 'Sunlit arched verandah for tea breaks',
-          label: 'Verandah Coffee Break Lounge',
         },
       ],
       whatsappMsg: 'Hello Go Flamingo Resort, I would like to enquire about meetings and conferences at the resort.',

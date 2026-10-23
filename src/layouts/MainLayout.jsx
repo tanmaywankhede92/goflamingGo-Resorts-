@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar';
 import Footer from '../components/navigation/Footer';
 import StickyBookingBar from '../components/navigation/StickyBookingBar';
-import { FloatingWhatsApp, LuxuryPreloader } from '../components/common';
+import { FloatingWhatsApp } from '../components/common';
 
 /**
  * MainLayout
@@ -15,10 +15,11 @@ export default function MainLayout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased selection:bg-gold/30 selection:text-forest-deep">
-      <LuxuryPreloader minDuration={2800} />
       <Navbar />
       <main className="flex-1 w-full">
-        <Outlet />
+        <Suspense fallback={<div className="min-h-[70vh] bg-ivory" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <StickyBookingBar />
       <FloatingWhatsApp />

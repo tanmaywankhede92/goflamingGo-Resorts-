@@ -134,8 +134,8 @@ export default function AboutPage() {
     {
       title: 'Conference Room',
       category: 'Meetings & Conclaves',
-      image: RESORT_DRIVE_PHOTOS.gameZoneLounge.src,
-      alt: 'Go Flamingo Conference Room and Club Lounge',
+      image: RESORT_DRIVE_PHOTOS.conferenceHallFront.src,
+      alt: 'Go Flamingo Conference Room with Audio-Visual Setup and Theatre Seating',
       description:
         'Dedicated air-conditioned facility equipped for corporate meetings, workshops, strategy retreats, and group presentations in a quiet wilderness setting.',
       badge: 'Corporate Facility',

@@ -199,8 +199,8 @@ export const EXPERIENCES_HUB_DATA = {
     title: 'Stay at Go Flamingo Resort',
     lead: 'Pair your wilderness adventures with restful comfort under the teak canopy.',
     cottage: {
-      title: 'Deluxe Haveli Room',
-      desc: 'Comfortable air-conditioned haveli room with teak furnishings, modern bath with bathtub, and private sit-out.',
+      title: 'Deluxe  Room',
+      desc: 'Comfortable air-conditioned  room with teak furnishings, modern bath with bathtub, and private sit-out.',
       image: IMAGES.rooms.cottage,
       to: '/stay/deluxe-rooms'
     },

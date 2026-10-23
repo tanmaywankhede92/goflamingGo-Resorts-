@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -12,31 +12,30 @@ function BookToContactRedirect() {
   return <Navigate to={`/contact${search}#reservation-form-card`} replace />;
 }
 
-// Page components
+// Statically imported for immediate first paint
 import HomePage from './pages/home/HomePage';
-import AboutPage from './pages/about/AboutPage';
-import { ResortFacilities } from './pages/resort/ResortPages';
-import { RoomDetails } from './pages/rooms/RoomsPages';
-import {
-  ExperiencesOverview,
-  SafariPage,
-  WildlifePage,
-  NaturePage,
-  FamilyPage,
-  CouplesPage,
-} from './pages/experiences/ExperiencesPages';
-import MasterEventsPage from './pages/events/EventsPage';
-import DiningPage from './pages/dining/DiningPage';
-import PenchSafariPage from './pages/pench/PenchSafariPage';
-import {
-  SillariGatePage,
-  ThingsToDoPage,
-  HowToReachPage,
-  BestTimeToVisitPage,
-} from './pages/pench/PenchPages';
-import { PackagesOverview, PackageDetails } from './pages/packages/PackagesPages';
-import GalleryPage from './pages/gallery/GalleryPage';
-import ContactPage from './pages/contact/ContactPage';
+
+// Lazy-loaded routes for ultra-fast initial bundle loading
+const AboutPage = lazy(() => import('./pages/about/AboutPage'));
+const ResortFacilities = lazy(() => import('./pages/resort/ResortPages').then(m => ({ default: m.ResortFacilities })));
+const RoomDetails = lazy(() => import('./pages/rooms/RoomsPages').then(m => ({ default: m.RoomDetails })));
+const ExperiencesOverview = lazy(() => import('./pages/experiences/ExperiencesPages').then(m => ({ default: m.ExperiencesOverview })));
+const SafariPage = lazy(() => import('./pages/experiences/ExperiencesPages').then(m => ({ default: m.SafariPage })));
+const WildlifePage = lazy(() => import('./pages/experiences/ExperiencesPages').then(m => ({ default: m.WildlifePage })));
+const NaturePage = lazy(() => import('./pages/experiences/ExperiencesPages').then(m => ({ default: m.NaturePage })));
+const FamilyPage = lazy(() => import('./pages/experiences/ExperiencesPages').then(m => ({ default: m.FamilyPage })));
+const CouplesPage = lazy(() => import('./pages/experiences/ExperiencesPages').then(m => ({ default: m.CouplesPage })));
+const MasterEventsPage = lazy(() => import('./pages/events/EventsPage'));
+const DiningPage = lazy(() => import('./pages/dining/DiningPage'));
+const PenchSafariPage = lazy(() => import('./pages/pench/PenchSafariPage'));
+const SillariGatePage = lazy(() => import('./pages/pench/PenchPages').then(m => ({ default: m.SillariGatePage })));
+const ThingsToDoPage = lazy(() => import('./pages/pench/PenchPages').then(m => ({ default: m.ThingsToDoPage })));
+const HowToReachPage = lazy(() => import('./pages/pench/PenchPages').then(m => ({ default: m.HowToReachPage })));
+const BestTimeToVisitPage = lazy(() => import('./pages/pench/PenchPages').then(m => ({ default: m.BestTimeToVisitPage })));
+const PackagesOverview = lazy(() => import('./pages/packages/PackagesPages').then(m => ({ default: m.PackagesOverview })));
+const PackageDetails = lazy(() => import('./pages/packages/PackagesPages').then(m => ({ default: m.PackageDetails })));
+const GalleryPage = lazy(() => import('./pages/gallery/GalleryPage'));
+const ContactPage = lazy(() => import('./pages/contact/ContactPage'));
 
 /**
  * App Root Component

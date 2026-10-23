@@ -33,6 +33,7 @@ import { QUICK_CONTACT } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 import { getWhatsAppTarget } from '../../utils/whatsapp';
 import ClosingCallToAction from '../home/components/ClosingCallToAction';
+import HorizonStreamSection from './components/HorizonStreamSection';
 
 // =========================================================================
 // 1. CURATED 5-STAR LUXURY PROPERTY ASSETS (NO RAW/UNFLATTERING SHOTS)
@@ -58,8 +59,8 @@ const MASTER_CURATED_MEDIA = [
     id: 'vid-2',
     type: 'video',
     category: 'Videos',
-    tag: 'Haveli Heritage',
-    title: 'Haveli Courtyard & Pitcher Fountain',
+    tag: ' Heritage',
+    title: ' Courtyard & Pitcher Fountain',
     subtitle: 'Rajasthani scalloped arches, carved balconies and central water fountain',
     videoSrc: AUTHENTIC_RESORT.videos.courtyard.mp4,
     webmSrc: AUTHENTIC_RESORT.videos.courtyard.webm,
@@ -88,7 +89,7 @@ const MASTER_CURATED_MEDIA = [
     category: 'Videos',
     tag: 'Grand Entrance',
     title: 'Grand Arched Entrance & Lion Statues',
-    subtitle: 'Palatial entrance portico, multi-tiered fountains and haveli architecture',
+    subtitle: 'Palatial entrance portico, multi-tiered fountains and  architecture',
     videoSrc: AUTHENTIC_RESORT.videos.entrance.mp4,
     webmSrc: AUTHENTIC_RESORT.videos.entrance.webm,
     poster: AUTHENTIC_RESORT.videos.entrance.poster,
@@ -116,8 +117,8 @@ const MASTER_CURATED_MEDIA = [
     id: 'arch-1',
     type: 'photo',
     category: 'Resort',
-    tag: 'Haveli Courtyard',
-    title: 'Twilight Haveli Courtyard',
+    tag: 'Courtyard',
+    title: 'Twilight  Courtyard',
     subtitle: 'Illuminated stone walkways, scalloped arches and warm evening ambiance',
     src: AUTHENTIC_RESORT.photos.courtyardTwilight.src,
     aspect: 'aspect-4/3',
@@ -207,10 +208,10 @@ const MASTER_CURATED_MEDIA = [
     id: 'rec-2',
     type: 'photo',
     category: 'Leisure',
-    tag: 'Club Lounge',
-    title: 'Executive Conference Room & Lounge',
-    subtitle: 'Air-conditioned conference facility with jharokha windows for corporate offsites',
-    src: RESORT_DRIVE_PHOTOS.gameZoneLounge.src,
+    tag: 'Conference Hall',
+    title: 'Executive Conference Room',
+    subtitle: 'Air-conditioned conference facility with presentation screen and theatre seating for corporate offsites',
+    src: RESORT_DRIVE_PHOTOS.conferenceHallFront.src,
     aspect: 'aspect-16/9',
     ribbonWidth: 'w-80 sm:w-96 md:w-[440px]',
   },
@@ -290,7 +291,7 @@ const MASTER_CURATED_MEDIA = [
     type: 'photo',
     category: 'Rooms',
     tag: 'Deluxe Room',
-    title: 'Deluxe Haveli Bedroom with Extra Bed & Teak Finishes',
+    title: 'Deluxe  Bedroom with Extra Bed & Teak Finishes',
     subtitle: 'Handcrafted king-size teak bed, additional bed alcove, TV console, and en-suite bath',
     src: RESORT_DRIVE_PHOTOS.deluxeBedroomFull.src,
     aspect: 'aspect-4/3',
@@ -301,7 +302,7 @@ const MASTER_CURATED_MEDIA = [
     type: 'photo',
     category: 'Rooms',
     tag: 'Deluxe Room',
-    title: 'Deluxe Haveli Bedroom with Bathtub Suite',
+    title: 'Deluxe Bedroom with Bathtub Suite',
     subtitle: 'Comfortable air-conditioned deluxe room with modern en-suite bathtub and sitting area',
     src: RESORT_DRIVE_PHOTOS.bedroomSuiteBathtub.src,
     aspect: 'aspect-4/3',
@@ -416,7 +417,7 @@ const MASTER_CURATED_MEDIA = [
 const FILTER_TABS = [
   { id: 'All', label: 'All Highlights', icon: Sparkles, count: MASTER_CURATED_MEDIA.length },
   { id: 'Videos', label: 'Property Films', icon: Film, count: MASTER_CURATED_MEDIA.filter((m) => m.type === 'video').length },
-  { id: 'Resort', label: 'Haveli Architecture', icon: Landmark, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Resort').length },
+  { id: 'Resort', label: 'Architecture', icon: Landmark, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Resort').length },
   { id: 'Rooms', label: 'Luxury Stays', icon: BedDouble, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Rooms').length },
   { id: 'Dining', label: 'Dining & Bar', icon: UtensilsCrossed, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Dining').length },
   { id: 'Wildlife', label: 'Pench Safaris', icon: Compass, count: MASTER_CURATED_MEDIA.filter((m) => m.category === 'Wildlife').length },
@@ -551,28 +552,42 @@ function GalleryCard({ item, index, activeCategory, onOpenLightbox }) {
           : "col-span-1 h-[175px] sm:h-[260px] lg:h-[298px]"
       )}
     >
-      {/* Media: Real continuous live autoplaying looped video if property film, else photo */}
+      {/* Media: Real continuous live autoplaying looped video for hero, instant crisp poster for others */}
       <div className="relative w-full h-full overflow-hidden bg-forest-dark">
         {isVideo ? (
-          <video
-            src={item.videoSrc}
-            poster={item.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            onPause={(e) => {
-              // Ensure video keeps playing smoothly without staying paused
-              e.target.play().catch(() => {});
-            }}
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-          />
+          <div className="relative w-full h-full">
+            {isHero ? (
+              <video
+                src={item.videoSrc}
+                poster={item.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+            ) : (
+              <img
+                src={item.poster}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-[0.98]"
+              />
+            )}
+            <div className="absolute top-3.5 right-3.5 z-10 pointer-events-none">
+              <span className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-ivory border border-[#C5A880]/50 flex items-center justify-center shadow-lg group-hover:bg-[#C5A880] group-hover:text-[#08130B] transition-colors">
+                <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+              </span>
+            </div>
+          </div>
         ) : (
           <img
             src={item.src}
             alt={item.title}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-[0.98]"
           />
         )}
@@ -608,8 +623,6 @@ function GalleryCard({ item, index, activeCategory, onOpenLightbox }) {
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  
-  const [isHoverPaused, setIsHoverPaused] = useState(false);
 
   // Featured Theater Video State
   const [activeVideoIdx, setActiveVideoIdx] = useState(0);
@@ -628,13 +641,13 @@ export default function GalleryPage() {
       tag: 'Aerial 4K',
     },
     {
-      title: 'Haveli Courtyard & Scalloped Arches',
+      title: 'Courtyard & Scalloped Arches',
       subtitle: 'Traditional Rajasthani courtyard architecture, water fountain and evening lighting',
       src: AUTHENTIC_RESORT.videos.courtyard.mp4,
       webm: AUTHENTIC_RESORT.videos.courtyard.webm,
       poster: AUTHENTIC_RESORT.videos.courtyard.poster,
       duration: '0:05',
-      tag: 'Haveli Heritage',
+      tag: 'Heritage',
     },
     {
       title: 'Turquoise Swimming Pool & Deck',
@@ -752,9 +765,6 @@ export default function GalleryPage() {
     setIsVideoPlaying(true);
   };
 
-  // Duplicate items for continuous seamless horizon stream
-  const horizonStreamItems = [...MASTER_CURATED_MEDIA, ...MASTER_CURATED_MEDIA];
-
   return (
     <div className="w-full bg-[#FAF8F5] text-charcoal font-sans antialiased overflow-x-hidden selection:bg-gold/30 selection:text-forest-deep">
       
@@ -764,7 +774,15 @@ export default function GalleryPage() {
       <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         
         {/* Background Full Frame Media — Cinematic Aerial Drone View & Property Panorama */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <img
+            src={AUTHENTIC_RESORT.videos.heroAerial.poster}
+            alt="Aerial view of Go Flamingo Resort, teak forest canopy and haveli grounds at Sillari Pench"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          />
           <video
             autoPlay
             loop
@@ -772,21 +790,15 @@ export default function GalleryPage() {
             playsInline
             preload="metadata"
             poster={AUTHENTIC_RESORT.videos.heroAerial.poster}
-            aria-label="Aerial view of Go Flamingo Resort, teak forest canopy and haveli grounds"
-            className="w-full h-full object-cover object-center"
+            aria-label="Aerial view of Go Flamingo Resort, teak forest canopy and grounds"
+            className="absolute inset-0 w-full h-full object-cover object-center z-[1]"
           >
             <source src={AUTHENTIC_RESORT.videos.heroAerial.webm} type="video/webm" />
             <source src={AUTHENTIC_RESORT.videos.heroAerial.mp4} type="video/mp4" />
           </video>
-          <img
-            src={AUTHENTIC_RESORT.videos.heroAerial.poster}
-            alt="Aerial view of Go Flamingo Resort, teak forest canopy and haveli grounds at Sillari Pench"
-            fetchPriority="high"
-            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none -z-10"
-          />
           {/* Tailored architectural gradient scrims */}
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden" />
+          <div className="absolute inset-0 z-[2] bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25 pointer-events-none" />
+          <div className="absolute inset-0 z-[2] bg-gradient-to-r from-forest-dark/90 via-forest-dark/40 to-transparent sm:block hidden pointer-events-none" />
         </div>
 
         {/* Foreground Content */}
@@ -800,7 +812,7 @@ export default function GalleryPage() {
 
             {/* Concise Supporting Copy */}
             <p className="text-xs sm:text-base md:text-lg text-sand-light/95 leading-relaxed font-light max-w-2xl">
-              Authentic high-resolution photographs, drone aerials, and peaceful glimpses of haveli life at the threshold of Pench Tiger Reserve.
+              Authentic high-resolution photographs, drone aerials, and peaceful glimpses of resort life at the threshold of Pench Tiger Reserve.
             </p>
 
             {/* Simple Dual Actions */}
@@ -830,94 +842,16 @@ export default function GalleryPage() {
 
       {/* ========================================================
           2. THE GRAND HORIZON STREAM (ARCHITECTURAL LUXURY FILMSTRIP)
-          Reimagined for ultra-premium luxury feel with speed controller
+          Auto-scrolls smoothly, supports touch/finger scrolling on mobile,
+          drag-scroll on desktop, and includes left/right navigation controls.
           ======================================================== */}
-      {/* ========================================================
-          2. THE GRAND HORIZON STREAM (ARCHITECTURAL LUXURY FILMSTRIP)
-          Reimagined with Warm Sandstone Luxury Light Aesthetic
-          ======================================================== */}
-      <section
-        id="horizon-stream-section"
-        className="py-12 sm:py-16 bg-gradient-to-b from-[#FAF6F0] via-[#F4EDE2] to-[#EFE7D8] text-[#1A2E22] overflow-hidden border-y border-[#E2D6C0] relative scroll-mt-20"
-        onMouseEnter={() => setIsHoverPaused(true)}
-        onMouseLeave={() => setIsHoverPaused(false)}
-        onTouchStart={() => setIsHoverPaused(true)}
-        onTouchEnd={() => setTimeout(() => setIsHoverPaused(false), 2400)}
-      >
-        
-        {/* Stream Header */}
-        <Container size="xl" className="mb-6 sm:mb-8">
-          <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#10251B] font-normal tracking-tight">
-              A Visual Odyssey Across GoFlamingo
-            </h2>
-          </div>
-        </Container>
-
-        {/* The Continuous Horizon Stream Canvas - Slow Luxury Drift by Default */}
-        <div className="relative w-full overflow-hidden flex py-2">
-          <div
-            className={cn(
-              "animate-stream-slow",
-              isHoverPaused && "animation-paused"
-            )}
-          >
-            {horizonStreamItems.map((item, idx) => (
-              <div
-                key={`stream-${item.id}-${idx}`}
-                onClick={() => setLightboxIndex(MASTER_CURATED_MEDIA.findIndex((m) => m.id === item.id))}
-                className={cn(
-                  "group relative h-[360px] sm:h-[420px] md:h-[460px] rounded-3xl overflow-hidden shrink-0 cursor-pointer shadow-[0_12px_36px_rgba(16,37,27,0.10)] border border-[#DFD5C2] hover:border-[#C5A880] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(16,37,27,0.18)] mx-3 sm:mx-4 bg-white",
-                  item.ribbonWidth || 'w-80 sm:w-96'
-                )}
-              >
-                {/* Media Image / Video Poster */}
-                <img
-                  src={item.src || item.poster}
-                  alt={item.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-1000 filter brightness-[0.98] contrast-[1.02]"
-                  loading="lazy"
-                />
-
-                {/* Subtle Luxury Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08130B]/95 via-[#08130B]/25 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300" />
-                
-                {/* Video Play Badge if Video */}
-                {item.type === 'video' && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md text-[#10251B] border border-[#E5DAC7] flex items-center justify-center shadow-lg group-hover:bg-[#C5A880] group-hover:text-[#08130B] transition-colors">
-                      <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                    </span>
-                  </div>
-                )}
-
-                {/* Minimal Elegant Bottom Caption */}
-                <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="text-base sm:text-lg font-serif font-bold text-white tracking-tight drop-shadow-md">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#EAE2D5] font-light truncate mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {item.subtitle}
-                  </p>
-                </div>
-
-                {/* Hover Center Magnifier */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="w-14 h-14 rounded-full bg-[#C5A880] text-[#08130B] flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                    {item.type === 'video' ? (
-                      <Play className="w-6 h-6 fill-[#08130B] text-[#08130B] ml-0.5" />
-                    ) : (
-                      <Maximize2 className="w-6 h-6 text-[#08130B]" />
-                    )}
-                  </div>
-                </div>
-
-              </div>
-            ))}
-          </div>
-        </div>
-
-      </section>
+      <HorizonStreamSection
+        mediaItems={MASTER_CURATED_MEDIA}
+        onSelectMedia={(item) => {
+          const idx = MASTER_CURATED_MEDIA.findIndex((m) => m.id === item.id);
+          if (idx !== -1) setLightboxIndex(idx);
+        }}
+      />
 
 
       {/* ========================================================
@@ -1266,7 +1200,7 @@ export default function GalleryPage() {
       <ClosingCallToAction
         eyebrow="Visit Pench · Sillari Gate"
         title="Experience the Sanctuary in Person"
-        description="Photographs and films are only the beginning. Step inside our tranquil haveli verandahs, feel the evening forest breeze, and set out for dawn tiger safaris."
+        description="Photographs and films are only the beginning. Step inside our tranquil  verandahs, feel the evening forest breeze, and set out for dawn tiger safaris."
         primaryBtnLabel="Book Your Stay Online"
         whatsappLabel="WhatsApp Instant Inquiry"
         whatsappMsg="Hello Go Flamingo Resort, I was viewing your website gallery and would like to inquire about room availability and safari booking at Sillari Gate."

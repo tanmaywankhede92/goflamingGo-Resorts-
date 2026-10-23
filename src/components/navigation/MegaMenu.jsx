@@ -1,5 +1,6 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, X } from 'lucide-react';
 import { Container } from '../common';
 import { cn } from '../../utils/cn';
 

@@ -117,8 +117,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: Quick Links (Nav Tabs Only) */}
-          <div className="space-y-4">
+          {/* Column 2: Quick Links (Desktop & Tablet only - hidden on mobile) */}
+          <div className="hidden sm:block space-y-4">
             <div className="border-b border-[#C5A880]/20 pb-2.5">
               <span className="text-xs uppercase tracking-[0.20em] text-[#DFBF8E] font-bold block">
                 Quick Links
@@ -260,38 +260,21 @@ export default function Footer() {
 
 
         {/* ========================================================
-            3. CLEAN BOTTOM BAR
+            3. CLEAN BOTTOM BAR (No Duplicate Links)
             ======================================================== */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#9E9484]">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9E9484]">
           
-          <div className="text-center md:text-left">
+          <div className="text-center sm:text-left">
             <p className="font-light">
-              © {CURRENT_YEAR} GoFlamingo Resort. All rights reserved.
+              © {CURRENT_YEAR} GoFlamingo Resorts. All rights reserved.
             </p>
             <p className="text-[11px] text-[#7A7163] mt-0.5">
               Sitapur, Sillari Gate, Pench National Park, Maharashtra 441401, India.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-5 text-[11px] text-[#C4B8A6]">
-            <Link to="/" className="hover:text-white transition-colors">
-              Home
-            </Link>
-            <Link to="/about" className="hover:text-white transition-colors">
-              About
-            </Link>
-            <Link to="/stay/deluxe-rooms" className="hover:text-white transition-colors">
-              Stay
-            </Link>
-            <Link to="/pench-safari" className="hover:text-white transition-colors">
-              Safari
-            </Link>
-            <Link to="/gallery" className="hover:text-white transition-colors">
-              Gallery
-            </Link>
-            <Link to="/contact" className="hover:text-white transition-colors">
-              Contact
-            </Link>
+          <div className="text-center sm:text-right text-[11px] text-[#8C8373] font-light">
+            Luxury Nature Resort & Safari Stays · Pench Tiger Reserve
           </div>
 
         </div>

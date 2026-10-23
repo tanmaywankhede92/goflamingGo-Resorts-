@@ -254,7 +254,7 @@ Website: goflamingoresorts.com`;
         <div className="absolute inset-0 z-0">
           <img
             src={AUTHENTIC_RESORT.photos.courtyardTwilight.src}
-            alt="GoFlamingo Resort illuminated haveli courtyard at twilight in Pench"
+            alt="GoFlamingo Resort illuminated  courtyard at twilight in Pench"
             fetchPriority="high"
             className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
           />

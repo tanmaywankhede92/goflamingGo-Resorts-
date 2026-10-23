@@ -54,15 +54,20 @@
   /* Globally hide scrollbars while preserving full scrolling capabilities */
   html,
   body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    overscroll-behavior-y: none; /* Eliminates mobile elastic pull-down bounce */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    overscroll-behavior-y: none;
+    /* Eliminates mobile elastic pull-down bounce */
     overscroll-behavior: none;
-    background-color: #FBF8F3; /* Consistent luxury ivory surface */
+    background-color: #FBF8F3;
+    /* Consistent luxury ivory surface */
   }
 
   ::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge, Opera */
+    display: none;
+    /* Chrome, Safari, Edge, Opera */
     width: 0;
     height: 0;
   }
@@ -80,14 +85,24 @@
   }
 
   /* Natural photography handling */
-  img, picture, video, canvas, svg {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  /* Royal Rajasthani Haveli Typography: headings use Marcellus & Cinzel */
-  h1, h2, h3, h4, h5, h6, .font-serif {
+  /* Royal Rajasthani  Typography: headings use Marcellus & Cinzel */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-serif {
     font-family: var(--font-serif);
     font-feature-settings: "liga" 1, "dlig" 1;
   }
@@ -121,13 +136,23 @@
 
 /* Continuous Luxury Stream Animations for Next-Level Gallery */
 @keyframes marqueeLeft {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 @keyframes marqueeRight {
-  0% { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .animate-stream-slow {
@@ -141,9 +166,12 @@
 
 /* Slick Gentle Floating Animation for WhatsApp Widget */
 @keyframes floatSlick {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -187,7 +215,10 @@
 
 /* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -235,6 +266,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
    This completely stops iOS Safari from zooming into the page on tap,
    which is the root cause of the screen shifting right and cutting borders! */
 @media screen and (max-width: 767px) {
+
   input,
   select,
   textarea {
@@ -244,9 +276,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Slick vertical floating animation for floating widgets */
 @keyframes floatSlick {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -255,4 +290,3 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .animate-float-slick {
   animation: floatSlick 3s ease-in-out infinite;
 }
-

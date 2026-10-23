@@ -545,8 +545,8 @@ export const RESORT_AMENITIES = [
     category: 'Corporate & Offsites',
     tag: 'Executive Conclave',
     desc: 'GoFlamingo Resort has a conference room that can be used for meetings and corporate gatherings. Fully air-conditioned with audio-visual presentation equipment, executive seating, and high-speed Wi-Fi.',
-    photo: RESORT_DRIVE_PHOTOS.gameZoneLounge.src,
-    alt: 'Club lounge and air-conditioned conference hall with executive seating',
+    photo: RESORT_DRIVE_PHOTOS.conferenceHallFront.src,
+    alt: 'Grand air-conditioned conference hall with presentation screen and theatre seating',
     icon: Briefcase,
     highlights: [
       'Dedicated air-conditioned hall with executive seating',

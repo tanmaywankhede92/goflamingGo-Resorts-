@@ -23,7 +23,7 @@ export const NAV_ITEMS = [
     hasMegaMenu: true,
     preview: {
       image: AUTHENTIC_RESORT.photos.archedCorridorFountain.src,
-      title: 'Haveli Living & Garden Suites',
+      title: ' Living & Garden Suites',
       description: '20 comfortable air-conditioned rooms, haveli verandahs, swimming pool, and pristine Sillari Gate proximity.',
     },
     sections: [
