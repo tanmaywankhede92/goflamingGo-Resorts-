@@ -763,13 +763,26 @@ export default function GalleryPage() {
           ======================================================== */}
       <section className="relative w-full min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] flex flex-col justify-end bg-forest-dark text-ivory overflow-hidden">
         
-        {/* Background Full Frame Media */}
+        {/* Background Full Frame Media — Cinematic Aerial Drone View & Property Panorama */}
         <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={AUTHENTIC_RESORT.videos.heroAerial.poster}
+            aria-label="Aerial view of Go Flamingo Resort, teak forest canopy and haveli grounds"
+            className="w-full h-full object-cover object-center"
+          >
+            <source src={AUTHENTIC_RESORT.videos.heroAerial.webm} type="video/webm" />
+            <source src={AUTHENTIC_RESORT.videos.heroAerial.mp4} type="video/mp4" />
+          </video>
           <img
-            src={AUTHENTIC_RESORT.photos.courtyardTwilight.src}
-            alt="Go Flamingo Resort illuminated haveli courtyard at twilight"
+            src={AUTHENTIC_RESORT.videos.heroAerial.poster}
+            alt="Aerial view of Go Flamingo Resort, teak forest canopy and haveli grounds at Sillari Pench"
             fetchPriority="high"
-            className="w-full h-full object-cover object-[center_top] sm:object-center filter brightness-[0.96] contrast-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none -z-10"
           />
           {/* Tailored architectural gradient scrims */}
           <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-deep/60 to-forest-dark/25" />

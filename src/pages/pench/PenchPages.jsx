@@ -11,26 +11,7 @@ const PENCH_ROUTES = [
   { label: 'Best Time To Visit', path: '/pench/best-time-to-visit' },
 ];
 
-export function PenchOverview() {
-  return (
-    <PlaceholderPage
-      title="Discover Pench Tiger Reserve"
-      eyebrow="The Land of Mowgli"
-      subtitle="Spanning the Satpura hills across Madhya Pradesh and Maharashtra, Pench is celebrated for its teak canopies, thriving tiger population, rich birdlife, and timeless jungle lore."
-      heroVariant="large"
-      heroImage={IMAGES.hero.pench}
-      breadcrumbs={[{ label: 'Pench' }]}
-      badge="Destination Guide"
-      highlights={[
-        { title: 'The Kipling Legacy', desc: 'Rudyard Kipling drew inspiration from the Seoni and Pench forests for The Jungle Book.' },
-        { title: 'Rich Biodiversity', desc: 'Over 1,200 plant species, 285 bird species, and healthy populations of Royal Bengal Tigers.' },
-        { title: 'River Pench Lifeline', desc: 'The Pench River bisects the park from north to south, creating scenic waterholes and wetlands.' },
-        { title: 'Sillari Gate Location', desc: 'Go Flamingo Resort is situated near Sillari Gate, the primary entrance point on the Maharashtra/MP border.' },
-      ]}
-      relatedRoutes={PENCH_ROUTES}
-    />
-  );
-}
+
 
 export function SillariGatePage() {
   return (
@@ -55,28 +36,7 @@ export function SillariGatePage() {
   );
 }
 
-export function SafariGuidePage() {
-  return (
-    <PlaceholderPage
-      title="Pench Safari Guide & Booking"
-      eyebrow="Permits & Forest Timings"
-      subtitle="A practical traveler’s guide to booking safaris in Pench: core zones, gypsy permits, morning/evening timings, and forest department guidelines."
-      heroVariant="split"
-      heroImage={IMAGES.hero.safari}
-      breadcrumbs={[{ label: 'Pench', to: '/pench' }, { label: 'Safari Guide' }]}
-      badge="Essential Trip Planning"
-      highlights={[
-        { title: 'Advance Booking Advised', desc: 'Forest department gypsy permits open up to 120 days in advance and sell out rapidly during peak seasons.' },
-        { title: 'Morning Safari Timings', desc: 'Usually 6:00 AM – 10:00 AM (varies with sunrise). Ideal for tracking fresh tiger pugmarks and active birds.' },
-        { title: 'Evening Safari Timings', desc: 'Usually 2:30 PM – 6:00 PM. Golden light on teak canopies and animal gatherings at waterholes.' },
-        { title: 'Permit Assistance', desc: 'Our resort front desk assists registered guests with permit navigation and gypsy coordination.' },
-      ]}
-      relatedRoutes={PENCH_ROUTES}
-      actionLabel="Request Safari Booking Assistance"
-      actionTo="/contact?book=true#reservation-form-card"
-    />
-  );
-}
+
 
 export function ThingsToDoPage() {
   return (

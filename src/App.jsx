@@ -15,14 +15,8 @@ function BookToContactRedirect() {
 // Page components
 import HomePage from './pages/home/HomePage';
 import AboutPage from './pages/about/AboutPage';
-import {
-  ResortOverview,
-  ResortAbout,
-  ResortFacilities,
-  ResortPool,
-  ResortDining,
-} from './pages/resort/ResortPages';
-import { RoomsOverview, RoomDetails } from './pages/rooms/RoomsPages';
+import { ResortFacilities } from './pages/resort/ResortPages';
+import { RoomDetails } from './pages/rooms/RoomsPages';
 import {
   ExperiencesOverview,
   SafariPage,
@@ -31,23 +25,11 @@ import {
   FamilyPage,
   CouplesPage,
 } from './pages/experiences/ExperiencesPages';
-import {
-  WeddingsOverview,
-  CelebrationsPage,
-  EventsPage,
-} from './pages/weddings/WeddingsPages';
 import MasterEventsPage from './pages/events/EventsPage';
-import {
-  CorporateOverview,
-  RetreatsPage,
-  MeetingsPage,
-} from './pages/corporate/CorporatePages';
 import DiningPage from './pages/dining/DiningPage';
 import PenchSafariPage from './pages/pench/PenchSafariPage';
 import {
-  PenchOverview,
   SillariGatePage,
-  SafariGuidePage,
   ThingsToDoPage,
   HowToReachPage,
   BestTimeToVisitPage,
@@ -55,7 +37,6 @@ import {
 import { PackagesOverview, PackageDetails } from './pages/packages/PackagesPages';
 import GalleryPage from './pages/gallery/GalleryPage';
 import ContactPage from './pages/contact/ContactPage';
-import BookPage from './pages/book/BookPage';
 
 /**
  * App Root Component
@@ -84,9 +65,7 @@ export default function App() {
           <Route path="stay/amenities" element={<Navigate to="/resort/facilities" replace />} />
           <Route path="stay/facilities" element={<Navigate to="/resort/facilities" replace />} />
 
-          {/* Stay / Rooms Group — Overview page commented out / redirected per user request */}
-          {/* <Route path="rooms" element={<RoomsOverview />} /> */}
-          {/* <Route path="stay" element={<RoomsOverview />} /> */}
+          {/* Stay / Rooms Group — Direct category pages */}
           <Route path="rooms" element={<Navigate to="/stay/deluxe-rooms" replace />} />
           <Route path="stay" element={<Navigate to="/stay/deluxe-rooms" replace />} />
           <Route path="rooms/:slug" element={<RoomDetails />} />
